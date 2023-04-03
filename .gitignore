@@ -1,0 +1,13 @@
+.idea
+.svn
+Library
+Logs
+obj
+Temp
+UserSettings
+Assets/StreamingAssets
+Assets/StreamingAssets.meta
+Assets/ShaderGraph
+Assets/ShaderGraph.meta
+*.csproj
+*.sln
