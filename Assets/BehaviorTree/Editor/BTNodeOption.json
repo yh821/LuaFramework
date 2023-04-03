@@ -1,0 +1,18 @@
+{
+  "logNode": {
+    "name": "打印日志",
+    "log": ""
+  },
+  "waitNode": {
+    "name": "等待(秒)",
+    "min_time": "1",
+    "max_time": "3"
+  },
+  "weightNode": {
+    "name": "几率(1-1000)",
+    "weight": "50"
+  },
+  "isActiveNode": {
+    "name": "是否激活"
+  }
+}

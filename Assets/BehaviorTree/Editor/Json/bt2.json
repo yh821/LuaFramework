@@ -1,0 +1,76 @@
+{
+  "name": "root",
+  "desc": "",
+  "file": "rootNode",
+  "type": null,
+  "posX": 260.0,
+  "posY": 120.0,
+  "fold": false,
+  "data": {
+    "restart": "1"
+  },
+  "children": [
+    {
+      "name": "selector",
+      "desc": "",
+      "file": "selectorNode",
+      "type": "composites",
+      "posX": 260.0,
+      "posY": 240.0,
+      "fold": false,
+      "data": null,
+      "children": [
+        {
+          "name": "parallel",
+          "desc": "",
+          "file": "parallelNode",
+          "type": "composites",
+          "posX": 130.0,
+          "posY": 360.0,
+          "fold": false,
+          "data": null,
+          "children": [
+            {
+              "name": "显示对话",
+              "desc": "",
+              "file": "speakNode",
+              "type": "actions",
+              "posX": 130.0,
+              "posY": 480.0,
+              "fold": false,
+              "data": {
+                "say": "hello world"
+              },
+              "children": null
+            }
+          ]
+        },
+        {
+          "name": "parallel",
+          "desc": "",
+          "file": "parallelNode",
+          "type": "composites",
+          "posX": 260.0,
+          "posY": 360.0,
+          "fold": false,
+          "data": null,
+          "children": [
+            {
+              "name": "显示对话",
+              "desc": "",
+              "file": "speakNode",
+              "type": "actions",
+              "posX": 260.0,
+              "posY": 480.0,
+              "fold": false,
+              "data": {
+                "say": "hello world"
+              },
+              "children": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
