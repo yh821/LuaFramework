@@ -5,23 +5,11 @@
 	purpose:
 ----------------------------------------------------
 ]]
+
+require("behavior/behaviorConfig")
+
 ---@class behaviorManager
 behaviorManager = {}
-
-animatorStateEnum = {
-	eIdle = 0,
-	eWalk = 1,
-}
-
-playStateEnum = {
-	eStart = 0,
-	eEnd = 1,
-}
-
-behaviorStateEnum = {
-	eIdle = 0, --空闲
-	eClick = 1, --点中
-}
 
 local _format = string.format
 
@@ -36,7 +24,7 @@ function behaviorManager:startTick(interval)
 	if self.timer == nil then
 		self.timer = timer.new()
 		self.timer:start(self.interval, function()
-			self:tick()
+			self:tick(interval)
 		end)
 		print('[behavior] 开始心跳')
 	end
@@ -49,6 +37,16 @@ function behaviorManager:stopTick()
 		print('[behavior] 停止心跳')
 	end
 	self:cleanTree()
+end
+
+function behaviorManager:switchTick(is_tick)
+	self.is_tick = is_tick and true or false
+	if self.is_tick then
+		log("[behaviorManager] 开始心跳")
+	else
+		log("[behaviorManager] 停止心跳")
+		self:cleanTree()
+	end
 end
 
 function behaviorManager:cleanTree()
@@ -77,13 +75,12 @@ __GenBehaviorTree = function(json, parent, tree)
 	end
 end
 
-function behaviorManager:loadBehaviorTree(treeName, guid)
-	local json = require(_format('behavior/%s', treeName))
+function behaviorManager:__LoadBehaviorTree(file)
+	local json = require(_format('config/behavior/%s', file))
 	if json then
-		json.data.guid = guid
-		local tree = behaviorTree:new(nil, json.data)
-		__GenBehaviorTree(json.children[1], tree, tree)
-		return tree
+		local bt = behaviorTree.New(json.data, file)
+		__GenBehaviorTree(json.children[1], bt, bt)
+		return bt
 	end
 end
 
@@ -92,7 +89,7 @@ function behaviorManager:bindBehaviorTree(btName, guid)
 	if bt then
 		print('实体已经绑定了行为树, guid:', guid)
 	else
-		bt = self:loadBehaviorTree(btName, guid)
+		bt = self:__LoadBehaviorTree(btName, guid)
 		if bt == nil then
 			logErr('找不到行为树:', btName)
 			return
@@ -110,9 +107,12 @@ function behaviorManager:getBehaviorTree(guid)
 	return _behaviorTreeDict[guid]
 end
 
-function behaviorManager:tick()
+function behaviorManager:tick(delta_time)
+	if not self.is_tick then
+		return
+	end
 	for _, bt in pairs(_behaviorTreeDict) do
-		bt:tick()
+		bt:tick(delta_time)
 	end
 end
 

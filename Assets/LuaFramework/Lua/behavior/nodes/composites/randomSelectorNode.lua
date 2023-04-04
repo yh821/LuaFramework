@@ -10,7 +10,7 @@ randomSelectorNode = BaseClass(compositeNode)
 
 local _random = math.random
 
-function randomSelectorNode:tick()
+function randomSelectorNode:tick(delta_time)
 	if self.children then
 		local index = nil
 		for i, v in ipairs(self.children) do
@@ -23,7 +23,7 @@ function randomSelectorNode:tick()
 		end
 		local n = self.children[index]
 		if n then
-			n.state = n:tick()
+			n.state = n:tick(delta_time)
 			return n.state
 		end
 	end

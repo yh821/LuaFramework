@@ -8,11 +8,11 @@
 ---@class selectorNode : compositeNode
 selectorNode = BaseClass(compositeNode)
 
-function selectorNode:tick()
+function selectorNode:tick(delta_time)
 	if self.children then
 		for _, v in ipairs(self.children) do
 			if v.state == nil or v.state == eNodeState.running then
-				v.state = v:tick()
+				v.state = v:tick(delta_time)
 				if v.state ~= eNodeState.failure then
 					return v.state
 				end

@@ -76,6 +76,9 @@ function PromptCtrl.OnClick(go)
 		this.TestSendSproto();
 	end
 	logWarn("OnClick---->>>"..go.name);
+
+	AiManager.Instance:BindBT(gameObject, "bt1")
+	AiManager.Instance:StartThinking(true)
 end
 
 --测试发送SPROTO--

@@ -8,13 +8,13 @@
 ---@class checkStateNode : decoratorNode
 checkStateNode = BaseClass(decoratorNode)
 
-function checkStateNode:tick()
+function checkStateNode:tick(delta_time)
 	local stateId = self.owner:getStateId()
 	if stateId == self.stateId then
 		if self.children then
 			local v = self.children[1]
 			if v.state == nil or v.state == eNodeState.running then
-				v.state = v:tick()
+				v.state = v:tick(delta_time)
 				return v.state
 			end
 		end

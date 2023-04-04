@@ -8,7 +8,7 @@
 ---@class inverterNode : decoratorNode
 inverterNode = BaseClass(decoratorNode)
 
-function inverterNode:tick()
+function inverterNode:tick(delta_time)
 	if self.children then
 		local v = self.children[1]
 		if v.state == eNodeState.failure then

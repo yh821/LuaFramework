@@ -9,14 +9,23 @@
 ---@field child taskNode
 ---@field blackBoard table
 ---@field guid number
----@field restartOnComplete boolean
+---@field restart boolean
 behaviorTree = BaseClass(taskNode)
+
+local _id = 0
+
+function behaviorTree:__init(data, file)
+	_id = _id + 1
+	self.uid = _id
+	self.data = data
+	self.file = file
+	self:awake()
+end
 
 function behaviorTree:awake()
 	self.child = nil
 	self.blackBoard = nil
-	self.guid = self.data.guid
-	self.restartOnComplete = tonumber(self.data.restartOnComplete) == 1
+	self.restart = tonumber(self.data.restart) == 1
 end
 
 ---@param node
@@ -45,13 +54,13 @@ __ResetAll = function(parent)
 	end
 end
 
-function behaviorTree:tick()
+function behaviorTree:tick(delta_time)
 	local state = self.child.state
-	if self.restartOnComplete and (state == eNodeState.success or state == eNodeState.failure) then
+	if self.restart and (state == eNodeState.success or state == eNodeState.failure) then
 		__ResetAll(self.child)
 	end
 	if self.child.state == nil or self.child.state == eNodeState.running then
-		self.child.state = self.child:tick()
+		self.child.state = self.child:tick(delta_time)
 	else
 		return self.child.state
 	end

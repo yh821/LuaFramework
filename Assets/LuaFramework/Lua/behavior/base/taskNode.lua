@@ -45,18 +45,18 @@ function taskNode:start()
 end
 
 ---@return nodeState
-function taskNode:tick()
+function taskNode:tick(delta_time)
 	if self.state == nil then
 		self:start()
 	end
 	if self.state == nil or self.state == eNodeState.running then
-		self.state = self:update()
+		self.state = self:update(delta_time)
 	end
 	return self.state
 end
 
 ---@return nodeState
-function taskNode:update()
+function taskNode:update(delta_time)
 	return self.state
 end
 

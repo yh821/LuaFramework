@@ -8,7 +8,7 @@
 ---@field children taskNode[]
 parentNode = BaseClass(taskNode)
 
-function parentNode:tick()
+function parentNode:tick(delta_time)
 	--override
 end
 

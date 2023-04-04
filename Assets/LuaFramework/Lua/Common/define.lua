@@ -3,6 +3,7 @@ CtrlNames = {
 	Runner = "Runner",
 	Prompt = "PromptCtrl",
 	Message = "MessageCtrl",
+	AiManager = "AiManager",
 }
 
 PanelNames = {

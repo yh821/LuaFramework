@@ -8,7 +8,7 @@
 ---@class successNode : decoratorNode
 successNode = BaseClass(decoratorNode)
 
-function successNode:tick()
+function successNode:tick(delta_time)
 	if self.children then
 		local v = self.children[1]
 		if v.state == eNodeState.failure or v.state == eNodeState.success then
