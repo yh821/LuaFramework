@@ -5,29 +5,18 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class decoratorNode : taskNode
----@field children taskNode[]
-decoratorNode = BaseClass(taskNode)
+---@class decoratorNode : parentNode
+decoratorNode = BaseClass(parentNode)
 
-local _insert = table.insert
-local _remove = table.remove
-
+---@param node taskNode
 function decoratorNode:addChild(node)
 	if self.children == nil then
 		self.children = {}
 	end
 	if #self.children > 0 then
-		_remove(self.children, 1)
+		table.remove(self.children, 1)
 	end
-	_insert(self.children, node)
-end
-
-function decoratorNode:getChildren()
-	return self.children
-end
-
-function decoratorNode:tick()
-	--override
+	table.insert(self.children, node)
 end
 
 function decoratorNode:isDecorator()

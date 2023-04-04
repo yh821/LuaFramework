@@ -29,6 +29,10 @@ function behaviorTree:getChildren()
 	return self.child
 end
 
+function behaviorTree:isParent()
+	return true
+end
+
 ---@type fun(parent:taskNode)
 local __ResetAll
 __ResetAll = function(parent)

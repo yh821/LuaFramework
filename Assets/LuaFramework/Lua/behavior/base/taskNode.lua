@@ -114,6 +114,10 @@ function taskNode:isDecorator()
 	return false
 end
 
+function taskNode:isParent()
+	return false
+end
+
 function taskNode:print(...)
 	if _openLog then
 		print(_format('[behavior][%s]', self.id), ...)
