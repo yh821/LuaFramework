@@ -11,10 +11,10 @@
   },
   "children": [
     {
-      "name": "selector",
+      "name": "sequence",
       "desc": "",
-      "file": "selectorNode",
-      "type": "composites",
+      "file": "sequenceNode",
+      "type": "composites/sequenceNode",
       "posX": 260.0,
       "posY": 240.0,
       "fold": false,
@@ -23,123 +23,113 @@
       },
       "children": [
         {
-          "name": "checkState",
+          "name": "sequence",
           "desc": "",
-          "file": "checkStateNode",
-          "type": "decorators",
+          "file": "sequenceNode",
+          "type": "composites/sequenceNode",
           "posX": 130.0,
           "posY": 360.0,
           "fold": false,
           "data": {
-            "stateId": "0"
+            "abort": "None"
           },
           "children": [
             {
-              "name": "sequence",
+              "name": "几率(1-1000)",
               "desc": "",
-              "file": "sequenceNode",
-              "type": "composites",
+              "file": "weightNode",
+              "type": "actions/common/weightNode",
+              "posX": 0.0,
+              "posY": 480.0,
+              "fold": false,
+              "data": {
+                "weight": "500"
+              },
+              "children": null
+            },
+            {
+              "name": "parallel",
+              "desc": "",
+              "file": "parallelNode",
+              "type": "composites/parallelNode",
               "posX": 130.0,
               "posY": 480.0,
               "fold": false,
               "data": {
-                "abort": "Self"
+                "abort": "None"
               },
               "children": [
                 {
-                  "name": "几率权重",
+                  "name": "日志",
                   "desc": "",
-                  "file": "weightNode",
-                  "type": "actions",
+                  "file": "LogNode",
+                  "type": "actions/common/LogNode",
                   "posX": 0.0,
                   "posY": 600.0,
                   "fold": false,
                   "data": {
-                    "weight": "10"
+                    "msg": "111"
                   },
                   "children": null
                 },
                 {
-                  "name": "parallel",
+                  "name": "等待(秒)",
                   "desc": "",
-                  "file": "parallelNode",
-                  "type": "composites",
+                  "file": "waitNode",
+                  "type": "actions/common/waitNode",
                   "posX": 130.0,
                   "posY": 600.0,
                   "fold": false,
                   "data": {
-                    "abort": "None"
+                    "min_time": "1",
+                    "max_time": "3"
                   },
-                  "children": [
-                    {
-                      "name": "等待时间",
-                      "desc": "",
-                      "file": "waitNode",
-                      "type": "actions",
-                      "posX": 130.0,
-                      "posY": 720.0,
-                      "fold": false,
-                      "data": {
-                        "waitMin": "2",
-                        "waitMax": "5"
-                      },
-                      "children": null
-                    }
-                  ]
+                  "children": null
+                },
+                {
+                  "name": "日志",
+                  "desc": "",
+                  "file": "LogNode",
+                  "type": "actions/common/LogNode",
+                  "posX": 260.0,
+                  "posY": 600.0,
+                  "fold": false,
+                  "data": {
+                    "msg": "222"
+                  },
+                  "children": null
                 }
               ]
             }
           ]
         },
         {
-          "name": "checkState",
+          "name": "等待(秒)",
           "desc": "",
-          "file": "checkStateNode",
-          "type": "decorators",
+          "file": "waitNode",
+          "type": "actions/common/waitNode",
           "posX": 260.0,
           "posY": 360.0,
           "fold": false,
           "data": {
-            "stateId": "0"
+            "min_time": "1",
+            "max_time": "3"
           },
-          "children": [
-            {
-              "name": "moveToPosition",
-              "desc": "",
-              "file": "moveToPositionNode",
-              "type": "actions",
-              "posX": 260.0,
-              "posY": 480.0,
-              "fold": false,
-              "data": null,
-              "children": null
-            }
-          ]
+          "children": null
         },
         {
-          "name": "checkState",
+          "name": "等待(秒)",
           "desc": "",
-          "file": "checkStateNode",
-          "type": "decorators",
+          "file": "waitNode",
+          "type": "actions/common/waitNode",
           "posX": 390.0,
           "posY": 360.0,
           "fold": false,
           "data": {
-            "stateId": "0"
+            "min_time": "1",
+            "max_time": "3"
           },
-          "children": [
-            {
-              "name": "moveToPosition",
-              "desc": "",
-              "file": "moveToPositionNode",
-              "type": "actions",
-              "posX": 390.0,
-              "posY": 480.0,
-              "fold": false,
-              "data": null,
-              "children": null
-            }
-          ]
+          "children": null
         }
       ]
     }

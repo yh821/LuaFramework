@@ -1,83 +1,78 @@
 local __bt__ = {
-  name= "rootNode",
+  file= "rootNode",
   data= {
     restart= 1
   },
   children= {
     {
-      name= "selectorNode",
-      type= "composites",
+      file= "sequenceNode",
+      type= "composites/sequenceNode",
       data= {
         abort= "None"
       },
       children= {
         {
-          name= "checkStateNode",
-          type= "decorators",
+          file= "sequenceNode",
+          type= "composites/sequenceNode",
           data= {
-            stateId= 0
+            abort= "None"
           },
           children= {
             {
-              name= "sequenceNode",
-              type= "composites",
+              file= "weightNode",
+              type= "actions/common/weightNode",
               data= {
-                abort= "Self"
+                weight= 500
+              },
+            },
+            {
+              file= "parallelNode",
+              type= "composites/parallelNode",
+              data= {
+                abort= "None"
               },
               children= {
                 {
-                  name= "weightNode",
-                  type= "actions",
+                  file= "LogNode",
+                  type= "actions/common/LogNode",
                   data= {
-                    weight= 10
+                    msg= 111
                   },
                 },
                 {
-                  name= "parallelNode",
-                  type= "composites",
+                  file= "waitNode",
+                  type= "actions/common/waitNode",
                   data= {
-                    abort= "None"
+                    min_time= 1,
+                    max_time= 3
                   },
-                  children= {
-                    {
-                      name= "waitNode",
-                      type= "actions",
-                      data= {
-                        waitMin= 2,
-                        waitMax= 5
-                      },
-                    }
-                  }
+                },
+                {
+                  file= "LogNode",
+                  type= "actions/common/LogNode",
+                  data= {
+                    msg= 222
+                  },
                 }
               }
             }
           }
         },
         {
-          name= "checkStateNode",
-          type= "decorators",
+          file= "waitNode",
+          type= "actions/common/waitNode",
           data= {
-            stateId= 0
+            min_time= 1,
+            max_time= 3
           },
-          children= {
-            {
-              name= "moveToPositionNode",
-              type= "actions",
-            }
-          }
         },
         {
-          name= "checkStateNode",
-          type= "decorators",
+          file= "waitNode",
+          type= "actions/common/waitNode",
           data= {
-            stateId= 0
+            min_time= 1,
+            max_time= 3
           },
-          children= {
-            {
-              name= "moveToPositionNode",
-              type= "actions",
-            }
-          }
         }
       }
     }

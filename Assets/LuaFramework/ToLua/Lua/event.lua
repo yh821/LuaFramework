@@ -213,7 +213,7 @@ local CoUpdateBeat = CoUpdateBeat
 function Update(deltaTime, unscaledDeltaTime)
 	Time:SetDeltaTime(deltaTime, unscaledDeltaTime)
 	UpdateBeat()
-	if Runner then
+	if Runner.Instance then
 		Runner.Instance:Update(deltaTime, unscaledDeltaTime)
 	end
 end

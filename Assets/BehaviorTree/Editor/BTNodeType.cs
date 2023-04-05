@@ -97,7 +97,7 @@ namespace BT
 
 	public class BtNodeLua
 	{
-		public string name;
+		public string file;
 		public string type;
 		public Dictionary<string, string> data;
 		public List<BtNodeLua> children;

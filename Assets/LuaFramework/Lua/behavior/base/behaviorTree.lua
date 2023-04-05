@@ -5,12 +5,12 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class behaviorTree : taskNode
+---@class behaviorTree
 ---@field child taskNode
 ---@field blackBoard table
 ---@field guid number
 ---@field restart boolean
-behaviorTree = BaseClass(taskNode)
+behaviorTree = BaseClass()
 
 local _id = 0
 
@@ -54,15 +54,12 @@ __ResetAll = function(parent)
 	end
 end
 
-function behaviorTree:tick(delta_time)
-	local state = self.child.state
-	if self.restart and (state == eNodeState.success or state == eNodeState.failure) then
+function behaviorTree:Update(delta_time)
+	if self.restart and (self.child.state == eNodeState.success or self.child.state == eNodeState.failure) then
 		__ResetAll(self.child)
 	end
 	if self.child.state == nil or self.child.state == eNodeState.running then
 		self.child.state = self.child:tick(delta_time)
-	else
-		return self.child.state
 	end
 end
 

@@ -12,14 +12,14 @@ local _random = math.random
 
 function waitNode:start()
 	self.deltaTime = 0
-	self.waitTime = _random(self.data.waitMin, self.data.waitMax)
+	self.waitTime = _random(self.data.min_time, self.data.max_time)
 end
 
-function waitNode:update()
+function waitNode:update(delta_time)
 	if self.deltaTime >= self.waitTime then
-		--print('等待完成')
+		self:print("等待完成")
 		return eNodeState.success
 	end
-	self.deltaTime = self.deltaTime + behaviorManager.interval
+	self.deltaTime = self.deltaTime + delta_time
 	return eNodeState.running
 end

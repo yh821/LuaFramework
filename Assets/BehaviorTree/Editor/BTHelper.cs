@@ -152,7 +152,7 @@ namespace BT
 
 		public static BtNodeLua SwitchToLua(BtNodeData data)
 		{
-			var lua = new BtNodeLua { name = data.file, type = data.type, data = data.data };
+			var lua = new BtNodeLua { file = data.file, type = data.type, data = data.data };
 			if (data.children != null && data.children.Count > 0)
 			{
 				lua.children = new List<BtNodeLua>();
@@ -208,12 +208,12 @@ namespace BT
 			}
 		}
 
-		public static BtNode AddChildNode(BehaviourTree owner, BtNode parent, string name)
+		public static BtNode AddChildNode(BehaviourTree owner, BtNode parent, string file)
 		{
 			var pos = parent.Graph.RealRect.position;
-			if (!mNodeTypeDict.ContainsKey(name))
-				throw new ArgumentNullException(name, "找不到该类型");
-			var data = new BtNodeData(name, mNodeTypeDict[name], pos.x,
+			if (!mNodeTypeDict.ContainsKey(file))
+				throw new ArgumentNullException(file, "找不到该类型");
+			var data = new BtNodeData(file, mNodeTypeDict[file], pos.x,
 				pos.y + BtConst.DefaultHeight + BtConst.DefaultSpacingY);
 			parent.Data.AddChild(data);
 			return AddChildNode(owner, parent, data);

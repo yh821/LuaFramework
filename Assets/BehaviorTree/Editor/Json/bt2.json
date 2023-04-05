@@ -14,7 +14,7 @@
       "name": "selector",
       "desc": "",
       "file": "selectorNode",
-      "type": "composites",
+      "type": "composites/selectorNode",
       "posX": 260.0,
       "posY": 240.0,
       "fold": false,
@@ -24,22 +24,24 @@
           "name": "parallel",
           "desc": "",
           "file": "parallelNode",
-          "type": "composites",
-          "posX": 130.0,
+          "type": "composites/parallelNode",
+          "posX": 195.0,
           "posY": 360.0,
           "fold": false,
-          "data": null,
+          "data": {
+            "abort": "None"
+          },
           "children": [
             {
-              "name": "显示对话",
+              "name": "日志",
               "desc": "",
-              "file": "speakNode",
-              "type": "actions",
-              "posX": 130.0,
+              "file": "LogNode",
+              "type": "actions/common/LogNode",
+              "posX": 195.0,
               "posY": 480.0,
               "fold": false,
               "data": {
-                "say": "hello world"
+                "msg": "111"
               },
               "children": null
             }
@@ -49,22 +51,24 @@
           "name": "parallel",
           "desc": "",
           "file": "parallelNode",
-          "type": "composites",
-          "posX": 260.0,
+          "type": "composites/parallelNode",
+          "posX": 325.0,
           "posY": 360.0,
           "fold": false,
-          "data": null,
+          "data": {
+            "abort": "None"
+          },
           "children": [
             {
-              "name": "显示对话",
+              "name": "日志",
               "desc": "",
-              "file": "speakNode",
-              "type": "actions",
-              "posX": 260.0,
+              "file": "LogNode",
+              "type": "actions/common/LogNode",
+              "posX": 325.0,
               "posY": 480.0,
               "fold": false,
               "data": {
-                "say": "hello world"
+                "msg": "222"
               },
               "children": null
             }

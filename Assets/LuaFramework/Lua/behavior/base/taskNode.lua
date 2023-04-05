@@ -5,7 +5,7 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class nodeState
+---@class eNodeState
 ---@field running number
 ---@field success number
 ---@field failure number
@@ -17,9 +17,9 @@ eNodeState = {
 
 ---@class taskNode : BaseClass
 ---@field owner behaviorTree
----@field id number
+---@field uid number
 ---@field data table
----@field state nodeState
+---@field state eNodeState
 taskNode = BaseClass()
 
 local _id = 0
@@ -28,12 +28,12 @@ local _format = string.format
 
 ---@param owner behaviorTree
 ---@param data table
-function taskNode:__init(super, owner, data)
-	self.owner = owner
+function taskNode:__init(data, owner)
 	self.data = data
+	self.owner = owner
 	self:awake()
 	_id = _id + 1
-	self.id = _id
+	self.uid = _id
 end
 
 function taskNode:awake()
@@ -41,10 +41,10 @@ function taskNode:awake()
 end
 
 function taskNode:start()
-	self.state = eNodeState.failure
+	self.state = eNodeState.success
 end
 
----@return nodeState
+---@return eNodeState
 function taskNode:tick(delta_time)
 	if self.state == nil then
 		self:start()
@@ -55,7 +55,7 @@ function taskNode:tick(delta_time)
 	return self.state
 end
 
----@return nodeState
+---@return eNodeState
 function taskNode:update(delta_time)
 	return self.state
 end
@@ -120,6 +120,6 @@ end
 
 function taskNode:print(...)
 	if _openLog then
-		print(_format('[behavior][%s]', self.id), ...)
+		print(_format('[behavior][%s]', self.uid), ...)
 	end
 end

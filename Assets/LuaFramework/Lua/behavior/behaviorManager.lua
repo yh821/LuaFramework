@@ -12,6 +12,8 @@ require("behavior/behaviorConfig")
 behaviorManager = {}
 
 local _format = string.format
+local _print = log
+local _error = logError
 
 local _behaviorNodeDict = {}
 ---@type behaviorTree[]
@@ -24,9 +26,9 @@ function behaviorManager:startTick(interval)
 	if self.timer == nil then
 		self.timer = timer.new()
 		self.timer:start(self.interval, function()
-			self:tick(interval)
+			self:Update(interval)
 		end)
-		print('[behavior] 开始心跳')
+		_print('[behavior] 开始心跳')
 	end
 end
 
@@ -34,7 +36,7 @@ function behaviorManager:stopTick()
 	if self.timer then
 		self.timer:cancel()
 		self.timer = nil
-		print('[behavior] 停止心跳')
+		_print('[behavior] 停止心跳')
 	end
 	self:cleanTree()
 end
@@ -61,11 +63,12 @@ local __GenBehaviorTree
 __GenBehaviorTree = function(json, parent, tree)
 	if _behaviorNodeDict[json.file] == nil then
 		_behaviorNodeDict[json.file] = true
-		require(_format('lua.behavior.%s.%s', json.type, json.file))
+		require("behavior/nodes/" .. json.type)
 	end
+	---@type BaseClass
 	local class = _G[json.file]
 	if class then
-		local node = class:new(tree, json.data)
+		local node = class.New(json.data, tree)
 		parent:addChild(node)
 		if json.children then
 			for _, v in ipairs(json.children) do
@@ -75,6 +78,7 @@ __GenBehaviorTree = function(json, parent, tree)
 	end
 end
 
+---@param file string
 function behaviorManager:__LoadBehaviorTree(file)
 	local json = require(_format('config/behavior/%s', file))
 	if json then
@@ -84,35 +88,42 @@ function behaviorManager:__LoadBehaviorTree(file)
 	end
 end
 
-function behaviorManager:bindBehaviorTree(btName, guid)
-	local bt = _behaviorTreeDict[guid]
+---@param file string
+---@return behaviorTree
+function behaviorManager:bindBehaviorTree(gameObject, file)
+	local bt = _behaviorTreeDict[gameObject]
 	if bt then
-		print('实体已经绑定了行为树, guid:', guid)
-	else
-		bt = self:__LoadBehaviorTree(btName, guid)
-		if bt == nil then
-			logErr('找不到行为树:', btName)
-			return
-		end
-		_behaviorTreeDict[guid] = bt
+		_error("实体已经绑定了行为树: " .. bt.file)
+		return
 	end
+	bt = self:__LoadBehaviorTree(file)
+	if bt == nil then
+		_error('找不到行为树: ' .. file)
+		return
+	end
+	_behaviorTreeDict[gameObject] = bt
+	return bt
 end
 
-function behaviorManager:unBindBehaviorTree(guid)
-	_behaviorTreeDict[guid] = nil
-	print('解绑行为树, guid:', guid)
+function behaviorManager:unBindBehaviorTree(gameObject)
+	local bt = _behaviorTreeDict[gameObject]
+	if not bt then
+		return
+	end
+	_behaviorTreeDict[gameObject] = nil
+	_print('已解绑行为树:', bt.file)
 end
 
-function behaviorManager:getBehaviorTree(guid)
-	return _behaviorTreeDict[guid]
+function behaviorManager:getBehaviorTree(gameObject)
+	return _behaviorTreeDict[gameObject]
 end
 
-function behaviorManager:tick(delta_time)
+function behaviorManager:Update(delta_time)
 	if not self.is_tick then
 		return
 	end
 	for _, bt in pairs(_behaviorTreeDict) do
-		bt:tick(delta_time)
+		bt:Update(delta_time)
 	end
 end
 

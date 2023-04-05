@@ -15,6 +15,7 @@ Status = {
 }
 
 Runner.frame_count = 0
+local _priority_max = 16
 
 function Runner:__init()
 	if Runner.Instance then
@@ -43,7 +44,7 @@ function Runner:Update(deltaTime, unscaledDeltaTime)
 	Status.ElapseTime = unscaledDeltaTime
 	Status.NowScaleTime = UnityEngine.Time.time
 	Status.ElapseScaleTime = UnityEngine.Time.deltaTime
-	for i = 1, 16 do
+	for i = 1, _priority_max do
 		local priority_tbl = self.priority_run_obj_list[i]
 		for _, v in pairs(priority_tbl) do
 			v:Update(realtime, unscaledDeltaTime)
@@ -54,7 +55,7 @@ end
 
 function Runner:AddRunObj(run_obj, priority_level)
 	local obj = self.all_run_obj_list[run_obj]
-	if not obj then
+	if nil ~= obj then
 		return false
 	end
 
@@ -63,7 +64,7 @@ function Runner:AddRunObj(run_obj, priority_level)
 	end
 
 	self.id_count = self.id_count + 1
-	priority_level = priority_level or 16
+	priority_level = priority_level or _priority_max
 	self.all_run_obj_list[run_obj] = {priority_level, self.id_count}
 	self.priority_run_obj_list[priority_level][self.id_count] = run_obj
 end

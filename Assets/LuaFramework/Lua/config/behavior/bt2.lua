@@ -6,30 +6,36 @@ local __bt__ = {
   children= {
     {
       file= "selectorNode",
-      type= "composites",
+      type= "composites/selectorNode",
       children= {
         {
           file= "parallelNode",
-          type= "composites",
+          type= "composites/parallelNode",
+          data= {
+            abort= "None"
+          },
           children= {
             {
-              file= "speakNode",
-              type= "actions",
+              file= "LogNode",
+              type= "actions/common/LogNode",
               data= {
-                say= "hello world"
+                msg= 111
               },
             }
           }
         },
         {
           file= "parallelNode",
-          type= "composites",
+          type= "composites/parallelNode",
+          data= {
+            abort= "None"
+          },
           children= {
             {
-              file= "speakNode",
-              type= "actions",
+              file= "LogNode",
+              type= "actions/common/LogNode",
               data= {
-                say= "hello world"
+                msg= 222
               },
             }
           }

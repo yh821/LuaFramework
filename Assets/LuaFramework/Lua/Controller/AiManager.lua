@@ -31,40 +31,25 @@ function AiManager:__delete()
 end
 
 function AiManager:Update(realtime, delta_time)
-	behaviorManager:tick(delta_time)
+	behaviorManager:Update(delta_time)
 end
 
 function AiManager:StartThinking(is_on)
 	behaviorManager:switchTick(is_on)
 end
 
-function AiManager:BindBT(scene_obj, file, data)
-	local bt = behaviorManager:bindBehaviorTree(file, data)
+---@return behaviorTree 一个实体只能绑定一个行为树
+function AiManager:BindBT(gameObject, file)
+	local bt = behaviorManager:bindBehaviorTree(gameObject, file)
 	if not bt then
 		return
 	end
-	local bts = self._bt_list[scene_obj]
-	if not bts then
-		bts = {}
-		self._bt_list[scene_obj] = bts
-	end
-	bts:setSharedVar(AiConfig.scene_obj, scene_obj)
-	bts[bt.uid] = bt
+	bt:setSharedVar(AiConfig.scene_obj, gameObject)
+	self._bt_list[gameObject] = bt
 	return bt
 end
 
-function AiManager:UnBindBT(scene_obj, uid)
-	local bts = self._bt_list[scene_obj]
-	if not bts then
-		return
-	end
-	if uid then
-		bts[uid] = nil
-		behaviorManager:unBindBehaviorTree(uid)
-	else
-		for k, v in pairs(bts) do
-			bts[k] = nil
-			behaviorManager:unBindBehaviorTree(v.uid)
-		end
-	end
+function AiManager:UnBindBT(gameObject)
+	behaviorManager:unBindBehaviorTree(gameObject)
+	self._bt_list[gameObject] = nil
 end
