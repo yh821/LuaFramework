@@ -7,6 +7,9 @@ local __bt__ = {
     {
       file= "selectorNode",
       type= "composites/selectorNode",
+      data= {
+        abort= "None"
+      },
       children= {
         {
           file= "parallelNode",

@@ -5,6 +5,7 @@
   "type": null,
   "posX": 260.0,
   "posY": 120.0,
+  "index": 0,
   "fold": false,
   "data": {
     "restart": "1"
@@ -17,8 +18,11 @@
       "type": "composites/selectorNode",
       "posX": 260.0,
       "posY": 240.0,
+      "index": 1,
       "fold": false,
-      "data": null,
+      "data": {
+        "abort": "None"
+      },
       "children": [
         {
           "name": "parallel",
@@ -27,6 +31,7 @@
           "type": "composites/parallelNode",
           "posX": 195.0,
           "posY": 360.0,
+          "index": 2,
           "fold": false,
           "data": {
             "abort": "None"
@@ -39,6 +44,7 @@
               "type": "actions/common/logNode",
               "posX": 195.0,
               "posY": 480.0,
+              "index": 3,
               "fold": false,
               "data": {
                 "msg": "111"
@@ -54,6 +60,7 @@
           "type": "composites/parallelNode",
           "posX": 325.0,
           "posY": 360.0,
+          "index": 4,
           "fold": false,
           "data": {
             "abort": "None"
@@ -66,6 +73,7 @@
               "type": "actions/common/logNode",
               "posX": 325.0,
               "posY": 480.0,
+              "index": 5,
               "fold": false,
               "data": {
                 "msg": "222"
