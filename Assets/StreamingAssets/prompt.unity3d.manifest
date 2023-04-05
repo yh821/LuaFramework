@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 465685253
+CRC: 3997039519
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 67824eca3c5e3d9fa087aebf6df02762
+    Hash: 44dbbb56e0e7ef36df2d01f0744b4332
   TypeTreeHash:
     serializedVersion: 2
     Hash: 962988c426e5415e6ff1d894ca1a6dd9
@@ -41,10 +41,30 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 224
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ScrollRect/ScrollRectEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
 Assets:
 - Assets/LuaFramework/Examples/Builds/Prompt/PromptPanel.prefab
 - Assets/LuaFramework/Examples/Builds/Prompt/PromptItem.prefab
 Dependencies:
-- D:/Github/LuaFramework/Assets/StreamingAssets/prompt_asset.unity3d
-- D:/Github/LuaFramework/Assets/StreamingAssets/shared_asset.unity3d
+- C:/Users/Leo/Documents/GitHub/LuaFramework/Assets/StreamingAssets/prompt_asset.unity3d
+- C:/Users/Leo/Documents/GitHub/LuaFramework/Assets/StreamingAssets/shared_asset.unity3d

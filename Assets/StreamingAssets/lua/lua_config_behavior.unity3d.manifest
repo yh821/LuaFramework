@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2314184064
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 21c77d5fa801c7589a3c211154aec149
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Lua/config/behavior/bt1.lua.bytes
+- Assets/Lua/config/behavior/bt3.lua.bytes
+- Assets/Lua/config/behavior/bt2.lua.bytes
+Dependencies: []

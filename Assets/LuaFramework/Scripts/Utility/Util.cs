@@ -313,7 +313,7 @@ namespace LuaFramework {
 #if UNITY_EDITOR
             int resultId = Util.CheckRuntimeFile();
             if (resultId == -1) {
-                Debug.LogError("没有找到框架所需要的资源，单击Game菜单下Build xxx Resource生成！！");
+                Debug.LogError("没有找到框架所需要的资源，单击LuaFramework菜单下Build xxx Resource生成！！");
                 EditorApplication.isPlaying = false;
                 return false;
             } else if (resultId == -2) {
