@@ -35,8 +35,8 @@
             {
               "name": "日志",
               "desc": "",
-              "file": "LogNode",
-              "type": "actions/common/LogNode",
+              "file": "logNode",
+              "type": "actions/common/logNode",
               "posX": 195.0,
               "posY": 480.0,
               "fold": false,
@@ -62,8 +62,8 @@
             {
               "name": "日志",
               "desc": "",
-              "file": "LogNode",
-              "type": "actions/common/LogNode",
+              "file": "logNode",
+              "type": "actions/common/logNode",
               "posX": 325.0,
               "posY": 480.0,
               "fold": false,

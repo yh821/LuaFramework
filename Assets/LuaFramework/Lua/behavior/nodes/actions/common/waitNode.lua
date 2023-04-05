@@ -23,3 +23,8 @@ function waitNode:update(delta_time)
 	self.deltaTime = self.deltaTime + delta_time
 	return eNodeState.running
 end
+
+function waitNode:abort()
+	self.state = eNodeState.failure
+	return eNodeState.failure
+end

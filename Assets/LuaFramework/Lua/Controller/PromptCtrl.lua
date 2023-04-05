@@ -41,7 +41,7 @@ end
 
 --初始化面板--
 function PromptCtrl.InitPanel(objs)
-	local count = 100; 
+	local count = 100;
 	local parent = PromptPanel.gridParent;
 	for i = 1, count do
 		local go = newObject(objs[0]);
@@ -77,8 +77,8 @@ function PromptCtrl.OnClick(go)
 	end
 	logWarn("OnClick---->>>"..go.name);
 
-	AiManager.Instance:BindBT(gameObject, "bt1")
-	AiManager.Instance:StartThinking(true)
+	AiManager.Instance:BindBT(gameObject, "bt3")
+	AiManager.Instance:SwitchTick()
 end
 
 --测试发送SPROTO--

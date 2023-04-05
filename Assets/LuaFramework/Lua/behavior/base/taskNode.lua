@@ -29,11 +29,11 @@ local _format = string.format
 ---@param owner behaviorTree
 ---@param data table
 function taskNode:__init(data, owner)
+	_id = _id + 1
+	self.uid = _id
 	self.data = data
 	self.owner = owner
 	self:awake()
-	_id = _id + 1
-	self.uid = _id
 end
 
 function taskNode:awake()

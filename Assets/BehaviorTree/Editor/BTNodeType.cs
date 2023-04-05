@@ -111,6 +111,7 @@ namespace BT
 		public string type = string.Empty;
 		public float posX = 0;
 		public float posY = 0;
+		public int index = -1;
 		public bool fold = false;//是否折叠子节点
 
 		public Dictionary<string, string> data;

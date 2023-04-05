@@ -25,6 +25,7 @@ end
 function behaviorTree:awake()
 	self.child = nil
 	self.blackBoard = nil
+	self.child_count = 0
 	self.restart = tonumber(self.data.restart) == 1
 end
 
@@ -54,9 +55,13 @@ __ResetAll = function(parent)
 	end
 end
 
+function behaviorTree:Reset()
+	__ResetAll(self.child)
+end
+
 function behaviorTree:Update(delta_time)
 	if self.restart and (self.child.state == eNodeState.success or self.child.state == eNodeState.failure) then
-		__ResetAll(self.child)
+		self:Reset()
 	end
 	if self.child.state == nil or self.child.state == eNodeState.running then
 		self.child.state = self.child:tick(delta_time)

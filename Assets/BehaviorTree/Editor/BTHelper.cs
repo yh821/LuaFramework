@@ -125,16 +125,18 @@ namespace BT
 
 		public static void WalkNodeData(BtNode parent)
 		{
+			_index = 0;
+			__WalkNodeData(parent);
+		}
+		private static int _index;
+		private static void __WalkNodeData(BtNode parent)
+		{
 			parent.Data.file = parent.NodeName;
+			parent.Data.index = _index++;
 			parent.Data.SetPosition(parent.Graph.RealRect.position);
 
 			if (parent.IsHaveChild)
 			{
-				foreach (var node in parent.ChildNodeList)
-				{
-					WalkNodeData(node);
-				}
-
 				parent.Data.children.Sort((a, b) =>
 				{
 					if (a.posX > b.posX)
@@ -147,6 +149,11 @@ namespace BT
 						return -1;
 					return 0;
 				});
+
+				foreach (var node in parent.ChildNodeList)
+				{
+					__WalkNodeData(node);
+				}
 			}
 		}
 

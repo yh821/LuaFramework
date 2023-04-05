@@ -15,7 +15,7 @@
   "isActiveNode": {
     "name": "是否激活"
   },
-  "LogNode": {
+  "logNode": {
     "name": "日志",
     "msg": ""
   }

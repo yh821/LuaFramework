@@ -1,0 +1,102 @@
+{
+  "name": "root",
+  "desc": "",
+  "file": "rootNode",
+  "type": "",
+  "posX": 390.0,
+  "posY": 60.0,
+  "index": 0,
+  "fold": false,
+  "data": {
+    "restart": "1"
+  },
+  "children": [
+    {
+      "name": "sequence",
+      "desc": "",
+      "file": "sequenceNode",
+      "type": "composites/sequenceNode",
+      "posX": 390.0,
+      "posY": 180.0,
+      "index": 1,
+      "fold": false,
+      "data": {
+        "abort": "None"
+      },
+      "children": [
+        {
+          "name": "parallel",
+          "desc": "",
+          "file": "parallelNode",
+          "type": "composites/parallelNode",
+          "posX": 260.0,
+          "posY": 300.0,
+          "index": 2,
+          "fold": false,
+          "data": {
+            "abort": "None"
+          },
+          "children": [
+            {
+              "name": "日志",
+              "desc": "",
+              "file": "logNode",
+              "type": "actions/common/logNode",
+              "posX": 130.0,
+              "posY": 420.0,
+              "index": 3,
+              "fold": false,
+              "data": {
+                "msg": "111"
+              },
+              "children": null
+            },
+            {
+              "name": "等待(秒)",
+              "desc": "",
+              "file": "waitNode",
+              "type": "actions/common/waitNode",
+              "posX": 260.0,
+              "posY": 420.0,
+              "index": 4,
+              "fold": false,
+              "data": {
+                "min_time": "1",
+                "max_time": "3"
+              },
+              "children": null
+            },
+            {
+              "name": "日志",
+              "desc": "",
+              "file": "logNode",
+              "type": "actions/common/logNode",
+              "posX": 390.0,
+              "posY": 420.0,
+              "index": 5,
+              "fold": false,
+              "data": {
+                "msg": "222"
+              },
+              "children": null
+            }
+          ]
+        },
+        {
+          "name": "日志",
+          "desc": "",
+          "file": "logNode",
+          "type": "actions/common/logNode",
+          "posX": 390.0,
+          "posY": 300.0,
+          "index": 6,
+          "fold": false,
+          "data": {
+            "msg": "333"
+          },
+          "children": null
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@
   "type": null,
   "posX": 260.0,
   "posY": 120.0,
+  "index": 0,
   "fold": false,
   "data": {
     "restart": "1"
@@ -17,6 +18,7 @@
       "type": "composites/sequenceNode",
       "posX": 260.0,
       "posY": 240.0,
+      "index": 1,
       "fold": false,
       "data": {
         "abort": "None"
@@ -29,6 +31,7 @@
           "type": "composites/sequenceNode",
           "posX": 130.0,
           "posY": 360.0,
+          "index": 2,
           "fold": false,
           "data": {
             "abort": "None"
@@ -41,6 +44,7 @@
               "type": "actions/common/weightNode",
               "posX": 0.0,
               "posY": 480.0,
+              "index": 3,
               "fold": false,
               "data": {
                 "weight": "500"
@@ -54,6 +58,7 @@
               "type": "composites/parallelNode",
               "posX": 130.0,
               "posY": 480.0,
+              "index": 4,
               "fold": false,
               "data": {
                 "abort": "None"
@@ -62,10 +67,11 @@
                 {
                   "name": "日志",
                   "desc": "",
-                  "file": "LogNode",
-                  "type": "actions/common/LogNode",
+                  "file": "logNode",
+                  "type": "actions/common/logNode",
                   "posX": 0.0,
                   "posY": 600.0,
+                  "index": 5,
                   "fold": false,
                   "data": {
                     "msg": "111"
@@ -79,6 +85,7 @@
                   "type": "actions/common/waitNode",
                   "posX": 130.0,
                   "posY": 600.0,
+                  "index": 6,
                   "fold": false,
                   "data": {
                     "min_time": "1",
@@ -89,10 +96,11 @@
                 {
                   "name": "日志",
                   "desc": "",
-                  "file": "LogNode",
-                  "type": "actions/common/LogNode",
+                  "file": "logNode",
+                  "type": "actions/common/logNode",
                   "posX": 260.0,
                   "posY": 600.0,
+                  "index": 7,
                   "fold": false,
                   "data": {
                     "msg": "222"
@@ -110,6 +118,7 @@
           "type": "actions/common/waitNode",
           "posX": 260.0,
           "posY": 360.0,
+          "index": 8,
           "fold": false,
           "data": {
             "min_time": "1",
@@ -124,10 +133,25 @@
           "type": "actions/common/waitNode",
           "posX": 390.0,
           "posY": 360.0,
+          "index": 9,
           "fold": false,
           "data": {
             "min_time": "1",
             "max_time": "3"
+          },
+          "children": null
+        },
+        {
+          "name": "日志",
+          "desc": "",
+          "file": "logNode",
+          "type": "actions/common/logNode",
+          "posX": 390.0,
+          "posY": 480.0,
+          "index": 10,
+          "fold": false,
+          "data": {
+            "msg": ""
           },
           "children": null
         }

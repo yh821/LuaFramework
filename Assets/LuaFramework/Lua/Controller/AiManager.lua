@@ -31,16 +31,16 @@ function AiManager:__delete()
 end
 
 function AiManager:Update(realtime, delta_time)
-	behaviorManager:Update(delta_time)
+	BehaviorManager:Update(delta_time)
 end
 
-function AiManager:StartThinking(is_on)
-	behaviorManager:switchTick(is_on)
+function AiManager:SwitchTick()
+	BehaviorManager:SwitchTick()
 end
 
 ---@return behaviorTree 一个实体只能绑定一个行为树
 function AiManager:BindBT(gameObject, file)
-	local bt = behaviorManager:bindBehaviorTree(gameObject, file)
+	local bt = BehaviorManager:BindBehaviorTree(gameObject, file)
 	if not bt then
 		return
 	end
@@ -50,6 +50,6 @@ function AiManager:BindBT(gameObject, file)
 end
 
 function AiManager:UnBindBT(gameObject)
-	behaviorManager:unBindBehaviorTree(gameObject)
+	BehaviorManager:UnBindBehaviorTree(gameObject)
 	self._bt_list[gameObject] = nil
 end
