@@ -508,9 +508,7 @@ namespace BT
     public static class BtNodeStyle
     {
         public static GUIStyle RootStyle => "flow node 0";
-        public static GUIStyle FoldRootStyle => "flow node hex 0";
         public static GUIStyle SelectRootStyle => "flow node 0 on";
-        public static GUIStyle FoldSelectRootStyle => "flow node hex 0 on";
 
         public static GUIStyle DecoratorStyle => "flow node 2";
         public static GUIStyle FoldDecoratorStyle => "flow node hex 2";
@@ -526,6 +524,11 @@ namespace BT
         public static GUIStyle FoldTaskStyle => "flow node hex 3";
         public static GUIStyle SelectTaskStyle => "flow node 3 on";
         public static GUIStyle FoldSelectTaskStyle => "flow node hex 3 on";
+
+        public static GUIStyle ConditionStyle => "flow node 5";
+        public static GUIStyle FoldConditionStyle => "flow node hex 5";
+        public static GUIStyle SelectConditionStyle => "flow node 5 on";
+        public static GUIStyle FoldSelectConditionStyle => "flow node hex 5 on";
 
 
         public static GUIStyle IndexStyle => "AssetLabel";

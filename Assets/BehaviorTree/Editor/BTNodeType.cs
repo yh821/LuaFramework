@@ -271,10 +271,10 @@ namespace BT
 
 		public override int CanAddNodeCount => BtConst.NormalTaskCanAddNode;
 
-		public override GUIStyle NormalStyle => BtNodeStyle.ActionStyle;
-		public override GUIStyle FoldNormalStyle => BtNodeStyle.FoldTaskStyle;
-		public override GUIStyle SelectStyle => BtNodeStyle.SelectTaskStyle;
-		public override GUIStyle FoldSelectStyle => BtNodeStyle.FoldSelectTaskStyle;
+		public override GUIStyle NormalStyle => BtNodeStyle.ConditionStyle;
+		public override GUIStyle FoldNormalStyle => BtNodeStyle.FoldConditionStyle;
+		public override GUIStyle SelectStyle => BtNodeStyle.SelectConditionStyle;
+		public override GUIStyle FoldSelectStyle => BtNodeStyle.FoldSelectConditionStyle;
 
 		public override ErrorType IsValid => ErrorType.None;
 
