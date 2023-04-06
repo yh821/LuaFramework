@@ -7,3 +7,8 @@ Temp
 UserSettings
 *.csproj
 *.sln
+Assets/Behavior Designer
+Assets/Behavior Designer.meta
+Assets/Gizmos
+Assets/Gizmos.meta
+Assets/StreamingAssets
