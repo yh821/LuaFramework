@@ -5,14 +5,15 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class selectorNode : compositeNode
-selectorNode = BaseClass(compositeNode)
+---@class selectorNode : CompositeNode
+selectorNode = BaseClass(CompositeNode)
 
-function selectorNode:tick(delta_time)
+function selectorNode:Tick(delta_time)
 	if self.children then
 		for _, v in ipairs(self.children) do
-			if v.state == nil or v.state == eNodeState.running then
-				v.state = v:tick(delta_time)
+			local will_abort = self:GetAbortType() ~= eAbortType.None and v:IsCondition()
+			if v.state == nil or will_abort or v.state == eNodeState.running then
+				v.state = v:Tick(delta_time)
 				if v.state ~= eNodeState.failure then
 					return v.state
 				end

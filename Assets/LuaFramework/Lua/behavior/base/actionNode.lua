@@ -4,9 +4,9 @@
 --- DateTime: 2023/4/2 13:11
 ---
 
----@class actionNode : taskNode
-actionNode = BaseClass(taskNode)
+---@class ActionNode : TaskNode
+ActionNode = BaseClass(TaskNode)
 
-function actionNode:isAction()
+function ActionNode:IsAction()
     return true
 end

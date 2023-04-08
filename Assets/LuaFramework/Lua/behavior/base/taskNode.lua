@@ -10,116 +10,123 @@
 ---@field success number
 ---@field failure number
 eNodeState = {
-	running = 0,
-	success = 1,
-	failure = 2,
+    running = 0,
+    success = 1,
+    failure = 2,
 }
 
----@class taskNode : BaseClass
----@field owner behaviorTree
+---@class TaskNode : BaseClass
+---@field owner BehaviorTree
 ---@field uid number
 ---@field data table
 ---@field state eNodeState
-taskNode = BaseClass()
+TaskNode = BaseClass()
 
 local _id = 0
 local _openLog = true
 local _format = string.format
 
----@param owner behaviorTree
+---@param owner BehaviorTree
 ---@param data table
-function taskNode:__init(data, owner)
-	_id = _id + 1
-	self.uid = _id
-	self.data = data
-	self.owner = owner
-	self:awake()
+function TaskNode:__init(data, owner)
+    _id = _id + 1
+    self.uid = _id
+    self.data = data
+    self.owner = owner
+    self:Awake()
 end
 
-function taskNode:awake()
-	--override
-end
-
-function taskNode:start()
-	self.state = eNodeState.success
+function TaskNode:Awake()
+    --override
 end
 
 ---@return eNodeState
-function taskNode:tick(delta_time)
-	if self.state == nil then
-		self:start()
-	end
-	if self.state == nil or self.state == eNodeState.running then
-		self.state = self:update(delta_time)
-	end
-	return self.state
+function TaskNode:Start()
+    --override
 end
 
 ---@return eNodeState
-function taskNode:update(delta_time)
-	return self.state
+function TaskNode:Tick(delta_time)
+    if self.state == nil then
+        self.state = self:Start()
+    end
+    if self.state == nil or self.state == eNodeState.running then
+        self.state = self:Update(delta_time)
+    end
+    return self.state
 end
 
-function taskNode:_reset()
-	if self.state == eNodeState.running then
-		self:abort()
-	end
-	self:reset()
-	self.state = nil
+---@return eNodeState
+function TaskNode:Update(delta_time)
+    --override
 end
 
-function taskNode:reset()
-	--override
+function TaskNode:__Reset()
+    if self.state == eNodeState.running then
+        self:Abort()
+    end
+    self:Reset()
+    self.state = nil
 end
 
-function taskNode:abort()
-	self.state = eNodeState.failure
+function TaskNode:Reset()
+    --override
 end
 
----@param node taskNode
-function taskNode:addChild(node)
-	--override
+function TaskNode:Abort()
+    --override
 end
 
-function taskNode:getChildren()
-	--override
+---@param node TaskNode
+function TaskNode:AddChild(node)
+    --override
+end
+
+function TaskNode:GetChildren()
+    --override
 end
 
 ---@param key string
 ---@param value any
-function taskNode:setSharedVar(key, value)
-	local bb = self.owner:getBlackboard()
-	bb[key] = value
+function TaskNode:SetSharedVar(key, value)
+	if key == nil or key == "" then
+		return
+	end
+    local bb = self.owner:GetBlackboard()
+    bb[key] = value
 end
 
 ---@param key string
-function taskNode:getSharedVar(key)
-	local bb = self.owner:getBlackboard()
-	return bb[key]
+function TaskNode:GetSharedVar(key)
+    if key == nil or key == "" then
+        return
+    end
+    local bb = self.owner:GetBlackboard()
+    return bb[key]
 end
 
-function taskNode:isAction()
-	return false
+function TaskNode:IsAction()
+    return false
 end
 
-function taskNode:isCondition()
-	return false
+function TaskNode:IsCondition()
+    return false
 end
 
-function taskNode:isComposite()
-	return false
+function TaskNode:IsComposite()
+    return false
 end
 
-function taskNode:isDecorator()
-	return false
+function TaskNode:IsDecorator()
+    return false
 end
 
-function taskNode:isParent()
-	return false
+function TaskNode:IsParent()
+    return false
 end
 
-function taskNode:print(...)
-	if _openLog then
-		print(_format('[behavior][%s]', self.uid), ...)
-	end
+function TaskNode:print(...)
+    if _openLog then
+        print(_format('[behavior][%s]', self.uid), ...)
+    end
 end

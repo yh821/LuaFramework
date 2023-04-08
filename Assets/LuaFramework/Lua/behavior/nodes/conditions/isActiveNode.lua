@@ -4,10 +4,18 @@
 --- DateTime: 2023/4/1 17:30
 ---
 
----@class isActiveNode : conditionNode
-isActiveNode = BaseClass(conditionNode)
+---@class isActiveNode : ConditionNode
+isActiveNode = BaseClass(ConditionNode)
 
-function isActiveNode:update()
-    local entity = self:getSharedVar(self.owner.guid)
-    return entity.gameObject.isActiveSelf and eNodeState.success or eNodeState.failure
+function isActiveNode:Update()
+    local gameObject = self.owner.gameObject
+    if gameObject then
+        if not IsNilOrEmpty(self.data.path) then
+            local trans = gameObject.transform:Find(self.data.path)
+            if trans and trans.gameObject then
+                return trans.gameObject.activeSelf and eNodeState.success or eNodeState.failure
+            end
+        end
+    end
+    return eNodeState.failure
 end

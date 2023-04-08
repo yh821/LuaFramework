@@ -5,10 +5,10 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class failureNode : decoratorNode
-failureNode = BaseClass(decoratorNode)
+---@class failureNode : DecoratorNode
+failureNode = BaseClass(DecoratorNode)
 
-function failureNode:tick(delta_time)
+function failureNode:Tick(delta_time)
 	if self.children then
 		local v = self.children[1]
 		if v.state == eNodeState.failure or v.state == eNodeState.success then

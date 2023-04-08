@@ -5,11 +5,11 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class decoratorNode : parentNode
-decoratorNode = BaseClass(parentNode)
+---@class DecoratorNode : ParentNode
+DecoratorNode = BaseClass(ParentNode)
 
----@param node taskNode
-function decoratorNode:addChild(node)
+---@param node TaskNode
+function DecoratorNode:AddChild(node)
 	if self.children == nil then
 		self.children = {}
 	end
@@ -19,6 +19,6 @@ function decoratorNode:addChild(node)
 	table.insert(self.children, node)
 end
 
-function decoratorNode:isDecorator()
+function DecoratorNode:IsDecorator()
 	return true
 end

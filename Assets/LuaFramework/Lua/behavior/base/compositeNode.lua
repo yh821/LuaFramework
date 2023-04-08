@@ -5,17 +5,29 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class compositeNode : parentNode
-compositeNode = BaseClass(parentNode)
+---@class CompositeNode : ParentNode
+CompositeNode = BaseClass(ParentNode)
 
----@param node taskNode
-function compositeNode:addChild(node)
-	if self.children == nil then
-		self.children = {}
-	end
-	table.insert(self.children, node)
+eAbortType = {
+    None = 0,
+    Self = 1,
+    Lower = 2,
+    Both = 3
+}
+
+---@param node TaskNode
+function CompositeNode:AddChild(node)
+    if self.children == nil then
+        self.children = {}
+    end
+    table.insert(self.children, node)
 end
 
-function compositeNode:isComposite()
-	return true
+function CompositeNode:GetAbortType()
+    local abort = self.data and self.data.abort
+    return eAbortType[abort] or eAbortType.None
+end
+
+function CompositeNode:IsComposite()
+    return true
 end

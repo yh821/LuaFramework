@@ -2,9 +2,9 @@
   "name": "root",
   "desc": "",
   "file": "rootNode",
-  "type": null,
-  "posX": 260.0,
-  "posY": 120.0,
+  "type": "",
+  "posX": 390.0,
+  "posY": 60.0,
   "index": 0,
   "fold": false,
   "data": {
@@ -12,12 +12,12 @@
   },
   "children": [
     {
-      "name": "sequence",
+      "name": "选择节点",
       "desc": "",
-      "file": "sequenceNode",
-      "type": "composites/sequenceNode",
-      "posX": 260.0,
-      "posY": 240.0,
+      "file": "selectorNode",
+      "type": "composites/selectorNode",
+      "posX": 390.0,
+      "posY": 180.0,
       "index": 1,
       "fold": false,
       "data": {
@@ -29,131 +29,174 @@
           "desc": "",
           "file": "sequenceNode",
           "type": "composites/sequenceNode",
-          "posX": 130.0,
-          "posY": 360.0,
+          "posX": 260.0,
+          "posY": 300.0,
           "index": 2,
+          "fold": false,
+          "data": {
+            "abort": "Self"
+          },
+          "children": [
+            {
+              "name": "是否激活",
+              "desc": "",
+              "file": "isActiveNode",
+              "type": "conditions/isActiveNode",
+              "posX": 65.0,
+              "posY": 420.0,
+              "index": 3,
+              "fold": false,
+              "data": {
+                "path": "Label"
+              },
+              "children": null
+            },
+            {
+              "name": "日志",
+              "desc": "",
+              "file": "logNode",
+              "type": "actions/common/logNode",
+              "posX": 195.0,
+              "posY": 420.0,
+              "index": 4,
+              "fold": false,
+              "data": {
+                "msg": "111"
+              },
+              "children": null
+            },
+            {
+              "name": "等待(秒)",
+              "desc": "",
+              "file": "waitNode",
+              "type": "actions/common/waitNode",
+              "posX": 325.0,
+              "posY": 420.0,
+              "index": 5,
+              "fold": false,
+              "data": {
+                "min_time": "2",
+                "max_time": "2"
+              },
+              "children": null
+            }
+          ]
+        },
+        {
+          "name": "顺序节点",
+          "desc": "",
+          "file": "sequenceNode",
+          "type": "composites/sequenceNode",
+          "posX": 520.0,
+          "posY": 300.0,
+          "index": 6,
+          "fold": false,
+          "data": {
+            "abort": "Lower"
+          },
+          "children": [
+            {
+              "name": "日志",
+              "desc": "",
+              "file": "logNode",
+              "type": "actions/common/logNode",
+              "posX": 455.0,
+              "posY": 420.0,
+              "index": 7,
+              "fold": false,
+              "data": {
+                "msg": "222"
+              },
+              "children": null
+            },
+            {
+              "name": "是否激活",
+              "desc": "",
+              "file": "isActiveNode",
+              "type": "conditions/isActiveNode",
+              "posX": 585.0,
+              "posY": 420.0,
+              "index": 8,
+              "fold": false,
+              "data": {
+                "path": "Sprite"
+              },
+              "children": null
+            },
+            {
+              "name": "等待(秒)",
+              "desc": "",
+              "file": "waitNode",
+              "type": "actions/common/waitNode",
+              "posX": 715.0,
+              "posY": 420.0,
+              "index": 9,
+              "fold": false,
+              "data": {
+                "min_time": "2",
+                "max_time": "2"
+              },
+              "children": null
+            }
+          ]
+        },
+        {
+          "name": "顺序节点",
+          "desc": "",
+          "file": "sequenceNode",
+          "type": "composites/sequenceNode",
+          "posX": 520.0,
+          "posY": 540.0,
+          "index": 10,
           "fold": false,
           "data": {
             "abort": "None"
           },
           "children": [
             {
-              "name": "几率(1-1000)",
+              "name": "日志",
               "desc": "",
-              "file": "weightNode",
-              "type": "actions/common/weightNode",
-              "posX": 0.0,
-              "posY": 480.0,
-              "index": 3,
+              "file": "logNode",
+              "type": "actions/common/logNode",
+              "posX": 390.0,
+              "posY": 660.0,
+              "index": 11,
               "fold": false,
               "data": {
-                "weight": "500"
+                "msg": "333"
               },
               "children": null
             },
             {
-              "name": "parallel",
+              "name": "等待(秒)",
               "desc": "",
-              "file": "parallelNode",
-              "type": "composites/parallelNode",
-              "posX": 130.0,
-              "posY": 480.0,
-              "index": 4,
+              "file": "waitNode",
+              "type": "actions/common/waitNode",
+              "posX": 520.0,
+              "posY": 660.0,
+              "index": 12,
               "fold": false,
               "data": {
-                "abort": "None"
+                "min_time": "2",
+                "max_time": "2"
               },
-              "children": [
-                {
-                  "name": "日志",
-                  "desc": "",
-                  "file": "logNode",
-                  "type": "actions/common/logNode",
-                  "posX": 0.0,
-                  "posY": 600.0,
-                  "index": 5,
-                  "fold": false,
-                  "data": {
-                    "msg": "111"
-                  },
-                  "children": null
-                },
-                {
-                  "name": "等待(秒)",
-                  "desc": "",
-                  "file": "waitNode",
-                  "type": "actions/common/waitNode",
-                  "posX": 130.0,
-                  "posY": 600.0,
-                  "index": 6,
-                  "fold": false,
-                  "data": {
-                    "min_time": "1",
-                    "max_time": "3"
-                  },
-                  "children": null
-                },
-                {
-                  "name": "日志",
-                  "desc": "",
-                  "file": "logNode",
-                  "type": "actions/common/logNode",
-                  "posX": 260.0,
-                  "posY": 600.0,
-                  "index": 7,
-                  "fold": false,
-                  "data": {
-                    "msg": "222"
-                  },
-                  "children": null
-                }
-              ]
+              "children": null
+            },
+            {
+              "name": "日志",
+              "desc": "",
+              "file": "logNode",
+              "type": "actions/common/logNode",
+              "posX": 650.0,
+              "posY": 660.0,
+              "index": 13,
+              "fold": false,
+              "data": {
+                "msg": "444"
+              },
+              "children": null
             }
           ]
-        },
-        {
-          "name": "等待(秒)",
-          "desc": "",
-          "file": "waitNode",
-          "type": "actions/common/waitNode",
-          "posX": 260.0,
-          "posY": 360.0,
-          "index": 8,
-          "fold": false,
-          "data": {
-            "min_time": "1",
-            "max_time": "3"
-          },
-          "children": null
-        },
-        {
-          "name": "等待(秒)",
-          "desc": "",
-          "file": "waitNode",
-          "type": "actions/common/waitNode",
-          "posX": 390.0,
-          "posY": 360.0,
-          "index": 9,
-          "fold": false,
-          "data": {
-            "min_time": "1",
-            "max_time": "3"
-          },
-          "children": null
-        },
-        {
-          "name": "日志",
-          "desc": "",
-          "file": "logNode",
-          "type": "actions/common/logNode",
-          "posX": 390.0,
-          "posY": 480.0,
-          "index": 10,
-          "fold": false,
-          "data": {
-            "msg": ""
-          },
-          "children": null
         }
       ]
     }

@@ -5,90 +5,93 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class behaviorTree
----@field child taskNode
+---@class BehaviorTree
+---@field child TaskNode
 ---@field blackBoard table
----@field guid number
----@field restart boolean
-behaviorTree = BaseClass()
+---@field gameObject userdata
+BehaviorTree = BaseClass()
 
 local _id = 0
 
-function behaviorTree:__init(data, file)
+function BehaviorTree:__init(data, file)
 	_id = _id + 1
 	self.uid = _id
 	self.data = data
 	self.file = file
-	self:awake()
+	self:Awake()
 end
 
-function behaviorTree:awake()
+function BehaviorTree:__delete()
+	self:Recycle()
+	self.gameObject = nil
+end
+
+function BehaviorTree:Awake()
 	self.child = nil
 	self.blackBoard = nil
 	self.child_count = 0
 	self.restart = tonumber(self.data.restart) == 1
 end
 
----@param node
-function behaviorTree:addChild(node)
-	self.child = node
-end
-
----@return taskNode
-function behaviorTree:getChildren()
-	return self.child
-end
-
-function behaviorTree:isParent()
-	return true
-end
-
----@type fun(parent:taskNode)
-local __ResetAll
-__ResetAll = function(parent)
-	parent:_reset()
-	local children = parent:getChildren()
-	if children then
-		for i, v in ipairs(children) do
-			__ResetAll(v)
-		end
-	end
-end
-
-function behaviorTree:Reset()
-	__ResetAll(self.child)
-end
-
-function behaviorTree:Update(delta_time)
+function BehaviorTree:Update(delta_time)
 	if self.restart and (self.child.state == eNodeState.success or self.child.state == eNodeState.failure) then
 		self:Reset()
 	end
 	if self.child.state == nil or self.child.state == eNodeState.running then
-		self.child.state = self.child:tick(delta_time)
+		self.child.state = self.child:Tick(delta_time)
 	end
 end
 
----@type fun(parent:taskNode)
-local __AbortAll
-__AbortAll = function(parent)
-	if parent.state == eNodeState.running then
-		parent:abort()
-		parent.state = eNodeState.failure
-	end
-	local children = parent:getChildren()
+---@param node
+function BehaviorTree:AddChild(node)
+	self.child = node
+end
+
+---@return TaskNode
+function BehaviorTree:GetChildren()
+	return self.child
+end
+
+function BehaviorTree:IsParent()
+	return true
+end
+
+---@type fun(parent:TaskNode)
+local __ResetNode
+__ResetNode = function(node)
+	local children = node:GetChildren()
 	if children then
-		for i, v in ipairs(children) do
-			__AbortAll(v)
+		for _, v in ipairs(children) do
+			__ResetNode(v)
 		end
 	end
+	node:__Reset()
 end
 
-function behaviorTree:abort()
-	__AbortAll(self.child)
+function BehaviorTree:Reset()
+	__ResetNode(self.child)
+end
+
+---@type fun(node:TaskNode)
+local __RecycleNode
+__RecycleNode = function(node)
+	local children = node:GetChildren()
+	if children then
+		for _, v in ipairs(children) do
+			__RecycleNode(v)
+		end
+	end
+	node:Reset()
+	--TODO 回收节点, 这里临时Delete
+	node:DeleteMe()
+end
+
+function BehaviorTree:Recycle()
+	__RecycleNode(self.child)
 end
 
 ---@return table
-function behaviorTree:getBlackboard()
+function BehaviorTree:GetBlackboard()
 	if self.blackBoard == nil then
 		self.blackBoard = {}
 	end
@@ -97,24 +100,24 @@ end
 
 ---@param key string
 ---@param value any
-function behaviorTree:setSharedVar(key, value)
-	local bb = self:getBlackboard()
+function BehaviorTree:SetSharedVar(key, value)
+	local bb = self:GetBlackboard()
 	bb[key] = value
 end
 
 ---@param key string
 ---@return any
-function behaviorTree:getSharedVar(key)
-	local bb = self:getBlackboard()
+function BehaviorTree:GetSharedVar(key)
+	local bb = self:GetBlackboard()
 	return bb[key]
 end
 
 ---@param stateId number
-function behaviorTree:setStateId(stateId)
-	self:setSharedVar('stateId', stateId)
+function BehaviorTree:SetStateId(stateId)
+	self:SetSharedVar('stateId', stateId)
 end
 
 ---@return number
-function behaviorTree:getStateId()
-	return self:getSharedVar('stateId')
+function BehaviorTree:GetStateId()
+	return self:GetSharedVar('stateId')
 end

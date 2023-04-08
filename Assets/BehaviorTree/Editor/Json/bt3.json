@@ -2,9 +2,9 @@
   "name": "root",
   "desc": "",
   "file": "rootNode",
-  "type": "",
-  "posX": 390.0,
-  "posY": 60.0,
+  "type": null,
+  "posX": 260.0,
+  "posY": 120.0,
   "index": 0,
   "fold": false,
   "data": {
@@ -16,8 +16,8 @@
       "desc": "",
       "file": "sequenceNode",
       "type": "composites/sequenceNode",
-      "posX": 390.0,
-      "posY": 180.0,
+      "posX": 260.0,
+      "posY": 240.0,
       "index": 1,
       "fold": false,
       "data": {
@@ -25,12 +25,12 @@
       },
       "children": [
         {
-          "name": "parallel",
+          "name": "sequence",
           "desc": "",
-          "file": "parallelNode",
-          "type": "composites/parallelNode",
-          "posX": 260.0,
-          "posY": 300.0,
+          "file": "sequenceNode",
+          "type": "composites/sequenceNode",
+          "posX": 130.0,
+          "posY": 360.0,
           "index": 2,
           "fold": false,
           "data": {
@@ -38,49 +38,108 @@
           },
           "children": [
             {
-              "name": "日志",
+              "name": "几率(1-1000)",
               "desc": "",
-              "file": "logNode",
-              "type": "actions/common/logNode",
-              "posX": 130.0,
-              "posY": 420.0,
+              "file": "weightNode",
+              "type": "actions/common/weightNode",
+              "posX": 0.0,
+              "posY": 480.0,
               "index": 3,
               "fold": false,
               "data": {
-                "msg": "111"
+                "weight": "500"
               },
               "children": null
             },
             {
-              "name": "等待(秒)",
+              "name": "parallel",
               "desc": "",
-              "file": "waitNode",
-              "type": "actions/common/waitNode",
-              "posX": 260.0,
-              "posY": 420.0,
+              "file": "parallelNode",
+              "type": "composites/parallelNode",
+              "posX": 130.0,
+              "posY": 480.0,
               "index": 4,
               "fold": false,
               "data": {
-                "min_time": "1",
-                "max_time": "3"
+                "abort": "None"
               },
-              "children": null
-            },
-            {
-              "name": "日志",
-              "desc": "",
-              "file": "logNode",
-              "type": "actions/common/logNode",
-              "posX": 390.0,
-              "posY": 420.0,
-              "index": 5,
-              "fold": false,
-              "data": {
-                "msg": "222"
-              },
-              "children": null
+              "children": [
+                {
+                  "name": "日志",
+                  "desc": "",
+                  "file": "logNode",
+                  "type": "actions/common/logNode",
+                  "posX": 0.0,
+                  "posY": 600.0,
+                  "index": 5,
+                  "fold": false,
+                  "data": {
+                    "msg": "111"
+                  },
+                  "children": null
+                },
+                {
+                  "name": "等待(秒)",
+                  "desc": "",
+                  "file": "waitNode",
+                  "type": "actions/common/waitNode",
+                  "posX": 130.0,
+                  "posY": 600.0,
+                  "index": 6,
+                  "fold": false,
+                  "data": {
+                    "min_time": "1",
+                    "max_time": "3"
+                  },
+                  "children": null
+                },
+                {
+                  "name": "日志",
+                  "desc": "",
+                  "file": "logNode",
+                  "type": "actions/common/logNode",
+                  "posX": 260.0,
+                  "posY": 600.0,
+                  "index": 7,
+                  "fold": false,
+                  "data": {
+                    "msg": "222"
+                  },
+                  "children": null
+                }
+              ]
             }
           ]
+        },
+        {
+          "name": "等待(秒)",
+          "desc": "",
+          "file": "waitNode",
+          "type": "actions/common/waitNode",
+          "posX": 260.0,
+          "posY": 360.0,
+          "index": 8,
+          "fold": false,
+          "data": {
+            "min_time": "1",
+            "max_time": "3"
+          },
+          "children": null
+        },
+        {
+          "name": "等待(秒)",
+          "desc": "",
+          "file": "waitNode",
+          "type": "actions/common/waitNode",
+          "posX": 390.0,
+          "posY": 360.0,
+          "index": 9,
+          "fold": false,
+          "data": {
+            "min_time": "1",
+            "max_time": "3"
+          },
+          "children": null
         },
         {
           "name": "日志",
@@ -88,11 +147,11 @@
           "file": "logNode",
           "type": "actions/common/logNode",
           "posX": 390.0,
-          "posY": 300.0,
-          "index": 6,
+          "posY": 480.0,
+          "index": 10,
           "fold": false,
           "data": {
-            "msg": "333"
+            "msg": ""
           },
           "children": null
         }

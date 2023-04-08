@@ -5,16 +5,16 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class checkStateNode : decoratorNode
-checkStateNode = BaseClass(decoratorNode)
+---@class checkStateNode : DecoratorNode
+checkStateNode = BaseClass(DecoratorNode)
 
-function checkStateNode:tick(delta_time)
-	local stateId = self.owner:getStateId()
+function checkStateNode:Tick(delta_time)
+	local stateId = self.owner:GetStateId()
 	if stateId == self.stateId then
 		if self.children then
 			local v = self.children[1]
 			if v.state == nil or v.state == eNodeState.running then
-				v.state = v:tick(delta_time)
+				v.state = v:Tick(delta_time)
 				return v.state
 			end
 		end

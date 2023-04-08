@@ -5,10 +5,10 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class weightNode : actionNode
-weightNode = BaseClass(actionNode)
+---@class weightNode : ActionNode
+weightNode = BaseClass(ActionNode)
 
-function weightNode:tick()
+function weightNode:Tick()
 	local weight = self.data.weight or 0
 	local score = math.random(0, 1000)
 	if score < weight then

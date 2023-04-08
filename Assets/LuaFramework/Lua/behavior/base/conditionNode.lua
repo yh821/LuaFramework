@@ -4,9 +4,9 @@
 --- DateTime: 2023/4/1 16:52
 ---
 
----@class conditionNode : taskNode
-conditionNode = BaseClass(taskNode)
+---@class ConditionNode : TaskNode
+ConditionNode = BaseClass(TaskNode)
 
-function conditionNode:isCondition()
+function ConditionNode:IsCondition()
     return true
 end

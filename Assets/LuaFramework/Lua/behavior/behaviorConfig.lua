@@ -13,7 +13,7 @@ require("behavior/base/conditionNode")
 require("behavior/base/actionNode")
 
 AiConfig = {
-	scene_obj = "scene_obj",
+	gameObjKey = "game_object",
 }
 
 animatorStateEnum = {

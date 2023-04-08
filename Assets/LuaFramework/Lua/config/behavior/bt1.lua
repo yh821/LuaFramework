@@ -1,12 +1,13 @@
 local __bt__ = {
   file= "rootNode",
+  type= "",
   data= {
     restart= 1
   },
   children= {
     {
-      file= "sequenceNode",
-      type= "composites/sequenceNode",
+      file= "selectorNode",
+      type= "composites/selectorNode",
       data= {
         abort= "None"
       },
@@ -15,71 +16,94 @@ local __bt__ = {
           file= "sequenceNode",
           type= "composites/sequenceNode",
           data= {
-            abort= "None"
+            abort= "Self"
           },
           children= {
             {
-              file= "weightNode",
-              type= "actions/common/weightNode",
+              file= "isActiveNode",
+              type= "conditions/isActiveNode",
               data= {
-                weight= 500
+                path= "Label"
               },
             },
             {
-              file= "parallelNode",
-              type= "composites/parallelNode",
+              file= "logNode",
+              type= "actions/common/logNode",
               data= {
-                abort= "None"
+                msg= 111
               },
-              children= {
-                {
-                  file= "logNode",
-                  type= "actions/common/logNode",
-                  data= {
-                    msg= 111
-                  },
-                },
-                {
-                  file= "waitNode",
-                  type= "actions/common/waitNode",
-                  data= {
-                    min_time= 1,
-                    max_time= 3
-                  },
-                },
-                {
-                  file= "logNode",
-                  type= "actions/common/logNode",
-                  data= {
-                    msg= 222
-                  },
-                }
-              }
+            },
+            {
+              file= "waitNode",
+              type= "actions/common/waitNode",
+              data= {
+                min_time= 2,
+                max_time= 2
+              },
             }
           }
         },
         {
-          file= "waitNode",
-          type= "actions/common/waitNode",
+          file= "sequenceNode",
+          type= "composites/sequenceNode",
           data= {
-            min_time= 1,
-            max_time= 3
+            abort= "Lower"
           },
+          children= {
+            {
+              file= "logNode",
+              type= "actions/common/logNode",
+              data= {
+                msg= 222
+              },
+            },
+            {
+              file= "isActiveNode",
+              type= "conditions/isActiveNode",
+              data= {
+                path= "Sprite"
+              },
+            },
+            {
+              file= "waitNode",
+              type= "actions/common/waitNode",
+              data= {
+                min_time= 2,
+                max_time= 2
+              },
+            }
+          }
         },
         {
-          file= "waitNode",
-          type= "actions/common/waitNode",
+          file= "sequenceNode",
+          type= "composites/sequenceNode",
           data= {
-            min_time= 1,
-            max_time= 3
+            abort= "None"
           },
-        },
-        {
-          file= "logNode",
-          type= "actions/common/logNode",
-          data= {
-            msg= ""
-          },
+          children= {
+            {
+              file= "logNode",
+              type= "actions/common/logNode",
+              data= {
+                msg= 333
+              },
+            },
+            {
+              file= "waitNode",
+              type= "actions/common/waitNode",
+              data= {
+                min_time= 2,
+                max_time= 2
+              },
+            },
+            {
+              file= "logNode",
+              type= "actions/common/logNode",
+              data= {
+                msg= 444
+              },
+            }
+          }
         }
       }
     }

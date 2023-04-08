@@ -5,15 +5,15 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class setStateNode : actionNode
-setStateNode = BaseClass(actionNode)
+---@class setStateNode : ActionNode
+setStateNode = BaseClass(ActionNode)
 
-function setStateNode:start()
+function setStateNode:Start()
 	if self.data and self.data.stateId then
-		self.owner:setStateId(self.data.stateId)
-		self.state = eNodeState.success
+		self.owner:SetStateId(self.data.stateId)
+		return eNodeState.success
 	else
-		self.state = eNodeState.failure
+		return eNodeState.failure
 	end
 end
 

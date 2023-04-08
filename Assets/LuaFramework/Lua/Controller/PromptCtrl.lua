@@ -77,7 +77,7 @@ function PromptCtrl.OnClick(go)
 	end
 	logWarn("OnClick---->>>"..go.name);
 
-	AiManager.Instance:BindBT(gameObject, "bt3")
+	AiManager.Instance:BindBT(gameObject, "bt1")
 	AiManager.Instance:SwitchTick()
 end
 

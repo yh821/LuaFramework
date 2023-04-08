@@ -5,28 +5,28 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class speakNode : actionNode
-speakNode = BaseClass(actionNode)
+---@class speakNode : ActionNode
+speakNode = BaseClass(ActionNode)
 
-function speakNode:start()
+function speakNode:Start()
 	if self.hudId == nil then
 		self.hudId = hudControl:addHUD(self.owner.guid)
 	end
 	local widget = hudControl:getHUDWidget(self.hudId)
 	if widget and self.data and self.data.say then
 		widget:setText(self.data.say)
-		self.state = eNodeState.success
+		return eNodeState.success
 	else
-		self.state = eNodeState.failure
+		return eNodeState.failure
 	end
 end
 
-function speakNode:reset()
+function speakNode:Reset()
 	self:shutUp()
 	self.state = nil
 end
 
-function speakNode:abort()
+function speakNode:Abort()
 	self:shutUp()
 end
 

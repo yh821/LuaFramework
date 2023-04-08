@@ -5,10 +5,10 @@
 	purpose:
 ----------------------------------------------------
 ]]
----@class inverterNode : decoratorNode
-inverterNode = BaseClass(decoratorNode)
+---@class inverterNode : DecoratorNode
+inverterNode = BaseClass(DecoratorNode)
 
-function inverterNode:tick(delta_time)
+function inverterNode:Tick(delta_time)
 	if self.children then
 		local v = self.children[1]
 		if v.state == eNodeState.failure then

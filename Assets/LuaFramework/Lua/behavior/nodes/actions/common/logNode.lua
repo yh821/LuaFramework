@@ -4,13 +4,13 @@
 --- DateTime: 2023/4/5 16:13
 ---
 
----@class logNode : actionNode
-logNode = BaseClass(actionNode)
+---@class logNode : ActionNode
+logNode = BaseClass(ActionNode)
 
 local _print = log
 local _error = logError
 
-function logNode:tick(delta_time)
+function logNode:Tick(delta_time)
 	if self.data.is_error then
 		_error(self.data.msg)
 	else

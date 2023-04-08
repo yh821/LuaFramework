@@ -4,19 +4,19 @@
 --- DateTime: 2023/4/4 19:40
 ---
 
----@class parentNode : taskNode
----@field children taskNode[]
-parentNode = BaseClass(taskNode)
+---@class ParentNode : TaskNode
+---@field children TaskNode[]
+ParentNode = BaseClass(TaskNode)
 
-function parentNode:tick(delta_time)
+function ParentNode:Tick(delta_time)
 	--override
 end
 
----@return taskNode[]
-function parentNode:getChildren()
+---@return TaskNode[]
+function ParentNode:GetChildren()
 	return self.children
 end
 
-function parentNode:isParent()
+function ParentNode:IsParent()
 	return true
 end

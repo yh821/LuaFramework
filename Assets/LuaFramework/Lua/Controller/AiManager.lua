@@ -7,7 +7,7 @@
 require("behavior/behaviorManager")
 
 ---@class AiManager
----@field _bt_list behaviorTree[]
+---@field _bt_list BehaviorTree[]
 AiManager = AiManager or BaseClass()
 
 function AiManager:__init()
@@ -38,13 +38,13 @@ function AiManager:SwitchTick()
 	BehaviorManager:SwitchTick()
 end
 
----@return behaviorTree 一个实体只能绑定一个行为树
+---@return BehaviorTree 一个实体只能绑定一个行为树
 function AiManager:BindBT(gameObject, file)
 	local bt = BehaviorManager:BindBehaviorTree(gameObject, file)
 	if not bt then
 		return
 	end
-	bt:setSharedVar(AiConfig.scene_obj, gameObject)
+	bt:SetSharedVar(AiConfig.gameObjKey, gameObject)
 	self._bt_list[gameObject] = bt
 	return bt
 end
