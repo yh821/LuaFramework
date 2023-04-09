@@ -38,5 +38,5 @@ end
 function moveToPositionNode:moveFinish()
 	self:SetSharedVar("animState", animatorStateEnum.eIdle)
 	self:SetSharedVar("playState", playStateEnum.eEnd)
-	self.state = eNodeState.Success
+	self:SetState(eNodeState.Success)
 end

@@ -18,6 +18,7 @@ eNodeState = {
 ---@field uid number
 ---@field data table
 ---@field state eNodeState
+---@field last_state eNodeState
 TaskNode = BaseClass()
 
 local _id = 0
@@ -46,10 +47,10 @@ end
 ---@return eNodeState
 function TaskNode:Tick(delta_time)
     if self.state == nil then
-        self.state = self:Start()
+        self:SetState(self:Start())
     end
     if self.state == nil or self.state == eNodeState.Running then
-        self.state = self:Update(delta_time)
+        self:SetState(self:Update(delta_time))
     end
     return self.state
 end
@@ -59,9 +60,23 @@ function TaskNode:Update(delta_time)
     --override
 end
 
+function TaskNode:SetState(state)
+    if self.state then
+        self.last_state = self.state
+    else
+        self.last_state = state
+    end
+    self.state = state
+end
+
+function TaskNode:IsChangedState()
+    return self.last_state ~= self.state
+end
+
 function TaskNode:__Reset()
     self:Reset()
     self.state = nil
+    self.last_state = nil
 end
 
 function TaskNode:Reset()
@@ -85,9 +100,9 @@ end
 ---@param key string
 ---@param value any
 function TaskNode:SetSharedVar(key, value)
-	if key == nil or key == "" then
-		return
-	end
+    if key == nil or key == "" then
+        return
+    end
     local bb = self.owner:GetBlackboard()
     bb[key] = value
 end

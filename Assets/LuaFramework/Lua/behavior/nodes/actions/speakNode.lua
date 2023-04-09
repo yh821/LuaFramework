@@ -23,7 +23,6 @@ end
 
 function speakNode:Reset()
 	self:shutUp()
-	self.state = nil
 end
 
 function speakNode:Abort()

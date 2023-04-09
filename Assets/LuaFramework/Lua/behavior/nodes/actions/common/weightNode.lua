@@ -13,10 +13,10 @@ function weightNode:Tick()
 	local score = math.random(0, 1000)
 	if score < weight then
 		self:print("随机为真")
-		self.state = eNodeState.Success
+		self:SetState(eNodeState.Success)
 	else
 		self:print("随机为假")
-		self.state = eNodeState.Failure
+		self:SetState(eNodeState.Failure)
 	end
 	return self.state
 end

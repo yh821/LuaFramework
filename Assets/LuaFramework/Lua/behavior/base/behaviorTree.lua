@@ -36,14 +36,15 @@ end
 
 function BehaviorTree:Update(delta_time)
     if self.child.state == nil or self.child.state == eNodeState.Running then
-        self.child.state = self.child:Tick(delta_time)
+        self.child:SetState(self.child:Tick(delta_time))
     elseif self.restart then
         self:Reset()
     end
 end
 
----@param node
+---@param node TaskNode
 function BehaviorTree:AddChild(node)
+    node.parent = self
     self.child = node
 end
 
@@ -120,4 +121,8 @@ end
 ---@return number
 function BehaviorTree:GetStateId()
     return self:GetSharedVar("stateId")
+end
+
+function BehaviorTree:IsComposite()
+    return false
 end

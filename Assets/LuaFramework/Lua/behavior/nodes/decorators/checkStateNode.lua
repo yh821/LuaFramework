@@ -14,7 +14,7 @@ function checkStateNode:Tick(delta_time)
 		if self.children then
 			local v = self.children[1]
 			if v.state == nil or v.state == eNodeState.Running then
-				v.state = v:Tick(delta_time)
+				v:SetState(v:Tick(delta_time))
 				return v.state
 			end
 		end
