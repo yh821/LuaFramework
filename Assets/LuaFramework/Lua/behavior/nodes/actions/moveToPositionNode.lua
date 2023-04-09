@@ -15,14 +15,14 @@ local MoveToPosition = MapManager.MoveToPosition
 local StopMove = MapManager.StopMove
 
 function moveToPositionNode:Start()
-	self:SetSharedVar('playState', playStateEnum.eStart)
-	local targetPos = self:GetSharedVar('targetPos')
+	self:SetSharedVar("playState", playStateEnum.eStart)
+	local targetPos = self:GetSharedVar("targetPos")
 	local entityPos = GetEntityPos(self.owner.guid)
 	if targetPos == nil or IsPositionEqual(entityPos, targetPos) then
-		self:SetSharedVar('playState', playStateEnum.eEnd)
+		self:SetSharedVar("playState", playStateEnum.eEnd)
 		return eNodeState.failure
 	else
-		self:SetSharedVar('animState', animatorStateEnum.eWalk)
+		self:SetSharedVar("animState", animatorStateEnum.eWalk)
 		MoveToPosition(self.owner.guid, targetPos, function()
 			self:moveFinish()
 		end)
@@ -36,7 +36,7 @@ function moveToPositionNode:Abort()
 end
 
 function moveToPositionNode:moveFinish()
-	self:SetSharedVar('animState', animatorStateEnum.eIdle)
-	self:SetSharedVar('playState', playStateEnum.eEnd)
+	self:SetSharedVar("animState", animatorStateEnum.eIdle)
+	self:SetSharedVar("playState", playStateEnum.eEnd)
 	self.state = eNodeState.success
 end

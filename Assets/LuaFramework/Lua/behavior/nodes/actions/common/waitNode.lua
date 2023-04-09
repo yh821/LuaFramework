@@ -25,6 +25,6 @@ function waitNode:Update(delta_time)
 end
 
 function waitNode:Abort()
-	self.state = eNodeState.failure
+	self:print("打断等待")
 	return eNodeState.failure
 end

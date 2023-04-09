@@ -19,7 +19,7 @@ require "Controller/PromptCtrl"
 Game = {};
 local this = Game;
 
-local game; 
+local game;
 local transform;
 local gameObject;
 local WWW = UnityEngine.WWW;
@@ -52,19 +52,19 @@ function Game.OnInitOK()
     if ctrl ~= nil and AppConst.ExampleMode == 1 then
         ctrl:Awake();
     end
-       
-    logWarn('LuaFramework InitOK--->>>');
+
+    logWarn("LuaFramework InitOK--->>>");
 end
 
 --测试协同--
-function Game.test_coroutine()    
+function Game.test_coroutine()
     logWarn("1111");
-    coroutine.wait(1);	
+    coroutine.wait(1);
     logWarn("2222");
-	
+
     local www = WWW("http://bbs.ulua.org/readme.txt");
     coroutine.www(www);
-    logWarn(www.text);    	
+    logWarn(www.text);
 end
 
 --测试sproto--
@@ -143,9 +143,9 @@ end
 function Game.test_pblua_func()
     local login = login_pb.LoginRequest();
     login.id = 2000;
-    login.name = 'game';
-    login.email = 'jarjin@163.com';
-    
+    login.name = "game";
+    login.email = "jarjin@163.com";
+
     local msg = login:SerializeToString();
     LuaHelper.OnCallLuaFunc(msg, this.OnPbluaCall);
 end
@@ -155,13 +155,13 @@ function Game.OnPbluaCall(data)
     local msg = login_pb.LoginRequest();
     msg:ParseFromString(data);
     print(msg);
-    print(msg.id..' '..msg.name);
+    print(msg.id.." "..msg.name);
 end
 
 --测试pbc--
 function Game.test_pbc_func()
     local path = Util.DataPath.."lua/3rd/pbc/addressbook.pb";
-    log('io.open--->>>'..path);
+    log("io.open--->>>"..path);
 
     local addr = io.open(path, "rb")
     local buffer = addr:read "*a"
@@ -207,10 +207,10 @@ end
 --cjson callback--
 function Game.OnJsonCall(data)
     local obj = json.decode(data);
-    print(obj['menu']['id']);
+    print(obj["menu"]["id"]);
 end
 
 --销毁--
 function Game.OnDestroy()
-	--logWarn('OnDestroy--->>>');
+	--logWarn("OnDestroy--->>>");
 end

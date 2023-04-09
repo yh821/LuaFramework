@@ -71,7 +71,7 @@ namespace BT
 		/// <summary>
 		/// 节点默认宽度
 		/// </summary>
-		public const int DefaultWidth = 120;
+		public const int DefaultWidth = 90;
 
 		/// <summary>
 		/// 节点默认高度

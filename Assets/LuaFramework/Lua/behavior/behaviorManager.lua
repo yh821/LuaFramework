@@ -60,7 +60,7 @@ end
 
 ---@param file string
 function BehaviorManager:__LoadBehaviorTree(file)
-    local json = require(_format('config/behavior/%s', file))
+    local json = require(_format("config/behavior/%s", file))
     if json then
         local bt = BehaviorTree.New(json.data, file)
         local root = json.children[1]
@@ -79,7 +79,7 @@ function BehaviorManager:BindBehaviorTree(gameObject, file)
     end
     bt = self:__LoadBehaviorTree(file)
     if bt == nil then
-        logError('找不到行为树: ' .. file)
+        logError("找不到行为树: " .. file)
         return
     end
     bt.gameObject = gameObject
@@ -94,7 +94,7 @@ function BehaviorManager:UnBindBehaviorTree(gameObject)
     end
     bt.gameObject = nil
     _behaviorTreeDict[gameObject] = nil
-    log('已解绑行为树:', bt.file)
+    log("已解绑行为树:", bt.file)
 end
 
 function BehaviorManager:GetBehaviorTree(gameObject)

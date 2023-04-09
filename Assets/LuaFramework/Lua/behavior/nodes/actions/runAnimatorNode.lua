@@ -18,8 +18,8 @@ function runAnimatorNode:Start()
 end
 
 function runAnimatorNode:Update()
-	self:refresh(self:GetSharedVar('animState'))
-	if self:GetSharedVar('playState') == playStateEnum.eEnd then
+	self:refresh(self:GetSharedVar("animState"))
+	if self:GetSharedVar("playState") == playStateEnum.eEnd then
 		return eNodeState.success
 	end
 	return eNodeState.running

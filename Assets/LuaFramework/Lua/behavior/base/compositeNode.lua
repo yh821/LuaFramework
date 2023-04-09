@@ -20,12 +20,16 @@ function CompositeNode:AddChild(node)
     if self.children == nil then
         self.children = {}
     end
+    node.parent = self
     table.insert(self.children, node)
 end
 
 function CompositeNode:GetAbortType()
-    local abort = self.data and self.data.abort
-    return eAbortType[abort] or eAbortType.None
+    if self._abort_type == nil then
+        local abort = self.data and self.data.abort
+        self._abort_type = eAbortType[abort] or eAbortType.None
+    end
+    return self._abort_type
 end
 
 function CompositeNode:IsComposite()

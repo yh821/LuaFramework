@@ -17,6 +17,7 @@ eNodeState = {
 
 ---@class TaskNode : BaseClass
 ---@field owner BehaviorTree
+---@field parent TaskNode
 ---@field uid number
 ---@field data table
 ---@field state eNodeState
@@ -82,6 +83,7 @@ function TaskNode:AddChild(node)
     --override
 end
 
+---@return TaskNode
 function TaskNode:GetChildren()
     --override
 end
@@ -127,6 +129,6 @@ end
 
 function TaskNode:print(...)
     if _openLog then
-        print(_format('[behavior][%s]', self.uid), ...)
+        print(_format("[<color=green>%s</color>]", self.uid), ...)
     end
 end

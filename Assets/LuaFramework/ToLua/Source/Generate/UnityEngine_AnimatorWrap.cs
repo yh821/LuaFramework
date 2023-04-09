@@ -2489,7 +2489,7 @@ public class UnityEngine_AnimatorWrap
 		{
 			o = ToLua.ToObject(L, 1);
 			UnityEngine.Animator obj = (UnityEngine.Animator)o;
-			bool ret = obj.keepAnimatorControllerStateOnDisable;
+			bool ret = obj.keepAnimatorStateOnDisable;
 			LuaDLL.lua_pushboolean(L, ret);
 			return 1;
 		}
@@ -2851,7 +2851,7 @@ public class UnityEngine_AnimatorWrap
 			o = ToLua.ToObject(L, 1);
 			UnityEngine.Animator obj = (UnityEngine.Animator)o;
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
-			obj.keepAnimatorControllerStateOnDisable = arg0;
+			obj.keepAnimatorStateOnDisable = arg0;
 			return 0;
 		}
 		catch(Exception e)

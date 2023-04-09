@@ -14,7 +14,7 @@ local IsCanMove = MapManager.IsCanMove
 function randomPositionNode:Start()
 	local pos = self:getNextPos()
 	if IsCanMove(pos) then
-		self:SetSharedVar('targetPos', pos)
+		self:SetSharedVar("targetPos", pos)
 		return eNodeState.success
 	else
 		return eNodeState.failure
