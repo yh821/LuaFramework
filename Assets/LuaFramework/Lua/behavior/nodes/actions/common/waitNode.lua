@@ -18,13 +18,13 @@ end
 function waitNode:Update(delta_time)
 	if self.deltaTime >= self.waitTime then
 		self:print("等待完成")
-		return eNodeState.success
+		return eNodeState.Success
 	end
 	self.deltaTime = self.deltaTime + delta_time
-	return eNodeState.running
+	return eNodeState.Running
 end
 
 function waitNode:Abort()
 	self:print("打断等待")
-	return eNodeState.failure
+	return eNodeState.Failure
 end

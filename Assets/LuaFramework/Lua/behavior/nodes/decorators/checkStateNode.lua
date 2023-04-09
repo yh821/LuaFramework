@@ -13,11 +13,11 @@ function checkStateNode:Tick(delta_time)
 	if stateId == self.stateId then
 		if self.children then
 			local v = self.children[1]
-			if v.state == nil or v.state == eNodeState.running then
+			if v.state == nil or v.state == eNodeState.Running then
 				v.state = v:Tick(delta_time)
 				return v.state
 			end
 		end
 	end
-	return eNodeState.failure
+	return eNodeState.Failure
 end

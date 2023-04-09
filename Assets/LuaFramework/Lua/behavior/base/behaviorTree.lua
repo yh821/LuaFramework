@@ -35,7 +35,7 @@ function BehaviorTree:Awake()
 end
 
 function BehaviorTree:Update(delta_time)
-    if self.child.state == nil or self.child.state == eNodeState.running then
+    if self.child.state == nil or self.child.state == eNodeState.Running then
         self.child.state = self.child:Tick(delta_time)
     elseif self.restart then
         self:Reset()

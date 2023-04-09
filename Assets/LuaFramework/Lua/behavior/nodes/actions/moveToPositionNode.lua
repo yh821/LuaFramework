@@ -20,13 +20,13 @@ function moveToPositionNode:Start()
 	local entityPos = GetEntityPos(self.owner.guid)
 	if targetPos == nil or IsPositionEqual(entityPos, targetPos) then
 		self:SetSharedVar("playState", playStateEnum.eEnd)
-		return eNodeState.failure
+		return eNodeState.Failure
 	else
 		self:SetSharedVar("animState", animatorStateEnum.eWalk)
 		MoveToPosition(self.owner.guid, targetPos, function()
 			self:moveFinish()
 		end)
-		return eNodeState.running
+		return eNodeState.Running
 	end
 end
 
@@ -38,5 +38,5 @@ end
 function moveToPositionNode:moveFinish()
 	self:SetSharedVar("animState", animatorStateEnum.eIdle)
 	self:SetSharedVar("playState", playStateEnum.eEnd)
-	self.state = eNodeState.success
+	self.state = eNodeState.Success
 end

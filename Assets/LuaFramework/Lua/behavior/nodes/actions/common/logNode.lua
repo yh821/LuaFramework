@@ -16,5 +16,5 @@ function logNode:Tick(delta_time)
 	else
 		_print(self.data.msg)
 	end
-	return eNodeState.success
+	return eNodeState.Success
 end

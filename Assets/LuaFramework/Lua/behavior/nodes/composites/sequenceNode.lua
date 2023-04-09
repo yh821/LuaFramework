@@ -12,9 +12,9 @@ function sequenceNode:Tick(delta_time)
         local abort_type = self:GetAbortType()
         for i, v in ipairs(self.children) do
             if abort_type == eAbortType.Self or abort_type == eAbortType.Both then
-                if self.state == eNodeState.running and v:IsCondition() then
+                if self.state == eNodeState.Running and v:IsCondition() then
                     v.state = v:Tick(delta_time)
-                    if v.state == eNodeState.failure then
+                    if v.state == eNodeState.Failure then
                         self:AbortSelfChildren(i + 1) --打断i后面子节点
                         return v.state
                     end
@@ -22,26 +22,26 @@ function sequenceNode:Tick(delta_time)
             --elseif abort_type == eAbortType.Lower or abort_type == eAbortType.Both then
             --    if v:IsCondition() then
             --        v.state = v:Tick(delta_time)
-            --        if v.state == eNodeState.failure then
+            --        if v.state == eNodeState.Failure then
             --            self:AbortLowerChildren(i + 1)
             --        end
             --    end
             end
-            if v.state == nil or v.state == eNodeState.running then
+            if v.state == nil or v.state == eNodeState.Running then
                 v.state = v:Tick(delta_time)
-                if v.state ~= eNodeState.success then
+                if v.state ~= eNodeState.Success then
                     return v.state
                 end
             end
         end
     end
-    return eNodeState.success
+    return eNodeState.Success
 end
 
 function sequenceNode:AbortSelfChildren(start_index)
     for i = start_index, #self.children do
         local child = self.children[i]
-        if child.state == eNodeState.running then
+        if child.state == eNodeState.Running then
             child.state = child:Abort()
         end
     end

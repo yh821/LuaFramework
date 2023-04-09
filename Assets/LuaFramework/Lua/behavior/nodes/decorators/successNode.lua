@@ -9,13 +9,9 @@
 successNode = BaseClass(DecoratorNode)
 
 function successNode:Tick(delta_time)
-	if self.children then
-		local v = self.children[1]
-		if v.state == eNodeState.failure or v.state == eNodeState.success then
-			return eNodeState.success
-		else
-			return v.state
-		end
-	end
-	return eNodeState.success
+    local state = self.children[1]:Tick(delta_time)
+    if state == eNodeState.Failure then
+        return eNodeState.Success
+    end
+    return state
 end

@@ -11,9 +11,9 @@ setStateNode = BaseClass(ActionNode)
 function setStateNode:Start()
 	if self.data and self.data.stateId then
 		self.owner:SetStateId(self.data.stateId)
-		return eNodeState.success
+		return eNodeState.Success
 	else
-		return eNodeState.failure
+		return eNodeState.Failure
 	end
 end
 

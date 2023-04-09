@@ -177,7 +177,7 @@
               "type": "decorators/inverterNode",
               "posX": 450.0,
               "posY": 420.0,
-              "index": 15,
+              "index": 12,
               "fold": false,
               "data": null,
               "children": [
@@ -188,7 +188,7 @@
                   "type": "conditions/isActiveNode",
                   "posX": 450.0,
                   "posY": 540.0,
-                  "index": 16,
+                  "index": 13,
                   "fold": false,
                   "data": {
                     "path": "BottomHint"
@@ -204,7 +204,7 @@
               "type": "composites/sequenceNode",
               "posX": 550.0,
               "posY": 420.0,
-              "index": 12,
+              "index": 14,
               "fold": false,
               "data": {
                 "abort": "None"
@@ -217,7 +217,7 @@
                   "type": "actions/common/waitNode",
                   "posX": 550.0,
                   "posY": 540.0,
-                  "index": 13,
+                  "index": 15,
                   "fold": false,
                   "data": {
                     "min_time": "1",
@@ -232,7 +232,7 @@
                   "type": "actions/common/waitNode",
                   "posX": 650.0,
                   "posY": 540.0,
-                  "index": 14,
+                  "index": 16,
                   "fold": false,
                   "data": {
                     "min_time": "1",

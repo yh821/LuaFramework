@@ -6,13 +6,10 @@
 ----------------------------------------------------
 ]]
 ---@class eNodeState
----@field running number
----@field success number
----@field failure number
 eNodeState = {
-    running = 0,
-    success = 1,
-    failure = 2,
+    Running = 0,
+    Success = 1,
+    Failure = 2,
 }
 
 ---@class TaskNode : BaseClass
@@ -51,7 +48,7 @@ function TaskNode:Tick(delta_time)
     if self.state == nil then
         self.state = self:Start()
     end
-    if self.state == nil or self.state == eNodeState.running then
+    if self.state == nil or self.state == eNodeState.Running then
         self.state = self:Update(delta_time)
     end
     return self.state
@@ -63,9 +60,6 @@ function TaskNode:Update(delta_time)
 end
 
 function TaskNode:__Reset()
-    if self.state == eNodeState.running then
-        self:Abort()
-    end
     self:Reset()
     self.state = nil
 end

@@ -15,9 +15,9 @@ function speakNode:Start()
 	local widget = hudControl:getHUDWidget(self.hudId)
 	if widget and self.data and self.data.say then
 		widget:setText(self.data.say)
-		return eNodeState.success
+		return eNodeState.Success
 	else
-		return eNodeState.failure
+		return eNodeState.Failure
 	end
 end
 

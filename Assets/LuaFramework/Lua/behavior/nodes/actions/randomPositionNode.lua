@@ -15,8 +15,8 @@ function randomPositionNode:Start()
 	local pos = self:getNextPos()
 	if IsCanMove(pos) then
 		self:SetSharedVar("targetPos", pos)
-		return eNodeState.success
+		return eNodeState.Success
 	else
-		return eNodeState.failure
+		return eNodeState.Failure
 	end
 end
