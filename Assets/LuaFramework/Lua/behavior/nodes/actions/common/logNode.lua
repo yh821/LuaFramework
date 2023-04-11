@@ -10,7 +10,7 @@ logNode = BaseClass(ActionNode)
 local _print = log
 local _error = logError
 
-function logNode:Tick(delta_time)
+function logNode:Update(delta_time)
 	if self.data.is_error then
 		_error(self.data.msg)
 	else

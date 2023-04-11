@@ -12,9 +12,9 @@ function parallelNode:Tick(delta_time)
     if self.children then
         for _, v in ipairs(self.children) do
             local will_abort = self:GetAbortType() ~= eAbortType.None and v:IsCondition()
-            if v.state == nil or will_abort or v.state == eNodeState.Running then
+            if v:GetState() == nil or will_abort or v:GetState() == eNodeState.Running then
                 v:SetState(v:Tick(delta_time))
-                if v.state == eNodeState.Failure then
+                if v:GetState() == eNodeState.Failure then
                     state = eNodeState.Failure
                 end
             end

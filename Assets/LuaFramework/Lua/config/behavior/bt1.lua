@@ -35,6 +35,13 @@ local __bt__ = {
               },
             },
             {
+              file= "isActiveNode",
+              type= "conditions/isActiveNode",
+              data= {
+                path= "Open"
+              },
+            },
+            {
               file= "sequenceNode",
               type= "composites/sequenceNode",
               data= {
@@ -89,21 +96,15 @@ local __bt__ = {
           file= "selectorNode",
           type= "composites/selectorNode",
           data= {
-            abort= "None"
+            abort= "Both"
           },
           children= {
             {
-              file= "inverterNode",
-              type= "decorators/inverterNode",
-              children= {
-                {
-                  file= "isActiveNode",
-                  type= "conditions/isActiveNode",
-                  data= {
-                    path= "BottomHint"
-                  },
-                }
-              }
+              file= "isActiveNode",
+              type= "conditions/isActiveNode",
+              data= {
+                path= "BottomHint"
+              },
             },
             {
               file= "sequenceNode",
@@ -131,13 +132,6 @@ local __bt__ = {
               }
             }
           }
-        },
-        {
-          file= "isActiveNode",
-          type= "conditions/isActiveNode",
-          data= {
-            path= "Text"
-          },
         },
         {
           file= "sequenceNode",

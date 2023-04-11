@@ -8,16 +8,15 @@
 ---@class weightNode : ActionNode
 weightNode = BaseClass(ActionNode)
 
-function weightNode:Tick()
+function weightNode:Update(delta_time)
 	local weight = self.data.weight or 0
 	local score = math.random(0, 1000)
 	if score < weight then
 		self:print("随机为真")
-		self:SetState(eNodeState.Success)
+		return eNodeState.Success
 	else
 		self:print("随机为假")
-		self:SetState(eNodeState.Failure)
+		return eNodeState.Failure
 	end
-	return self.state
 end
 

@@ -13,8 +13,13 @@ function isActiveNode:Tick(delta_time)
         if not IsNilOrEmpty(self.data.path) then
             local trans = gameObject.transform:Find(self.data.path)
             if trans and trans.gameObject then
-                --self:print("Check Active")
-                return trans.gameObject.activeSelf and eNodeState.Success or eNodeState.Failure
+                local activeSelf = trans.gameObject.activeSelf
+                --if activeSelf then
+                --    self:print("Enable" .. self.data.path)
+                --else
+                --    self:print("Disable" .. self.data.path)
+                --end
+                return activeSelf and eNodeState.Success or eNodeState.Failure
             end
         end
     end

@@ -12,45 +12,36 @@ function sequenceNode:Tick(delta_time)
         local abort_type = self:GetAbortType()
         for i, v in ipairs(self.children) do
             if abort_type == eAbortType.Both or abort_type == eAbortType.Lower then
-                if self.parent:IsComposite() and self.parent.state == eNodeState.Running and v:IsCondition() then
-                    v:SetState(v:Tick(delta_time))
-                    if v.state == eNodeState.Failure then
-                        return v.state
-                    end
-                    if not v:IsChangedState() and v.state == eNodeState.Failure then
+                if v:IsCondition() and v:GetState() ~= nil
+                        and self:GetState() ~= eNodeState.Running and self:GetState() ~= nil
+                        and self.parent:IsComposite() and self.parent:GetState() == eNodeState.Running
+                then
+                    if v:SetState(v:Tick(delta_time)) then
+                        v:print("状态改变", v:GetState())
                         self:AbortLowerNode()
                     end
                 end
             end
             if abort_type == eAbortType.Both or abort_type == eAbortType.Self then
-                if self.state == eNodeState.Running and v:IsCondition() then
-                    v:SetState(v:Tick(delta_time))
-                    if v.state == eNodeState.Failure then
-                        self:AbortSelfNode(i + 1) --打断i后的子节点
-                        return v.state
+                if v:IsCondition() and v:GetState() ~= nil
+                        and self:GetState() == eNodeState.Running
+                then
+                    if v:SetState(v:Tick(delta_time)) then
+                        v:print("状态改变", v:GetState())
+                        if v:GetState() == eNodeState.Failure then
+                            self:AbortSelfNode(i + 1) --打断i后的子节点
+                            return v:GetState()
+                        end
                     end
                 end
             end
-            if v.state == nil or v.state == eNodeState.Running then
+            if v:GetState() == nil or v:GetState() == eNodeState.Running then
                 v:SetState(v:Tick(delta_time))
-                if v.state ~= eNodeState.Success then
-                    return v.state
+                if v:GetState() ~= eNodeState.Success then
+                    return v:GetState()
                 end
             end
         end
     end
     return eNodeState.Success
-end
-
-function sequenceNode:AbortSelfNode(start_index)
-    for i = start_index, #self.children do
-        local child = self.children[i]
-        if child.state == eNodeState.Running then
-            child:SetState(child:Abort())
-        end
-    end
-end
-
-function sequenceNode:AbortLowerNode()
-
 end

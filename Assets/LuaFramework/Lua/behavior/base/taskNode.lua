@@ -7,9 +7,9 @@
 ]]
 ---@class eNodeState
 eNodeState = {
-    Running = 0,
+    Failure = 0,
     Success = 1,
-    Failure = 2,
+    Running = 2,
 }
 
 ---@class TaskNode : BaseClass
@@ -18,7 +18,6 @@ eNodeState = {
 ---@field uid number
 ---@field data table
 ---@field state eNodeState
----@field last_state eNodeState
 TaskNode = BaseClass()
 
 local _id = 0
@@ -46,13 +45,13 @@ end
 
 ---@return eNodeState
 function TaskNode:Tick(delta_time)
-    if self.state == nil then
+    if self:GetState() == nil then
         self:SetState(self:Start())
     end
-    if self.state == nil or self.state == eNodeState.Running then
+    if self:GetState() == nil or self:GetState() == eNodeState.Running then
         self:SetState(self:Update(delta_time))
     end
-    return self.state
+    return self:GetState()
 end
 
 ---@return eNodeState
@@ -60,23 +59,24 @@ function TaskNode:Update(delta_time)
     --override
 end
 
-function TaskNode:SetState(state)
-    if self.state then
-        self.last_state = self.state
-    else
-        self.last_state = state
-    end
-    self.state = state
+---@return number
+function TaskNode:GetState()
+    return self.state
 end
 
-function TaskNode:IsChangedState()
-    return self.last_state ~= self.state
+---@return boolean @是否发生改变, 变成非nil不算
+function TaskNode:SetState(state)
+    local is_change = self.state ~= nil and self.state ~= state
+    --if self.state ~= state then
+    --    self:print("状态改变", self.state, state)
+    --end
+    self.state = state
+    return is_change
 end
 
 function TaskNode:__Reset()
     self:Reset()
     self.state = nil
-    self.last_state = nil
 end
 
 function TaskNode:Reset()
@@ -92,7 +92,7 @@ function TaskNode:AddChild(node)
     --override
 end
 
----@return TaskNode
+---@return TaskNode[]
 function TaskNode:GetChildren()
     --override
 end

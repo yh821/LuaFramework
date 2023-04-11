@@ -31,6 +31,32 @@ function CompositeNode:GetAbortType()
     return self._abort_type
 end
 
+---@type fun(parent:TaskNode)
+local __AbortNode
+__AbortNode = function(node)
+    local children = node:GetChildren()
+    if children then
+        for _, v in ipairs(children) do
+            __AbortNode(v)
+        end
+    else
+        if node:GetState() == eNodeState.Running then
+            node:SetState(node:Abort())
+        end
+    end
+end
+
+function CompositeNode:AbortSelfNode(start_index)
+    self:print("<color=red>打断Self节点</color>")
+    for i = start_index, #self.children do
+        __AbortNode(self.children[i])
+    end
+end
+
+function CompositeNode:AbortLowerNode()
+    self:print("<color=red>打断Lower节点</color>")
+end
+
 function CompositeNode:IsComposite()
     return true
 end

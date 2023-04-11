@@ -10,9 +10,20 @@ ParentNode = BaseClass(TaskNode)
 
 ---@return TaskNode[]
 function ParentNode:GetChildren()
-	return self.children
+    return self.children
 end
 
 function ParentNode:IsParent()
-	return true
+    return true
+end
+
+---@param child ConditionNode
+function ParentNode:ReevaluateCondition(child)
+    local old_state = child:GetState()
+    local new_state = child:Tick()
+    local is_change = old_state ~= nil and old_state ~= new_state
+    --if old_state ~= new_state then
+    --    self:print("状态改变", old_state, new_state)
+    --end
+    return is_change
 end

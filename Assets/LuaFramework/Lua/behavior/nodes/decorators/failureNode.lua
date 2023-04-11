@@ -8,7 +8,7 @@
 ---@class failureNode : DecoratorNode
 failureNode = BaseClass(DecoratorNode)
 
-function failureNode:tick(delta_time)
+function failureNode:Tick(delta_time)
     local state = self.children[1]:Tick(delta_time)
     if state == eNodeState.Success then
         return eNodeState.Failure
