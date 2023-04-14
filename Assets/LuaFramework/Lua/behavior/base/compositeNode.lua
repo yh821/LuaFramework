@@ -57,6 +57,14 @@ function CompositeNode:AbortLowerNode()
     self:print("<color=red>打断Lower节点</color>")
 end
 
+function CompositeNode:SetNeedReevaluate()
+    self.need_revaluate = true
+end
+
+function CompositeNode:IsNeedReevaluate()
+    return self.need_revaluate
+end
+
 function CompositeNode:IsComposite()
     return true
 end

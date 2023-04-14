@@ -136,8 +136,12 @@ function TaskNode:IsParent()
     return false
 end
 
-function TaskNode:print(...)
+function TaskNode:IsNeedReevaluate()
+    return false
+end
+
+function TaskNode:print(msg)
     if _openLog then
-        print(_format("[<color=green>%s</color>]", self.uid), ...)
+        log(_format("[<color=green>%s</color>] %s", self.uid, msg))
     end
 end

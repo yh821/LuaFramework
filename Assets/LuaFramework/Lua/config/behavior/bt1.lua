@@ -16,7 +16,7 @@ local __bt__ = {
           file= "sequenceNode",
           type= "composites/sequenceNode",
           data= {
-            abort= "Both"
+            abort= "Lower"
           },
           children= {
             {
@@ -35,50 +35,58 @@ local __bt__ = {
               },
             },
             {
-              file= "isActiveNode",
-              type= "conditions/isActiveNode",
-              data= {
-                path= "Open"
-              },
-            },
-            {
               file= "sequenceNode",
               type= "composites/sequenceNode",
               data= {
-                abort= "Both"
+                abort= "Lower"
               },
               children= {
+                {
+                  file= "isActiveNode",
+                  type= "conditions/isActiveNode",
+                  data= {
+                    path= "BottomHint"
+                  },
+                },
                 {
                   file= "sequenceNode",
                   type= "composites/sequenceNode",
                   data= {
-                    abort= "Both"
+                    abort= "Lower"
                   },
                   children= {
                     {
                       file= "isActiveNode",
                       type= "conditions/isActiveNode",
                       data= {
-                        path= "Label"
+                        path= "Open"
                       },
                     },
                     {
-                      file= "waitNode",
-                      type= "actions/common/waitNode",
+                      file= "sequenceNode",
+                      type= "composites/sequenceNode",
                       data= {
-                        min_time= 1,
-                        max_time= 1
+                        abort= "Lower"
                       },
+                      children= {
+                        {
+                          file= "isActiveNode",
+                          type= "conditions/isActiveNode",
+                          data= {
+                            path= "Label"
+                          },
+                        },
+                        {
+                          file= "waitNode",
+                          type= "actions/common/waitNode",
+                          data= {
+                            min_time= 1,
+                            max_time= 1
+                          },
+                        }
+                      }
                     }
                   }
-                },
-                {
-                  file= "waitNode",
-                  type= "actions/common/waitNode",
-                  data= {
-                    min_time= 1,
-                    max_time= 1
-                  },
                 }
               }
             },
@@ -96,16 +104,9 @@ local __bt__ = {
           file= "selectorNode",
           type= "composites/selectorNode",
           data= {
-            abort= "Both"
+            abort= "None"
           },
           children= {
-            {
-              file= "isActiveNode",
-              type= "conditions/isActiveNode",
-              data= {
-                path= "BottomHint"
-              },
-            },
             {
               file= "sequenceNode",
               type= "composites/sequenceNode",
@@ -137,7 +138,7 @@ local __bt__ = {
           file= "sequenceNode",
           type= "composites/sequenceNode",
           data= {
-            abort= "Lower"
+            abort= "None"
           },
           children= {
             {
