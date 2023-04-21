@@ -38,7 +38,9 @@ function selectorNode:Tick(delta_time)
             elseif v:IsNeedReevaluate() and v:IsComposite() then
                 local state = v:ReevaluateNode(delta_time)
                 if state == eNodeState.Success then
-                    self:print("AbortLower")
+                    self:print("<color=red>AbortLower:Success</color>")
+                elseif state == eNodeState.Failure then
+                    self:print("<color=red>AbortLower:Failure</color>")
                 end
             end
         end
@@ -53,10 +55,14 @@ function selectorNode:ReevaluateNode(delta_time)
     for i, v in ipairs(self.children) do
         if v:GetState() == eNodeState.Success or v:GetState() == eNodeState.Failure then
             if v:IsCondition() then
-                if v:SetState(v:Tick(delta_time))
-                        and v:GetState() == eNodeState.Failure
-                then
-                    return eNodeState.Failure
+                if v:SetState(v:Tick(delta_time)) then
+                    local state = v:GetState()
+                    --if state == eNodeState.Failure then
+                    --    self:print("<color=red>Failure</color>")
+                    --elseif state == eNodeState.Success then
+                    --    self:print("<color=red>Success</color>")
+                    --end
+                    return state
                 end
             elseif v:IsComposite() and v:IsNeedReevaluate() then
                 local abort_type = v:GetAbortType()
