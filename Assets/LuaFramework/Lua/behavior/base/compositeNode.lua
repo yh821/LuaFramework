@@ -53,8 +53,11 @@ function CompositeNode:AbortSelfNode(start_index)
     end
 end
 
-function CompositeNode:AbortLowerNode()
+function CompositeNode:AbortLowerNode(start_index)
     self:print("<color=red>打断Lower节点</color>")
+    for i = start_index, #self.children do
+        __AbortNode(self.children[i])
+    end
 end
 
 function CompositeNode:SetNeedReevaluate()

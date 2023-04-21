@@ -14,11 +14,11 @@ function isActiveNode:Tick(delta_time)
             local trans = gameObject.transform:Find(self.data.path)
             if trans and trans.gameObject then
                 local activeSelf = trans.gameObject.activeSelf
-                --if activeSelf then
-                --    self:print("Enable" .. self.data.path)
-                --else
-                --    self:print("Disable" .. self.data.path)
-                --end
+                if activeSelf then
+                    self:print("Enable " .. self.data.path)
+                else
+                    self:print("Disable " .. self.data.path)
+                end
                 return activeSelf and eNodeState.Success or eNodeState.Failure
             end
         end

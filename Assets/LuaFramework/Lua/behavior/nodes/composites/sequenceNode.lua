@@ -38,9 +38,10 @@ function sequenceNode:Tick(delta_time)
             elseif v:IsNeedReevaluate() and v:IsComposite() then
                 local state = v:ReevaluateNode(delta_time)
                 if state == eNodeState.Success then
-                    self:print("<color=red>AbortLower:Success</color>")
+                    --self:print("<color=red>AbortLower:Success</color>")
+                    self:AbortLowerNode(i + 1)
                 elseif state == eNodeState.Failure then
-                    self:print("<color=red>AbortLower:Failure</color>")
+                    --self:print("<color=red>AbortLower:Failure</color>")
                 end
             end
         end
