@@ -9,13 +9,13 @@ DecoratorNode = BaseClass(ParentNode)
 
 ---@param node TaskNode
 function DecoratorNode:AddChild(node)
-    if self.children == nil then
-        self.children = {}
+    if self._children == nil then
+        self._children = {}
     end
-    if #self.children > 0 then
-        table.remove(self.children, 1)
+    if #self._children > 0 then
+        table.remove(self._children, 1)
     end
-    table.insert(self.children, node)
+    table.insert(self._children, node)
 end
 
 function DecoratorNode:IsDecorator()

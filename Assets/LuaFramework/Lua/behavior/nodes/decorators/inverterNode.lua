@@ -8,7 +8,7 @@
 inverterNode = BaseClass(DecoratorNode)
 
 function inverterNode:Tick(delta_time)
-    local state = self.children[1]:Tick(delta_time)
+    local state = self._children[1]:Tick(delta_time)
     if state == eNodeState.Failure then
         return eNodeState.Success
     elseif state == eNodeState.Success then

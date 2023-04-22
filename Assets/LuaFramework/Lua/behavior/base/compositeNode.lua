@@ -16,10 +16,20 @@ eAbortType = {
 
 ---@param node TaskNode
 function CompositeNode:AddChild(node)
-    if self.children == nil then
-        self.children = {}
+    if self._children == nil then
+        self._children = {}
     end
-    table.insert(self.children, node)
+    table.insert(self._children, node)
+end
+
+function CompositeNode:Clear()
+    CompositeNode.super.Clear(self)
+    self._abort_type = nil
+    self._need_reevaluate = nil
+end
+
+function CompositeNode:IsComposite()
+    return true
 end
 
 function CompositeNode:GetAbortType()
@@ -45,28 +55,33 @@ __AbortNode = function(node)
     end
 end
 
-function CompositeNode:AbortSelfNode(start_index)
-    self:print("<color=red>打断Self节点</color>")
-    for i = start_index, #self.children do
-        __AbortNode(self.children[i])
-    end
-end
-
-function CompositeNode:AbortLowerNode(start_index)
-    self:print("<color=red>打断Lower节点</color>")
-    for i = start_index, #self.children do
-        __AbortNode(self.children[i])
+function CompositeNode:StartAbortNode(start_index)
+    for i = start_index, #self._children do
+        __AbortNode(self._children[i])
     end
 end
 
 function CompositeNode:SetNeedReevaluate()
-    self.need_revaluate = true
+    self._need_reevaluate = true
 end
 
 function CompositeNode:IsNeedReevaluate()
-    return self.need_revaluate
+    return self._need_reevaluate
 end
 
-function CompositeNode:IsComposite()
-    return true
+function CompositeNode:ReevaluateNode(delta_time)
+    for i, v in ipairs(self._children) do
+        if v:IsSucceed() or v:IsFailed() then
+            if v:IsCondition() then
+                if v:SetState(v:Tick(delta_time)) then
+                    return v:GetState()
+                end
+            elseif v:IsComposite() and v:IsNeedReevaluate() then
+                local abort_type = v:GetAbortType()
+                if abort_type == eAbortType.Both or abort_type == eAbortType.Lower then
+                    return v:ReevaluateNode(delta_time)
+                end
+            end
+        end
+    end
 end

@@ -8,67 +8,32 @@
 sequenceNode = BaseClass(CompositeNode)
 
 function sequenceNode:Tick(delta_time)
-    if self.children then
-        local abort_type = self:GetAbortType()
-        for i, v in ipairs(self.children) do
-            if abort_type == eAbortType.Both or abort_type == eAbortType.Lower then
-                if v:IsCondition() and v:IsNotExecuted() then
-                    self:SetNeedReevaluate()
-                end
+    local abort_type = self:GetAbortType()
+    for i, v in ipairs(self._children) do
+        if abort_type == eAbortType.Both or abort_type == eAbortType.Lower then
+            if v:IsCondition() and v:IsNotExecuted() then
+                self:SetNeedReevaluate()
             end
-            if abort_type == eAbortType.Both or abort_type == eAbortType.Self then
-                if v:IsCondition() and v:IsExecuted() and self:IsRunning() then
-                    if v:SetState(v:Tick(delta_time)) then
-                        --v:print("状态改变" .. v:GetState())
-                        if v:IsFailed() then
-                            self:AbortSelfNode(i + 1) --打断i后的子节点
-                            return v:GetState()
-                        end
-                    end
-                end
-            end
-            if v:IsNotExecuted() or v:IsRunning() then
-                v:SetState(v:Tick(delta_time))
-                if v:GetState() ~= eNodeState.Success then
+        end
+        if abort_type == eAbortType.Both or abort_type == eAbortType.Self then
+            if v:IsCondition() and v:IsExecuted() and self:IsRunning() then
+                if v:SetState(v:Tick(delta_time)) and v:IsFailed() then
+                    self:StartAbortNode(i + 1)
                     return v:GetState()
                 end
-            elseif v:IsNeedReevaluate() and v:IsComposite() then
-                local state = v:ReevaluateNode(delta_time)
-                if state == eNodeState.Success then
-                    --self:print("<color=red>AbortLower:Success</color>")
-                    self:AbortLowerNode(i + 1)
-                elseif state == eNodeState.Failure then
-                    --self:print("<color=red>AbortLower:Failure</color>")
-                    self:AbortLowerNode(i + 1)
-                end
+            end
+        end
+        if v:IsNotExecuted() or v:IsRunning() then
+            v:SetState(v:Tick(delta_time))
+            if v:GetState() ~= eNodeState.Success then
+                return v:GetState()
+            end
+        elseif v:IsComposite() and v:IsNeedReevaluate() then
+            local state = v:ReevaluateNode(delta_time)
+            if state == eNodeState.Success or state == eNodeState.Failure then
+                self:StartAbortNode(i + 1)
             end
         end
     end
     return eNodeState.Success
-end
-
-function sequenceNode:ReevaluateNode(delta_time)
-    if not self.children then
-        return
-    end
-    for i, v in ipairs(self.children) do
-        if v:IsSucceed() or v:IsFailed() then
-            if v:IsCondition() then
-                if v:SetState(v:Tick(delta_time)) then
-                    local state = v:GetState()
-                    --if state == eNodeState.Failure then
-                    --    self:print("<color=red>Failure</color>")
-                    --elseif state == eNodeState.Success then
-                    --    self:print("<color=red>Success</color>")
-                    --end
-                    return state
-                end
-            elseif v:IsComposite() and v:IsNeedReevaluate() then
-                local abort_type = v:GetAbortType()
-                if abort_type == eAbortType.Both or abort_type == eAbortType.Lower then
-                    return v:ReevaluateNode(delta_time)
-                end
-            end
-        end
-    end
 end

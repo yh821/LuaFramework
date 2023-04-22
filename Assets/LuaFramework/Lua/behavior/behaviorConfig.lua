@@ -13,20 +13,20 @@ require("behavior/base/conditionNode")
 require("behavior/base/actionNode")
 
 AiConfig = {
-	gameObjKey = "game_object",
+    gameObjKey = "game_object",
 }
 
 animatorStateEnum = {
-	eIdle = 0,
-	eWalk = 1,
+    eIdle = 0,
+    eWalk = 1,
 }
 
 playStateEnum = {
-	eStart = 0,
-	eEnd = 1,
+    eStart = 0,
+    eEnd = 1,
 }
 
 behaviorStateEnum = {
-	eIdle = 0, --空闲
-	eClick = 1, --点中
+    eIdle = 0, --空闲
+    eClick = 1, --点中
 }
