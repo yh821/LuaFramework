@@ -14,10 +14,9 @@ eNodeState = {
 
 ---@class TaskNode : BaseClass
 ---@field owner BehaviorTree
----@field parent TaskNode
 ---@field uid number
 ---@field data table
----@field state eNodeState
+---@field _state eNodeState
 TaskNode = BaseClass()
 
 local _id = 0
@@ -45,10 +44,10 @@ end
 
 ---@return eNodeState
 function TaskNode:Tick(delta_time)
-    if self:GetState() == nil then
+    if self:IsNotExecuted() then
         self:SetState(self:Start())
     end
-    if self:GetState() == nil or self:GetState() == eNodeState.Running then
+    if self:IsNotExecuted() or self:IsRunning() then
         self:SetState(self:Update(delta_time))
     end
     return self:GetState()
@@ -59,24 +58,46 @@ function TaskNode:Update(delta_time)
     --override
 end
 
+---@return boolean
+function TaskNode:IsExecuted()
+    return self._state ~= nil
+end
+
+---@return boolean
+function TaskNode:IsNotExecuted()
+    return self._state == nil
+end
+
+---@return boolean
+function TaskNode:IsRunning()
+    return self._state == eNodeState.Running
+end
+
+---@return boolean
+function TaskNode:IsSucceed()
+    return self._state == eNodeState.Success
+end
+
+---@return boolean
+function TaskNode:IsFailed()
+    return self._state == eNodeState.Failure
+end
+
 ---@return number
 function TaskNode:GetState()
-    return self.state
+    return self._state
 end
 
 ---@return boolean @是否发生改变, 变成非nil不算
 function TaskNode:SetState(state)
-    local is_change = self.state ~= nil and self.state ~= state
-    --if self.state ~= state then
-    --    self:print("状态改变", self.state, state)
-    --end
-    self.state = state
+    local is_change = self._state ~= nil and self._state ~= state
+    self._state = state
     return is_change
 end
 
 function TaskNode:__Reset()
     self:Reset()
-    self.state = nil
+    self._state = nil
 end
 
 function TaskNode:Reset()

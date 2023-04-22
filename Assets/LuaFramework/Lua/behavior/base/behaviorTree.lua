@@ -35,7 +35,7 @@ function BehaviorTree:Awake()
 end
 
 function BehaviorTree:Update(delta_time)
-    if self.child:GetState() == nil or self.child:GetState() == eNodeState.Running then
+    if self.child:IsNotExecuted() or self.child:IsRunning() then
         self.child:SetState(self.child:Tick(delta_time))
     elseif self.restart then
         self:Reset()
@@ -44,7 +44,6 @@ end
 
 ---@param node TaskNode
 function BehaviorTree:AddChild(node)
-    node.parent = self
     self.child = node
 end
 

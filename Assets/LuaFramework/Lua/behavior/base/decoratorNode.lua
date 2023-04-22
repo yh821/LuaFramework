@@ -13,10 +13,8 @@ function DecoratorNode:AddChild(node)
         self.children = {}
     end
     if #self.children > 0 then
-        node.parent = nil
         table.remove(self.children, 1)
     end
-    node.parent = self
     table.insert(self.children, node)
 end
 

@@ -19,7 +19,6 @@ function CompositeNode:AddChild(node)
     if self.children == nil then
         self.children = {}
     end
-    node.parent = self
     table.insert(self.children, node)
 end
 
@@ -40,7 +39,7 @@ __AbortNode = function(node)
             __AbortNode(v)
         end
     else
-        if node:GetState() == eNodeState.Running then
+        if node:IsRunning() then
             node:SetState(node:Abort())
         end
     end

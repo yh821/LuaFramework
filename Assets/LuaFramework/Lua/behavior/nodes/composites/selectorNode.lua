@@ -12,25 +12,22 @@ function selectorNode:Tick(delta_time)
         local abort_type = self:GetAbortType()
         for i, v in ipairs(self.children) do
             if abort_type == eAbortType.Both or abort_type == eAbortType.Lower then
-                if v:IsCondition() and v:GetState() == nil then
+                if v:IsCondition() and v:IsNotExecuted() then
                     self:SetNeedReevaluate()
-                    self.parent:SetNeedReevaluate()
                 end
             end
             if abort_type == eAbortType.Both or abort_type == eAbortType.Self then
-                if v:IsCondition() and v:GetState() ~= nil
-                        and self:GetState() == eNodeState.Running
-                then
+                if v:IsCondition() and v:IsExecuted() and self:IsRunning() then
                     if v:SetState(v:Tick(delta_time)) then
-                        v:print("状态改变:" .. v:GetState())
-                        if v:GetState() == eNodeState.Success then
+                        --v:print("状态改变:" .. v:GetState())
+                        if v:IsSucceed() then
                             self:AbortSelfNode(i + 1) --打断i后的子节点
                             return v:GetState()
                         end
                     end
                 end
             end
-            if v:GetState() == nil or v:GetState() == eNodeState.Running then
+            if v:IsNotExecuted() or v:IsRunning() then
                 v:SetState(v:Tick(delta_time))
                 if v:GetState() ~= eNodeState.Failure then
                     return v:GetState()
@@ -42,6 +39,7 @@ function selectorNode:Tick(delta_time)
                     self:AbortLowerNode(i + 1)
                 elseif state == eNodeState.Failure then
                     --self:print("<color=red>AbortLower:Failure</color>")
+                    self:AbortLowerNode(i + 1)
                 end
             end
         end
@@ -54,7 +52,7 @@ function selectorNode:ReevaluateNode(delta_time)
         return
     end
     for i, v in ipairs(self.children) do
-        if v:GetState() == eNodeState.Success or v:GetState() == eNodeState.Failure then
+        if v:IsSucceed() or v:IsFailed() then
             if v:IsCondition() then
                 if v:SetState(v:Tick(delta_time)) then
                     local state = v:GetState()

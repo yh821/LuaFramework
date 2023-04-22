@@ -13,7 +13,7 @@ function checkStateNode:Update(delta_time)
 	if stateId == self.stateId then
 		if self.children then
 			local v = self.children[1]
-			if v:GetState() == nil or v:GetState() == eNodeState.Running then
+			if v:IsNotExecuted() or v:IsRunning() then
 				v:SetState(v:Tick(delta_time))
 				return v:GetState()
 			end
