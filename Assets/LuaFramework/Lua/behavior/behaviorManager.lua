@@ -17,9 +17,9 @@ local _globalVariables = {}
 function BehaviorManager:SwitchTick()
     self._is_tick = not self._is_tick
     if self._is_tick then
-        log("[behaviorManager] 开始心跳")
+        print_log("[behaviorManager] 开始心跳")
     else
-        log("[behaviorManager] 停止心跳")
+        print_log("[behaviorManager] 停止心跳")
         self:CleanTree()
     end
 end
@@ -105,12 +105,12 @@ end
 function BehaviorManager:BindBehaviorTree(gameObject, file)
     local bt = _behaviorTreeDict[gameObject]
     if bt then
-        logError("实体已经绑定了行为树: " .. bt.file)
+        print_error("实体已经绑定了行为树: " .. bt.file)
         return
     end
     bt = self:__LoadBehaviorTree(file)
     if bt == nil then
-        logError("找不到行为树: " .. file)
+        print_error("找不到行为树: " .. file)
         return
     end
     bt.gameObject = gameObject
@@ -125,7 +125,7 @@ function BehaviorManager:UnBindBehaviorTree(gameObject)
     end
     bt.gameObject = nil
     _behaviorTreeDict[gameObject] = nil
-    log("已解绑行为树:", bt.file)
+    print_log("已解绑行为树:", bt.file)
 end
 
 function BehaviorManager:GetBehaviorTree(gameObject)

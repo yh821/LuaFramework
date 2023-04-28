@@ -12,7 +12,7 @@ AiManager = AiManager or BaseClass()
 
 function AiManager:__init()
 	if AiManager.Instance then
-		logError("[AiManager] attempt to create singleton twice!")
+		print_error("[AiManager] attempt to create singleton twice!")
 		return
 	end
 	AiManager.Instance = self

@@ -1,38 +1,43 @@
+require("View/MessagePanel")
 
-MessageCtrl = {};
-local this = MessageCtrl;
-
-local message;
-local transform;
-local gameObject;
+MessageCtrl = MessageCtrl or BaseClass();
 
 --构建函数--
-function MessageCtrl.New()
-	logWarn("MessageCtrl.New--->>");
-	return this;
+function MessageCtrl:__init()
+    if MessageCtrl.Instance then
+        print_error("[PromptCtrl] attempt to create singleton twice!")
+        return
+    end
+    MessageCtrl.Instance = self
 end
 
-function MessageCtrl.Awake()
-	logWarn("MessageCtrl.Awake--->>");
-	panelMgr:CreatePanel('Message', this.OnCreate);
+function MessageCtrl:__delete()
+    self.gameObject = nil
+    self.transform = nil
+    self.panel = nil
+    self.prompt = nil
+
+    MessageCtrl.Instance = nil
+end
+
+function MessageCtrl:Open()
+    PanelMgr:CreatePanel("Message", BindTool.Bind(self.OnCreate, self))
 end
 
 --启动事件--
-function MessageCtrl.OnCreate(obj)
-	gameObject = obj;
+function MessageCtrl:OnCreate(obj)
+    self.gameObject = obj;
 
-	message = gameObject:GetComponent('LuaBehaviour');
-	message:AddClick(MessagePanel.btnClose, this.OnClick);
-
-	logWarn("Start lua--->>"..gameObject.name);
+    self.message = self.gameObject:GetComponent('LuaBehaviour');
+    self.message:AddClick(MessagePanel.btnClose, BindTool.Bind(self.OnClick, self))
 end
 
 --单击事件--
-function MessageCtrl.OnClick(go)
-	destroy(gameObject);
+function MessageCtrl:OnClick(go)
+    Destroy(self.gameObject);
 end
 
 --关闭事件--
-function MessageCtrl.Close()
-	panelMgr:ClosePanel(CtrlNames.Message);
+function MessageCtrl:Close()
+    PanelMgr:ClosePanel(CtrlNames.Message);
 end

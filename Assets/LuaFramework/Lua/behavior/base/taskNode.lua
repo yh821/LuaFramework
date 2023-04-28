@@ -159,6 +159,6 @@ end
 
 function TaskNode:print(msg)
     if _openLog then
-        log(_format("[<color=yellow>%s</color>] %s\n%s", self.uid, msg, debug.traceback()))
+        print_log(_format("[<color=yellow>%s</color>] %s\n%s", self.uid, msg, debug.traceback()))
     end
 end

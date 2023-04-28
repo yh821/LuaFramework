@@ -45,18 +45,16 @@ namespace LuaFramework {
 
         void StartMain() {
             lua.DoFile("Main.lua");
-
-            LuaFunction main = lua.GetFunction("Main");
+            var main = lua.GetFunction("Main");
             main.Call();
             main.Dispose();
-            main = null;    
         }
-        
+
         /// <summary>
         /// 初始化加载第三方库
         /// </summary>
         void OpenLibs() {
-            lua.OpenLibs(LuaDLL.luaopen_pb);      
+            lua.OpenLibs(LuaDLL.luaopen_pb);
             lua.OpenLibs(LuaDLL.luaopen_sproto_core);
             lua.OpenLibs(LuaDLL.luaopen_protobuf_c);
             lua.OpenLibs(LuaDLL.luaopen_lpeg);
@@ -129,5 +127,12 @@ namespace LuaFramework {
             lua = null;
             loader = null;
         }
+
+        public void SetGlobalBoolean(string key, bool value)
+        {
+            lua.LuaPushBoolean(value);
+            lua.LuaSetGlobal(key);
+        }
+
     }
 }

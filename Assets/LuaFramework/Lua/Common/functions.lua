@@ -1,47 +1,47 @@
 
 --输出日志--
-function log(msg)
-    Util.Log(msg);
+function print_log(msg)
+    Util.Log(msg .. "\n" .. debug.traceback());
 end
 
 --错误日志--
-function logError(msg)
+function print_error(msg)
 	Util.LogError(msg);
 end
 
 --警告日志--
-function logWarn(msg)
-	Util.LogWarning(msg);
+function print_warning(msg)
+	Util.LogWarning(msg .. "\n" .. debug.traceback());
 end
 
 --查找对象--
-function find(str)
+function Find(str)
 	return GameObject.Find(str);
 end
 
-function destroy(obj)
+function Destroy(obj)
 	GameObject.Destroy(obj);
 end
 
-function newObject(prefab)
+function Instantiate(prefab)
 	return GameObject.Instantiate(prefab);
 end
 
 --创建面板--
-function createPanel(name)
+function CreatePanel(name)
 	PanelManager:CreatePanel(name);
 end
 
-function child(str)
+function FindChild(str)
 	return transform:FindChild(str);
 end
 
-function subGet(childNode, typeName)		
-	return child(childNode):GetComponent(typeName);
+function subGet(childNode, typeName)
+	return FindChild(childNode):GetComponent(typeName);
 end
 
-function findPanel(str) 
-	local obj = find(str);
+function FindPanel(str)
+	local obj = Find(str);
 	if obj == nil then
 		error(str.." is null");
 		return nil;

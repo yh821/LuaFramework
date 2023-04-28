@@ -19,7 +19,7 @@ local _priority_max = 16
 
 function Runner:__init()
 	if Runner.Instance then
-		logError("[Runner] attempt to create singleton twice!")
+		print_error("[Runner] attempt to create singleton twice!")
 		return
 	end
 	Runner.Instance = self
@@ -60,7 +60,7 @@ function Runner:AddRunObj(run_obj, priority_level)
 	end
 
 	if not run_obj.Update then
-		logError("Runner:AddRunObj try to add a obj not have Update method!")
+		print_error("Runner:AddRunObj try to add a obj not have Update method!")
 	end
 
 	self.id_count = self.id_count + 1

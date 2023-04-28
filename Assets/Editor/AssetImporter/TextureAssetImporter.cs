@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -8,26 +7,24 @@ public class TextureAssetImporter : AssetPostprocessor
 {
 	private static readonly HashSet<string> tempIgnoreAssets = new HashSet<string>();
 
-	public const string GameDir = "Assets/Game/";
-	public const string UIsDir = "Assets/Game/UIs/";
+	// public const string GameDir = "Assets/Game/";
+	// public const string UIsDir = "Assets/Game/UIs/";
 	public const string ViewDir = "Assets/Game/UIs/View/";
 	public const string IconsDir = "Assets/Game/UIs/Icons/";
 	public const string FontsDir = "Assets/Game/UIs/Fonts/";
 	public const string RawImagesDir = "Assets/Game/UIs/RawImages/";
 
 	public const string ActorDir = "Assets/Game/Actors/";
-	public const string ShaderDir = "Assets/Game/Shaders/";
+	// public const string ShaderDir = "Assets/Game/Shaders/";
 
 	public const string NoPack = "/nopack/";
 
-	// ָ������ͼƬѹ����ʽ
 	private static Dictionary<TextureImporterType, TextureImporterFormat> compressRules =
 		new Dictionary<TextureImporterType, TextureImporterFormat>
 		{
 			{TextureImporterType.NormalMap, TextureImporterFormat.ASTC_8x8}
 		};
 
-	//�������ǰ����
 	void OnPreprocessTexture()
 	{
 		var importer = (TextureImporter) assetImporter;
@@ -80,7 +77,6 @@ public class TextureAssetImporter : AssetPostprocessor
 
 	void PreprocessPlatform(TextureImporter importer)
 	{
-		//������SpriteAtlas��ѹ������
 		if (importer.textureType == TextureImporterType.Sprite)
 			return;
 		var noCompress = importer.assetPath.Contains("/Editor/")
@@ -101,7 +97,7 @@ public class TextureAssetImporter : AssetPostprocessor
 			importer.SetPlatformTextureSettings(defaultSettings);
 
 			var winSettings = importer.GetPlatformTextureSettings("Standalone");
-			if (PreprocessUnifyPlatform(importer, winSettings)) //pcƽ̨����������ߴ�
+			if (PreprocessUnifyPlatform(importer, winSettings))
 				importer.SetPlatformTextureSettings(winSettings);
 			var iosSettings = importer.GetPlatformTextureSettings("iPhone");
 			if (PreprocessUnifyPlatform(importer, iosSettings) || PreprocessTextureMaxSize(importer, iosSettings))
@@ -112,12 +108,11 @@ public class TextureAssetImporter : AssetPostprocessor
 		}
 	}
 
-	//������������ָ��ѹ����ʽ
 	static TextureImporterFormat GetCompressType(TextureImporterType type)
 	{
 		if (compressRules.TryGetValue(type, out var format))
 			return format;
-		return TextureImporterFormat.ASTC_6x6; //Ĭ��ѹ����ʽ
+		return TextureImporterFormat.ASTC_6x6;
 	}
 
 	bool PreprocessUnifyPlatform(TextureImporter importer, TextureImporterPlatformSettings settings)
@@ -138,7 +133,6 @@ public class TextureAssetImporter : AssetPostprocessor
 	}
 
 
-	//�������ʱ����
 	void OnPostprocessTexture(Texture2D texture)
 	{
 		var importer = (TextureImporter) assetImporter;
@@ -147,12 +141,11 @@ public class TextureAssetImporter : AssetPostprocessor
 		if (importer.assetPath.StartsWith("Assets/.")) return;
 
 		PostprocessResize2POT(importer, texture);
-		PostprocessNoPackTips(importer, texture);
+		ProcessNoPackTips(importer, texture);
 	}
 
 	void PostprocessResize2POT(TextureImporter importer, Texture2D texture)
 	{
-		//RawImage��Դ����ҪPOT
 		if (string.IsNullOrEmpty(importer.spritePackingTag))
 			return;
 		var w_mod = texture.width % 4;
@@ -176,16 +169,16 @@ public class TextureAssetImporter : AssetPostprocessor
 		tempIgnoreAssets.Remove(importer.assetPath);
 	}
 
-	void PostprocessNoPackTips(TextureImporter importer, Texture2D texture)
+	private void ProcessNoPackTips(TextureImporter importer, Texture2D texture)
 	{
 		if (importer.textureType != TextureImporterType.Sprite
 		    || importer.assetPath.ToLower().Contains(NoPack))
 			return;
 		if (texture.width > 1024 || texture.height > 1024)
 			Debug.LogError(
-				$"{importer.assetPath} <color=yellow>ͼƬ��������1024</color>, �뿼�Ƿŵ� nopack �� RawImages �ļ�����!");
+				$"{importer.assetPath} <color=yellow>图片宽或高大于1024</color>, 请考虑放到到 nopack 或 RawImages 里!");
 		else if (texture.width * texture.height > 400 * 400)
 			Debug.LogError(
-				$"{importer.assetPath} <color=yellow>ͼƬ�ߴ����400*400</color>, �뿼�Ƿŵ� nopack �� RawImages �ļ�����!");
+				$"{importer.assetPath} <color=yellow>图片尺寸大于400*400</color>, 请考虑放到到 nopack 或 RawImages 里!");
 	}
 }

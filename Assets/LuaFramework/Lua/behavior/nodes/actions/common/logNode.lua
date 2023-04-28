@@ -7,8 +7,8 @@
 ---@class logNode : ActionNode
 logNode = BaseClass(ActionNode)
 
-local _print = log
-local _error = logError
+local _print = print_log
+local _error = print_error
 
 function logNode:Update(delta_time)
     if self.data.is_error then

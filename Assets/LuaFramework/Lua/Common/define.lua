@@ -6,11 +6,6 @@ CtrlNames = {
 	AiManager = "AiManager",
 }
 
-PanelNames = {
-	"PromptPanel",	
-	"MessagePanel",
-}
-
 --协议类型--
 ProtocalType = {
 	BINARY = 0,
@@ -26,10 +21,10 @@ AppConst = LuaFramework.AppConst;
 LuaHelper = LuaFramework.LuaHelper;
 ByteBuffer = LuaFramework.ByteBuffer;
 
-resMgr = LuaHelper.GetResManager();
-panelMgr = LuaHelper.GetPanelManager();
-soundMgr = LuaHelper.GetSoundManager();
-networkMgr = LuaHelper.GetNetManager();
+ResMgr = LuaHelper.GetResManager();
+PanelMgr = LuaHelper.GetPanelManager();
+SoundMgr = LuaHelper.GetSoundManager();
+NetworkMgr = LuaHelper.GetNetManager();
 
 WWW = UnityEngine.WWW;
 GameObject = UnityEngine.GameObject;

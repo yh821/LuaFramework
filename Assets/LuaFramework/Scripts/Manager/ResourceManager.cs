@@ -71,7 +71,7 @@ namespace LuaFramework {
             }
             //string[] paths = m_AssetBundleManifest.GetAllAssetBundles();  产生GC，需要缓存结果
             for (int i = 0; i < m_AllManifest.Length; i++) {
-                int index = m_AllManifest[i].LastIndexOf('/');  
+                int index = m_AllManifest[i].LastIndexOf('/');
                 string path = m_AllManifest[i].Remove(0, index + 1);    //字符串操作函数都会产生GC
                 if (path.Equals(abName)) {
                     return m_AllManifest[i];
@@ -84,7 +84,7 @@ namespace LuaFramework {
         /// <summary>
         /// 载入素材
         /// </summary>
-        void LoadAsset<T>(string abName, string[] assetNames, Action<UObject[]> action = null, LuaFunction func = null) where T : UObject {
+        public void LoadAsset<T>(string abName, string[] assetNames, Action<UObject[]> action = null, LuaFunction func = null) where T : UObject {
             abName = GetRealAssetPath(abName);
 
             LoadAssetRequest request = new LoadAssetRequest();
@@ -112,7 +112,7 @@ namespace LuaFramework {
                 bundleInfo = GetLoadedAssetBundle(abName);
                 if (bundleInfo == null) {
                     m_LoadRequests.Remove(abName);
-                    Debug.LogError("OnLoadAsset--->>>" + abName);
+                    Debug.LogError("AssetBundle is null: " + abName);
                     yield break;
                 }
             }
@@ -268,7 +268,7 @@ namespace LuaFramework {
             uri = Util.DataPath + AppConst.AssetDir;
             if (!File.Exists(uri)) return;
             stream = File.ReadAllBytes(uri);
-            assetbundle = AssetBundle.CreateFromMemoryImmediate(stream);
+            assetbundle = AssetBundle.LoadFromMemory(stream);
             manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
 
@@ -308,7 +308,7 @@ namespace LuaFramework {
                 LoadDependencies(abname);
 
                 stream = File.ReadAllBytes(uri);
-                bundle = AssetBundle.CreateFromMemoryImmediate(stream); //关联数据的素材绑定
+                bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
                 bundles.Add(abname, bundle);
             } else {
                 bundles.TryGetValue(abname, out bundle);

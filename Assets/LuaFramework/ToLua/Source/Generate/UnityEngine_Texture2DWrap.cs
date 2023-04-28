@@ -31,6 +31,7 @@ public class UnityEngine_Texture2DWrap
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("format", get_format, null);
+		L.RegVar("ignoreMipmapLimit", get_ignoreMipmapLimit, set_ignoreMipmapLimit);
 		L.RegVar("whiteTexture", get_whiteTexture, null);
 		L.RegVar("blackTexture", get_blackTexture, null);
 		L.RegVar("redTexture", get_redTexture, null);
@@ -837,6 +838,25 @@ public class UnityEngine_Texture2DWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_ignoreMipmapLimit(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture2D obj = (UnityEngine.Texture2D)o;
+			bool ret = obj.ignoreMipmapLimit;
+			LuaDLL.lua_pushboolean(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index ignoreMipmapLimit on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_whiteTexture(IntPtr L)
 	{
 		try
@@ -1107,6 +1127,25 @@ public class UnityEngine_Texture2DWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index loadedMipmapLevel on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_ignoreMipmapLimit(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			UnityEngine.Texture2D obj = (UnityEngine.Texture2D)o;
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			obj.ignoreMipmapLimit = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index ignoreMipmapLimit on a nil value");
 		}
 	}
 
