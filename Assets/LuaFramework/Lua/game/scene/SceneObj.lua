@@ -4,6 +4,7 @@
 ---
 
 ---@class SceneObj
+---@field draw_obj DrawObj
 SceneObj = SceneObj or BaseClass()
 
 SceneObjLayer = GameObject.Find("GameRoot/SceneObjLayer")
@@ -12,17 +13,49 @@ function SceneObj:__init(vo, parent_scene)
     self.vo = vo
     self.parent_scene = parent_scene
 
-    self.__CreateDrawObj()
+    self.draw_obj = self:CreateDrawObj()
 
     self.moving = false
-end
 
-function SceneObj:__CreateDrawObj()
-    local vo = self.vo
-    self.draw_obj = DrawObj.New(self, SceneObjLayer.transform)
+    self.is_wait_enter_scene = true
+    SceneObj.wait_enter_scene_obj_count = SceneObj.wait_enter_scene_obj_count + 1
+    self.wait_enter_scene_num = math.ceil(SceneObj.wait_enter_scene_obj_count / 2)
 end
 
 function SceneObj:__delete()
 end
 
+---@return DrawObj
+function SceneObj:CreateDrawObj()
+    local vo = self.vo
+    local draw_obj = DrawObj.New(self, SceneObjLayer.transform)
+    return draw_obj
+end
 
+function SceneObj:Update(realtime, unscaledDeltaTime)
+    self.wait_enter_scene_num = self.wait_enter_scene_num - 1
+    if self.wait_enter_scene_num <= 0 then
+        self:OnEnterScene()
+    end
+end
+
+function SceneObj:OnEnterScene()
+    self.is_enter_scene = true
+    if self.is_wait_enter_scene then
+        SceneObj.wait_enter_scene_obj_count = math.max(0, SceneObj.wait_enter_scene_obj_count - 1)
+    end
+    self.is_wait_enter_scene = false
+    self:InitAppearance()
+end
+
+function SceneObj:InitAppearance()
+end
+
+function SceneObj:ChangeModel(part, bundle, asset, callback)
+    if not self.draw_obj or self.draw_obj:IsDeleted() then
+        return
+    end
+    local part_obj = self.draw_obj:GetPart(part)
+    part_obj.load_priority = self.load_priority
+    part_obj:ChangeModel(bundle, asset, callback)
+end

@@ -5,6 +5,7 @@ IND = -9000000000000000 -- 0/0 --无穷小
 require("common/BaseClass")
 require("common/util")
 require("game/common/U3DObject")
+require("common/Vector3Pool")
 
 function __TRACK_BACK__(msg)
     local track_text = debug.traceback(tostring(msg))

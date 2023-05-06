@@ -3,16 +3,14 @@
 --- DateTime: 2023/5/6 17:43
 ---
 
+require("game/core/DrawPart")
+require("game/core/DrawObj")
+
 require("game/scene/SceneObj")
 require("game/scene/Monster")
 
-SceneObjType = {
-    Unknown = 0,
-    Role = 1,
-    Monster = 2,
-}
-
 ---@class Scene
+---@field obj_list SceneObj[]
 Scene = Scene or BaseClass()
 
 function Scene:__init()
@@ -23,9 +21,13 @@ function Scene:__init()
     Scene.Instance = self
 
     self.obj_list = {}
+
+    Runner.Instance:AddRunObj(self, 6)
 end
 
 function Scene:__delete()
+    Runner.Instance:RemoveRunObj(self)
+
     self:DeleteAllObj()
 
     Scene.Instance = nil
@@ -38,9 +40,14 @@ function Scene:DeleteAllObj()
     end
 end
 
+---@return Role
+function Scene:CreateRole(vo)
+    return self:CreateObj(vo, SceneObjType.Role)
+end
+
 ---@return Monster
 function Scene:CreateMonster(vo)
-    return self.CreateObj(vo, SceneObjType.Monster)
+    return self:CreateObj(vo, SceneObjType.Monster)
 end
 
 local client_obj_id = 0x10000
@@ -61,10 +68,16 @@ function Scene:CreateObj(vo, obj_type)
     ---@type SceneObj
     local obj
     if obj_type == SceneObjType.Role then
-        obj = Role.New(vo)
+        obj = Role.New(vo, self)
     elseif obj_type == SceneObjType.Monster then
-        obj = Monster.New(vo)
+        obj = Monster.New(vo, self)
     end
     obj.draw_obj:SetObjType(obj_type)
     return obj
+end
+
+function Scene:Update(realtime, unscaledDeltaTime)
+    for _, v in pairs(self.obj_list) do
+        v:Update(realtime, unscaledDeltaTime)
+    end
 end

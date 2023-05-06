@@ -48,6 +48,8 @@ function Game.Start()
     if MainUiCtrl.Instance then
         MainUiCtrl.Instance:Open()
     end
+
+    Scene.Instance:CreateMonster({ obj_id = 11 })
 end
 
 

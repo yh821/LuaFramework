@@ -4,6 +4,12 @@
 --- DateTime: 2023/4/26 14:06
 ---
 
+SceneObjType = {
+    Unknown = 0,
+    Role = 1,
+    Monster = 2,
+}
+
 ---@class DrawObj
 ---@field part_list DrawPart[]
 DrawObj = DrawObj or BaseClass()
@@ -26,6 +32,8 @@ function DrawObj:__init(parent_obj, parent_trans)
     if parent_trans then
         self.root_transform:SetParent(parent_trans, false)
     end
+
+    self.obj_type = SceneObjType.Unknown
 end
 
 function DrawObj:__delete()
@@ -51,5 +59,64 @@ function DrawObj.Pop()
     else
         draw_obj = U3DObject(GameObject.New("DrawObj"))
         draw_obj.gameObject:AddComponent(TypeMoveableObject)
+    end
+    return draw_obj
+end
+
+function DrawObj.Release(draw_obj)
+    if DrawObj.obj_count <= 50 then
+        if not IsNil(draw_obj.gameObject) then
+            draw_obj.move_obj:Reset()
+            draw_obj.transform:SetParent(DrawObj.obj_root, false)
+            DrawObj.obj_list[draw_obj] = draw_obj
+            DrawObj.obj_count = DrawObj.obj_count + 1
+        end
+    else
+        GameObject.Destroy(draw_obj.gameObject)
+    end
+end
+
+function DrawObj:SetObjType(obj_type)
+    self.obj_type = obj_type
+end
+
+function DrawObj:IsDeleted()
+    return self.root == nil
+end
+
+function DrawObj:GetRoot()
+    return self.root
+end
+
+function DrawObj:__CreatePart(part)
+    local draw_part = DrawPart.Pop()
+end
+
+---@return DrawPart
+function DrawObj:GetPart(part)
+    local draw_part = self:TryGetPart(part)
+    if not draw_part then
+        draw_part = self:__CreatePart(part)
+    end
+    return draw_part
+end
+
+function DrawObj:SetPart(part, obj)
+    if not self.part_list then
+        self.part_list = {}
+    end
+    self.part_list[part] = obj
+end
+
+function DrawObj:TryGetPart(part)
+    if self.part_list then
+        return self.part_list[part]
+    end
+end
+
+function DrawObj:RemoveModel(part)
+    local draw_part = self:TryGetPart(part)
+    if draw_part then
+        draw_part:RemoveModel()
     end
 end

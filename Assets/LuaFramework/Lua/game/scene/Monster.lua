@@ -11,3 +11,11 @@ end
 
 function Monster:__delete()
 end
+
+function Monster:InitAppearance()
+    self:InitModel()
+end
+
+function Monster:InitModel()
+    self:ChangeModel()
+end
