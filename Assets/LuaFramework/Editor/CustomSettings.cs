@@ -77,7 +77,7 @@ public static class CustomSettings
 		_GT(typeof(PathMode)),
 		_GT(typeof(PathType)),
 		_GT(typeof(RotateMode)),
-		_GT(typeof(Component)).AddExtendType(typeof(ShortcutExtensions)),
+		_GT(typeof(Component)).AddExtendType(typeof(ComponentExtension)).AddExtendType(typeof(ShortcutExtensions)),
 		_GT(typeof(Transform)).AddExtendType(typeof(ShortcutExtensions)),
 		_GT(typeof(Light)).AddExtendType(typeof(ShortcutExtensions)),
 		_GT(typeof(Material)).AddExtendType(typeof(ShortcutExtensions)),
@@ -157,7 +157,6 @@ public static class CustomSettings
 
 		#region UGUI
 		//_GT(typeof()),
-		_GT(typeof(Component)).AddExtendType(typeof(ComponentExtension)).AddExtendType(typeof(ShortcutExtensions)),
 		_GT(typeof(RectTransform)),
 		_GT(typeof(Canvas)),
 		_GT(typeof(CanvasGroup)),

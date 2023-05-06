@@ -19,6 +19,7 @@ public class UnityEngine_ComponentWrap
 		L.RegFunction("SendMessageUpwards", SendMessageUpwards);
 		L.RegFunction("SendMessage", SendMessage);
 		L.RegFunction("BroadcastMessage", BroadcastMessage);
+		L.RegFunction("GetOrAddComponent", GetOrAddComponent);
 		L.RegFunction("DOTogglePause", DOTogglePause);
 		L.RegFunction("DOSmoothRewind", DOSmoothRewind);
 		L.RegFunction("DORewind", DORewind);
@@ -453,6 +454,24 @@ public class UnityEngine_ComponentWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Component.BroadcastMessage");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetOrAddComponent(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.Component obj = (UnityEngine.Component)ToLua.CheckObject<UnityEngine.Component>(L, 1);
+			System.Type arg0 = ToLua.CheckMonoType(L, 2);
+			UnityEngine.Component o = obj.GetOrAddComponent(arg0);
+			ToLua.Push(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{
