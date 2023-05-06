@@ -3,6 +3,8 @@
 --- Created by yuanhuan.
 --- DateTime: 2023/1/3 17:44
 ---
+
+---@class Runner
 Runner = Runner or BaseClass()
 
 Status = {

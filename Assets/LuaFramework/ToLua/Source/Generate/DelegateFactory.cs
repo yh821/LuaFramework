@@ -23,6 +23,37 @@ public class DelegateFactory
 		dict.Add(typeof(System.Action<int>), factory.System_Action_int);
 		dict.Add(typeof(System.Comparison<int>), factory.System_Comparison_int);
 		dict.Add(typeof(System.Func<int,int>), factory.System_Func_int_int);
+		dict.Add(typeof(System.Func<UnityEngine.LogType,object,bool>), factory.System_Func_UnityEngine_LogType_object_bool);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<float>), factory.DG_Tweening_Core_DOGetter_float);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<float>), factory.DG_Tweening_Core_DOSetter_float);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<double>), factory.DG_Tweening_Core_DOGetter_double);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<double>), factory.DG_Tweening_Core_DOSetter_double);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<int>), factory.DG_Tweening_Core_DOGetter_int);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<int>), factory.DG_Tweening_Core_DOSetter_int);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<uint>), factory.DG_Tweening_Core_DOGetter_uint);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<uint>), factory.DG_Tweening_Core_DOSetter_uint);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<long>), factory.DG_Tweening_Core_DOGetter_long);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<long>), factory.DG_Tweening_Core_DOSetter_long);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<ulong>), factory.DG_Tweening_Core_DOGetter_ulong);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<ulong>), factory.DG_Tweening_Core_DOSetter_ulong);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<string>), factory.DG_Tweening_Core_DOGetter_string);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<string>), factory.DG_Tweening_Core_DOSetter_string);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Vector2>), factory.DG_Tweening_Core_DOGetter_UnityEngine_Vector2);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Vector2>), factory.DG_Tweening_Core_DOSetter_UnityEngine_Vector2);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Vector3>), factory.DG_Tweening_Core_DOGetter_UnityEngine_Vector3);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Vector3>), factory.DG_Tweening_Core_DOSetter_UnityEngine_Vector3);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Vector4>), factory.DG_Tweening_Core_DOGetter_UnityEngine_Vector4);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Vector4>), factory.DG_Tweening_Core_DOSetter_UnityEngine_Vector4);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Quaternion>), factory.DG_Tweening_Core_DOGetter_UnityEngine_Quaternion);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Quaternion>), factory.DG_Tweening_Core_DOSetter_UnityEngine_Quaternion);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Color>), factory.DG_Tweening_Core_DOGetter_UnityEngine_Color);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Color>), factory.DG_Tweening_Core_DOSetter_UnityEngine_Color);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Rect>), factory.DG_Tweening_Core_DOGetter_UnityEngine_Rect);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Rect>), factory.DG_Tweening_Core_DOSetter_UnityEngine_Rect);
+		dict.Add(typeof(DG.Tweening.Core.DOGetter<UnityEngine.RectOffset>), factory.DG_Tweening_Core_DOGetter_UnityEngine_RectOffset);
+		dict.Add(typeof(DG.Tweening.Core.DOSetter<UnityEngine.RectOffset>), factory.DG_Tweening_Core_DOSetter_UnityEngine_RectOffset);
+		dict.Add(typeof(DG.Tweening.TweenCallback), factory.DG_Tweening_TweenCallback);
+		dict.Add(typeof(DG.Tweening.TweenCallback<int>), factory.DG_Tweening_TweenCallback_int);
 		dict.Add(typeof(UnityEngine.Camera.CameraCallback), factory.UnityEngine_Camera_CameraCallback);
 		dict.Add(typeof(UnityEngine.Application.AdvertisingIdentifierCallback), factory.UnityEngine_Application_AdvertisingIdentifierCallback);
 		dict.Add(typeof(UnityEngine.Application.LowMemoryCallback), factory.UnityEngine_Application_LowMemoryCallback);
@@ -33,8 +64,48 @@ public class DelegateFactory
 		dict.Add(typeof(UnityEngine.AudioClip.PCMReaderCallback), factory.UnityEngine_AudioClip_PCMReaderCallback);
 		dict.Add(typeof(UnityEngine.AudioClip.PCMSetPositionCallback), factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		dict.Add(typeof(System.Action<UnityEngine.AsyncOperation>), factory.System_Action_UnityEngine_AsyncOperation);
-		dict.Add(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		dict.Add(typeof(System.Action<NotiData>), factory.System_Action_NotiData);
+		dict.Add(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
+		dict.Add(typeof(UnityEngine.Canvas.WillRenderCanvases), factory.UnityEngine_Canvas_WillRenderCanvases);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_DragHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.TwistHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_TwistHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.PinchHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_PinchHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler);
+		dict.Add(typeof(HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler), factory.HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler);
 
 		DelegateTraits<System.Action>.Init(factory.System_Action);
 		DelegateTraits<UnityEngine.Events.UnityAction>.Init(factory.UnityEngine_Events_UnityAction);
@@ -42,6 +113,37 @@ public class DelegateFactory
 		DelegateTraits<System.Action<int>>.Init(factory.System_Action_int);
 		DelegateTraits<System.Comparison<int>>.Init(factory.System_Comparison_int);
 		DelegateTraits<System.Func<int,int>>.Init(factory.System_Func_int_int);
+		DelegateTraits<System.Func<UnityEngine.LogType,object,bool>>.Init(factory.System_Func_UnityEngine_LogType_object_bool);
+		DelegateTraits<DG.Tweening.Core.DOGetter<float>>.Init(factory.DG_Tweening_Core_DOGetter_float);
+		DelegateTraits<DG.Tweening.Core.DOSetter<float>>.Init(factory.DG_Tweening_Core_DOSetter_float);
+		DelegateTraits<DG.Tweening.Core.DOGetter<double>>.Init(factory.DG_Tweening_Core_DOGetter_double);
+		DelegateTraits<DG.Tweening.Core.DOSetter<double>>.Init(factory.DG_Tweening_Core_DOSetter_double);
+		DelegateTraits<DG.Tweening.Core.DOGetter<int>>.Init(factory.DG_Tweening_Core_DOGetter_int);
+		DelegateTraits<DG.Tweening.Core.DOSetter<int>>.Init(factory.DG_Tweening_Core_DOSetter_int);
+		DelegateTraits<DG.Tweening.Core.DOGetter<uint>>.Init(factory.DG_Tweening_Core_DOGetter_uint);
+		DelegateTraits<DG.Tweening.Core.DOSetter<uint>>.Init(factory.DG_Tweening_Core_DOSetter_uint);
+		DelegateTraits<DG.Tweening.Core.DOGetter<long>>.Init(factory.DG_Tweening_Core_DOGetter_long);
+		DelegateTraits<DG.Tweening.Core.DOSetter<long>>.Init(factory.DG_Tweening_Core_DOSetter_long);
+		DelegateTraits<DG.Tweening.Core.DOGetter<ulong>>.Init(factory.DG_Tweening_Core_DOGetter_ulong);
+		DelegateTraits<DG.Tweening.Core.DOSetter<ulong>>.Init(factory.DG_Tweening_Core_DOSetter_ulong);
+		DelegateTraits<DG.Tweening.Core.DOGetter<string>>.Init(factory.DG_Tweening_Core_DOGetter_string);
+		DelegateTraits<DG.Tweening.Core.DOSetter<string>>.Init(factory.DG_Tweening_Core_DOSetter_string);
+		DelegateTraits<DG.Tweening.Core.DOGetter<UnityEngine.Vector2>>.Init(factory.DG_Tweening_Core_DOGetter_UnityEngine_Vector2);
+		DelegateTraits<DG.Tweening.Core.DOSetter<UnityEngine.Vector2>>.Init(factory.DG_Tweening_Core_DOSetter_UnityEngine_Vector2);
+		DelegateTraits<DG.Tweening.Core.DOGetter<UnityEngine.Vector3>>.Init(factory.DG_Tweening_Core_DOGetter_UnityEngine_Vector3);
+		DelegateTraits<DG.Tweening.Core.DOSetter<UnityEngine.Vector3>>.Init(factory.DG_Tweening_Core_DOSetter_UnityEngine_Vector3);
+		DelegateTraits<DG.Tweening.Core.DOGetter<UnityEngine.Vector4>>.Init(factory.DG_Tweening_Core_DOGetter_UnityEngine_Vector4);
+		DelegateTraits<DG.Tweening.Core.DOSetter<UnityEngine.Vector4>>.Init(factory.DG_Tweening_Core_DOSetter_UnityEngine_Vector4);
+		DelegateTraits<DG.Tweening.Core.DOGetter<UnityEngine.Quaternion>>.Init(factory.DG_Tweening_Core_DOGetter_UnityEngine_Quaternion);
+		DelegateTraits<DG.Tweening.Core.DOSetter<UnityEngine.Quaternion>>.Init(factory.DG_Tweening_Core_DOSetter_UnityEngine_Quaternion);
+		DelegateTraits<DG.Tweening.Core.DOGetter<UnityEngine.Color>>.Init(factory.DG_Tweening_Core_DOGetter_UnityEngine_Color);
+		DelegateTraits<DG.Tweening.Core.DOSetter<UnityEngine.Color>>.Init(factory.DG_Tweening_Core_DOSetter_UnityEngine_Color);
+		DelegateTraits<DG.Tweening.Core.DOGetter<UnityEngine.Rect>>.Init(factory.DG_Tweening_Core_DOGetter_UnityEngine_Rect);
+		DelegateTraits<DG.Tweening.Core.DOSetter<UnityEngine.Rect>>.Init(factory.DG_Tweening_Core_DOSetter_UnityEngine_Rect);
+		DelegateTraits<DG.Tweening.Core.DOGetter<UnityEngine.RectOffset>>.Init(factory.DG_Tweening_Core_DOGetter_UnityEngine_RectOffset);
+		DelegateTraits<DG.Tweening.Core.DOSetter<UnityEngine.RectOffset>>.Init(factory.DG_Tweening_Core_DOSetter_UnityEngine_RectOffset);
+		DelegateTraits<DG.Tweening.TweenCallback>.Init(factory.DG_Tweening_TweenCallback);
+		DelegateTraits<DG.Tweening.TweenCallback<int>>.Init(factory.DG_Tweening_TweenCallback_int);
 		DelegateTraits<UnityEngine.Camera.CameraCallback>.Init(factory.UnityEngine_Camera_CameraCallback);
 		DelegateTraits<UnityEngine.Application.AdvertisingIdentifierCallback>.Init(factory.UnityEngine_Application_AdvertisingIdentifierCallback);
 		DelegateTraits<UnityEngine.Application.LowMemoryCallback>.Init(factory.UnityEngine_Application_LowMemoryCallback);
@@ -52,8 +154,48 @@ public class DelegateFactory
 		DelegateTraits<UnityEngine.AudioClip.PCMReaderCallback>.Init(factory.UnityEngine_AudioClip_PCMReaderCallback);
 		DelegateTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		DelegateTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.System_Action_UnityEngine_AsyncOperation);
-		DelegateTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		DelegateTraits<System.Action<NotiData>>.Init(factory.System_Action_NotiData);
+		DelegateTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
+		DelegateTraits<UnityEngine.Canvas.WillRenderCanvases>.Init(factory.UnityEngine_Canvas_WillRenderCanvases);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.DragHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_DragHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.TwistHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_TwistHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_PinchHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler);
+		DelegateTraits<HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler>.Init(factory.HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler);
 
 		TypeTraits<System.Action>.Init(factory.Check_System_Action);
 		TypeTraits<UnityEngine.Events.UnityAction>.Init(factory.Check_UnityEngine_Events_UnityAction);
@@ -61,6 +203,37 @@ public class DelegateFactory
 		TypeTraits<System.Action<int>>.Init(factory.Check_System_Action_int);
 		TypeTraits<System.Comparison<int>>.Init(factory.Check_System_Comparison_int);
 		TypeTraits<System.Func<int,int>>.Init(factory.Check_System_Func_int_int);
+		TypeTraits<System.Func<UnityEngine.LogType,object,bool>>.Init(factory.Check_System_Func_UnityEngine_LogType_object_bool);
+		TypeTraits<DG.Tweening.Core.DOGetter<float>>.Init(factory.Check_DG_Tweening_Core_DOGetter_float);
+		TypeTraits<DG.Tweening.Core.DOSetter<float>>.Init(factory.Check_DG_Tweening_Core_DOSetter_float);
+		TypeTraits<DG.Tweening.Core.DOGetter<double>>.Init(factory.Check_DG_Tweening_Core_DOGetter_double);
+		TypeTraits<DG.Tweening.Core.DOSetter<double>>.Init(factory.Check_DG_Tweening_Core_DOSetter_double);
+		TypeTraits<DG.Tweening.Core.DOGetter<int>>.Init(factory.Check_DG_Tweening_Core_DOGetter_int);
+		TypeTraits<DG.Tweening.Core.DOSetter<int>>.Init(factory.Check_DG_Tweening_Core_DOSetter_int);
+		TypeTraits<DG.Tweening.Core.DOGetter<uint>>.Init(factory.Check_DG_Tweening_Core_DOGetter_uint);
+		TypeTraits<DG.Tweening.Core.DOSetter<uint>>.Init(factory.Check_DG_Tweening_Core_DOSetter_uint);
+		TypeTraits<DG.Tweening.Core.DOGetter<long>>.Init(factory.Check_DG_Tweening_Core_DOGetter_long);
+		TypeTraits<DG.Tweening.Core.DOSetter<long>>.Init(factory.Check_DG_Tweening_Core_DOSetter_long);
+		TypeTraits<DG.Tweening.Core.DOGetter<ulong>>.Init(factory.Check_DG_Tweening_Core_DOGetter_ulong);
+		TypeTraits<DG.Tweening.Core.DOSetter<ulong>>.Init(factory.Check_DG_Tweening_Core_DOSetter_ulong);
+		TypeTraits<DG.Tweening.Core.DOGetter<string>>.Init(factory.Check_DG_Tweening_Core_DOGetter_string);
+		TypeTraits<DG.Tweening.Core.DOSetter<string>>.Init(factory.Check_DG_Tweening_Core_DOSetter_string);
+		TypeTraits<DG.Tweening.Core.DOGetter<UnityEngine.Vector2>>.Init(factory.Check_DG_Tweening_Core_DOGetter_UnityEngine_Vector2);
+		TypeTraits<DG.Tweening.Core.DOSetter<UnityEngine.Vector2>>.Init(factory.Check_DG_Tweening_Core_DOSetter_UnityEngine_Vector2);
+		TypeTraits<DG.Tweening.Core.DOGetter<UnityEngine.Vector3>>.Init(factory.Check_DG_Tweening_Core_DOGetter_UnityEngine_Vector3);
+		TypeTraits<DG.Tweening.Core.DOSetter<UnityEngine.Vector3>>.Init(factory.Check_DG_Tweening_Core_DOSetter_UnityEngine_Vector3);
+		TypeTraits<DG.Tweening.Core.DOGetter<UnityEngine.Vector4>>.Init(factory.Check_DG_Tweening_Core_DOGetter_UnityEngine_Vector4);
+		TypeTraits<DG.Tweening.Core.DOSetter<UnityEngine.Vector4>>.Init(factory.Check_DG_Tweening_Core_DOSetter_UnityEngine_Vector4);
+		TypeTraits<DG.Tweening.Core.DOGetter<UnityEngine.Quaternion>>.Init(factory.Check_DG_Tweening_Core_DOGetter_UnityEngine_Quaternion);
+		TypeTraits<DG.Tweening.Core.DOSetter<UnityEngine.Quaternion>>.Init(factory.Check_DG_Tweening_Core_DOSetter_UnityEngine_Quaternion);
+		TypeTraits<DG.Tweening.Core.DOGetter<UnityEngine.Color>>.Init(factory.Check_DG_Tweening_Core_DOGetter_UnityEngine_Color);
+		TypeTraits<DG.Tweening.Core.DOSetter<UnityEngine.Color>>.Init(factory.Check_DG_Tweening_Core_DOSetter_UnityEngine_Color);
+		TypeTraits<DG.Tweening.Core.DOGetter<UnityEngine.Rect>>.Init(factory.Check_DG_Tweening_Core_DOGetter_UnityEngine_Rect);
+		TypeTraits<DG.Tweening.Core.DOSetter<UnityEngine.Rect>>.Init(factory.Check_DG_Tweening_Core_DOSetter_UnityEngine_Rect);
+		TypeTraits<DG.Tweening.Core.DOGetter<UnityEngine.RectOffset>>.Init(factory.Check_DG_Tweening_Core_DOGetter_UnityEngine_RectOffset);
+		TypeTraits<DG.Tweening.Core.DOSetter<UnityEngine.RectOffset>>.Init(factory.Check_DG_Tweening_Core_DOSetter_UnityEngine_RectOffset);
+		TypeTraits<DG.Tweening.TweenCallback>.Init(factory.Check_DG_Tweening_TweenCallback);
+		TypeTraits<DG.Tweening.TweenCallback<int>>.Init(factory.Check_DG_Tweening_TweenCallback_int);
 		TypeTraits<UnityEngine.Camera.CameraCallback>.Init(factory.Check_UnityEngine_Camera_CameraCallback);
 		TypeTraits<UnityEngine.Application.AdvertisingIdentifierCallback>.Init(factory.Check_UnityEngine_Application_AdvertisingIdentifierCallback);
 		TypeTraits<UnityEngine.Application.LowMemoryCallback>.Init(factory.Check_UnityEngine_Application_LowMemoryCallback);
@@ -71,8 +244,48 @@ public class DelegateFactory
 		TypeTraits<UnityEngine.AudioClip.PCMReaderCallback>.Init(factory.Check_UnityEngine_AudioClip_PCMReaderCallback);
 		TypeTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.Check_UnityEngine_AudioClip_PCMSetPositionCallback);
 		TypeTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.Check_System_Action_UnityEngine_AsyncOperation);
-		TypeTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.Check_UnityEngine_RectTransform_ReapplyDrivenProperties);
 		TypeTraits<System.Action<NotiData>>.Init(factory.Check_System_Action_NotiData);
+		TypeTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.Check_UnityEngine_RectTransform_ReapplyDrivenProperties);
+		TypeTraits<UnityEngine.Canvas.WillRenderCanvases>.Init(factory.Check_UnityEngine_Canvas_WillRenderCanvases);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.DragHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_DragHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.TwistHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_TwistHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_PinchHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler);
+		TypeTraits<HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler>.Init(factory.Check_HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler);
 
 		StackTraits<System.Action>.Push = factory.Push_System_Action;
 		StackTraits<UnityEngine.Events.UnityAction>.Push = factory.Push_UnityEngine_Events_UnityAction;
@@ -80,6 +293,37 @@ public class DelegateFactory
 		StackTraits<System.Action<int>>.Push = factory.Push_System_Action_int;
 		StackTraits<System.Comparison<int>>.Push = factory.Push_System_Comparison_int;
 		StackTraits<System.Func<int,int>>.Push = factory.Push_System_Func_int_int;
+		StackTraits<System.Func<UnityEngine.LogType,object,bool>>.Push = factory.Push_System_Func_UnityEngine_LogType_object_bool;
+		StackTraits<DG.Tweening.Core.DOGetter<float>>.Push = factory.Push_DG_Tweening_Core_DOGetter_float;
+		StackTraits<DG.Tweening.Core.DOSetter<float>>.Push = factory.Push_DG_Tweening_Core_DOSetter_float;
+		StackTraits<DG.Tweening.Core.DOGetter<double>>.Push = factory.Push_DG_Tweening_Core_DOGetter_double;
+		StackTraits<DG.Tweening.Core.DOSetter<double>>.Push = factory.Push_DG_Tweening_Core_DOSetter_double;
+		StackTraits<DG.Tweening.Core.DOGetter<int>>.Push = factory.Push_DG_Tweening_Core_DOGetter_int;
+		StackTraits<DG.Tweening.Core.DOSetter<int>>.Push = factory.Push_DG_Tweening_Core_DOSetter_int;
+		StackTraits<DG.Tweening.Core.DOGetter<uint>>.Push = factory.Push_DG_Tweening_Core_DOGetter_uint;
+		StackTraits<DG.Tweening.Core.DOSetter<uint>>.Push = factory.Push_DG_Tweening_Core_DOSetter_uint;
+		StackTraits<DG.Tweening.Core.DOGetter<long>>.Push = factory.Push_DG_Tweening_Core_DOGetter_long;
+		StackTraits<DG.Tweening.Core.DOSetter<long>>.Push = factory.Push_DG_Tweening_Core_DOSetter_long;
+		StackTraits<DG.Tweening.Core.DOGetter<ulong>>.Push = factory.Push_DG_Tweening_Core_DOGetter_ulong;
+		StackTraits<DG.Tweening.Core.DOSetter<ulong>>.Push = factory.Push_DG_Tweening_Core_DOSetter_ulong;
+		StackTraits<DG.Tweening.Core.DOGetter<string>>.Push = factory.Push_DG_Tweening_Core_DOGetter_string;
+		StackTraits<DG.Tweening.Core.DOSetter<string>>.Push = factory.Push_DG_Tweening_Core_DOSetter_string;
+		StackTraits<DG.Tweening.Core.DOGetter<UnityEngine.Vector2>>.Push = factory.Push_DG_Tweening_Core_DOGetter_UnityEngine_Vector2;
+		StackTraits<DG.Tweening.Core.DOSetter<UnityEngine.Vector2>>.Push = factory.Push_DG_Tweening_Core_DOSetter_UnityEngine_Vector2;
+		StackTraits<DG.Tweening.Core.DOGetter<UnityEngine.Vector3>>.Push = factory.Push_DG_Tweening_Core_DOGetter_UnityEngine_Vector3;
+		StackTraits<DG.Tweening.Core.DOSetter<UnityEngine.Vector3>>.Push = factory.Push_DG_Tweening_Core_DOSetter_UnityEngine_Vector3;
+		StackTraits<DG.Tweening.Core.DOGetter<UnityEngine.Vector4>>.Push = factory.Push_DG_Tweening_Core_DOGetter_UnityEngine_Vector4;
+		StackTraits<DG.Tweening.Core.DOSetter<UnityEngine.Vector4>>.Push = factory.Push_DG_Tweening_Core_DOSetter_UnityEngine_Vector4;
+		StackTraits<DG.Tweening.Core.DOGetter<UnityEngine.Quaternion>>.Push = factory.Push_DG_Tweening_Core_DOGetter_UnityEngine_Quaternion;
+		StackTraits<DG.Tweening.Core.DOSetter<UnityEngine.Quaternion>>.Push = factory.Push_DG_Tweening_Core_DOSetter_UnityEngine_Quaternion;
+		StackTraits<DG.Tweening.Core.DOGetter<UnityEngine.Color>>.Push = factory.Push_DG_Tweening_Core_DOGetter_UnityEngine_Color;
+		StackTraits<DG.Tweening.Core.DOSetter<UnityEngine.Color>>.Push = factory.Push_DG_Tweening_Core_DOSetter_UnityEngine_Color;
+		StackTraits<DG.Tweening.Core.DOGetter<UnityEngine.Rect>>.Push = factory.Push_DG_Tweening_Core_DOGetter_UnityEngine_Rect;
+		StackTraits<DG.Tweening.Core.DOSetter<UnityEngine.Rect>>.Push = factory.Push_DG_Tweening_Core_DOSetter_UnityEngine_Rect;
+		StackTraits<DG.Tweening.Core.DOGetter<UnityEngine.RectOffset>>.Push = factory.Push_DG_Tweening_Core_DOGetter_UnityEngine_RectOffset;
+		StackTraits<DG.Tweening.Core.DOSetter<UnityEngine.RectOffset>>.Push = factory.Push_DG_Tweening_Core_DOSetter_UnityEngine_RectOffset;
+		StackTraits<DG.Tweening.TweenCallback>.Push = factory.Push_DG_Tweening_TweenCallback;
+		StackTraits<DG.Tweening.TweenCallback<int>>.Push = factory.Push_DG_Tweening_TweenCallback_int;
 		StackTraits<UnityEngine.Camera.CameraCallback>.Push = factory.Push_UnityEngine_Camera_CameraCallback;
 		StackTraits<UnityEngine.Application.AdvertisingIdentifierCallback>.Push = factory.Push_UnityEngine_Application_AdvertisingIdentifierCallback;
 		StackTraits<UnityEngine.Application.LowMemoryCallback>.Push = factory.Push_UnityEngine_Application_LowMemoryCallback;
@@ -90,8 +334,48 @@ public class DelegateFactory
 		StackTraits<UnityEngine.AudioClip.PCMReaderCallback>.Push = factory.Push_UnityEngine_AudioClip_PCMReaderCallback;
 		StackTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Push = factory.Push_UnityEngine_AudioClip_PCMSetPositionCallback;
 		StackTraits<System.Action<UnityEngine.AsyncOperation>>.Push = factory.Push_System_Action_UnityEngine_AsyncOperation;
-		StackTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Push = factory.Push_UnityEngine_RectTransform_ReapplyDrivenProperties;
 		StackTraits<System.Action<NotiData>>.Push = factory.Push_System_Action_NotiData;
+		StackTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Push = factory.Push_UnityEngine_RectTransform_ReapplyDrivenProperties;
+		StackTraits<UnityEngine.Canvas.WillRenderCanvases>.Push = factory.Push_UnityEngine_Canvas_WillRenderCanvases;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.DragHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_DragHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.TwistHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_TwistHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_PinchHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler;
+		StackTraits<HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler>.Push = factory.Push_HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler;
 	}
     
     public static Delegate CreateDelegate(Type t, LuaFunction func = null)
@@ -547,6 +831,1803 @@ public class DelegateFactory
 	}
 
 	void Push_System_Func_int_int(IntPtr L, System.Func<int,int> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class System_Func_UnityEngine_LogType_object_bool_Event : LuaDelegate
+	{
+		public System_Func_UnityEngine_LogType_object_bool_Event(LuaFunction func) : base(func) { }
+		public System_Func_UnityEngine_LogType_object_bool_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public bool Call(UnityEngine.LogType param0, object param1)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.Push(param1);
+			func.PCall();
+			bool ret = func.CheckBoolean();
+			func.EndPCall();
+			return ret;
+		}
+
+		public bool CallWithSelf(UnityEngine.LogType param0, object param1)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.Push(param1);
+			func.PCall();
+			bool ret = func.CheckBoolean();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public System.Func<UnityEngine.LogType,object,bool> System_Func_UnityEngine_LogType_object_bool(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			System.Func<UnityEngine.LogType,object,bool> fn = delegate(UnityEngine.LogType param0, object param1) { return false; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			System_Func_UnityEngine_LogType_object_bool_Event target = new System_Func_UnityEngine_LogType_object_bool_Event(func);
+			System.Func<UnityEngine.LogType,object,bool> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			System_Func_UnityEngine_LogType_object_bool_Event target = new System_Func_UnityEngine_LogType_object_bool_Event(func, self);
+			System.Func<UnityEngine.LogType,object,bool> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_System_Func_UnityEngine_LogType_object_bool(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(System.Func<UnityEngine.LogType,object,bool>), L, pos);
+	}
+
+	void Push_System_Func_UnityEngine_LogType_object_bool(IntPtr L, System.Func<UnityEngine.LogType,object,bool> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_float_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_float_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_float_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public float Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			float ret = (float)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+
+		public float CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			float ret = (float)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<float> DG_Tweening_Core_DOGetter_float(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<float> fn = delegate() { return 0; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_float_Event target = new DG_Tweening_Core_DOGetter_float_Event(func);
+			DG.Tweening.Core.DOGetter<float> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_float_Event target = new DG_Tweening_Core_DOGetter_float_Event(func, self);
+			DG.Tweening.Core.DOGetter<float> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_float(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<float>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_float(IntPtr L, DG.Tweening.Core.DOGetter<float> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_float_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_float_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_float_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(float param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(float param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<float> DG_Tweening_Core_DOSetter_float(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<float> fn = delegate(float param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_float_Event target = new DG_Tweening_Core_DOSetter_float_Event(func);
+			DG.Tweening.Core.DOSetter<float> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_float_Event target = new DG_Tweening_Core_DOSetter_float_Event(func, self);
+			DG.Tweening.Core.DOSetter<float> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_float(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<float>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_float(IntPtr L, DG.Tweening.Core.DOSetter<float> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_double_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_double_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_double_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public double Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			double ret = (double)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+
+		public double CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			double ret = (double)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<double> DG_Tweening_Core_DOGetter_double(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<double> fn = delegate() { return 0; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_double_Event target = new DG_Tweening_Core_DOGetter_double_Event(func);
+			DG.Tweening.Core.DOGetter<double> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_double_Event target = new DG_Tweening_Core_DOGetter_double_Event(func, self);
+			DG.Tweening.Core.DOGetter<double> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_double(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<double>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_double(IntPtr L, DG.Tweening.Core.DOGetter<double> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_double_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_double_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_double_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(double param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(double param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<double> DG_Tweening_Core_DOSetter_double(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<double> fn = delegate(double param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_double_Event target = new DG_Tweening_Core_DOSetter_double_Event(func);
+			DG.Tweening.Core.DOSetter<double> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_double_Event target = new DG_Tweening_Core_DOSetter_double_Event(func, self);
+			DG.Tweening.Core.DOSetter<double> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_double(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<double>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_double(IntPtr L, DG.Tweening.Core.DOSetter<double> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_int_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_int_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_int_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public int Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			int ret = (int)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+
+		public int CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			int ret = (int)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<int> DG_Tweening_Core_DOGetter_int(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<int> fn = delegate() { return 0; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_int_Event target = new DG_Tweening_Core_DOGetter_int_Event(func);
+			DG.Tweening.Core.DOGetter<int> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_int_Event target = new DG_Tweening_Core_DOGetter_int_Event(func, self);
+			DG.Tweening.Core.DOGetter<int> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_int(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<int>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_int(IntPtr L, DG.Tweening.Core.DOGetter<int> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_int_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_int_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_int_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(int param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(int param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<int> DG_Tweening_Core_DOSetter_int(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<int> fn = delegate(int param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_int_Event target = new DG_Tweening_Core_DOSetter_int_Event(func);
+			DG.Tweening.Core.DOSetter<int> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_int_Event target = new DG_Tweening_Core_DOSetter_int_Event(func, self);
+			DG.Tweening.Core.DOSetter<int> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_int(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<int>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_int(IntPtr L, DG.Tweening.Core.DOSetter<int> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_uint_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_uint_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_uint_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public uint Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			uint ret = (uint)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+
+		public uint CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			uint ret = (uint)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<uint> DG_Tweening_Core_DOGetter_uint(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<uint> fn = delegate() { return 0; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_uint_Event target = new DG_Tweening_Core_DOGetter_uint_Event(func);
+			DG.Tweening.Core.DOGetter<uint> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_uint_Event target = new DG_Tweening_Core_DOGetter_uint_Event(func, self);
+			DG.Tweening.Core.DOGetter<uint> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_uint(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<uint>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_uint(IntPtr L, DG.Tweening.Core.DOGetter<uint> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_uint_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_uint_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_uint_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(uint param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(uint param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<uint> DG_Tweening_Core_DOSetter_uint(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<uint> fn = delegate(uint param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_uint_Event target = new DG_Tweening_Core_DOSetter_uint_Event(func);
+			DG.Tweening.Core.DOSetter<uint> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_uint_Event target = new DG_Tweening_Core_DOSetter_uint_Event(func, self);
+			DG.Tweening.Core.DOSetter<uint> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_uint(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<uint>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_uint(IntPtr L, DG.Tweening.Core.DOSetter<uint> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_long_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_long_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_long_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public long Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			long ret = func.CheckLong();
+			func.EndPCall();
+			return ret;
+		}
+
+		public long CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			long ret = func.CheckLong();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<long> DG_Tweening_Core_DOGetter_long(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<long> fn = delegate() { return 0; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_long_Event target = new DG_Tweening_Core_DOGetter_long_Event(func);
+			DG.Tweening.Core.DOGetter<long> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_long_Event target = new DG_Tweening_Core_DOGetter_long_Event(func, self);
+			DG.Tweening.Core.DOGetter<long> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_long(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<long>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_long(IntPtr L, DG.Tweening.Core.DOGetter<long> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_long_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_long_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_long_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(long param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(long param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<long> DG_Tweening_Core_DOSetter_long(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<long> fn = delegate(long param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_long_Event target = new DG_Tweening_Core_DOSetter_long_Event(func);
+			DG.Tweening.Core.DOSetter<long> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_long_Event target = new DG_Tweening_Core_DOSetter_long_Event(func, self);
+			DG.Tweening.Core.DOSetter<long> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_long(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<long>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_long(IntPtr L, DG.Tweening.Core.DOSetter<long> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_ulong_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_ulong_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_ulong_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public ulong Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			ulong ret = func.CheckULong();
+			func.EndPCall();
+			return ret;
+		}
+
+		public ulong CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			ulong ret = func.CheckULong();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<ulong> DG_Tweening_Core_DOGetter_ulong(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<ulong> fn = delegate() { return 0; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_ulong_Event target = new DG_Tweening_Core_DOGetter_ulong_Event(func);
+			DG.Tweening.Core.DOGetter<ulong> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_ulong_Event target = new DG_Tweening_Core_DOGetter_ulong_Event(func, self);
+			DG.Tweening.Core.DOGetter<ulong> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_ulong(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<ulong>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_ulong(IntPtr L, DG.Tweening.Core.DOGetter<ulong> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_ulong_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_ulong_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_ulong_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(ulong param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(ulong param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<ulong> DG_Tweening_Core_DOSetter_ulong(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<ulong> fn = delegate(ulong param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_ulong_Event target = new DG_Tweening_Core_DOSetter_ulong_Event(func);
+			DG.Tweening.Core.DOSetter<ulong> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_ulong_Event target = new DG_Tweening_Core_DOSetter_ulong_Event(func, self);
+			DG.Tweening.Core.DOSetter<ulong> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_ulong(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<ulong>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_ulong(IntPtr L, DG.Tweening.Core.DOSetter<ulong> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_string_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_string_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_string_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public string Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			string ret = func.CheckString();
+			func.EndPCall();
+			return ret;
+		}
+
+		public string CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			string ret = func.CheckString();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<string> DG_Tweening_Core_DOGetter_string(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<string> fn = delegate() { return null; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_string_Event target = new DG_Tweening_Core_DOGetter_string_Event(func);
+			DG.Tweening.Core.DOGetter<string> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_string_Event target = new DG_Tweening_Core_DOGetter_string_Event(func, self);
+			DG.Tweening.Core.DOGetter<string> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_string(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<string>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_string(IntPtr L, DG.Tweening.Core.DOGetter<string> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_string_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_string_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_string_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(string param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(string param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<string> DG_Tweening_Core_DOSetter_string(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<string> fn = delegate(string param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_string_Event target = new DG_Tweening_Core_DOSetter_string_Event(func);
+			DG.Tweening.Core.DOSetter<string> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_string_Event target = new DG_Tweening_Core_DOSetter_string_Event(func, self);
+			DG.Tweening.Core.DOSetter<string> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_string(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<string>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_string(IntPtr L, DG.Tweening.Core.DOSetter<string> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_UnityEngine_Vector2_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_UnityEngine_Vector2_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_UnityEngine_Vector2_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public UnityEngine.Vector2 Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			UnityEngine.Vector2 ret = func.CheckVector2();
+			func.EndPCall();
+			return ret;
+		}
+
+		public UnityEngine.Vector2 CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			UnityEngine.Vector2 ret = func.CheckVector2();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<UnityEngine.Vector2> DG_Tweening_Core_DOGetter_UnityEngine_Vector2(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<UnityEngine.Vector2> fn = delegate() { return default(UnityEngine.Vector2); };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Vector2_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Vector2_Event(func);
+			DG.Tweening.Core.DOGetter<UnityEngine.Vector2> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Vector2_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Vector2_Event(func, self);
+			DG.Tweening.Core.DOGetter<UnityEngine.Vector2> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_UnityEngine_Vector2(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Vector2>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_UnityEngine_Vector2(IntPtr L, DG.Tweening.Core.DOGetter<UnityEngine.Vector2> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_UnityEngine_Vector2_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_UnityEngine_Vector2_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_UnityEngine_Vector2_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.Vector2 param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.Vector2 param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<UnityEngine.Vector2> DG_Tweening_Core_DOSetter_UnityEngine_Vector2(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<UnityEngine.Vector2> fn = delegate(UnityEngine.Vector2 param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Vector2_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Vector2_Event(func);
+			DG.Tweening.Core.DOSetter<UnityEngine.Vector2> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Vector2_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Vector2_Event(func, self);
+			DG.Tweening.Core.DOSetter<UnityEngine.Vector2> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_UnityEngine_Vector2(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Vector2>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_UnityEngine_Vector2(IntPtr L, DG.Tweening.Core.DOSetter<UnityEngine.Vector2> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_UnityEngine_Vector3_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_UnityEngine_Vector3_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_UnityEngine_Vector3_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public UnityEngine.Vector3 Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			UnityEngine.Vector3 ret = func.CheckVector3();
+			func.EndPCall();
+			return ret;
+		}
+
+		public UnityEngine.Vector3 CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			UnityEngine.Vector3 ret = func.CheckVector3();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<UnityEngine.Vector3> DG_Tweening_Core_DOGetter_UnityEngine_Vector3(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<UnityEngine.Vector3> fn = delegate() { return default(UnityEngine.Vector3); };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Vector3_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Vector3_Event(func);
+			DG.Tweening.Core.DOGetter<UnityEngine.Vector3> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Vector3_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Vector3_Event(func, self);
+			DG.Tweening.Core.DOGetter<UnityEngine.Vector3> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_UnityEngine_Vector3(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Vector3>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_UnityEngine_Vector3(IntPtr L, DG.Tweening.Core.DOGetter<UnityEngine.Vector3> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_UnityEngine_Vector3_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_UnityEngine_Vector3_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_UnityEngine_Vector3_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.Vector3 param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.Vector3 param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<UnityEngine.Vector3> DG_Tweening_Core_DOSetter_UnityEngine_Vector3(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<UnityEngine.Vector3> fn = delegate(UnityEngine.Vector3 param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Vector3_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Vector3_Event(func);
+			DG.Tweening.Core.DOSetter<UnityEngine.Vector3> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Vector3_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Vector3_Event(func, self);
+			DG.Tweening.Core.DOSetter<UnityEngine.Vector3> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_UnityEngine_Vector3(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Vector3>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_UnityEngine_Vector3(IntPtr L, DG.Tweening.Core.DOSetter<UnityEngine.Vector3> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_UnityEngine_Vector4_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_UnityEngine_Vector4_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_UnityEngine_Vector4_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public UnityEngine.Vector4 Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			UnityEngine.Vector4 ret = func.CheckVector4();
+			func.EndPCall();
+			return ret;
+		}
+
+		public UnityEngine.Vector4 CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			UnityEngine.Vector4 ret = func.CheckVector4();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<UnityEngine.Vector4> DG_Tweening_Core_DOGetter_UnityEngine_Vector4(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<UnityEngine.Vector4> fn = delegate() { return default(UnityEngine.Vector4); };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Vector4_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Vector4_Event(func);
+			DG.Tweening.Core.DOGetter<UnityEngine.Vector4> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Vector4_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Vector4_Event(func, self);
+			DG.Tweening.Core.DOGetter<UnityEngine.Vector4> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_UnityEngine_Vector4(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Vector4>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_UnityEngine_Vector4(IntPtr L, DG.Tweening.Core.DOGetter<UnityEngine.Vector4> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_UnityEngine_Vector4_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_UnityEngine_Vector4_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_UnityEngine_Vector4_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.Vector4 param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.Vector4 param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<UnityEngine.Vector4> DG_Tweening_Core_DOSetter_UnityEngine_Vector4(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<UnityEngine.Vector4> fn = delegate(UnityEngine.Vector4 param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Vector4_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Vector4_Event(func);
+			DG.Tweening.Core.DOSetter<UnityEngine.Vector4> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Vector4_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Vector4_Event(func, self);
+			DG.Tweening.Core.DOSetter<UnityEngine.Vector4> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_UnityEngine_Vector4(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Vector4>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_UnityEngine_Vector4(IntPtr L, DG.Tweening.Core.DOSetter<UnityEngine.Vector4> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_UnityEngine_Quaternion_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_UnityEngine_Quaternion_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_UnityEngine_Quaternion_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public UnityEngine.Quaternion Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			UnityEngine.Quaternion ret = func.CheckQuaternion();
+			func.EndPCall();
+			return ret;
+		}
+
+		public UnityEngine.Quaternion CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			UnityEngine.Quaternion ret = func.CheckQuaternion();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<UnityEngine.Quaternion> DG_Tweening_Core_DOGetter_UnityEngine_Quaternion(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<UnityEngine.Quaternion> fn = delegate() { return default(UnityEngine.Quaternion); };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Quaternion_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Quaternion_Event(func);
+			DG.Tweening.Core.DOGetter<UnityEngine.Quaternion> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Quaternion_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Quaternion_Event(func, self);
+			DG.Tweening.Core.DOGetter<UnityEngine.Quaternion> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_UnityEngine_Quaternion(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Quaternion>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_UnityEngine_Quaternion(IntPtr L, DG.Tweening.Core.DOGetter<UnityEngine.Quaternion> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_UnityEngine_Quaternion_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_UnityEngine_Quaternion_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_UnityEngine_Quaternion_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.Quaternion param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.Quaternion param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<UnityEngine.Quaternion> DG_Tweening_Core_DOSetter_UnityEngine_Quaternion(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<UnityEngine.Quaternion> fn = delegate(UnityEngine.Quaternion param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Quaternion_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Quaternion_Event(func);
+			DG.Tweening.Core.DOSetter<UnityEngine.Quaternion> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Quaternion_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Quaternion_Event(func, self);
+			DG.Tweening.Core.DOSetter<UnityEngine.Quaternion> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_UnityEngine_Quaternion(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Quaternion>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_UnityEngine_Quaternion(IntPtr L, DG.Tweening.Core.DOSetter<UnityEngine.Quaternion> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_UnityEngine_Color_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_UnityEngine_Color_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_UnityEngine_Color_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public UnityEngine.Color Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			UnityEngine.Color ret = func.CheckColor();
+			func.EndPCall();
+			return ret;
+		}
+
+		public UnityEngine.Color CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			UnityEngine.Color ret = func.CheckColor();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<UnityEngine.Color> DG_Tweening_Core_DOGetter_UnityEngine_Color(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<UnityEngine.Color> fn = delegate() { return default(UnityEngine.Color); };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Color_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Color_Event(func);
+			DG.Tweening.Core.DOGetter<UnityEngine.Color> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Color_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Color_Event(func, self);
+			DG.Tweening.Core.DOGetter<UnityEngine.Color> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_UnityEngine_Color(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Color>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_UnityEngine_Color(IntPtr L, DG.Tweening.Core.DOGetter<UnityEngine.Color> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_UnityEngine_Color_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_UnityEngine_Color_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_UnityEngine_Color_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.Color param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.Color param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<UnityEngine.Color> DG_Tweening_Core_DOSetter_UnityEngine_Color(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<UnityEngine.Color> fn = delegate(UnityEngine.Color param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Color_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Color_Event(func);
+			DG.Tweening.Core.DOSetter<UnityEngine.Color> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Color_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Color_Event(func, self);
+			DG.Tweening.Core.DOSetter<UnityEngine.Color> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_UnityEngine_Color(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Color>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_UnityEngine_Color(IntPtr L, DG.Tweening.Core.DOSetter<UnityEngine.Color> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_UnityEngine_Rect_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_UnityEngine_Rect_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_UnityEngine_Rect_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public UnityEngine.Rect Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			UnityEngine.Rect ret = (UnityEngine.Rect)func.CheckObject(typeof(UnityEngine.Rect));
+			func.EndPCall();
+			return ret;
+		}
+
+		public UnityEngine.Rect CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			UnityEngine.Rect ret = (UnityEngine.Rect)func.CheckObject(typeof(UnityEngine.Rect));
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<UnityEngine.Rect> DG_Tweening_Core_DOGetter_UnityEngine_Rect(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<UnityEngine.Rect> fn = delegate() { return default(UnityEngine.Rect); };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Rect_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Rect_Event(func);
+			DG.Tweening.Core.DOGetter<UnityEngine.Rect> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_Rect_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_Rect_Event(func, self);
+			DG.Tweening.Core.DOGetter<UnityEngine.Rect> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_UnityEngine_Rect(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<UnityEngine.Rect>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_UnityEngine_Rect(IntPtr L, DG.Tweening.Core.DOGetter<UnityEngine.Rect> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_UnityEngine_Rect_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_UnityEngine_Rect_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_UnityEngine_Rect_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.Rect param0)
+		{
+			func.BeginPCall();
+			func.PushValue(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.Rect param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushValue(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<UnityEngine.Rect> DG_Tweening_Core_DOSetter_UnityEngine_Rect(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<UnityEngine.Rect> fn = delegate(UnityEngine.Rect param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Rect_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Rect_Event(func);
+			DG.Tweening.Core.DOSetter<UnityEngine.Rect> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_Rect_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_Rect_Event(func, self);
+			DG.Tweening.Core.DOSetter<UnityEngine.Rect> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_UnityEngine_Rect(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Rect>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_UnityEngine_Rect(IntPtr L, DG.Tweening.Core.DOSetter<UnityEngine.Rect> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOGetter_UnityEngine_RectOffset_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOGetter_UnityEngine_RectOffset_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOGetter_UnityEngine_RectOffset_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public UnityEngine.RectOffset Call()
+		{
+			func.BeginPCall();
+			func.PCall();
+			UnityEngine.RectOffset ret = (UnityEngine.RectOffset)func.CheckObject(typeof(UnityEngine.RectOffset));
+			func.EndPCall();
+			return ret;
+		}
+
+		public UnityEngine.RectOffset CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			UnityEngine.RectOffset ret = (UnityEngine.RectOffset)func.CheckObject(typeof(UnityEngine.RectOffset));
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.Core.DOGetter<UnityEngine.RectOffset> DG_Tweening_Core_DOGetter_UnityEngine_RectOffset(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOGetter<UnityEngine.RectOffset> fn = delegate() { return null; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_RectOffset_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_RectOffset_Event(func);
+			DG.Tweening.Core.DOGetter<UnityEngine.RectOffset> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOGetter_UnityEngine_RectOffset_Event target = new DG_Tweening_Core_DOGetter_UnityEngine_RectOffset_Event(func, self);
+			DG.Tweening.Core.DOGetter<UnityEngine.RectOffset> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOGetter_UnityEngine_RectOffset(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOGetter<UnityEngine.RectOffset>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOGetter_UnityEngine_RectOffset(IntPtr L, DG.Tweening.Core.DOGetter<UnityEngine.RectOffset> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_Core_DOSetter_UnityEngine_RectOffset_Event : LuaDelegate
+	{
+		public DG_Tweening_Core_DOSetter_UnityEngine_RectOffset_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_Core_DOSetter_UnityEngine_RectOffset_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.RectOffset param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.RectOffset param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.Core.DOSetter<UnityEngine.RectOffset> DG_Tweening_Core_DOSetter_UnityEngine_RectOffset(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.Core.DOSetter<UnityEngine.RectOffset> fn = delegate(UnityEngine.RectOffset param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_RectOffset_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_RectOffset_Event(func);
+			DG.Tweening.Core.DOSetter<UnityEngine.RectOffset> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_Core_DOSetter_UnityEngine_RectOffset_Event target = new DG_Tweening_Core_DOSetter_UnityEngine_RectOffset_Event(func, self);
+			DG.Tweening.Core.DOSetter<UnityEngine.RectOffset> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_Core_DOSetter_UnityEngine_RectOffset(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.Core.DOSetter<UnityEngine.RectOffset>), L, pos);
+	}
+
+	void Push_DG_Tweening_Core_DOSetter_UnityEngine_RectOffset(IntPtr L, DG.Tweening.Core.DOSetter<UnityEngine.RectOffset> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_TweenCallback_Event : LuaDelegate
+	{
+		public DG_Tweening_TweenCallback_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_TweenCallback_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call()
+		{
+			func.Call();
+		}
+
+		public void CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.TweenCallback DG_Tweening_TweenCallback(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.TweenCallback fn = delegate() { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_TweenCallback_Event target = new DG_Tweening_TweenCallback_Event(func);
+			DG.Tweening.TweenCallback d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_TweenCallback_Event target = new DG_Tweening_TweenCallback_Event(func, self);
+			DG.Tweening.TweenCallback d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_TweenCallback(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.TweenCallback), L, pos);
+	}
+
+	void Push_DG_Tweening_TweenCallback(IntPtr L, DG.Tweening.TweenCallback o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_TweenCallback_int_Event : LuaDelegate
+	{
+		public DG_Tweening_TweenCallback_int_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_TweenCallback_int_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(int param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(int param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public DG.Tweening.TweenCallback<int> DG_Tweening_TweenCallback_int(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.TweenCallback<int> fn = delegate(int param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_TweenCallback_int_Event target = new DG_Tweening_TweenCallback_int_Event(func);
+			DG.Tweening.TweenCallback<int> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_TweenCallback_int_Event target = new DG_Tweening_TweenCallback_int_Event(func, self);
+			DG.Tweening.TweenCallback<int> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_TweenCallback_int(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.TweenCallback<int>), L, pos);
+	}
+
+	void Push_DG_Tweening_TweenCallback_int(IntPtr L, DG.Tweening.TweenCallback<int> o)
 	{
 		ToLua.Push(L, o);
 	}
@@ -1127,6 +3208,63 @@ public class DelegateFactory
 		ToLua.Push(L, o);
 	}
 
+	class System_Action_NotiData_Event : LuaDelegate
+	{
+		public System_Action_NotiData_Event(LuaFunction func) : base(func) { }
+		public System_Action_NotiData_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(NotiData param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(NotiData param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public System.Action<NotiData> System_Action_NotiData(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			System.Action<NotiData> fn = delegate(NotiData param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			System_Action_NotiData_Event target = new System_Action_NotiData_Event(func);
+			System.Action<NotiData> d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			System_Action_NotiData_Event target = new System_Action_NotiData_Event(func, self);
+			System.Action<NotiData> d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_System_Action_NotiData(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(System.Action<NotiData>), L, pos);
+	}
+
+	void Push_System_Action_NotiData(IntPtr L, System.Action<NotiData> o)
+	{
+		ToLua.Push(L, o);
+	}
+
 	class UnityEngine_RectTransform_ReapplyDrivenProperties_Event : LuaDelegate
 	{
 		public UnityEngine_RectTransform_ReapplyDrivenProperties_Event(LuaFunction func) : base(func) { }
@@ -1184,12 +3322,65 @@ public class DelegateFactory
 		ToLua.Push(L, o);
 	}
 
-	class System_Action_NotiData_Event : LuaDelegate
+	class UnityEngine_Canvas_WillRenderCanvases_Event : LuaDelegate
 	{
-		public System_Action_NotiData_Event(LuaFunction func) : base(func) { }
-		public System_Action_NotiData_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+		public UnityEngine_Canvas_WillRenderCanvases_Event(LuaFunction func) : base(func) { }
+		public UnityEngine_Canvas_WillRenderCanvases_Event(LuaFunction func, LuaTable self) : base(func, self) { }
 
-		public void Call(NotiData param0)
+		public void Call()
+		{
+			func.Call();
+		}
+
+		public void CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public UnityEngine.Canvas.WillRenderCanvases UnityEngine_Canvas_WillRenderCanvases(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			UnityEngine.Canvas.WillRenderCanvases fn = delegate() { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			UnityEngine_Canvas_WillRenderCanvases_Event target = new UnityEngine_Canvas_WillRenderCanvases_Event(func);
+			UnityEngine.Canvas.WillRenderCanvases d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			UnityEngine_Canvas_WillRenderCanvases_Event target = new UnityEngine_Canvas_WillRenderCanvases_Event(func, self);
+			UnityEngine.Canvas.WillRenderCanvases d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_UnityEngine_Canvas_WillRenderCanvases(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(UnityEngine.Canvas.WillRenderCanvases), L, pos);
+	}
+
+	void Push_UnityEngine_Canvas_WillRenderCanvases(IntPtr L, UnityEngine.Canvas.WillRenderCanvases o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
 		{
 			func.BeginPCall();
 			func.PushObject(param0);
@@ -1197,7 +3388,7 @@ public class DelegateFactory
 			func.EndPCall();
 		}
 
-		public void CallWithSelf(NotiData param0)
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
 		{
 			func.BeginPCall();
 			func.Push(self);
@@ -1207,36 +3398,2198 @@ public class DelegateFactory
 		}
 	}
 
-	public System.Action<NotiData> System_Action_NotiData(LuaFunction func, LuaTable self, bool flag)
+	public HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler(LuaFunction func, LuaTable self, bool flag)
 	{
 		if (func == null)
 		{
-			System.Action<NotiData> fn = delegate(NotiData param0) { };
+			HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
 			return fn;
 		}
 
 		if(!flag)
 		{
-			System_Action_NotiData_Event target = new System_Action_NotiData_Event(func);
-			System.Action<NotiData> d = target.Call;
+			HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler d = target.Call;
 			target.method = d.Method;
 			return d;
 		}
 		else
 		{
-			System_Action_NotiData_Event target = new System_Action_NotiData_Event(func, self);
-			System.Action<NotiData> d = target.CallWithSelf;
+			HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
 	}
 
-	bool Check_System_Action_NotiData(IntPtr L, int pos)
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckDelegateType(typeof(System.Action<NotiData>), L, pos);
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler), L, pos);
 	}
 
-	void Push_System_Action_NotiData(IntPtr L, System.Action<NotiData> o)
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_TouchCancelHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.TouchCancelHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_Cancel2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.Cancel2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_TouchStartHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.TouchStartHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_TouchDownHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.TouchDownHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_TouchUpHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.TouchUpHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_SimpleTapHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.SimpleTapHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_DoubleTapHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.DoubleTapHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapStartHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.LongTapStartHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.LongTapHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapEndHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.LongTapEndHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_DragStartHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.DragStartHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_DragHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_DragHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_DragHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.DragHandler HedgehogTeam_EasyTouch_EasyTouch_DragHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.DragHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.DragHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.DragHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_DragHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_DragHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.DragHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_DragEndHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.DragEndHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeStartHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.SwipeStartHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.SwipeHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeEndHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.SwipeEndHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_TouchStart2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.TouchStart2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_TouchDown2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.TouchDown2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_TouchUp2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.TouchUp2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_SimpleTap2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.SimpleTap2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_DoubleTap2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.DoubleTap2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapStart2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.LongTapStart2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_LongTap2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.LongTap2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_LongTapEnd2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.LongTapEnd2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_TwistHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_TwistHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_TwistHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.TwistHandler HedgehogTeam_EasyTouch_EasyTouch_TwistHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.TwistHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TwistHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TwistHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.TwistHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TwistHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TwistHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.TwistHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_TwistHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.TwistHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_TwistHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.TwistHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_TwistEndHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.TwistEndHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_PinchHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_PinchHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_PinchHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.PinchHandler HedgehogTeam_EasyTouch_EasyTouch_PinchHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.PinchHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_PinchHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_PinchHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.PinchHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_PinchHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_PinchHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.PinchHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_PinchHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.PinchHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_PinchHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.PinchHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_PinchInHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.PinchInHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_PinchOutHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.PinchOutHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_PinchEndHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.PinchEndHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_DragStart2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.DragStart2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_Drag2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.Drag2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_DragEnd2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.DragEnd2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeStart2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.SwipeStart2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_Swipe2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.Swipe2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_SwipeEnd2FingersHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.SwipeEnd2FingersHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call()
+		{
+			func.Call();
+		}
+
+		public void CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler fn = delegate() { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_EasyTouchIsReadyHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.EasyTouchIsReadyHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_OverUIElementHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.OverUIElementHandler o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler_Event : LuaDelegate
+	{
+		public HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler_Event(LuaFunction func) : base(func) { }
+		public HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(HedgehogTeam.EasyTouch.Gesture param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler fn = delegate(HedgehogTeam.EasyTouch.Gesture param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler_Event(func);
+			HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler_Event target = new HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler_Event(func, self);
+			HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler), L, pos);
+	}
+
+	void Push_HedgehogTeam_EasyTouch_EasyTouch_UIElementTouchUpHandler(IntPtr L, HedgehogTeam.EasyTouch.EasyTouch.UIElementTouchUpHandler o)
 	{
 		ToLua.Push(L, o);
 	}

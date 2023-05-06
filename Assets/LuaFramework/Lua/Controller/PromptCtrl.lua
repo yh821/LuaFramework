@@ -1,4 +1,4 @@
-require("View/PromptPanel")
+require("view/PromptPanel")
 
 PromptCtrl = PromptCtrl or BaseClass()
 

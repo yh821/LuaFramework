@@ -12,6 +12,8 @@ public class UnityEngine_UI_TextWrap
 		L.RegFunction("GetTextAnchorPivot", GetTextAnchorPivot);
 		L.RegFunction("CalculateLayoutInputHorizontal", CalculateLayoutInputHorizontal);
 		L.RegFunction("CalculateLayoutInputVertical", CalculateLayoutInputVertical);
+		L.RegFunction("DoFloatNumberTo", DoFloatNumberTo);
+		L.RegFunction("DoNumberTo", DoNumberTo);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("cachedTextGenerator", get_cachedTextGenerator, null);
@@ -117,6 +119,49 @@ public class UnityEngine_UI_TextWrap
 			UnityEngine.UI.Text obj = (UnityEngine.UI.Text)ToLua.CheckObject<UnityEngine.UI.Text>(L, 1);
 			obj.CalculateLayoutInputVertical();
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int DoFloatNumberTo(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 6);
+			UnityEngine.UI.Text obj = (UnityEngine.UI.Text)ToLua.CheckObject<UnityEngine.UI.Text>(L, 1);
+			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
+			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
+			float arg2 = (float)LuaDLL.luaL_checknumber(L, 4);
+			System.Action arg3 = (System.Action)ToLua.CheckDelegate<System.Action>(L, 5);
+			System.Action<float> arg4 = (System.Action<float>)ToLua.CheckDelegate<System.Action<float>>(L, 6);
+			DG.Tweening.Tweener o = obj.DoFloatNumberTo(arg0, arg1, arg2, arg3, arg4);
+			ToLua.PushObject(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int DoNumberTo(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 5);
+			UnityEngine.UI.Text obj = (UnityEngine.UI.Text)ToLua.CheckObject<UnityEngine.UI.Text>(L, 1);
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 2);
+			int arg1 = (int)LuaDLL.luaL_checknumber(L, 3);
+			float arg2 = (float)LuaDLL.luaL_checknumber(L, 4);
+			System.Action arg3 = (System.Action)ToLua.CheckDelegate<System.Action>(L, 5);
+			DG.Tweening.Tweener o = obj.DoNumberTo(arg0, arg1, arg2, arg3);
+			ToLua.PushObject(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{

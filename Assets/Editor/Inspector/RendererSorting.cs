@@ -23,7 +23,7 @@ public class MeshRendererSorting : Editor
 		renderer.sortingLayerID = layer.id;
 		renderer.sortingOrder = EditorGUILayout.IntField("Order in Layer", renderer.sortingOrder);
 
-		foreach (var mat in renderer.materials)
+		foreach (var mat in renderer.sharedMaterials)
 		{
 			mat.renderQueue = EditorGUILayout.IntField(mat.name, mat.renderQueue);
 		}
@@ -52,7 +52,7 @@ public class SkinnedMeshRendererSorting : Editor
 		renderer.sortingLayerID = layer.id;
 		renderer.sortingOrder = EditorGUILayout.IntField("Order in Layer", renderer.sortingOrder);
 
-		foreach (var mat in renderer.materials)
+		foreach (var mat in renderer.sharedMaterials)
 		{
 			mat.renderQueue = EditorGUILayout.IntField(mat.name, mat.renderQueue);
 		}

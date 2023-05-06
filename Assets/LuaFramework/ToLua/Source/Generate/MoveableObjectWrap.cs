@@ -12,6 +12,7 @@ public class MoveableObjectWrap
 		L.RegFunction("StopMove", StopMove);
 		L.RegFunction("RotateTo", RotateTo);
 		L.RegFunction("StopRotate", StopRotate);
+		L.RegFunction("GetWalkableHeight", GetWalkableHeight);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("moveSpeed", get_moveSpeed, set_moveSpeed);
@@ -42,13 +43,31 @@ public class MoveableObjectWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 4)
+			if (count == 3)
+			{
+				MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+				UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
+				float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
+				obj.MoveTo(arg0, arg1);
+				return 0;
+			}
+			else if (count == 4)
 			{
 				MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
 				UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 				float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
 				System.Action<int> arg2 = (System.Action<int>)ToLua.CheckDelegate<System.Action<int>>(L, 4);
 				obj.MoveTo(arg0, arg1, arg2);
+				return 0;
+			}
+			else if (count == 5)
+			{
+				MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+				float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
+				float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
+				float arg2 = (float)LuaDLL.luaL_checknumber(L, 4);
+				float arg3 = (float)LuaDLL.luaL_checknumber(L, 5);
+				obj.MoveTo(arg0, arg1, arg2, arg3);
 				return 0;
 			}
 			else if (count == 6)
@@ -116,6 +135,41 @@ public class MoveableObjectWrap
 			MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
 			obj.StopRotate();
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetWalkableHeight(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				float arg0 = (float)LuaDLL.luaL_checknumber(L, 1);
+				float arg1 = (float)LuaDLL.luaL_checknumber(L, 2);
+				float o = MoveableObject.GetWalkableHeight(arg0, arg1);
+				LuaDLL.lua_pushnumber(L, o);
+				return 1;
+			}
+			else if (count == 3)
+			{
+				float arg0 = (float)LuaDLL.luaL_checknumber(L, 1);
+				float arg1 = (float)LuaDLL.luaL_checknumber(L, 2);
+				int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
+				float o = MoveableObject.GetWalkableHeight(arg0, arg1, arg2);
+				LuaDLL.lua_pushnumber(L, o);
+				return 1;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: MoveableObject.GetWalkableHeight");
+			}
 		}
 		catch (Exception e)
 		{

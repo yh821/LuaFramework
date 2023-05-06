@@ -1,4 +1,4 @@
-require("View/MessagePanel")
+require("view/MessagePanel")
 
 MessageCtrl = MessageCtrl or BaseClass();
 

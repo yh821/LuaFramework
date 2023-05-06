@@ -1,4 +1,4 @@
-require "Common/define"
+require "common/define"
 
 ---@class CtrlManager
 CtrlManager = CtrlManager or BaseClass();
@@ -11,11 +11,15 @@ function CtrlManager:__init()
     CtrlManager.Instance = self
 
     self.push_list = {
-        "Runner",
-        "PromptCtrl",
-        "MessageCtrl",
-        "AiManager",
-        "MainUiCtrl",
+        "controller/Runner", --循环系统
+        "controller/EventSystem", --事件系统
+        "controller/TimerQuest", --定时器
+
+        "controller/ViewManager", --界面管理器
+        "controller/AiManager",
+
+        "game/scene/Scene",
+        "game/mainui/MainUiCtrl",
     }
     self.ctrl_list = {}
 
@@ -40,12 +44,18 @@ end
 
 function CtrlManager:InitAllCtrl()
     for i, v in ipairs(self.push_list) do
-        require("Controller/" .. v)
-        local class = _G[v]
-        if class then
-            table.insert(self.ctrl_list, class.New())
+        require(v)
+        local paths = Split(v, "/")
+        local class_name = paths[#paths]
+        if IsNilOrEmpty(class_name) then
+            print_error("缺少管理类: " .. v)
         else
-            print_error("缺少类: " .. v)
+            local class = _G[class_name]
+            if class then
+                table.insert(self.ctrl_list, class.New())
+            else
+                print_error("缺少管理类: " .. v)
+            end
         end
     end
 end

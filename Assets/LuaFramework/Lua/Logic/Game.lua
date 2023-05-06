@@ -10,9 +10,9 @@ local sproto = require "3rd/sproto/sproto"
 local core = require "sproto.core"
 local print_r = require "3rd/sproto/print_r"
 
-require "Logic/CtrlManager"
-require "Common/functions"
-require("Common/BindTool")
+require "logic/CtrlManager"
+require "common/functions"
+require("common/BindTool")
 
 --管理器--
 Game = Game or {}
@@ -24,6 +24,8 @@ function Game.Start()
     AppConst.SocketPort = 2012
     AppConst.SocketAddress = "127.0.0.1"
     --networkMgr:SendConnect()
+
+    require("game/Common/BaseView")
 
     PushCtrl(CtrlManager.New())
 
@@ -39,14 +41,13 @@ function Game.Start()
 
 
 
-
-    if PromptCtrl.Instance then
-        PromptCtrl.Instance:Open()
-    end
-
-    --if MainUiCtrl.Instance then
-    --    MainUiCtrl.Instance:Open()
+    --if PromptCtrl.Instance then
+    --    PromptCtrl.Instance:Open()
     --end
+
+    if MainUiCtrl.Instance then
+        MainUiCtrl.Instance:Open()
+    end
 end
 
 

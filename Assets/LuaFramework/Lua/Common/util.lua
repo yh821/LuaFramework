@@ -4,6 +4,57 @@
 --- DateTime: 2023/4/8 19:58
 ---
 
+function IsNil(uobj)
+    return uobj == nil or uobj:Equals(nil)
+end
+
 function IsNilOrEmpty(str)
     return str == nil or str == ""
+end
+
+function LastIndexOf(str, sub)
+    local revered_sub = string.reverse(sub)
+    local revered_str = string.reverse(str)
+    local si, ei = string.find(revered_str, revered_sub)
+    if si and ei then
+        return -ei, -si
+    end
+end
+
+function ToNumber(num)
+    num = tonumber(num)
+    if not num then
+        return nil
+    end
+    local num_str = tostring(num)
+    if num_str == "nan" or num_str == "-nan" or num_str == "inf" or num_str == "-inf" then
+        return nil
+    end
+    return num
+end
+
+---@return string[]
+function Split(str, splitter)
+    local split_result = {}
+    local index = 1
+    while true do
+        local si, ei = string.find(str, splitter, index)
+        if not si then
+            break
+        end
+        split_result[#split_result + 1] = string.sub(str, index, si - 1)
+        index = ei + 1
+    end
+    if index <= string.len(str) then
+        split_result[#split_result + 1] = string.sub(str, index)
+    end
+    return split_result
+end
+
+function Next(t)
+    local metatable = getmetatable(t)
+    if metatable and rawget(metatable,"__next") then
+        return metatable.__next(t)
+    end
+    return next(t)
 end

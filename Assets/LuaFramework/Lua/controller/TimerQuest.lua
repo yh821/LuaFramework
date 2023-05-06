@@ -67,8 +67,7 @@ function TimerQuest:AddTimesTimer(callback, delay_time, times, cb_data)
 end
 
 function TimerQuest:AddRunQuest(callback, delay_time)
-    --self.check_callback_map[callback] = callback
-    local quest = self:AddTimesTimer(callback, delay_time, 999999999)
+    local quest = self:AddTimesTimer(callback, delay_time, INF)
     self.check_callback_map[callback] = callback
     self.check_handle_map[quest] = callback
     return quest
