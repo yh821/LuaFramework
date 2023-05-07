@@ -286,14 +286,23 @@ namespace BT
 				EditorGUILayout.BeginVertical("Box");
 				{
 					EditorGUILayout.BeginHorizontal();
-					EditorGUILayout.LabelField("节点数据");
-					GUILayout.FlexibleSpace();
+					EditorGUILayout.LabelField("节点数据", GUILayout.MaxWidth(EditorGUIUtility.labelWidth));
+					// GUILayout.FlexibleSpace();
 					if (IsDebug && !string.IsNullOrEmpty(data.type))
 					{
+						if (GUILayout.Button("选中脚本"))
+						{
+							var file = FileUtil.GetProjectRelativePath(Path.Combine(BtHelper.nodePath,
+								data.type + ".lua"));
+							var lua = AssetDatabase.LoadAssetAtPath<Object>(file);
+							Selection.activeObject = lua;
+						}
+
 						if (GUILayout.Button("编辑脚本"))
 							System.Diagnostics.Process.Start(Path.Combine(BtHelper.nodePath, data.type + ".lua"));
 						// BtHelper.OpenFile(Path.Combine(BtHelper.nodePath, data.type + ".lua"));
 					}
+
 					EditorGUILayout.EndHorizontal();
 
 					data.name = EditorGUILayout.TextField("显示名:", data.name);

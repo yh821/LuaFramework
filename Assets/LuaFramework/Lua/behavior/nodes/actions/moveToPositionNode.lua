@@ -7,35 +7,44 @@
 ---@class moveToPositionNode : ActionNode
 moveToPositionNode = BaseClass(ActionNode)
 
-local MapManager = CS.MapManagerInterface
-local IsPositionEqual = MapManager.IsPositionEqual
-local GetEntityPos = MapManager.GetTilemapObjectPosition
-local MoveToPosition = MapManager.MoveToPosition
-local StopMove = MapManager.StopMove
-
 function moveToPositionNode:Start()
-    self:SetSharedVar("playState", playStateEnum.eStart)
-    local targetPos = self:GetSharedVar("targetPos")
-    local entityPos = GetEntityPos(self.owner.guid)
-    if targetPos == nil or IsPositionEqual(entityPos, targetPos) then
-        self:SetSharedVar("playState", playStateEnum.eEnd)
-        return eNodeState.Failure
-    else
-        self:SetSharedVar("animState", animatorStateEnum.eWalk)
-        MoveToPosition(self.owner.guid, targetPos, function()
-            self:moveFinish()
-        end)
-        return eNodeState.Running
+    local pos_key = self.data and self.data.pos
+    local target_pos = self:GetSharedVar(pos_key)
+    if not target_pos then
+        target_pos = self:GetSharedVar(AiConfig.TargetPosKey)
     end
+    if not target_pos then
+        return eNodeState.Failure
+    end
+
+    self.draw_obj = self:GetDrawObj()
+    if not self.draw_obj then
+        return eNodeState.Failure
+    end
+
+    self.draw_obj:RotateTo(target_pos, 10)
+    self.draw_obj:MoveTo(target_pos, 5, function()
+        self.draw_obj:SetBool("move", false)
+        self:SetState(eNodeState.Success)
+    end)
+    self:print("开始移动:" .. pos_key .. target_pos:ToString())
+    self.draw_obj:SetBool("move", true)
+    return eNodeState.Running
 end
 
 function moveToPositionNode:Abort()
-    StopMove(self.owner.guid)
-    self:moveFinish()
+    if self.draw_obj then
+        self.draw_obj:StopMove()
+        self.draw_obj:SetBool("move", false)
+    end
+    self:print("<color=red>打断移动</color>")
+    return eNodeState.Failure
 end
 
-function moveToPositionNode:moveFinish()
-    self:SetSharedVar("animState", animatorStateEnum.eIdle)
-    self:SetSharedVar("playState", playStateEnum.eEnd)
-    self:SetState(eNodeState.Success)
+function moveToPositionNode:GetDrawObj()
+    ---@type SceneObj
+    local scene_obj = self:GetSharedVar(AiConfig.SceneObjKey)
+    if scene_obj then
+        return scene_obj:GetDrawObj()
+    end
 end

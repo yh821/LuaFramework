@@ -39,13 +39,13 @@ function AiManager:SwitchTick()
 end
 
 ---@return BehaviorTree 一个实体只能绑定一个行为树
-function AiManager:BindBT(gameObject, file)
-	local bt = BehaviorManager:BindBehaviorTree(gameObject, file)
+function AiManager:BindBT(scene_obj, file)
+	local bt = BehaviorManager:BindBehaviorTree(scene_obj, file)
 	if not bt then
 		return
 	end
-	bt:SetSharedVar(AiConfig.gameObjKey, gameObject)
-	self._bt_list[gameObject] = bt
+	bt:SetSharedVar(AiConfig.SceneObjKey, scene_obj)
+	self._bt_list[scene_obj] = bt
 	return bt
 end
 

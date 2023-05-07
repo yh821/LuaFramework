@@ -13,9 +13,5 @@ function Monster:__delete()
 end
 
 function Monster:InitAppearance()
-    self:InitModel()
-end
-
-function Monster:InitModel()
-    self:ChangeModel()
+    self:ChangeModel(SceneObjPart.Main, "actors/monster_prefab", "Zombie")
 end

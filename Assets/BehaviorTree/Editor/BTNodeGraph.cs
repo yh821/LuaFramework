@@ -183,9 +183,8 @@ namespace BT
             if (BtEditorWindow.IsDebug)
             {
                 GUI.Label(Graph.PosRect, new GUIContent($"{Graph.RealRect.x},{Graph.RealRect.y}"));
+                GUI.Label(Graph.IndexRect, Data.index.ToString(), BtNodeStyle.IndexStyle);
             }
-
-            GUI.Label(Graph.IndexRect, Data.index.ToString(), BtNodeStyle.IndexStyle);
         }
 
         /// <summary>

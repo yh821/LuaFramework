@@ -7,15 +7,35 @@
 ---@class randomPositionNode : ActionNode
 randomPositionNode = BaseClass(ActionNode)
 
-local MapManager = CS.MapManagerInterface
-local IsCanMove = MapManager.IsCanMove
-
 function randomPositionNode:Start()
-    local pos = self:getNextPos()
-    if IsCanMove(pos) then
-        self:SetSharedVar("targetPos", pos)
+    local pos = self:GetRandomPos()
+    if self:IsCanMove(pos) then
+        self:SetSharedVar(AiConfig.TargetPosKey, pos)
+        --self:print("随机位置" .. pos:ToString())
         return eNodeState.Success
-    else
-        return eNodeState.Failure
     end
+    return eNodeState.Failure
+end
+
+function randomPositionNode:GetRandomPos()
+    local center_key = self.data and self.data.center
+    local center_pos = self:GetSharedVar(center_key)
+    if not center_pos then
+        center_pos = self:GetSharedVar(AiConfig.SelfPosKey)
+    end
+    if center_pos then
+        local x = math.random(center_pos.x - 10, center_pos.x + 10)
+        local z = math.random(center_pos.z - 10, center_pos.z + 10)
+        return Vector3.New(x, 0, z)
+    end
+end
+
+function randomPositionNode:IsCanMove(pos)
+    if pos.x > 100 or pos.x < -100 then
+        return false
+    end
+    if pos.z > 100 or pos.z < -100 then
+        return false
+    end
+    return true
 end

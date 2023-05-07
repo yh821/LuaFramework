@@ -21,7 +21,7 @@ end
 function ViewManager:CreatePanel(view_name, callback)
     local bundle = string.lower("views/" .. view_name .. "_prefab")
     local asset = view_name .. "View"
-    local gameObject = EditorResourceMgr.LoadGameObject(bundle, asset)
+    local gameObject = Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
     if IsNil(gameObject) then
         return
     end

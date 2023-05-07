@@ -16,7 +16,7 @@ end
 
 function waitNode:Update(delta_time)
     if self.deltaTime >= self.waitTime then
-        self:print("等待完成")
+        --self:print("等待完成")
         return eNodeState.Success
     end
     self.deltaTime = self.deltaTime + delta_time

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public sealed class MoveableObject : MonoBehaviour
+public sealed class MovableObject : MonoBehaviour
 {
 	private static int[] _levelToLayer;
 	private static int[] _levelToNav;

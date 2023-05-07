@@ -174,7 +174,7 @@ public static class CustomSettings
 		#region Game
 
 		_GT(typeof(SimpleCamera)),
-		_GT(typeof(MoveableObject)),
+		_GT(typeof(MovableObject)),
 		_GT(typeof(EditorResourceMgr)),
 		_GT(typeof(EasyTouch)).SetNameSpace(null),
 		_GT(typeof(UINameTable)).SetNameSpace(null),

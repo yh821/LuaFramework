@@ -13,29 +13,69 @@ SceneObjPart = {
     Tail = 5,
 }
 
-DrawPart.obj_list = {}
 ---@class DrawPart
 DrawPart = DrawPart or BaseClass()
 
-function DrawPart:__init()
-end
-
-function DrawPart:__delete()
-end
-
+---@type DrawPart[]
+DrawPart._pool = {}
+---@return DrawPart
 function DrawPart.Pop()
-    local draw_part = table.remove(DrawPart.obj_list)
+    local draw_part = table.remove(DrawPart._pool)
     if not draw_part then
         draw_part = DrawPart.New()
     end
     return draw_part
 end
 
+---@param draw_part DrawPart
 function DrawPart.Release(draw_part)
-    if #DrawPart.obj_list < 1000 then
+    if #DrawPart._pool < 1000 then
         draw_part:Clear()
-        table.insert(DrawPart.obj_list, draw_part)
+        table.insert(DrawPart._pool, draw_part)
     else
         draw_part:DeleteMe()
     end
 end
+
+function DrawPart:__init()
+end
+
+function DrawPart:__delete()
+    DrawPart.Release(self)
+end
+
+local localPosition = Vector3(0, 0, 0)
+local localRotation = Quaternion.Euler(0, 0, 0)
+local localScale = Vector3(1, 1, 1)
+
+function DrawPart:ChangeModel(bundle, asset, callback)
+    --------------------------------------------
+    --TODO 11111111111111111111111111111
+    local go = Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
+    go.name = self.part
+    go.transform:SetParent(self.draw_obj.root_transform, true)
+    go.transform.localPosition = localPosition
+    go.transform.localRotation = localRotation
+    go.transform.localScale = localScale
+    self.root = go
+    --------------------------------------------
+end
+
+--------------------------------------------
+--TODO 11111111111111111111111111111111111
+function DrawPart:GetAnimator()
+    if not self.animator then
+        self.animator = self.root:GetComponent(typeof(UnityEngine.Animator))
+    end
+    return self.animator
+end
+
+function DrawPart:SetDrawObj(draw_obj)
+    ---@type DrawObj
+    self.draw_obj = draw_obj
+end
+
+function DrawPart:SetPart(part)
+    self.part = part
+end
+--------------------------------------------

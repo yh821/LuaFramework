@@ -85,9 +85,13 @@ local component_table = {
     button = typeof(UnityEngine.UI.Button),
     toggle = typeof(UnityEngine.UI.Toggle),
 
-    move_obj = typeof(MoveableObject),
+    animator = typeof(UnityEngine.Animator),
+    move_obj = typeof(MovableObject),
 }
 
+---@class U3DObject
+---@field gameObject GameObject
+---@field transform Transform
 local u3d_shortcut = {}
 function u3d_shortcut:SetActive(active)
     self.gameObject:SetActive(active)
@@ -118,6 +122,15 @@ end
 
 function u3d_shortcut:SetLocalPosition(x, y, z)
     self.transform:SetLocalPosition(x, y, z)
+end
+
+local localPosition = Vector3(0, 0, 0)
+local localRotation = Quaternion.Euler(0, 0, 0)
+local localScale = Vector3(1, 1, 1)
+function u3d_shortcut:ResetTransform()
+    self.transform.localPosition = localPosition
+    self.transform.localRotation = localRotation
+    self.transform.localScale = localScale
 end
 
 function u3d_shortcut:SetText(text)
@@ -151,6 +164,7 @@ local u3d_metatable = {
     end
 }
 
+---@return U3DObject
 function U3DObject(go, transform, data)
     if go == nil then
         return
@@ -172,3 +186,7 @@ function U3DNodeList(name_table, data)
     end
     return node_list
 end
+
+---@class GameObject
+
+---@class Transform

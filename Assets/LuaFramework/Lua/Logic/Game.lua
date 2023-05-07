@@ -49,7 +49,16 @@ function Game.Start()
         MainUiCtrl.Instance:Open()
     end
 
-    Scene.Instance:CreateMonster({ obj_id = 11 })
+    local role = Scene.Instance:CreateRole({ obj_id = 1 })
+    local pet = Scene.Instance:CreateMonster({ obj_id = 2 })
+    local bt = AiManager.Instance:BindBT(pet, "pet")
+    bt:SetSharedVar(AiConfig.TargetObjKey, role)
+    --for i = 1, 10 do
+    --    local monster = Scene.Instance:CreateMonster({ obj_id = 2 + i })
+    --    bt = AiManager.Instance:BindBT(monster, "monster")
+    --    bt:SetSharedVar(AiConfig.TargetObjKey, role)
+    --end
+    AiManager.Instance:SwitchTick()
 end
 
 

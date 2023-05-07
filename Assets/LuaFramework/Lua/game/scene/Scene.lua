@@ -7,6 +7,7 @@ require("game/core/DrawPart")
 require("game/core/DrawObj")
 
 require("game/scene/SceneObj")
+require("game/scene/Role")
 require("game/scene/Monster")
 
 ---@class Scene
@@ -72,6 +73,7 @@ function Scene:CreateObj(vo, obj_type)
     elseif obj_type == SceneObjType.Monster then
         obj = Monster.New(vo, self)
     end
+    self.obj_list[vo.obj_id] = obj
     obj.draw_obj:SetObjType(obj_type)
     return obj
 end

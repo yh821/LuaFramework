@@ -6,7 +6,7 @@ public class MoveableObjectWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(MoveableObject), typeof(UnityEngine.MonoBehaviour));
+		L.BeginClass(typeof(MovableObject), typeof(UnityEngine.MonoBehaviour));
 		L.RegFunction("Reset", Reset);
 		L.RegFunction("MoveTo", MoveTo);
 		L.RegFunction("StopMove", StopMove);
@@ -26,7 +26,7 @@ public class MoveableObjectWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+			MovableObject obj = (MovableObject)ToLua.CheckObject(L, 1, typeof(MovableObject));
 			obj.Reset();
 			return 0;
 		}
@@ -45,7 +45,7 @@ public class MoveableObjectWrap
 
 			if (count == 3)
 			{
-				MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+				MovableObject obj = (MovableObject)ToLua.CheckObject(L, 1, typeof(MovableObject));
 				UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 				float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
 				obj.MoveTo(arg0, arg1);
@@ -53,7 +53,7 @@ public class MoveableObjectWrap
 			}
 			else if (count == 4)
 			{
-				MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+				MovableObject obj = (MovableObject)ToLua.CheckObject(L, 1, typeof(MovableObject));
 				UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 				float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
 				System.Action<int> arg2 = (System.Action<int>)ToLua.CheckDelegate<System.Action<int>>(L, 4);
@@ -62,7 +62,7 @@ public class MoveableObjectWrap
 			}
 			else if (count == 5)
 			{
-				MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+				MovableObject obj = (MovableObject)ToLua.CheckObject(L, 1, typeof(MovableObject));
 				float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 				float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
 				float arg2 = (float)LuaDLL.luaL_checknumber(L, 4);
@@ -72,7 +72,7 @@ public class MoveableObjectWrap
 			}
 			else if (count == 6)
 			{
-				MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+				MovableObject obj = (MovableObject)ToLua.CheckObject(L, 1, typeof(MovableObject));
 				float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 				float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
 				float arg2 = (float)LuaDLL.luaL_checknumber(L, 4);
@@ -98,7 +98,7 @@ public class MoveableObjectWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+			MovableObject obj = (MovableObject)ToLua.CheckObject(L, 1, typeof(MovableObject));
 			obj.StopMove();
 			return 0;
 		}
@@ -114,7 +114,7 @@ public class MoveableObjectWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 3);
-			MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+			MovableObject obj = (MovableObject)ToLua.CheckObject(L, 1, typeof(MovableObject));
 			UnityEngine.Vector3 arg0 = ToLua.ToVector3(L, 2);
 			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
 			obj.RotateTo(arg0, arg1);
@@ -132,7 +132,7 @@ public class MoveableObjectWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 1);
-			MoveableObject obj = (MoveableObject)ToLua.CheckObject(L, 1, typeof(MoveableObject));
+			MovableObject obj = (MovableObject)ToLua.CheckObject(L, 1, typeof(MovableObject));
 			obj.StopRotate();
 			return 0;
 		}
@@ -153,7 +153,7 @@ public class MoveableObjectWrap
 			{
 				float arg0 = (float)LuaDLL.luaL_checknumber(L, 1);
 				float arg1 = (float)LuaDLL.luaL_checknumber(L, 2);
-				float o = MoveableObject.GetWalkableHeight(arg0, arg1);
+				float o = MovableObject.GetWalkableHeight(arg0, arg1);
 				LuaDLL.lua_pushnumber(L, o);
 				return 1;
 			}
@@ -162,7 +162,7 @@ public class MoveableObjectWrap
 				float arg0 = (float)LuaDLL.luaL_checknumber(L, 1);
 				float arg1 = (float)LuaDLL.luaL_checknumber(L, 2);
 				int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
-				float o = MoveableObject.GetWalkableHeight(arg0, arg1, arg2);
+				float o = MovableObject.GetWalkableHeight(arg0, arg1, arg2);
 				LuaDLL.lua_pushnumber(L, o);
 				return 1;
 			}
@@ -203,7 +203,7 @@ public class MoveableObjectWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			MoveableObject obj = (MoveableObject)o;
+			MovableObject obj = (MovableObject)o;
 			float ret = obj.moveSpeed;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -222,7 +222,7 @@ public class MoveableObjectWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			MoveableObject obj = (MoveableObject)o;
+			MovableObject obj = (MovableObject)o;
 			float ret = obj.rotateSpeed;
 			LuaDLL.lua_pushnumber(L, ret);
 			return 1;
@@ -241,7 +241,7 @@ public class MoveableObjectWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			MoveableObject obj = (MoveableObject)o;
+			MovableObject obj = (MovableObject)o;
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.moveSpeed = arg0;
 			return 0;
@@ -260,7 +260,7 @@ public class MoveableObjectWrap
 		try
 		{
 			o = ToLua.ToObject(L, 1);
-			MoveableObject obj = (MoveableObject)o;
+			MovableObject obj = (MovableObject)o;
 			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
 			obj.rotateSpeed = arg0;
 			return 0;

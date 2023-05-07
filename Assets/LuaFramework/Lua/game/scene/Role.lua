@@ -11,3 +11,12 @@ end
 
 function Role:__delete()
 end
+
+function Role:InitAppearance()
+    local parent = GameObject.Find("GameRoot/SceneObjLayer/Boy")
+    if parent then
+        local root = self:GetDrawObj():GetRoot()
+        root.transform:SetParent(parent.transform, false)
+        root:ResetTransform()
+    end
+end

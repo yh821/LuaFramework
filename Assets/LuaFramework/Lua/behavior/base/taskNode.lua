@@ -59,7 +59,7 @@ end
 
 ---@return eNodeState
 function TaskNode:Update(delta_time)
-    --override
+    return eNodeState.Running
 end
 
 ---@return boolean
@@ -96,6 +96,7 @@ end
 function TaskNode:SetState(state)
     local is_change = self._state ~= nil and self._state ~= state
     self._state = state
+    --self:print("SetState:" .. (self._state or "nil"))
     return is_change
 end
 
@@ -136,7 +137,6 @@ end
 function TaskNode:IsDecorator()
     return false
 end
-
 
 ---@param key string
 ---@param value any

@@ -15,11 +15,11 @@ local string = require("string")
 local _M = mime
 
 -- encode, decode and wrap algorithm tables
-local encodet, decodet, wrapt = {},{},{}
+local encodet, decodet, wrapt = {}, {}, {}
 
 _M.encodet = encodet
 _M.decodet = decodet
-_M.wrapt   = wrapt
+_M.wrapt = wrapt
 
 -- creates a function that chooses a filter by name from a given table
 local function choose(table)
@@ -30,7 +30,9 @@ local function choose(table)
         local f = table[name or "nil"]
         if not f then
             base.error("unknown key (" .. base.tostring(name) .. ")", 3)
-        else return f(opt1, opt2) end
+        else
+            return f(opt1, opt2)
+        end
     end
 end
 
@@ -41,7 +43,7 @@ end
 
 encodet["quoted-printable"] = function(mode)
     return ltn12.filter.cycle(_M.qp, "",
-        (mode == "binary") and "=0D=0A" or "\r\n")
+            (mode == "binary") and "=0D=0A" or "\r\n")
 end
 
 -- define the decoding filters
@@ -55,9 +57,14 @@ end
 
 local function format(chunk)
     if chunk then
-        if chunk == "" then return "''"
-        else return string.len(chunk) end
-    else return "nil" end
+        if chunk == "" then
+            return "''"
+        else
+            return string.len(chunk)
+        end
+    else
+        return "nil"
+    end
 end
 
 -- define the line-wrap filters
@@ -66,9 +73,9 @@ wrapt["text"] = function(length)
     return ltn12.filter.cycle(_M.wrp, length, length)
 end
 wrapt["base64"] = wrapt["text"]
-wrapt["default"] = wrapt["text']
+wrapt["default"] = wrapt["text"]
 
-wrapt['quoted-printable'] = function()
+wrapt["quoted-printable"] = function()
     return ltn12.filter.cycle(_M.qpwrp, 76, 76)
 end
 

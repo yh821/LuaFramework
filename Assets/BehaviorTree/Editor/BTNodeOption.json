@@ -9,7 +9,7 @@
     "max_time": "3"
   },
   "weightNode": {
-    "name": "几率(1-1000)",
+    "name": "权重(1-1000)",
     "weight": "50"
   },
   "isActiveNode": {
@@ -27,5 +27,15 @@
   },
   "inverterNode": {
     "name": "非"
+  },
+  "randomPositionNode": {
+    "name": "随机位置"
+  },
+  "moveToPositionNode": {
+    "name": "移动到位置"
+  },
+  "isInViewNode": {
+    "name": "在视野内",
+    "ViewRange": "5"
   }
 }

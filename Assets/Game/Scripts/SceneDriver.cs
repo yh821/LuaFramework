@@ -26,9 +26,10 @@ namespace Game.Scripts
 		private float _flyHeight;
 
 		private Animator _animator;
-		private MoveableObject _moveable;
-		private float _moveSpeed = 9;
+		private MovableObject _movable;
 		private Vector3 _moveTo;
+		private float _moveSpeed = 6;
+		private float _rotaSpeed = 10;
 
 		private MoveState _moveState;
 
@@ -59,9 +60,10 @@ namespace Game.Scripts
 
 		void InitActor()
 		{
-			_player = Instantiate(EditorResourceMgr.LoadGameObject("actors/role_prefab", "Boy.prefab"));
+			_player = Instantiate(EditorResourceMgr.LoadGameObject("actors/role_prefab", "Boy"), GameObject.Find("GameRoot/SceneObjLayer").transform, false);
+			_player.gameObject.name = "Boy";
 			_animator = _player.GetComponent<Animator>();
-			_moveable = _player.GetComponent<MoveableObject>();
+			_movable = _player.GetComponent<MovableObject>();
 
 			_camera = Camera.main.GetComponent<SimpleCamera>();
 			_camera.target = _player.transform;
@@ -72,7 +74,7 @@ namespace Game.Scripts
 
 		private void Update()
 		{
-			if (!_moveable) return;
+			if (!_movable) return;
 			var moveDir = Vector2.zero;
 			if (Input.GetKey(KeyCode.W))
 				moveDir += Vector2.up;
@@ -100,16 +102,16 @@ namespace Game.Scripts
 			{
 				moveState = MoveState.Move;
 				var target = new Vector3(moveDir.x, 0, moveDir.y);
-				target = target * 2f + _moveable.transform.position;
-				_moveable.RotateTo(target, 10f);
-				_moveable.MoveTo(target, _moveSpeed);
+				target = target * 2f + _movable.transform.position;
+				_movable.RotateTo(target, _rotaSpeed);
+				_movable.MoveTo(target, _moveSpeed);
 			}
 			else
 			{
 				if (moveState == MoveState.Move)
 				{
 					moveState = MoveState.Idle;
-					_moveable.StopMove();
+					_movable.StopMove();
 				}
 			}
 		}
@@ -117,8 +119,8 @@ namespace Game.Scripts
 		void UpdateFly(Vector2 moveDir)
 		{
 			var target = new Vector3(moveDir.x, 0, moveDir.y);
-			target = target * (_moveSpeed * Time.deltaTime) + _moveable.transform.position;
-			var minHeight = MoveableObject.GetWalkableHeight(target.x, target.z, 0);
+			target = target * (_moveSpeed * Time.deltaTime) + _movable.transform.position;
+			var minHeight = MovableObject.GetWalkableHeight(target.x, target.z, 0);
 			if (Input.GetKey(KeyCode.Q))
 				_flyHeight += Time.deltaTime * 15f;
 			if (Input.GetKey(KeyCode.E))
@@ -126,14 +128,14 @@ namespace Game.Scripts
 			if (_flyHeight < minHeight)
 				_flyHeight = minHeight;
 			target.y = _flyHeight;
-			_moveable.transform.position = target;
+			_movable.transform.position = target;
 			if (moveDir != Vector2.zero)
 			{
 				var lookDir = new Vector3(moveDir.x, 0, moveDir.y);
 				var targetRotation = Quaternion.LookRotation(lookDir);
-				var rotation = _moveable.transform.rotation;
-				rotation = Quaternion.Slerp(rotation, targetRotation, Time.deltaTime * 10f);
-				_moveable.transform.rotation = rotation;
+				var rotation = _movable.transform.rotation;
+				rotation = Quaternion.Slerp(rotation, targetRotation, Time.deltaTime * _rotaSpeed);
+				_movable.transform.rotation = rotation;
 			}
 		}
 
@@ -159,8 +161,8 @@ namespace Game.Scripts
 				var point = hit[0].point;
 				_moveTo = point;
 				moveState = MoveState.Tap;
-				_moveable.RotateTo(point, 10);
-				_moveable.MoveTo(point, 10, typo =>
+				_movable.RotateTo(point, _rotaSpeed);
+				_movable.MoveTo(point, _moveSpeed, typo =>
 				{
 					if (moveState == MoveState.Tap)
 						moveState = MoveState.Idle;
@@ -171,10 +173,9 @@ namespace Game.Scripts
 		private void FashMove()
 		{
 			if (_moveTo == Vector3.zero) return;
-			_moveable.transform.position = _moveTo;
+			_movable.transform.position = _moveTo;
 			moveState = MoveState.Idle;
 			_moveTo = Vector3.zero;
 		}
-
 	}
 }
