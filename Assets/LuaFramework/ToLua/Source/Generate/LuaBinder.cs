@@ -12,10 +12,11 @@ public static class LuaBinder
 		LuaInterface_DebuggerWrap.Register(L);
 		LuaProfilerWrap.Register(L);
 		SimpleCameraWrap.Register(L);
-		MoveableObjectWrap.Register(L);
+		MovableObjectWrap.Register(L);
 		EditorResourceMgrWrap.Register(L);
 		HedgehogTeam_EasyTouch_EasyTouchWrap.Register(L);
 		Game_UINameTableWrap.Register(L);
+		ClickableObjectWrap.Register(L);
 		ViewWrap.Register(L);
 		BaseWrap.Register(L);
 		ManagerWrap.Register(L);

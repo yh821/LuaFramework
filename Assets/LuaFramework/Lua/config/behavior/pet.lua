@@ -23,7 +23,7 @@ local __bt__ = {
               file= "isInViewNode",
               type= "conditions/isInViewNode",
               data= {
-                ViewRange= 20
+                ViewRange= 12
               },
             },
             {
@@ -67,6 +67,9 @@ local __bt__ = {
                     {
                       file= "randomPositionNode",
                       type= "actions/randomPositionNode",
+                      data= {
+                        center= "TargetPos"
+                      },
                     },
                     {
                       file= "moveToPositionNode",

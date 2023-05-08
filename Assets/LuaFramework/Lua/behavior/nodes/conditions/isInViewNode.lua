@@ -12,7 +12,8 @@ function isInViewNode:Start()
     if self.view_range then
         return
     end
-    self.view_range = self:GetSharedVar(AiConfig.ViewRangeKey) or 5
+    local range = self.data and self.data[AiConfig.ViewRangeKey]
+    self.view_range = range or self:GetSharedVar(AiConfig.ViewRangeKey) or 5
     self.draw_obj = self:GetSharedVar(AiConfig.SceneObjKey):GetDrawObj()
     self.target = self:GetSharedVar(AiConfig.TargetObjKey):GetDrawObj()
 end

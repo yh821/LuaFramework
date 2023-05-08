@@ -39,7 +39,31 @@ function DrawPart.Release(draw_part)
     end
 end
 
+DrawPart._load_token_count = 0
+DrawPart._cb_data_pool = {}
+function DrawPart.CreateCbData(self, bundle, asset, token)
+    local cb_data = table.remove(DrawPart._cb_data_pool)
+    if not cb_data then
+        cb_data = {}
+    end
+    cb_data[1] = self
+    cb_data[2] = bundle
+    cb_data[3] = asset
+    cb_data[4] = token
+    return cb_data
+end
+
+function DrawPart.ReleaseCbData(cb_data)
+    if #DrawPart._cb_data_pool < 100 then
+        for i, v in ipairs(cb_data) do
+            cb_data[i] = nil
+        end
+        table.insert(DrawPart._cb_data_pool, cb_data)
+    end
+end
+
 function DrawPart:__init()
+    self.hide_mask = {}
 end
 
 function DrawPart:__delete()
@@ -98,8 +122,10 @@ function DrawPart:LoadModel(bundle, asset)
     go.transform.localPosition = localPosition
     go.transform.localRotation = localRotation
     go.transform.localScale = localScale
-    self.root = go
-
+    DrawPart._load_token_count = DrawPart._load_token_count + 1
+    local cb_data = DrawPart.CreateCbData(self, bundle, asset, DrawPart._load_token_count)
+    self.load_token = DrawPart._load_token_count
+    DrawPart.__OnLoadComplete(go, cb_data)
 end
 
 function DrawPart:Reset(obj)
@@ -163,7 +189,7 @@ function DrawPart.__OnLoadComplete(obj, cb_data)
     self.part_rotate = self.obj_transform.localRotation
     self:__FlushParent(self.obj)
     self:__FlushClickListener(self.obj)
-    SELF.obj_transform.localPosition = Vector3Pool.GetTemp(0, 0, 0)
+    self.obj_transform.localPosition = Vector3Pool.GetTemp(0, 0, 0)
 
     self:__InitRenderer()
     self:__InitAnimator()
@@ -237,15 +263,58 @@ function DrawPart:SetTrigger(key)
     end
 end
 
-
-
-
---------------------------------------------
---TODO 11111111111111111111111111111111111
-function DrawPart:GetAnimator()
-    if not self.animator then
-        self.animator = self.root:GetComponent(typeof(UnityEngine.Animator))
-    end
-    return self.animator
+function DrawPart:ResetTrigger(key)
 end
---------------------------------------------
+
+function DrawPart:SetBoolean(key, value)
+    if self.obj then
+        if self.obj.animator and self.obj.animator.isActiveAndEnabled then
+            self.obj.animator:SetBoolean(key, value)
+        end
+    elseif #self.hide_mask == 0 then
+        if not self.animator_booleans then
+            self.animator_booleans = {}
+        end
+        self.animator_booleans[key] = value
+    end
+end
+
+function DrawPart:SetFloat(key, value)
+    if self.obj then
+        if self.obj.animator and self.obj.animator.isActiveAndEnabled then
+            self.obj.animator:SetBoolean(key, value)
+        end
+    elseif #self.hide_mask == 0 then
+        if not self.animator_booleans then
+            self.animator_booleans = {}
+        end
+        self.animator_booleans[key] = value
+    end
+end
+
+function DrawPart:SetInteger(key, value)
+    if self.obj then
+        if self.obj.animator and self.obj.animator.isActiveAndEnabled then
+            self.obj.animator:SetInteger(key, value)
+        end
+    elseif #self.hide_mask == 0 then
+        if not self.animator_integers then
+            self.animator_integers = {}
+        end
+        self.animator_integers[key] = value
+    end
+end
+
+function DrawPart:SetBool(key, value)
+    if self.obj then
+        if self.obj.animator and self.obj.animator.isActiveAndEnabled then
+            self.obj.animator:SetBool(key, value)
+        end
+    elseif #self.hide_mask == 0 then
+        if not self.animator_booleans then
+            self.animator_booleans = {}
+        end
+        self.animator_booleans[key] = value
+    end
+end
+

@@ -144,22 +144,22 @@ function DrawObj:AnimOnMainPart(action, ...)
 end
 
 function DrawObj:SetAnimParamMain(type, key, value)
-    local part_func = function(draw_obj, part, type, key, value)
+    local part_func = function(draw_obj, part, typo, k, v)
         ---@type DrawPart
         local draw_part = draw_obj:TryGetPart(part)
         if not draw_part then
             return
         end
-        if type == DrawObj.AnimParamType.Trigger then
-            draw_part:SetTrigger(key)
-        elseif type == DrawObj.AnimParamType.Boolean then
-            draw_part:SetBool(key, value)
-        elseif type == DrawObj.AnimParamType.Float then
-            draw_part:SetFloat(key, value)
-        elseif type == DrawObj.AnimParamType.Integer then
-            draw_part:SetInteger(key, value)
-        elseif type == DrawObj.AnimParamType.ResetTrigger then
-            draw_part:ResetTrigger(key)
+        if typo == DrawObj.AnimParamType.Trigger then
+            draw_part:SetTrigger(k)
+        elseif typo == DrawObj.AnimParamType.Boolean then
+            draw_part:SetBool(k, v)
+        elseif typo == DrawObj.AnimParamType.Float then
+            draw_part:SetFloat(k, v)
+        elseif typo == DrawObj.AnimParamType.Integer then
+            draw_part:SetInteger(k, v)
+        elseif typo == DrawObj.AnimParamType.ResetTrigger then
+            draw_part:ResetTrigger(k)
         end
     end
     self:AnimOnMainPart(part_func, type, key, value)

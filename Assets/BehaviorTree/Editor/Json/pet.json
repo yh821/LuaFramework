@@ -47,7 +47,7 @@
               "index": 3,
               "fold": false,
               "data": {
-                "ViewRange": "20"
+                "ViewRange": "12"
               },
               "children": null
             },
@@ -130,7 +130,9 @@
                       "posY": 660.0,
                       "index": 9,
                       "fold": false,
-                      "data": null,
+                      "data": {
+                        "center": "TargetPos"
+                      },
                       "children": null
                     },
                     {
