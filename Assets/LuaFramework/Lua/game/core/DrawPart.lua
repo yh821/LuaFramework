@@ -102,6 +102,34 @@ function DrawPart:LoadModel(bundle, asset)
 
 end
 
+function DrawPart:Reset(obj)
+    if self.part == SceneObjPart.Main then
+        print_error("[DrawPart] Unexpected process!")
+        return
+    end
+    self:__RemoveAttach()
+end
+
+--销毁当前self.obj, 保留数据
+function DrawPart:DestroyObj()
+    self:CancelLoadInQueue()
+    self:__RemoveAttach()
+    local obj = self.obj
+    self.obj = nil
+    self.obj_transform = nil
+    if not obj or IsNil(obj.gameObject) then
+        return
+    end
+    if self.remove_callback then
+        local result, error = pcall(self.remove_callback, self.draw_obj, obj, self.part, self)
+        if not result then
+            print_error(error)
+        end
+    end
+    --TODO 回收
+    --ResPoolMgr:Release(obj)
+end
+
 function DrawPart.__OnLoadComplete(obj, cb_data)
     ---@type DrawPart
     local self = cb_data[1]
@@ -141,24 +169,23 @@ function DrawPart.__OnLoadComplete(obj, cb_data)
     self:__InitAnimator()
 end
 
---销毁当前self.obj, 保留数据
-function DrawPart:DestroyObj()
-    self:CancelLoadInQueue()
-    self:__RemoveAttach()
-    local obj = self.obj
-    self.obj = nil
-    self.obj_transform = nil
-    if not obj or IsNil(obj.gameObject) then
+function DrawPart:__InitRenderer()
+end
+
+function DrawPart:__InitAnimator()
+    if not self.obj then
         return
     end
-    if self.remove_callback then
-        local result, error = pcall(self.remove_callback, self.draw_obj, obj, self.part, self)
-        if not result then
-            print_error(error)
-        end
+
+    self.obj:SetActive(true)
+    local animator = self.obj.animator
+    if not IsNil(animator) then
+
     end
-    --TODO 回收
-    --ResPoolMgr:Release(obj)
+    self:__TryInvokeComplete()
+end
+
+function DrawPart:__TryInvokeComplete()
 end
 
 function DrawPart:__FlushParent(obj)
@@ -196,12 +223,18 @@ function DrawPart:__ReleaseLoaded(obj)
     --ResPoolMgr:Release(obj)
 end
 
-function DrawPart:Reset(obj)
-    if self.part == SceneObjPart.Main then
-        print_error("[DrawPart] Unexpected process!")
-        return
+function DrawPart:SetTrigger(key)
+    self.cur_play_anim = nil
+    if self.obj then
+        if self.obj.animator and self.obj.animator.isActiveAndEnabled then
+            self.obj.animator:SetTrigger(key)
+        end
+    elseif #self.hide_mask == 0 then
+        if not self.animator_triggers then
+            self.animator_triggers = {}
+        end
+        self.animator_triggers[key] = true
     end
-    self:__RemoveAttach()
 end
 
 

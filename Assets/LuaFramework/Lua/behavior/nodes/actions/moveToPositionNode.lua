@@ -24,18 +24,18 @@ function moveToPositionNode:Start()
 
     self.draw_obj:RotateTo(target_pos, 10)
     self.draw_obj:MoveTo(target_pos, 5, function()
-        self.draw_obj:SetBool("move", false)
+        self.draw_obj:SetAnimParamMain(DrawObj.AnimParamType.Boolean, "move", false)
         self:SetState(eNodeState.Success)
     end)
     self:print("开始移动:" .. pos_key .. target_pos:ToString())
-    self.draw_obj:SetBool("move", true)
+    self.draw_obj:SetAnimParamMain(DrawObj.AnimParamType.Boolean, "move", true)
     return eNodeState.Running
 end
 
 function moveToPositionNode:Abort()
     if self.draw_obj then
         self.draw_obj:StopMove()
-        self.draw_obj:SetBool("move", false)
+        self.draw_obj:SetAnimParamMain(DrawObj.AnimParamType.Boolean, "move", false)
     end
     self:print("<color=red>打断移动</color>")
     return eNodeState.Failure

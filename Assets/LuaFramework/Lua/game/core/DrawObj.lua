@@ -16,6 +16,14 @@ SceneObjType = {
 ---@field part_list DrawPart[]
 DrawObj = DrawObj or BaseClass()
 
+DrawObj.AnimParamType = {
+    ResetTrigger = 0,
+    Trigger = 1,
+    Boolean = 2,
+    Float = 3,
+    Integer = 4,
+}
+
 local function InitDrawObjPool()
     DrawObj.obj_list = {}
     DrawObj.obj_count = 0
@@ -130,6 +138,33 @@ function DrawObj:RemoveModel(part)
     end
 end
 
+function DrawObj:AnimOnMainPart(action, ...)
+    action(self, SceneObjPart.Main, ...)
+    --action(self,SceneObjPart.Weapon,...)
+end
+
+function DrawObj:SetAnimParamMain(type, key, value)
+    local part_func = function(draw_obj, part, type, key, value)
+        ---@type DrawPart
+        local draw_part = draw_obj:TryGetPart(part)
+        if not draw_part then
+            return
+        end
+        if type == DrawObj.AnimParamType.Trigger then
+            draw_part:SetTrigger(key)
+        elseif type == DrawObj.AnimParamType.Boolean then
+            draw_part:SetBool(key, value)
+        elseif type == DrawObj.AnimParamType.Float then
+            draw_part:SetFloat(key, value)
+        elseif type == DrawObj.AnimParamType.Integer then
+            draw_part:SetInteger(key, value)
+        elseif type == DrawObj.AnimParamType.ResetTrigger then
+            draw_part:ResetTrigger(key)
+        end
+    end
+    self:AnimOnMainPart(part_func, type, key, value)
+end
+
 ----------------------------------------------------
 --TODO 1111111111111111111111111111111111111111
 function DrawObj:MoveTo(pos, speed, callback)
@@ -145,14 +180,6 @@ end
 function DrawObj:RotateTo(pos, speed)
     if self.root then
         self.root.move_obj:RotateTo(pos, speed)
-    end
-end
-
-function DrawObj:SetBool(key, value)
-    local main_part = self:TryGetPart(SceneObjPart.Main)
-    if main_part then
-        local animator = main_part:GetAnimator()
-        animator:SetBool(key, value)
     end
 end
 ----------------------------------------------------
