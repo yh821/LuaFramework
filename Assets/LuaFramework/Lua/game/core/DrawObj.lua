@@ -91,12 +91,11 @@ end
 
 function DrawObj:__CreatePart(part)
     local draw_part = DrawPart.Pop()
-    -------------------------------------
-    --TODO 11111111111111111111111111111
-    self:SetPart(part, draw_part)
-    draw_part:SetDrawObj(self)
     draw_part:SetPart(part)
-    -------------------------------------
+    draw_part:SetDrawObj(self)
+    draw_part:SetParent(self.root)
+    self:SetPart(part, draw_part)
+
     return draw_part
 end
 

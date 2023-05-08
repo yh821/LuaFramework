@@ -14,6 +14,8 @@ SceneObjPart = {
 }
 
 ---@class DrawPart
+---@field draw_obj DrawObj
+---@field parent U3DObject
 DrawPart = DrawPart or BaseClass()
 
 ---@type DrawPart[]
@@ -44,13 +46,52 @@ function DrawPart:__delete()
     DrawPart.Release(self)
 end
 
+function DrawPart:SetDrawObj(draw_obj)
+    self.draw_obj = draw_obj
+end
+
+function DrawPart:SetParent(parent)
+    self.parent = parent
+    if self.obj then
+        self:__FlushParent(self.obj)
+    end
+end
+
+function DrawPart:SetPart(part)
+    self.part = part
+end
+
+function DrawPart:CancelLoadInQueue()
+    self.load_token = nil
+end
+
 local localPosition = Vector3(0, 0, 0)
 local localRotation = Quaternion.Euler(0, 0, 0)
 local localScale = Vector3(1, 1, 1)
 
 function DrawPart:ChangeModel(bundle, asset, callback)
-    --------------------------------------------
-    --TODO 11111111111111111111111111111
+    if IsNilOrEmpty(bundle) or IsNilOrEmpty(asset) then
+        return
+    end
+    if self.bundle == bundle and self.asset == asset then
+        if self.load_token then
+            self.load_callback = callback
+        else
+            if callback then
+                callback()
+            end
+        end
+        return
+    end
+    self.bundle = bundle
+    self.asset = asset
+    self:CancelLoadInQueue()
+    self.load_callback = callback
+    self:LoadModel(self.bundle, self.asset)
+end
+
+function DrawPart:LoadModel(bundle, asset)
+    --TODO 暂时用Editor同步加载
     local go = Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
     go.name = self.part
     go.transform:SetParent(self.draw_obj.root_transform, true)
@@ -58,8 +99,113 @@ function DrawPart:ChangeModel(bundle, asset, callback)
     go.transform.localRotation = localRotation
     go.transform.localScale = localScale
     self.root = go
-    --------------------------------------------
+
 end
+
+function DrawPart.__OnLoadComplete(obj, cb_data)
+    ---@type DrawPart
+    local self = cb_data[1]
+    local bundle = cb_data[2]
+    local asset = cb_data[3]
+    local token = cb_data[4]
+    DrawPart.ReleaseCbData(cb_data)
+    if self.load_token ~= token then
+        if not IsNil(obj) then
+            self:__ReleaseLoaded(obj)
+        end
+        return
+    end
+    self.load_token = nil
+    self:DestroyObj()
+    if IsNil(obj) then
+        print_error(string.format("加载模型失败, bundle:%s, asset:%s", bundle, asset))
+        return
+    end
+    if self.bundle ~= bundle or self.asset ~= asset then
+        print_error("[DrawPart] Reload for bundle and asset not match!")
+        self:__ReleaseLoaded(obj)
+        if sel.bundle and self.asset then
+            self:LoadModel(self.bundle, self.asset)
+        end
+        return
+    end
+    self.obj = U3DObject(obj)
+    self.obj_transform = self.obj.transform
+    self.part_scale = self.obj_transform.localScale
+    self.part_rotate = self.obj_transform.localRotation
+    self:__FlushParent(self.obj)
+    self:__FlushClickListener(self.obj)
+    SELF.obj_transform.localPosition = Vector3Pool.GetTemp(0, 0, 0)
+
+    self:__InitRenderer()
+    self:__InitAnimator()
+end
+
+--销毁当前self.obj, 保留数据
+function DrawPart:DestroyObj()
+    self:CancelLoadInQueue()
+    self:__RemoveAttach()
+    local obj = self.obj
+    self.obj = nil
+    self.obj_transform = nil
+    if not obj or IsNil(obj.gameObject) then
+        return
+    end
+    if self.remove_callback then
+        local result, error = pcall(self.remove_callback, self.draw_obj, obj, self.part, self)
+        if not result then
+            print_error(error)
+        end
+    end
+    --TODO 回收
+    --ResPoolMgr:Release(obj)
+end
+
+function DrawPart:__FlushParent(obj)
+    if self.parent then
+        obj.transform:SetParent(self.parent.transform, false)
+    else
+        obj.transform:SetParent(nil)
+    end
+end
+
+function DrawPart:__FlushClickListener(obj)
+    local clickable = obj.clickable_obj
+    if clickable == nil then
+        return
+    end
+    if self.click_listener then
+        clickable:SetClickListener(self.click_listener)
+        clickable:SetClickable(true)
+    else
+        clickable:SetClickListener(nil)
+        clickable:SetClickable(false)
+    end
+end
+
+function DrawPart:__RemoveAttach()
+    local obj = self.obj
+    if obj and not IsNil(obj.gameObject) then
+        obj.transform.localScale = self.part_scale
+        obj.transform.localRotation = Quaternion.Euler(self.part_rotate.x, self.part_rotate.y, self.part_rotate.z)
+    end
+end
+
+function DrawPart:__ReleaseLoaded(obj)
+    --TODO 回收
+    --ResPoolMgr:Release(obj)
+end
+
+function DrawPart:Reset(obj)
+    if self.part == SceneObjPart.Main then
+        print_error("[DrawPart] Unexpected process!")
+        return
+    end
+    self:__RemoveAttach()
+end
+
+
+
 
 --------------------------------------------
 --TODO 11111111111111111111111111111111111
@@ -68,14 +214,5 @@ function DrawPart:GetAnimator()
         self.animator = self.root:GetComponent(typeof(UnityEngine.Animator))
     end
     return self.animator
-end
-
-function DrawPart:SetDrawObj(draw_obj)
-    ---@type DrawObj
-    self.draw_obj = draw_obj
-end
-
-function DrawPart:SetPart(part)
-    self.part = part
 end
 --------------------------------------------

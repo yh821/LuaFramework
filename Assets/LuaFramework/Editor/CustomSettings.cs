@@ -179,6 +179,8 @@ public static class CustomSettings
 		_GT(typeof(EasyTouch)).SetNameSpace(null),
 		_GT(typeof(UINameTable)).SetNameSpace(null),
 
+		_GT(typeof(ClickableObject)),
+
 		#endregion
 	};
 

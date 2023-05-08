@@ -87,6 +87,7 @@ local component_table = {
 
     animator = typeof(UnityEngine.Animator),
     move_obj = typeof(MovableObject),
+    clickable_obj = typeof(ClickableObject),
 }
 
 ---@class U3DObject
