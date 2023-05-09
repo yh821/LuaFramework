@@ -21,6 +21,8 @@ public class SimpleCameraEditor : Editor
 		EditorGUILayout.LabelField($"X轴旋转角度限制[最小:{_camera.minAngle} | 最大:{_camera.maxAngle}]");
 		EditorGUILayout.MinMaxSlider(ref _camera.minAngle, ref _camera.maxAngle, -85, 85);
 
+		_camera.angle = EditorGUILayout.Vector2Field("默认角度", _camera.angle);
+
 		_camera.angleXSpeed = EditorGUILayout.Slider("X轴旋转速度", _camera.angleXSpeed, 0.01f, 1f);
 		_camera.angleYSpeed = EditorGUILayout.Slider("Y轴旋转速度", _camera.angleYSpeed, 0.01f, 1f);
 		_camera.rotationSensitivity = EditorGUILayout.Slider("旋转灵敏度", _camera.rotationSensitivity, 1f, 20f);

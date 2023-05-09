@@ -165,22 +165,21 @@ function DrawObj:SetAnimParamMain(type, key, value)
     self:AnimOnMainPart(part_func, type, key, value)
 end
 
-----------------------------------------------------
---TODO 1111111111111111111111111111111111111111
 function DrawObj:MoveTo(pos, speed, callback)
     if self.root then
         self.root.move_obj:MoveTo(pos, speed, callback)
     end
 end
+
 function DrawObj:StopMove()
     if self.root then
         self.root.move_obj:StopMove()
     end
 end
+
 function DrawObj:RotateTo(pos, speed)
     if self.root then
         self.root.move_obj:RotateTo(pos, speed)
     end
 end
-----------------------------------------------------
 

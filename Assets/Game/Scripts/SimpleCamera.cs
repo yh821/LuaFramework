@@ -28,7 +28,7 @@ public class SimpleCamera : MonoBehaviour
 	private float _distance = 10;
 	private float _oldDistance;
 
-	private Vector2 _angle;
+	public Vector2 angle;
 	private Vector2 _oldAngle;
 
 	private float _touchGroundDis = 0;
@@ -38,7 +38,7 @@ public class SimpleCamera : MonoBehaviour
 	{
 		_cachedTransform = transform;
 		_oldDistance = _distance;
-		_oldAngle = _angle;
+		_oldAngle = angle;
 
 		EasyTouch.On_Swipe += OnSwipe;
 		EasyTouch.On_Pinch += OnPinch;
@@ -74,7 +74,7 @@ public class SimpleCamera : MonoBehaviour
 			bool pitch;
 			if (y > 0) //仰视
 			{
-				pitch = _angle.x <= minAngle;
+				pitch = angle.x <= minAngle;
 				if (pitch && _touchGroundDis <= 0)
 					_touchGroundDis = Mathf.Min(_distance, maxDistance);
 				;
@@ -86,14 +86,14 @@ public class SimpleCamera : MonoBehaviour
 				Pinch(y * 2);
 			else
 			{
-				_angle.x += -y * angleXSpeed;
-				_angle.x = Mathf.Clamp(_angle.x, minAngle, maxAngle);
+				angle.x += -y * angleXSpeed;
+				angle.x = Mathf.Clamp(angle.x, minAngle, maxAngle);
 			}
 		}
 
 		if (x != 0)
 		{
-			_angle.y += x * angleYSpeed;
+			angle.y += x * angleYSpeed;
 		}
 	}
 
@@ -117,8 +117,8 @@ public class SimpleCamera : MonoBehaviour
 
 	private void UpdatePosition()
 	{
-		var targetY = FixTargetAngle(_oldAngle.y, _angle.y);
-		_oldAngle = Vector2.Lerp(_oldAngle, new Vector2(_angle.x, targetY), Time.deltaTime * rotationSensitivity);
+		var targetY = FixTargetAngle(_oldAngle.y, angle.y);
+		_oldAngle = Vector2.Lerp(_oldAngle, new Vector2(angle.x, targetY), Time.deltaTime * rotationSensitivity);
 		_oldDistance = Mathf.Lerp(_oldDistance, _distance, Time.deltaTime * distanceSensitivity);
 		SetCameraPosition(_oldDistance, Quaternion.Euler(_oldAngle.x, _oldAngle.y, 0));
 	}
@@ -155,17 +155,17 @@ public class SimpleCamera : MonoBehaviour
 		if (target)
 		{
 			_oldDistance = _distance;
-			_oldAngle = _angle;
+			_oldAngle = angle;
 		}
 	}
 
 	public void ChangeAngle(Vector2 angle)
 	{
-		_angle = angle;
-		_angle.x %= 360f;
-		if (_angle.x > 180f)
-			_angle.x -= 180f;
-		_angle.x = Mathf.Clamp(_angle.x, minAngle, maxAngle);
-		_angle.y %= 360f;
+		this.angle = angle;
+		this.angle.x %= 360f;
+		if (this.angle.x > 180f)
+			this.angle.x -= 180f;
+		this.angle.x = Mathf.Clamp(this.angle.x, minAngle, maxAngle);
+		this.angle.y %= 360f;
 	}
 }

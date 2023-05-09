@@ -15,6 +15,9 @@ function CtrlManager:__init()
         "controller/EventSystem", --事件系统
         "controller/TimerQuest", --定时器
 
+        "loader/ResManager",
+        "loader/ResPoolMgr",
+
         "controller/ViewManager", --界面管理器
         "controller/AiManager",
 

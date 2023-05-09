@@ -29,7 +29,7 @@
           "desc": "",
           "file": "sequenceNode",
           "type": "composites/sequenceNode",
-          "posX": 450.0,
+          "posX": 400.0,
           "posY": 300.0,
           "index": 2,
           "fold": false,
@@ -42,7 +42,7 @@
               "desc": "",
               "file": "isInViewNode",
               "type": "conditions/isInViewNode",
-              "posX": 300.0,
+              "posX": 350.0,
               "posY": 420.0,
               "index": 3,
               "fold": false,
@@ -78,7 +78,7 @@
                   },
                   "children": [
                     {
-                      "name": "权重(1-1000)",
+                      "name": "随机返回真或假",
                       "desc": "",
                       "file": "weightNode",
                       "type": "actions/common/weightNode",
@@ -92,7 +92,7 @@
                       "children": null
                     },
                     {
-                      "name": "等待(秒)",
+                      "name": "等待",
                       "desc": "",
                       "file": "waitNode",
                       "type": "actions/common/waitNode",
@@ -156,11 +156,11 @@
           ]
         },
         {
-          "name": "移动到位置",
+          "name": "移动到主人",
           "desc": "",
           "file": "moveToPositionNode",
           "type": "actions/moveToPositionNode",
-          "posX": 550.0,
+          "posX": 500.0,
           "posY": 300.0,
           "index": 11,
           "fold": false,

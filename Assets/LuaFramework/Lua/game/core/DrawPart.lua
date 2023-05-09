@@ -39,7 +39,7 @@ function DrawPart.Release(draw_part)
     end
 end
 
-DrawPart._load_token_count = 0
+DrawPart._load_token = 0
 DrawPart._cb_data_pool = {}
 function DrawPart.CreateCbData(self, bundle, asset, token)
     local cb_data = table.remove(DrawPart._cb_data_pool)
@@ -54,12 +54,10 @@ function DrawPart.CreateCbData(self, bundle, asset, token)
 end
 
 function DrawPart.ReleaseCbData(cb_data)
-    if #DrawPart._cb_data_pool < 100 then
-        for i, v in ipairs(cb_data) do
-            cb_data[i] = nil
-        end
-        table.insert(DrawPart._cb_data_pool, cb_data)
+    for i, v in ipairs(cb_data) do
+        cb_data[i] = false
     end
+    table.insert(DrawPart._cb_data_pool, cb_data)
 end
 
 function DrawPart:__init()
@@ -116,15 +114,20 @@ end
 
 function DrawPart:LoadModel(bundle, asset)
     --TODO 暂时用Editor同步加载
-    local go = Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
-    go.name = self.part
-    go.transform:SetParent(self.draw_obj.root_transform, true)
-    go.transform.localPosition = localPosition
-    go.transform.localRotation = localRotation
-    go.transform.localScale = localScale
-    DrawPart._load_token_count = DrawPart._load_token_count + 1
-    local cb_data = DrawPart.CreateCbData(self, bundle, asset, DrawPart._load_token_count)
-    self.load_token = DrawPart._load_token_count
+    if UNITY_EDITOR then
+        local go = Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
+        go.name = self.part
+        go.transform:SetParent(self.draw_obj.root_transform, true)
+        go.transform.localPosition = localPosition
+        go.transform.localRotation = localRotation
+        go.transform.localScale = localScale
+    else
+
+    end
+
+    DrawPart._load_token = DrawPart._load_token + 1
+    self.load_token = DrawPart._load_token
+    local cb_data = DrawPart.CreateCbData(self, bundle, asset, self.load_token)
     DrawPart.__OnLoadComplete(go, cb_data)
 end
 
@@ -264,57 +267,44 @@ function DrawPart:SetTrigger(key)
 end
 
 function DrawPart:ResetTrigger(key)
-end
-
-function DrawPart:SetBoolean(key, value)
     if self.obj then
         if self.obj.animator and self.obj.animator.isActiveAndEnabled then
-            self.obj.animator:SetBoolean(key, value)
+            self.obj.animator:ResetTrigger(key)
         end
     elseif #self.hide_mask == 0 then
-        if not self.animator_booleans then
-            self.animator_booleans = {}
+        if self.animator_triggers then
+            self.animator_triggers[key] = nil
         end
-        self.animator_booleans[key] = value
-    end
-end
-
-function DrawPart:SetFloat(key, value)
-    if self.obj then
-        if self.obj.animator and self.obj.animator.isActiveAndEnabled then
-            self.obj.animator:SetBoolean(key, value)
-        end
-    elseif #self.hide_mask == 0 then
-        if not self.animator_booleans then
-            self.animator_booleans = {}
-        end
-        self.animator_booleans[key] = value
-    end
-end
-
-function DrawPart:SetInteger(key, value)
-    if self.obj then
-        if self.obj.animator and self.obj.animator.isActiveAndEnabled then
-            self.obj.animator:SetInteger(key, value)
-        end
-    elseif #self.hide_mask == 0 then
-        if not self.animator_integers then
-            self.animator_integers = {}
-        end
-        self.animator_integers[key] = value
     end
 end
 
 function DrawPart:SetBool(key, value)
-    if self.obj then
-        if self.obj.animator and self.obj.animator.isActiveAndEnabled then
-            self.obj.animator:SetBool(key, value)
-        end
-    elseif #self.hide_mask == 0 then
-        if not self.animator_booleans then
-            self.animator_booleans = {}
-        end
-        self.animator_booleans[key] = value
+    if not self.animator_booleans then
+        self.animator_booleans = {}
+    end
+    self.animator_booleans[key] = value
+    if self.obj and self.obj.animator and self.obj.animator.isActiveAndEnabled then
+        self.obj.animator:SetBool(key, value)
+    end
+end
+
+function DrawPart:SetFloat(key, value)
+    if not self.animator_floats then
+        self.animator_floats = {}
+    end
+    self.animator_floats[key] = value
+    if self.obj and self.obj.animator and self.obj.animator.isActiveAndEnabled then
+        self.obj.animator:SetFloat(key, value)
+    end
+end
+
+function DrawPart:SetInteger(key, value)
+    if not self.animator_integers then
+        self.animator_integers = {}
+    end
+    self.animator_integers[key] = value
+    if self.obj and self.obj.animator and self.obj.animator.isActiveAndEnabled then
+        self.obj.animator:SetInteger(key, value)
     end
 end
 
