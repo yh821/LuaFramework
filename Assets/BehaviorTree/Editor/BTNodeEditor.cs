@@ -155,6 +155,7 @@ namespace BT
 
 		public static bool IsAutoAlign = true;
 		public static bool IsShowPos = false;
+		public static bool IsShowIndex = false;
 		public static bool IsLockAxisY = false;
 		public static bool IsDebug = false;
 
@@ -179,10 +180,11 @@ namespace BT
 		{
 			EditorGUILayout.BeginHorizontal();
 			{
-				IsDebug = GUILayout.Toggle(IsDebug, "是否调试");
+				IsDebug = GUILayout.Toggle(IsDebug, "调试");
 				// GUI.enabled = IsDebug;
 				IsAutoAlign = GUILayout.Toggle(IsAutoAlign, "自动对齐");
-				IsShowPos = GUILayout.Toggle(IsShowPos, "显示坐标");
+				IsShowPos = GUILayout.Toggle(IsShowPos, "坐标");
+				IsShowIndex = GUILayout.Toggle(IsShowIndex, "序号");
 				// IsLockAxisY = GUILayout.Toggle(IsLockAxisY, "锁定Y轴");
 				// GUI.enabled = true;
 			}
@@ -760,7 +762,7 @@ namespace BT
 
 			if (BtEditorWindow.IsShowPos)
 				GUI.Label(Graph.PosRect, new GUIContent($"{Graph.RealRect.x},{Graph.RealRect.y}"));
-			if (BtEditorWindow.IsDebug)
+			if (BtEditorWindow.IsShowIndex)
 				GUI.Label(Graph.IndexRect, Data.index.ToString(), BtNodeStyle.IndexStyle);
 		}
 
