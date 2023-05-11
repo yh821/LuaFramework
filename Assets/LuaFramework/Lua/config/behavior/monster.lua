@@ -16,77 +16,79 @@ local __bt__ = {
           file= "sequenceNode",
           type= "composites/sequenceNode",
           data= {
-            abort= "Self"
+            abort= "Lower"
           },
           children= {
             {
               file= "isInViewNode",
               type= "conditions/isInViewNode",
               data= {
-                ViewRange= 5
+                ViewRange= 3
               },
             },
             {
-              file= "selectorNode",
-              type= "composites/selectorNode",
+              file= "moveToPositionNode",
+              type= "actions/moveToPositionNode",
               data= {
-                abort= "None"
+                pos= "TargetPos"
               },
-              children= {
-                {
-                  file= "sequenceNode",
-                  type= "composites/sequenceNode",
-                  data= {
-                    abort= "None"
-                  },
-                  children= {
-                    {
-                      file= "weightNode",
-                      type= "actions/common/weightNode",
-                      data= {
-                        weight= 500
-                      },
-                    },
-                    {
-                      file= "waitNode",
-                      type= "actions/common/waitNode",
-                      data= {
-                        min_time= 1,
-                        max_time= 3
-                      },
-                    }
-                  }
-                },
-                {
-                  file= "sequenceNode",
-                  type= "composites/sequenceNode",
-                  data= {
-                    abort= "None"
-                  },
-                  children= {
-                    {
-                      file= "randomPositionNode",
-                      type= "actions/randomPositionNode",
-                    },
-                    {
-                      file= "moveToPositionNode",
-                      type= "actions/moveToPositionNode",
-                      data= {
-                        pos= "RandomPos"
-                      },
-                    }
-                  }
-                }
-              }
+            },
+            {
+              file= "attackNode",
+              type= "actions/attackNode",
+              data= {
+                pos= "TargetPos"
+              },
             }
           }
         },
         {
-          file= "moveToPositionNode",
-          type= "actions/moveToPositionNode",
+          file= "sequenceNode",
+          type= "composites/sequenceNode",
           data= {
-            pos= "TargetPos"
+            abort= "None"
           },
+          children= {
+            {
+              file= "weightNode",
+              type= "actions/common/weightNode",
+              data= {
+                weight= 500
+              },
+            },
+            {
+              file= "waitNode",
+              type= "actions/common/waitNode",
+              data= {
+                min_time= 1,
+                max_time= 3
+              },
+            }
+          }
+        },
+        {
+          file= "sequenceNode",
+          type= "composites/sequenceNode",
+          data= {
+            abort= "None"
+          },
+          children= {
+            {
+              file= "randomPositionNode",
+              type= "actions/randomPositionNode",
+              data= {
+                center= "0,0,0",
+                range= 5
+              },
+            },
+            {
+              file= "moveToPositionNode",
+              type= "actions/moveToPositionNode",
+              data= {
+                pos= "RandomPos"
+              },
+            }
+          }
         }
       }
     }

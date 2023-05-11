@@ -44,7 +44,7 @@ function AiManager:BindBT(scene_obj, file)
 	if not bt then
 		return
 	end
-	bt:SetSharedVar(AiConfig.SceneObjKey, scene_obj)
+	bt:SetSharedVar(BtConfig.SelfObjKey, scene_obj)
 	self._bt_list[scene_obj] = bt
 	return bt
 end

@@ -12,19 +12,15 @@ function isInViewNode:Start()
     if self.view_range then
         return
     end
-    local range = self.data and self.data[AiConfig.ViewRangeKey]
-    self.view_range = range or self:GetSharedVar(AiConfig.ViewRangeKey) or 5
-    self.draw_obj = self:GetSharedVar(AiConfig.SceneObjKey):GetDrawObj()
-    self.target = self:GetSharedVar(AiConfig.TargetObjKey):GetDrawObj()
+    local range = self.data and self.data[BtConfig.ViewRangeKey]
+    self.view_range = range or self:GetSharedVar(BtConfig.ViewRangeKey) or 5
 end
 
 function isInViewNode:Tick(delta_time)
     self:Start()
-    if self.target then
-        local target_pos = self.target:GetRoot().transform.position
-        self:SetSharedVar(AiConfig.TargetPosKey, target_pos)
-        local self_pos = self.draw_obj:GetRoot().transform.position
-        self:SetSharedVar(AiConfig.SelfPosKey, self_pos)
+    local target_pos = self.owner:GetTargetMoveObjPos()
+    local self_pos = self.owner:GetSelfMoveObjPos()
+    if target_pos and self_pos then
         local dist = Vector3.Distance(target_pos, self_pos)
         return dist <= self.view_range and eNodeState.Success or eNodeState.Failure
     end

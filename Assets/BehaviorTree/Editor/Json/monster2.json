@@ -1,0 +1,59 @@
+{
+  "name": "root",
+  "desc": "",
+  "file": "rootNode",
+  "type": "",
+  "posX": 450.0,
+  "posY": 60.0,
+  "index": 0,
+  "fold": false,
+  "data": {
+    "restart": "1"
+  },
+  "children": [
+    {
+      "name": "顺序节点",
+      "desc": "",
+      "file": "sequenceNode",
+      "type": "composites/sequenceNode",
+      "posX": 450.0,
+      "posY": 180.0,
+      "index": 1,
+      "fold": false,
+      "data": {
+        "abort": "None"
+      },
+      "children": [
+        {
+          "name": "随机位置",
+          "desc": "",
+          "file": "randomPositionNode",
+          "type": "actions/randomPositionNode",
+          "posX": 400.0,
+          "posY": 300.0,
+          "index": 2,
+          "fold": false,
+          "data": {
+            "center": "0,0,0",
+            "range": "5"
+          },
+          "children": null
+        },
+        {
+          "name": "移动到位置",
+          "desc": "",
+          "file": "moveToPositionNode",
+          "type": "actions/moveToPositionNode",
+          "posX": 500.0,
+          "posY": 300.0,
+          "index": 3,
+          "fold": false,
+          "data": {
+            "pos": "RandomPos"
+          },
+          "children": null
+        }
+      ]
+    }
+  ]
+}

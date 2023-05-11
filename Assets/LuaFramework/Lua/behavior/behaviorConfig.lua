@@ -12,8 +12,8 @@ require("behavior/base/decoratorNode")
 require("behavior/base/conditionNode")
 require("behavior/base/actionNode")
 
-AiConfig = {
-    SceneObjKey = "SceneObj",
+BtConfig = {
+    SelfObjKey = "SelfObj",
     TargetObjKey = "TargetObj",
 
     SelfPosKey = "SelfPos",

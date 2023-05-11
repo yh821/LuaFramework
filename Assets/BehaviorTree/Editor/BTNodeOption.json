@@ -37,5 +37,8 @@
   "isInViewNode": {
     "name": "在视野内",
     "ViewRange": "5"
+  },
+  "attackNode": {
+    "name": "攻击"
   }
 }

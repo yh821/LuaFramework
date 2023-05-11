@@ -10,6 +10,8 @@ public static class EditorResourceMgr
 		assetName = Path.GetFileNameWithoutExtension(assetName);
 		var assetPaths = AssetDatabase.GetAssetPathsFromAssetBundleAndAssetName(bundleName, assetName);
 		return assetPaths.Length > 0;
+#else
+		return false;
 #endif
 	}
 

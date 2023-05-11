@@ -60,8 +60,8 @@ namespace Game.Scripts
 
 		void InitActor()
 		{
-			_player = Instantiate(EditorResourceMgr.LoadGameObject("actors/role_prefab", "Boy"), GameObject.Find("GameRoot/SceneObjLayer").transform, false);
-			_player.gameObject.name = "Boy";
+			_player = Instantiate(EditorResourceMgr.LoadGameObject("actors/role/101001_prefab", "101001"), GameObject.Find("GameRoot/SceneObjLayer").transform, false);
+			_player.gameObject.name = "101001";
 			_animator = _player.GetComponent<Animator>();
 			_movable = _player.GetComponent<MovableObject>();
 

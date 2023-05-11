@@ -5,9 +5,11 @@
 
 require("game/core/DrawPart")
 require("game/core/DrawObj")
+require("game/scene/ResPath")
 
 require("game/scene/SceneObj")
 require("game/scene/Role")
+require("game/scene/Pet")
 require("game/scene/Monster")
 
 ---@class Scene
@@ -45,6 +47,10 @@ end
 function Scene:CreateRole(vo)
     return self:CreateObj(vo, SceneObjType.Role)
 end
+---@return Pet
+function Scene:CreatePet(vo)
+    return self:CreateObj(vo, SceneObjType.Pet)
+end
 
 ---@return Monster
 function Scene:CreateMonster(vo)
@@ -70,6 +76,8 @@ function Scene:CreateObj(vo, obj_type)
     local obj
     if obj_type == SceneObjType.Role then
         obj = Role.New(vo, self)
+    elseif obj_type == SceneObjType.Pet then
+        obj = Pet.New(vo, self)
     elseif obj_type == SceneObjType.Monster then
         obj = Monster.New(vo, self)
     end

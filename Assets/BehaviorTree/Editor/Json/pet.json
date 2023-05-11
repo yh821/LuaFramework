@@ -78,7 +78,7 @@
                   },
                   "children": [
                     {
-                      "name": "随机返回真或假",
+                      "name": "随机权重",
                       "desc": "",
                       "file": "weightNode",
                       "type": "actions/common/weightNode",
@@ -131,7 +131,7 @@
                       "index": 9,
                       "fold": false,
                       "data": {
-                        "center": "TargetPos"
+                        "pos": "TargetPos"
                       },
                       "children": null
                     },
@@ -165,7 +165,8 @@
           "index": 11,
           "fold": false,
           "data": {
-            "pos": "TargetPos"
+            "pos": "TargetPos",
+            "speed": "10"
           },
           "children": null
         }

@@ -114,8 +114,9 @@ end
 
 function DrawPart:LoadModel(bundle, asset)
     --TODO 暂时用Editor同步加载
+    local go
     if UNITY_EDITOR then
-        local go = Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
+        go = Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
         go.name = self.part
         go.transform:SetParent(self.draw_obj.root_transform, true)
         go.transform.localPosition = localPosition

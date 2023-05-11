@@ -1,0 +1,59 @@
+{
+  "name": "root",
+  "desc": "",
+  "file": "rootNode",
+  "type": "",
+  "posX": 450.0,
+  "posY": 60.0,
+  "index": 0,
+  "fold": false,
+  "data": {
+    "restart": "1"
+  },
+  "children": [
+    {
+      "name": "顺序节点",
+      "desc": "",
+      "file": "sequenceNode",
+      "type": "composites/sequenceNode",
+      "posX": 450.0,
+      "posY": 180.0,
+      "index": 1,
+      "fold": false,
+      "data": {
+        "abort": "None"
+      },
+      "children": [
+        {
+          "name": "随机权重",
+          "desc": "",
+          "file": "weightNode",
+          "type": "actions/common/weightNode",
+          "posX": 400.0,
+          "posY": 300.0,
+          "index": 2,
+          "fold": false,
+          "data": {
+            "weight": "500"
+          },
+          "children": null
+        },
+        {
+          "name": "等待(秒)",
+          "desc": "",
+          "file": "waitNode",
+          "type": "actions/common/waitNode",
+          "posX": 500.0,
+          "posY": 300.0,
+          "index": 3,
+          "fold": false,
+          "data": {
+            "min_time": "1",
+            "max_time": "3"
+          },
+          "children": null
+        }
+      ]
+    }
+  ]
+}

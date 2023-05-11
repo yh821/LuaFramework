@@ -141,7 +141,7 @@ end
 ---@param key string
 ---@param value any
 function TaskNode:SetSharedVar(key, value)
-    if key == nil or key == "" then
+    if IsNilOrEmpty(key) then
         return
     end
     local bb = self.owner:GetBlackboard()
@@ -150,7 +150,7 @@ end
 
 ---@param key string
 function TaskNode:GetSharedVar(key)
-    if key == nil or key == "" then
+    if IsNilOrEmpty(key) then
         return
     end
     local bb = self.owner:GetBlackboard()

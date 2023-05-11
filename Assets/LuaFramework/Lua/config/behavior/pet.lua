@@ -68,7 +68,7 @@ local __bt__ = {
                       file= "randomPositionNode",
                       type= "actions/randomPositionNode",
                       data= {
-                        center= "TargetPos"
+                        pos= "TargetPos"
                       },
                     },
                     {
@@ -88,7 +88,8 @@ local __bt__ = {
           file= "moveToPositionNode",
           type= "actions/moveToPositionNode",
           data= {
-            pos= "TargetPos"
+            pos= "TargetPos",
+            speed= 10
           },
         }
       }

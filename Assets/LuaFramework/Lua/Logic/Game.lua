@@ -50,14 +50,32 @@ function Game.Start()
     end
 
     local role = Scene.Instance:CreateRole({ obj_id = 1 })
-    local pet = Scene.Instance:CreateMonster({ obj_id = 2 })
+    local pet = Scene.Instance:CreatePet({ obj_id = 2 })
     local bt = AiManager.Instance:BindBT(pet, "pet")
-    bt:SetSharedVar(AiConfig.TargetObjKey, role)
-    --for i = 1, 10 do
+    bt:SetSharedVar(BtConfig.TargetObjKey, role)
+
+    local monster = Scene.Instance:CreateMonster({ obj_id = 3 })
+    bt = AiManager.Instance:BindBT(monster, "monster1")
+    bt:SetSharedVar(BtConfig.TargetObjKey, role)
+
+    --monster = Scene.Instance:CreateMonster({ obj_id = 4 })
+    --bt = AiManager.Instance:BindBT(monster, "monster2")
+    --bt:SetSharedVar(BtConfig.TargetObjKey, role)
+    --
+    --monster = Scene.Instance:CreateMonster({ obj_id = 5 })
+    --bt = AiManager.Instance:BindBT(monster, "monster3")
+    --bt:SetSharedVar(BtConfig.TargetObjKey, role)
+    --
+    --monster = Scene.Instance:CreateMonster({ obj_id = 6 })
+    --bt = AiManager.Instance:BindBT(monster, "monster4")
+    --bt:SetSharedVar(BtConfig.TargetObjKey, role)
+
+    --for i = 1, 8 do
     --    local monster = Scene.Instance:CreateMonster({ obj_id = 2 + i })
     --    bt = AiManager.Instance:BindBT(monster, "monster")
-    --    bt:SetSharedVar(AiConfig.TargetObjKey, role)
+    --    bt:SetSharedVar(BtConfig.TargetObjKey, role)
     --end
+
     AiManager.Instance:SwitchTick()
 end
 

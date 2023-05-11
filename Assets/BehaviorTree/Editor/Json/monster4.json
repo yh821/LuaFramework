@@ -1,0 +1,72 @@
+{
+  "name": "root",
+  "desc": "",
+  "file": "rootNode",
+  "type": "",
+  "posX": 450.0,
+  "posY": 60.0,
+  "index": 0,
+  "fold": false,
+  "data": {
+    "restart": "1"
+  },
+  "children": [
+    {
+      "name": "顺序节点",
+      "desc": "",
+      "file": "sequenceNode",
+      "type": "composites/sequenceNode",
+      "posX": 450.0,
+      "posY": 180.0,
+      "index": 1,
+      "fold": false,
+      "data": {
+        "abort": "Lower"
+      },
+      "children": [
+        {
+          "name": "在视野内",
+          "desc": "",
+          "file": "isInViewNode",
+          "type": "conditions/isInViewNode",
+          "posX": 350.0,
+          "posY": 300.0,
+          "index": 2,
+          "fold": false,
+          "data": {
+            "ViewRange": "3"
+          },
+          "children": null
+        },
+        {
+          "name": "移动到目标",
+          "desc": "",
+          "file": "moveToPositionNode",
+          "type": "actions/moveToPositionNode",
+          "posX": 450.0,
+          "posY": 300.0,
+          "index": 3,
+          "fold": false,
+          "data": {
+            "pos": "TargetPos"
+          },
+          "children": null
+        },
+        {
+          "name": "攻击",
+          "desc": "",
+          "file": "attackNode",
+          "type": "actions/attackNode",
+          "posX": 550.0,
+          "posY": 300.0,
+          "index": 4,
+          "fold": false,
+          "data": {
+            "pos": "TargetPos"
+          },
+          "children": null
+        }
+      ]
+    }
+  ]
+}

@@ -10,27 +10,37 @@ randomPositionNode = BaseClass(ActionNode)
 function randomPositionNode:Start()
     local pos = self:GetRandomPos()
     if self:IsCanMove(pos) then
-        self:SetSharedVar(AiConfig.TargetPosKey, pos)
+        self:SetSharedVar(BtConfig.TargetPosKey, pos)
         --self:print("随机位置" .. pos:ToString())
         return eNodeState.Success
+    else
+        self:print("随机位置不可行走")
     end
     return eNodeState.Failure
 end
 
 function randomPositionNode:GetRandomPos()
-    local center_key = self.data and self.data.center
-    local center_pos = self:GetSharedVar(center_key)
+    local center_pos
+    local center_str = self.data and self.data.center
+    if not IsNilOrEmpty(center_str) then
+        center_pos = BehaviorManager.ParseVector3(center_str, true)
+    end
     if not center_pos then
-        center_pos = self:GetSharedVar(AiConfig.SelfPosKey)
+        center_pos = self:GetSharedVar(self.data and self.data.pos)
+        center_pos = self.owner:GetSelfMoveObjPos()
     end
     if center_pos then
-        local x = math.random(center_pos.x - 10, center_pos.x + 10)
-        local z = math.random(center_pos.z - 10, center_pos.z + 10)
+        local range = tonumber(self.data and self.data.range) or 10
+        local x = math.random(center_pos.x - range, center_pos.x + range)
+        local z = math.random(center_pos.z - range, center_pos.z + range)
         return Vector3.New(x, 0, z)
     end
 end
 
 function randomPositionNode:IsCanMove(pos)
+    if not pos then
+        return false
+    end
     if pos.x > 100 or pos.x < -100 then
         return false
     end

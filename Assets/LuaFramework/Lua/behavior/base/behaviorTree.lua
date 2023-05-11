@@ -121,3 +121,29 @@ end
 function BehaviorTree:IsComposite()
     return false
 end
+
+------------------------------------------------------------------------
+
+function BehaviorTree:GetSelfMoveObjPos()
+    local scene_obj = self:GetSharedVar(BtConfig.SelfObjKey)
+    if scene_obj then
+        local draw_obj = scene_obj:GetDrawObj()
+        if draw_obj then
+            local pos = draw_obj:GetRoot().transform.position
+            self:SetSharedVar(BtConfig.SelfPosKey, pos)
+            return pos
+        end
+    end
+end
+
+function BehaviorTree:GetTargetMoveObjPos()
+    local scene_obj = self:GetSharedVar(BtConfig.TargetObjKey)
+    if scene_obj then
+        local draw_obj = scene_obj:GetDrawObj()
+        if draw_obj then
+            local pos = draw_obj:GetRoot().transform.position
+            self:SetSharedVar(BtConfig.TargetPosKey, pos)
+            return pos
+        end
+    end
+end

@@ -11,11 +11,13 @@ function moveToPositionNode:Start()
     local pos_key = self.data and self.data.pos
     local target_pos = self:GetSharedVar(pos_key)
     if not target_pos then
-        target_pos = self:GetSharedVar(AiConfig.TargetPosKey)
+        target_pos = self:GetSharedVar(BtConfig.TargetPosKey)
     end
     if not target_pos then
         return eNodeState.Failure
     end
+
+    local speed = self.data and tonumber(self.data.speed) or 5
 
     self.draw_obj = self:GetDrawObj()
     if not self.draw_obj then
@@ -23,7 +25,7 @@ function moveToPositionNode:Start()
     end
 
     self.draw_obj:RotateTo(target_pos, 10)
-    self.draw_obj:MoveTo(target_pos, 5, function()
+    self.draw_obj:MoveTo(target_pos, speed, function()
         self.draw_obj:SetAnimParamMain(DrawObj.AnimParamType.Boolean, "move", false)
         self:SetState(eNodeState.Success)
     end)
@@ -43,7 +45,7 @@ end
 
 function moveToPositionNode:GetDrawObj()
     ---@type SceneObj
-    local scene_obj = self:GetSharedVar(AiConfig.SceneObjKey)
+    local scene_obj = self:GetSharedVar(BtConfig.SelfObjKey)
     if scene_obj then
         return scene_obj:GetDrawObj()
     end

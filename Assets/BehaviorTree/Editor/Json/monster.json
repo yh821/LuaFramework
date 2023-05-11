@@ -29,12 +29,12 @@
           "desc": "",
           "file": "sequenceNode",
           "type": "composites/sequenceNode",
-          "posX": 450.0,
+          "posX": 250.0,
           "posY": 300.0,
           "index": 2,
           "fold": false,
           "data": {
-            "abort": "Self"
+            "abort": "Lower"
           },
           "children": [
             {
@@ -42,130 +42,132 @@
               "desc": "",
               "file": "isInViewNode",
               "type": "conditions/isInViewNode",
-              "posX": 300.0,
+              "posX": 150.0,
               "posY": 420.0,
               "index": 3,
               "fold": false,
               "data": {
-                "ViewRange": "5"
+                "ViewRange": "3"
               },
               "children": null
             },
             {
-              "name": "选择节点",
+              "name": "移动到目标",
               "desc": "",
-              "file": "selectorNode",
-              "type": "composites/selectorNode",
-              "posX": 450.0,
+              "file": "moveToPositionNode",
+              "type": "actions/moveToPositionNode",
+              "posX": 250.0,
               "posY": 420.0,
               "index": 4,
               "fold": false,
               "data": {
-                "abort": "None"
+                "pos": "TargetPos"
               },
-              "children": [
-                {
-                  "name": "顺序节点",
-                  "desc": "",
-                  "file": "sequenceNode",
-                  "type": "composites/sequenceNode",
-                  "posX": 350.0,
-                  "posY": 540.0,
-                  "index": 5,
-                  "fold": false,
-                  "data": {
-                    "abort": "None"
-                  },
-                  "children": [
-                    {
-                      "name": "权重(1-1000)",
-                      "desc": "",
-                      "file": "weightNode",
-                      "type": "actions/common/weightNode",
-                      "posX": 300.0,
-                      "posY": 660.0,
-                      "index": 6,
-                      "fold": false,
-                      "data": {
-                        "weight": "500"
-                      },
-                      "children": null
-                    },
-                    {
-                      "name": "等待(秒)",
-                      "desc": "",
-                      "file": "waitNode",
-                      "type": "actions/common/waitNode",
-                      "posX": 400.0,
-                      "posY": 660.0,
-                      "index": 7,
-                      "fold": false,
-                      "data": {
-                        "min_time": "1",
-                        "max_time": "3"
-                      },
-                      "children": null
-                    }
-                  ]
-                },
-                {
-                  "name": "顺序节点",
-                  "desc": "",
-                  "file": "sequenceNode",
-                  "type": "composites/sequenceNode",
-                  "posX": 550.0,
-                  "posY": 540.0,
-                  "index": 8,
-                  "fold": false,
-                  "data": {
-                    "abort": "None"
-                  },
-                  "children": [
-                    {
-                      "name": "随机位置",
-                      "desc": "",
-                      "file": "randomPositionNode",
-                      "type": "actions/randomPositionNode",
-                      "posX": 500.0,
-                      "posY": 660.0,
-                      "index": 9,
-                      "fold": false,
-                      "data": null,
-                      "children": null
-                    },
-                    {
-                      "name": "移动到位置",
-                      "desc": "",
-                      "file": "moveToPositionNode",
-                      "type": "actions/moveToPositionNode",
-                      "posX": 600.0,
-                      "posY": 660.0,
-                      "index": 10,
-                      "fold": false,
-                      "data": {
-                        "pos": "RandomPos"
-                      },
-                      "children": null
-                    }
-                  ]
-                }
-              ]
+              "children": null
+            },
+            {
+              "name": "攻击",
+              "desc": "",
+              "file": "attackNode",
+              "type": "actions/attackNode",
+              "posX": 350.0,
+              "posY": 420.0,
+              "index": 5,
+              "fold": false,
+              "data": {
+                "pos": "TargetPos"
+              },
+              "children": null
             }
           ]
         },
         {
-          "name": "移动到位置",
+          "name": "顺序节点",
           "desc": "",
-          "file": "moveToPositionNode",
-          "type": "actions/moveToPositionNode",
-          "posX": 550.0,
+          "file": "sequenceNode",
+          "type": "composites/sequenceNode",
+          "posX": 500.0,
           "posY": 300.0,
-          "index": 11,
+          "index": 6,
           "fold": false,
           "data": {
-            "pos": "TargetPos"
+            "abort": "None"
           },
-          "children": null
+          "children": [
+            {
+              "name": "随机权重",
+              "desc": "",
+              "file": "weightNode",
+              "type": "actions/common/weightNode",
+              "posX": 450.0,
+              "posY": 420.0,
+              "index": 7,
+              "fold": false,
+              "data": {
+                "weight": "500"
+              },
+              "children": null
+            },
+            {
+              "name": "等待(秒)",
+              "desc": "",
+              "file": "waitNode",
+              "type": "actions/common/waitNode",
+              "posX": 550.0,
+              "posY": 420.0,
+              "index": 8,
+              "fold": false,
+              "data": {
+                "min_time": "1",
+                "max_time": "3"
+              },
+              "children": null
+            }
+          ]
+        },
+        {
+          "name": "顺序节点",
+          "desc": "",
+          "file": "sequenceNode",
+          "type": "composites/sequenceNode",
+          "posX": 700.0,
+          "posY": 300.0,
+          "index": 9,
+          "fold": false,
+          "data": {
+            "abort": "None"
+          },
+          "children": [
+            {
+              "name": "随机位置",
+              "desc": "",
+              "file": "randomPositionNode",
+              "type": "actions/randomPositionNode",
+              "posX": 650.0,
+              "posY": 420.0,
+              "index": 10,
+              "fold": false,
+              "data": {
+                "center": "0,0,0",
+                "range": "5"
+              },
+              "children": null
+            },
+            {
+              "name": "移动到位置",
+              "desc": "",
+              "file": "moveToPositionNode",
+              "type": "actions/moveToPositionNode",
+              "posX": 750.0,
+              "posY": 420.0,
+              "index": 11,
+              "fold": false,
+              "data": {
+                "pos": "RandomPos"
+              },
+              "children": null
+            }
+          ]
         }
       ]
     }

@@ -31,7 +31,7 @@ public class AssetImporterMark : AssetPostprocessor
 
 	private void OnPreprocessAsset()
 	{
-		Debug.Log("导入资源前");
+		// Debug.Log("导入资源前");
 	}
 
 	#endregion

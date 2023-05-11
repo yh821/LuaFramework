@@ -7,8 +7,12 @@ public static class AssetBundleImporter
 {
 	public const string BaseDir = "Assets/Game";
 	public const string ActorDir = BaseDir + "/Actors";
-	// public const string RoleDir = ActorDir + "/Role";
+	public const string RoleDir = ActorDir + "/Role";
+	public const string MonsterDir = ActorDir + "/Monster";
+	public const string PetDir = ActorDir + "/Pet";
+
 	public const string ViewDir = BaseDir + "/Views";
+
 
 	private static readonly char[] Seperator =
 	{
@@ -54,7 +58,9 @@ public static class AssetBundleImporter
 	{
 		if (asset.EndsWith(".prefab"))
 		{
-			// if (asset.StartsWith(RoleDir)) return GetRoleBundleName("role", asset);
+			if (asset.StartsWith(RoleDir)) return GetActorBundleName("role", asset);
+			if (asset.StartsWith(PetDir)) return GetActorBundleName("pet", asset);
+			if (asset.StartsWith(MonsterDir)) return GetActorBundleName("monster", asset);
 			if (asset.StartsWith(ActorDir)) return GetBundleName("actors", asset);
 			if (asset.StartsWith(ViewDir)) return GetBundleName("views", asset);
 		}
@@ -70,7 +76,7 @@ public static class AssetBundleImporter
 		return GetRelativeDirPath(asset, BaseDir);
 	}
 
-	private static string GetRoleBundleName(string dir, string asset)
+	private static string GetActorBundleName(string dir, string asset)
 	{
 		var paths = asset.Split(Seperator);
 		var parentDir = paths[paths.Length - 2];

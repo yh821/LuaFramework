@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace BT
 {
@@ -50,6 +51,11 @@ namespace BT
 		public const int BezierSize = 3;
 
 		/// <summary>
+		/// 连线颜色
+		/// </summary>
+		public static readonly Color LineColor = Color.white;
+
+		/// <summary>
 		/// 连接点半径
 		/// </summary>
 		public const float LinePointLength = 24;
@@ -63,6 +69,7 @@ namespace BT
 		/// 左侧监视面板宽度
 		/// </summary>
 		public const float RightInspectWidth = 240;
+
 		/// <summary>
 		/// 左侧监视面板高度
 		/// </summary>
@@ -92,7 +99,6 @@ namespace BT
 		/// 根节点名
 		/// </summary>
 		public const string RootName = "rootNode";
-
 	}
 
 	public class BtNodeLua
@@ -112,7 +118,7 @@ namespace BT
 		public float posX = 0;
 		public float posY = 0;
 		public int index = -1;
-		public bool fold = false;//是否折叠子节点
+		public bool fold = false; //是否折叠子节点
 
 		public Dictionary<string, string> data;
 
@@ -151,7 +157,7 @@ namespace BT
 
 		public BtNodeData Clone()
 		{
-			var clone = new BtNodeData(file, type, posX, posY) { name = name };
+			var clone = new BtNodeData(file, type, posX, posY) {name = name};
 			if (data != null)
 				clone.data = new Dictionary<string, string>(data);
 			return clone;
@@ -172,7 +178,6 @@ namespace BT
 		{
 			SetPos(pos.x, pos.y);
 		}
-
 	}
 
 	public abstract class BtNodeType
@@ -219,13 +224,14 @@ namespace BT
 		public override TaskType Type => TaskType.Root;
 		public override GUIStyle NormalStyle => BtNodeStyle.RootStyle;
 		public override GUIStyle SelectStyle => BtNodeStyle.SelectRootStyle;
+
 		public Root(BtNode node) : base(node)
 		{
 		}
 
 		public override GUIContent GetIcon()
 		{
-			return null;//BtNodeStyle.RootContent;
+			return null; //BtNodeStyle.RootContent;
 		}
 	}
 
@@ -299,5 +305,47 @@ namespace BT
 		public Action(BtNode node) : base(node)
 		{
 		}
+	}
+
+	public static class BtNodeStyle
+	{
+		public static GUIStyle RootStyle => "flow node 0";
+		public static GUIStyle SelectRootStyle => "flow node 0 on";
+
+		public static GUIStyle DecoratorStyle => "flow node 2";
+		public static GUIStyle FoldDecoratorStyle => "flow node hex 2";
+		public static GUIStyle SelectDecoratorStyle => "flow node 2 on";
+		public static GUIStyle FoldSelectDecoratorStyle => "flow node hex 2 on";
+
+		public static GUIStyle CompositeStyle => "flow node 1";
+		public static GUIStyle FoldCompositeStyle => "flow node hex 1";
+		public static GUIStyle SelectCompositeStyle => "flow node 1 on";
+		public static GUIStyle FoldSelectCompositeStyle => "flow node hex 1 on";
+
+		public static GUIStyle ActionStyle => "flow node 3";
+		public static GUIStyle FoldTaskStyle => "flow node hex 3";
+		public static GUIStyle SelectTaskStyle => "flow node 3 on";
+		public static GUIStyle FoldSelectTaskStyle => "flow node hex 3 on";
+
+		public static GUIStyle ConditionStyle => "flow node 2"; //5";
+		public static GUIStyle FoldConditionStyle => "flow node hex 2"; //5";
+		public static GUIStyle SelectConditionStyle => "flow node 2 on"; //5
+		public static GUIStyle FoldSelectConditionStyle => "flow node hex 2 on"; //5
+
+
+		public static GUIStyle IndexStyle => "AssetLabel";
+
+
+		private static GUIContent _RootContent;
+		public static GUIContent RootContent => _RootContent ??= EditorGUIUtility.IconContent("Import");
+
+		private static GUIContent _LinePoint;
+		public static GUIContent LinePoint => _LinePoint ??= EditorGUIUtility.IconContent("sv_icon_dot3_pix16_gizmo");
+
+		private static GUIContent _WarnPoint;
+		public static GUIContent WarnPoint => _WarnPoint ??= EditorGUIUtility.IconContent("sv_icon_dot4_pix16_gizmo");
+
+		private static GUIContent _ErrorPoint;
+		public static GUIContent ErrorPoint => _ErrorPoint ??= EditorGUIUtility.IconContent("sv_icon_dot6_pix16_gizmo");
 	}
 }
