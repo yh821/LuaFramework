@@ -36,6 +36,12 @@ function Scene:__delete()
     Scene.Instance = nil
 end
 
+function Scene:GetSceneObj(obj_id)
+    if obj_id and self.obj_list then
+        return self.obj_list[obj_id]
+    end
+end
+
 function Scene:DeleteAllObj()
     for k, v in pairs(self.obj_list) do
         self.obj_list[k] = nil
@@ -64,7 +70,7 @@ function Scene:GetSceneClientId()
 end
 
 function Scene:CreateObj(vo, obj_type)
-    if vo.obj_id < 0 then
+    if vo.obj_id == nil or vo.obj_id < 0 then
         vo.obj_id = self:GetSceneClientId()
     end
     local old_obj = self.obj_list[vo.obj_id]

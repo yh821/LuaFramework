@@ -25,13 +25,17 @@ end
 
 function SceneObj:__delete()
     self.is_enter_scene = nil
-    self.wait_enter_scene_num=0
+    self.wait_enter_scene_num = 0
+
+    self:RemoveModel(SceneObjPart.Main)
 end
 
 ---@return DrawObj
 function SceneObj:CreateDrawObj()
-    local vo = self.vo
+    ---@type DrawObj
     local draw_obj = DrawObj.New(self, SceneObjLayer.transform)
+    local vo = self.vo
+    draw_obj:SetPosition(Vector3Pool.GetTemp(vo.pos_x or 0, vo.pos_y or 0, vo.pos_z or 0))
     return draw_obj
 end
 
@@ -66,4 +70,12 @@ end
 ---@return DrawObj
 function SceneObj:GetDrawObj()
     return self.draw_obj
+end
+
+--TODO 111111111111111111111
+function SceneObj:RemoveModel(part)
+    if not self.draw_obj or self.draw_obj:IsDeleted() then
+        return
+    end
+    self.draw_obj:RemoveModel(part)
 end

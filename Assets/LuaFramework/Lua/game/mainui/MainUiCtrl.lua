@@ -39,27 +39,12 @@ end
 
 function MainUiCtrl:Open()
     --PanelMgr:CreatePanel("MainUi", BindTool.Bind(self.OnCreate, self))
-    ViewManager.Instance:CreatePanel("MainUi", BindTool.Bind(self.OnCreate, self))
+    ViewManager.Instance:OpenView("MainUi", BindTool.Bind(self.LoadCallback, self))
 end
 
 --启动事件--
-function MainUiCtrl:OnCreate(obj)
+function MainUiCtrl:LoadCallback(obj)
     self.gameObject = obj
     self.view:AddNodeList(obj)
-    self.view.node_list.btn_open_ai.button:AddClickListener(BindTool.Bind(self.OnClickOpen, self))
-end
-
-function MainUiCtrl:OnClickOpen()
-    print_error(self.view.node_list.btn_open_ai.gameObject.name)
-end
-
---单击事件--
-function MainUiCtrl:OnOpenAI(go)
-    AiManager.Instance:BindBT(self.gameObject, "bt1")
-    AiManager.Instance:SwitchTick()
-end
-
---关闭事件--
-function MainUiCtrl:Close()
-    PanelMgr:ClosePanel(CtrlNames.Message);
+    self.view:LoadCallback()
 end

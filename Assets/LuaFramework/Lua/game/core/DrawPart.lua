@@ -116,7 +116,7 @@ function DrawPart:LoadModel(bundle, asset)
     --TODO 暂时用Editor同步加载
     local go
     if UNITY_EDITOR then
-        go = Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
+        go = ResManager:Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
         go.name = self.part
         go.transform:SetParent(self.draw_obj.root_transform, true)
         go.transform.localPosition = localPosition
@@ -309,3 +309,7 @@ function DrawPart:SetInteger(key, value)
     end
 end
 
+--TODO 111111111111111111111
+function DrawPart:RemoveModel()
+    ResManager:Release(self.obj)
+end

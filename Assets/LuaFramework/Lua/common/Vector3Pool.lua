@@ -21,12 +21,12 @@ function Vector3Pool.GetTemp(x,y,z,w)
         return Vector3Pool._temp_vector4
     elseif z then
         Vector3Pool._temp_vector3.x = x
-        Vector3Pool._temp_vector3.y = x
-        Vector3Pool._temp_vector3.z = x
+        Vector3Pool._temp_vector3.y = y
+        Vector3Pool._temp_vector3.z = z
         return Vector3Pool._temp_vector3
     else
         Vector3Pool._temp_vector2.x = x
-        Vector3Pool._temp_vector2.y = x
+        Vector3Pool._temp_vector2.y = y
         return Vector3Pool._temp_vector2
     end
 end

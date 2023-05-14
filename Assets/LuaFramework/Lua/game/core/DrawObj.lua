@@ -97,6 +97,20 @@ function DrawObj:GetRoot()
     return self.root
 end
 
+function DrawObj:GetPosition()
+    if self:IsDeleted() then
+        return
+    end
+    return self.root.transform.position
+end
+
+function DrawObj:SetPosition(pos)
+    if self:IsDeleted() then
+        return
+    end
+    self.root_transform.position = pos
+end
+
 function DrawObj:__CreatePart(part)
     local draw_part = DrawPart.Pop()
     draw_part:SetPart(part)
