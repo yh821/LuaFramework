@@ -10,6 +10,7 @@ using System.Reflection;
 using DG.Tweening;
 using Game;
 using HedgehogTeam.EasyTouch;
+using UnityEngine.SceneManagement;
 
 public static class CustomSettings
 {
@@ -83,7 +84,7 @@ public static class CustomSettings
 		_GT(typeof(Material)).AddExtendType(typeof(ShortcutExtensions)),
 		_GT(typeof(Rigidbody)).AddExtendType(typeof(ShortcutExtensions)),
 		_GT(typeof(Camera)).AddExtendType(typeof(ShortcutExtensions)),
-		_GT(typeof(AudioSource)).AddExtendType(typeof(ShortcutExtensions)),
+		// _GT(typeof(AudioSource)).AddExtendType(typeof(ShortcutExtensions)),
 		//_GT(typeof(LineRenderer)).AddExtendType(typeof(ShortcutExtensions)),
 		//_GT(typeof(TrailRenderer)).AddExtendType(typeof(ShortcutExtensions)),
 
@@ -115,6 +116,7 @@ public static class CustomSettings
 		_GT(typeof(KeyCode)),
 		_GT(typeof(SkinnedMeshRenderer)),
 		_GT(typeof(Space)),
+		_GT(typeof(SystemInfo)),
 
 		_GT(typeof(MeshRenderer)),
 		_GT(typeof(BoxCollider)),
@@ -137,6 +139,10 @@ public static class CustomSettings
 		_GT(typeof(RenderTexture)),
 		_GT(typeof(Resources)),
 		_GT(typeof(LuaProfiler)),
+
+		_GT(typeof(SceneManager)),
+		_GT(typeof(LoadSceneMode)),
+		_GT(typeof(Scene)),
 
 		//for LuaFramework
 		_GT(typeof(Util)),

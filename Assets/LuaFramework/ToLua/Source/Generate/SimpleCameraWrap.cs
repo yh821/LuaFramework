@@ -24,6 +24,7 @@ public class SimpleCameraWrap
 		L.RegVar("targetBiasLeap", get_targetBiasLeap, set_targetBiasLeap);
 		L.RegVar("target", get_target, set_target);
 		L.RegVar("targetOffset", get_targetOffset, set_targetOffset);
+		L.RegVar("angle", get_angle, set_angle);
 		L.RegVar("StopCameraUpdate", get_StopCameraUpdate, set_StopCameraUpdate);
 		L.EndClass();
 	}
@@ -327,6 +328,25 @@ public class SimpleCameraWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_angle(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			SimpleCamera obj = (SimpleCamera)o;
+			UnityEngine.Vector2 ret = obj.angle;
+			ToLua.Push(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index angle on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_StopCameraUpdate(IntPtr L)
 	{
 		object o = null;
@@ -589,6 +609,25 @@ public class SimpleCameraWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o, "attempt to index targetOffset on a nil value");
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_angle(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			SimpleCamera obj = (SimpleCamera)o;
+			UnityEngine.Vector2 arg0 = ToLua.ToVector2(L, 2);
+			obj.angle = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o, "attempt to index angle on a nil value");
 		}
 	}
 

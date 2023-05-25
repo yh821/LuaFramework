@@ -19,7 +19,7 @@ function AiManager:__init()
 
 	self._bt_list = {}
 
-	Runner.Instance:AddRunObj(self, 9)
+	Runner.Instance:AddRunObj(self, RunnerPriority.mid)
 end
 
 function AiManager:__delete()

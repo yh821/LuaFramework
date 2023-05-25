@@ -42,7 +42,6 @@ function MainUiCtrl:Open()
     ViewManager.Instance:OpenView("MainUi", BindTool.Bind(self.LoadCallback, self))
 end
 
---启动事件--
 function MainUiCtrl:LoadCallback(obj)
     self.gameObject = obj
     self.view:AddNodeList(obj)

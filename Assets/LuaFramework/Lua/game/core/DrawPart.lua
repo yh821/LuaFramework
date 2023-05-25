@@ -156,8 +156,17 @@ function DrawPart:DestroyObj()
             print_error(error)
         end
     end
-    --TODO 回收
-    --ResPoolMgr:Release(obj)
+    local trans = obj.transform
+    trans.localScale = Vector3Pool.one
+    trans.localRotation = Vector3Pool.rotate
+    --animator放回act池优化
+    local optimize
+    --optimize = self.draw_part_render and self.draw_part_render:IsNeedAnimatorOptimize()
+    if optimize then
+        ResPoolMgr:Release(obj.gameObject, ResPoolReleasePolicy.culling)
+    else
+        ResPoolMgr:Release(obj.gameObject)
+    end
 end
 
 function DrawPart.__OnLoadComplete(obj, cb_data)
@@ -249,8 +258,14 @@ function DrawPart:__RemoveAttach()
 end
 
 function DrawPart:__ReleaseLoaded(obj)
-    --TODO 回收
-    --ResPoolMgr:Release(obj)
+    --animator放回act池优化
+    local optimize
+    --optimize = self.draw_part_render and self.draw_part_render:IsNeedAnimatorOptimize()
+    if optimize then
+        ResPoolMgr:Release(obj, ResPoolReleasePolicy.culling)
+    else
+        ResPoolMgr:Release(obj)
+    end
 end
 
 function DrawPart:SetTrigger(key)
@@ -309,7 +324,8 @@ function DrawPart:SetInteger(key, value)
     end
 end
 
---TODO 111111111111111111111
 function DrawPart:RemoveModel()
-    ResManager:Release(self.obj)
+    self.bundle = nil
+    self.asset = nil
+    self:DestroyObj()
 end

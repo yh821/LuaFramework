@@ -3,6 +3,17 @@
 --- DateTime: 2023/5/9 13:28
 ---
 
+require("loader/ResUtil")
+require("loader/SceneLoader")
+
+local UnityLoadSceneMode = UnityEngine.SceneManagement.LoadSceneMode
+local SceneSingleLoadMode = UnityLoadSceneMode.Single
+
+local UnityGameObject = UnityEngine.GameObject
+local UnityInstantiate = UnityGameObject.Instantiate
+local UnityDontDestroyOnLoad = UnityGameObject.DontDestroyOnLoad
+local SystemObject = System.Object
+
 local wait_load_obj_queue = {}
 local wait_load_game_obj_queue = {}
 
@@ -26,14 +37,28 @@ ResLoadPriority = {
 ResManager = ResManager or BaseClass()
 
 function ResManager:__init()
-    Runner.Instance:AddRunObj(self, 6)
+    self._lua_manifest_info = { bundleInfos = {} }
+    self._manifest_info = { bundleInfos = {} }
+    ---@type SceneLoader[]
+    self._scene_loader_list = {}
+    ---@type SceneLoader
+    self._scene_loader = SceneLoader.New()
+
+    Runner.Instance:AddRunObj(self)
 end
 
 function ResManager:__delete()
     Runner.Instance:RemoveRunObj(self)
 end
 
-function ResManager:Update()
+function ResManager:Update(deltaTime, unscaledDeltaTime)
+    if self._scene_loader then
+        self._scene_loader:Update()
+    end
+    for i, v in ipairs(self._scene_loader_list) do
+        v:Update()
+    end
+
     self:UpdateLoadQueue()
 end
 
@@ -135,6 +160,7 @@ function ResManager:LoadGameObjectSync(bundle, asset, callback, parent, cb_data)
 end
 
 local function LoadAssetCallback(obj, cb_data)
+    ---@type ResManager
     local self = cb_data[1]
     local bundle = cb_data[3]
     local callback = cb_data[5]
@@ -147,6 +173,7 @@ local function LoadAssetCallback(obj, cb_data)
 end
 
 local function LoadMultiBundlesCallback(is_success, cb_data)
+    ---@type ResManager
     local self = cb_data[1]
     local asset_type = cb_data[2]
     local bundle = cb_data[3]
@@ -175,6 +202,7 @@ local function LoadMultiBundlesCallback(is_success, cb_data)
 end
 
 local function DownLoadBundlesCallback(is_success, cb_data)
+    ---@type ResManager
     local self = cb_data[1]
     local bundle = cb_data[3]
     local callback = cb_data[5]
@@ -199,7 +227,7 @@ local function DownLoadBundlesCallback(is_success, cb_data)
     load_func(AssetBundleMgr, need_loads, LoadMultiBundlesCallback, priority, cb_data)
 end
 
-function ResManager.__LoadObjectAsync(bundle, asset, asset_type, callback, cb_data, priority)
+function ResManager:__LoadObjectAsync(bundle, asset, asset_type, callback, cb_data, priority)
     local need_downloads, need_loads = self:CalcLoadBundleDepends(bundle)
     if need_downloads == nil or need_loads == nil then
         callback(nil, cb_data, bundle)
@@ -224,11 +252,15 @@ function ResManager:__GetDownLoadBundlesCallbackData()
 
 end
 
+function ResManager:__ReleaseDownLoadBundlesCallbackData(cb_data)
+
+end
+
 function ResManager:CalcLoadBundleDepends(bundle)
 
 end
 
-function ResManager.__LoadObjectSync(bundle, asset, asset_type, callback, cb_data, priority)
+function ResManager:__LoadObjectSync(bundle, asset, asset_type, callback, cb_data, priority)
 
 end
 
@@ -240,3 +272,78 @@ function ResManager.LoadUnitySceneSync(bundle, asset, load_mode, callback)
 
 end
 
+function ResManager:Instantiate(uobj, dont_destroy, parent)
+    local go
+    if IsNil(parent) then
+        go = UnityInstantiate(uobj)
+    else
+        go = UnityInstantiate(uobj, parent.transform, false)
+    end
+    go.name = uobj.name
+    --存在父节点时，设置DontDestroyOnLoad会报错
+    if dont_destroy and go.transform.parent then
+        self:DontDestroyOnLoad(go)
+    end
+    return go
+end
+
+function ResManager:CreateEmptyGameObj(name, dont_destroy)
+    local go = UnityGameObject()
+    if name then
+        go.name = name
+    end
+    if dont_destroy then
+        self:DontDestroyOnLoad(go)
+    end
+    return go
+end
+
+function ResManager:DontDestroyOnLoad(go)
+    UnityDontDestroyOnLoad(go)
+end
+
+function ResManager:LoadSceneSync(bundle, asset, load_mode, callback)
+    if load_mode == SceneSingleLoadMode then
+        self:__DestroyLoadingScenes()
+        self._scene_loader:LoadSceneSync(bundle, asset, load_mode, callback)
+    else
+        ---@type SceneLoader
+        local scene_loader = SceneLoader.New()
+        table.insert(self._scene_loader_list, scene_loader)
+        scene_loader:LoadSceneSync(bundle, asset, load_mode, callback)
+    end
+end
+
+function ResManager:LoadSceneAsync(bundle, asset, load_mode, callback)
+    if load_mode == SceneSingleLoadMode then
+        self:__DestroyLoadingScenes()
+        self._scene_loader:LoadSceneAsync(bundle, asset, load_mode, callback)
+    else
+        ---@type SceneLoader
+        local scene_loader = SceneLoader.New()
+        table.insert(self._scene_loader_list, scene_loader)
+        scene_loader:LoadSceneAsync(bundle, asset, load_mode, callback)
+    end
+end
+
+function ResManager:__DestroyLoadingScenes()
+    self._scene_loader:Destroy()
+
+    for i, v in ipairs(self._scene_loader_list) do
+        v:Destroy()
+    end
+
+    ---@type SceneLoader[]
+    self._scene_loader_list = {}
+end
+
+function ResManager:GetManifestInfo()
+    return self._manifest_info
+end
+
+function ResManager:IsVersionCached(bundle, hash)
+    if hash == nil and self._manifest_info.bundleInfos[bundle] then
+        hash = self._manifest_info.bundleInfos[bundle].hash
+    end
+    return ResUtil.IsFileExist(bundle, hash)
+end

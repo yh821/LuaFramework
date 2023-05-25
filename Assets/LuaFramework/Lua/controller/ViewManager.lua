@@ -31,7 +31,8 @@ function ViewManager:OpenView(view_name, callback)
 
     local bundle = string.lower("views/" .. view_name .. "_prefab")
     local asset = view_name .. "View"
-    local go = ResManager:Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
+    local prefab = EditorResourceMgr.LoadGameObject(bundle, asset)
+    local go = ResManager:Instantiate(prefab)
     if IsNil(go) then
         return
     end

@@ -12,7 +12,11 @@ Vector3Pool._temp_vector2 = Vector2(0, 0)
 Vector3Pool._temp_vector3 = Vector3(0, 0, 0)
 Vector3Pool._temp_vector4 = Vector4(0, 0, 0, 0)
 
-function Vector3Pool.GetTemp(x,y,z,w)
+Vector3Pool.zero = Vector3(0, 0, 0)
+Vector3Pool.one = Vector3(1, 1, 1)
+Vector3Pool.rotate = Quaternion.Euler(0, 0, 0)
+
+function Vector3Pool.GetTemp(x, y, z, w)
     if w then
         Vector3Pool._temp_vector4.x = x
         Vector3Pool._temp_vector4.y = y

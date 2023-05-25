@@ -3,8 +3,8 @@
 --- DateTime: 2023/5/6 17:41
 ---
 
----@class Role : SceneObj
-Role = Role or BaseClass(SceneObj)
+---@class Role : Character
+Role = Role or BaseClass(Character)
 
 function Role:__init()
 end

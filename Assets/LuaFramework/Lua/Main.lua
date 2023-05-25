@@ -2,6 +2,8 @@ UNITY_EDITOR = false --编辑环境
 INF = 9000000000000000 -- 1/0 --无穷大
 IND = -9000000000000000 -- 0/0 --无穷小
 
+IsLowMemorySystem = UnityEngine.SystemInfo.systemMemorySize <= 1500
+
 require("common/BaseClass")
 require("common/util")
 require("game/common/U3DObject")

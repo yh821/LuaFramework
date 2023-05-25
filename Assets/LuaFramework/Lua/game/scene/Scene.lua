@@ -8,6 +8,8 @@ require("game/core/DrawObj")
 require("game/scene/ResPath")
 
 require("game/scene/SceneObj")
+require("game/scene/StateMachine")
+require("game/scene/Character")
 require("game/scene/Role")
 require("game/scene/Pet")
 require("game/scene/Monster")

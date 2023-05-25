@@ -72,10 +72,8 @@ function SceneObj:GetDrawObj()
     return self.draw_obj
 end
 
---TODO 111111111111111111111
 function SceneObj:RemoveModel(part)
-    if not self.draw_obj or self.draw_obj:IsDeleted() then
-        return
+    if self.draw_obj then
+        self.draw_obj:RemoveModel(part)
     end
-    self.draw_obj:RemoveModel(part)
 end

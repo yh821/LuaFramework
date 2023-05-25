@@ -3,8 +3,8 @@
 --- DateTime: 2023/5/9 20:12
 ---
 
----@class GameObjectPool
-GameObjectPool = GameObjectPool or BaseClass()
+---@class GameObjectPool : ObjPool
+GameObjectPool = GameObjectPool or BaseClass(ObjPool)
 
 function GameObjectPool:__init(root, act_root,path)
     self.root=root
@@ -13,4 +13,10 @@ function GameObjectPool:__init(root, act_root,path)
 end
 
 function GameObjectPool:__delete()
+end
+
+function GameObjectPool:Release(obj, policy)
+end
+
+function GameObjectPool:ReleaseInObjId(id)
 end

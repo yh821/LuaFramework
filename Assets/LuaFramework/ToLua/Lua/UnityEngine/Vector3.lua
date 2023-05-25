@@ -74,6 +74,10 @@ function Vector3.Distance(va, vb)
     return sqrt((va.x - vb.x) ^ 2 + (va.y - vb.y) ^ 2 + (va.z - vb.z) ^ 2)
 end
 
+function Vector3.DistanceSqrt(va, vb)
+    return (va.x - vb.x) ^ 2 + (va.y - vb.y) ^ 2 + (va.z - vb.z) ^ 2
+end
+
 function Vector3.Dot(lhs, rhs)
     return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z
 end

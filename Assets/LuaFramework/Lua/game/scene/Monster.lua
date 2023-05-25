@@ -3,8 +3,8 @@
 --- DateTime: 2023/5/6 17:42
 ---
 
----@class Monster : SceneObj
-Monster = Monster or BaseClass(SceneObj)
+---@class Monster : Character
+Monster = Monster or BaseClass(Character)
 
 function Monster:__init()
 end

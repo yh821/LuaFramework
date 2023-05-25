@@ -3,8 +3,8 @@
 --- DateTime: 2023/5/10 18:42
 ---
 
----@class Pet : SceneObj
-Pet = Pet or BaseClass(SceneObj)
+---@class Pet : Character
+Pet = Pet or BaseClass(Character)
 
 function Pet:__init()
 end

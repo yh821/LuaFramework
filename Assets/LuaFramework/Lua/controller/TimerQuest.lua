@@ -19,7 +19,7 @@ function TimerQuest:__init()
     self.check_handle_map = {}
     self.execute_callback_list = {}
 
-    Runner.Instance:AddRunObj(self, 4)
+    Runner.Instance:AddRunObj(self, RunnerPriority.fast)
 end
 
 function TimerQuest:__delete()

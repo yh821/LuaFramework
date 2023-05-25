@@ -9,11 +9,12 @@
 isInViewNode = isInViewNode or BaseClass(ConditionNode)
 
 function isInViewNode:Start()
-    if self.view_range then
+    if self.view_range_sqrt then
         return
     end
     local range = self.data and self.data[BtConfig.ViewRangeKey]
-    self.view_range = range or self:GetSharedVar(BtConfig.ViewRangeKey) or 5
+    range = range or self:GetSharedVar(BtConfig.ViewRangeKey) or 5
+    self.view_range_sqrt = range * range
 end
 
 function isInViewNode:Tick(delta_time)
@@ -21,8 +22,8 @@ function isInViewNode:Tick(delta_time)
     local target_pos = self.owner:GetTargetMoveObjPos()
     local self_pos = self.owner:GetSelfMoveObjPos()
     if target_pos and self_pos then
-        local dist = Vector3.Distance(target_pos, self_pos)
-        return dist <= self.view_range and eNodeState.Success or eNodeState.Failure
+        local dist_sqrt = Vector3.DistanceSqrt(target_pos, self_pos)
+        return dist_sqrt <= self.view_range_sqrt and eNodeState.Success or eNodeState.Failure
     end
     return eNodeState.Failure
 end
