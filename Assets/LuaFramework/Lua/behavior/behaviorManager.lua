@@ -152,7 +152,7 @@ end
 function BehaviorManager.ParseVector3(str, is_temp)
     local vec3 = Split(str, ",")
     if is_temp then
-        return Vector3Pool.GetTemp(tonumber(vec3.x) or 0, tonumber(vec3.y) or 0, tonumber(vec3.z) or 0)
+        return Vector3Tool.GetTemp(tonumber(vec3.x) or 0, tonumber(vec3.y) or 0, tonumber(vec3.z) or 0)
     else
         return Vector3.New(tonumber(vec3.x) or 0, tonumber(vec3.y) or 0, tonumber(vec3.z) or 0)
     end

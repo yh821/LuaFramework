@@ -28,7 +28,7 @@ local function InitDrawObjPool()
     DrawObj.obj_list = {}
     DrawObj.obj_count = 0
     local root = GameObject.New("DrawObjPool")
-    root.transform.position = Vector3Pool.GetTemp(0, 0, 0)
+    root.transform.position = Vector3Tool.GetTemp(0, 0, 0)
     DrawObj.obj_root = root
 end
 InitDrawObjPool()

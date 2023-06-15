@@ -17,7 +17,7 @@ local __bt__ = {
           type= "actions/randomPositionNode",
           data= {
             center= "0,0,0",
-            range= 5
+            range= 2
           },
         },
         {

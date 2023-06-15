@@ -32,13 +32,13 @@ function ViewManager:OpenView(view_name, callback)
     local bundle = string.lower("views/" .. view_name .. "_prefab")
     local asset = view_name .. "View"
     local prefab = EditorResourceMgr.LoadGameObject(bundle, asset)
-    local go = ResManager:Instantiate(prefab)
+    local go = ResManager.Instance:Instantiate(prefab)
     if IsNil(go) then
         return
     end
     local trans = go.transform
     trans:SetParent(UiLayer.transform, false)
-    trans.localPosition = Vector3Pool.GetTemp(0, 0, 0)
+    trans.localPosition = Vector3Tool.GetTemp(0, 0, 0)
     go.name = view_name
     if callback then
         callback(go)

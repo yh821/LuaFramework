@@ -116,7 +116,7 @@ function DrawPart:LoadModel(bundle, asset)
     --TODO 暂时用Editor同步加载
     local go
     if UNITY_EDITOR then
-        go = ResManager:Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
+        go = ResManager.Instance:Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
         go.name = self.part
         go.transform:SetParent(self.draw_obj.root_transform, true)
         go.transform.localPosition = localPosition
@@ -157,15 +157,15 @@ function DrawPart:DestroyObj()
         end
     end
     local trans = obj.transform
-    trans.localScale = Vector3Pool.one
-    trans.localRotation = Vector3Pool.rotate
+    trans.localScale = Vector3Tool.one
+    trans.localRotation = Vector3Tool.rotate
     --animator放回act池优化
     local optimize
     --optimize = self.draw_part_render and self.draw_part_render:IsNeedAnimatorOptimize()
     if optimize then
-        ResPoolMgr:Release(obj.gameObject, ResPoolReleasePolicy.culling)
+        ResPoolMgr.Instance:Release(obj.gameObject, ResPoolReleasePolicy.culling)
     else
-        ResPoolMgr:Release(obj.gameObject)
+        ResPoolMgr.Instance:Release(obj.gameObject)
     end
 end
 
@@ -202,7 +202,7 @@ function DrawPart.__OnLoadComplete(obj, cb_data)
     self.part_rotate = self.obj_transform.localRotation
     self:__FlushParent(self.obj)
     self:__FlushClickListener(self.obj)
-    self.obj_transform.localPosition = Vector3Pool.GetTemp(0, 0, 0)
+    self.obj_transform.localPosition = Vector3Tool.GetTemp(0, 0, 0)
 
     self:__InitRenderer()
     self:__InitAnimator()
@@ -262,9 +262,9 @@ function DrawPart:__ReleaseLoaded(obj)
     local optimize
     --optimize = self.draw_part_render and self.draw_part_render:IsNeedAnimatorOptimize()
     if optimize then
-        ResPoolMgr:Release(obj, ResPoolReleasePolicy.culling)
+        ResPoolMgr.Instance:Release(obj, ResPoolReleasePolicy.culling)
     else
-        ResPoolMgr:Release(obj)
+        ResPoolMgr.Instance:Release(obj)
     end
 end
 

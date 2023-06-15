@@ -35,7 +35,7 @@ function SceneObj:CreateDrawObj()
     ---@type DrawObj
     local draw_obj = DrawObj.New(self, SceneObjLayer.transform)
     local vo = self.vo
-    draw_obj:SetPosition(Vector3Pool.GetTemp(vo.pos_x or 0, vo.pos_y or 0, vo.pos_z or 0))
+    draw_obj:SetPosition(Vector3Tool.GetTemp(vo.pos_x or 0, vo.pos_y or 0, vo.pos_z or 0))
     return draw_obj
 end
 

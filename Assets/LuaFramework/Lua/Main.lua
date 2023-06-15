@@ -7,7 +7,7 @@ IsLowMemorySystem = UnityEngine.SystemInfo.systemMemorySize <= 1500
 require("common/BaseClass")
 require("common/util")
 require("game/common/U3DObject")
-require("common/Vector3Pool")
+require("common/Vector3Tool")
 
 function __TRACK_BACK__(msg)
     local track_text = debug.traceback(tostring(msg))

@@ -37,6 +37,12 @@ ResLoadPriority = {
 ResManager = ResManager or BaseClass()
 
 function ResManager:__init()
+    if ResManager.Instance then
+        print_error("[ResManager] attempt to create singleton twice!")
+        return
+    end
+    ResManager.Instance = self
+
     self._lua_manifest_info = { bundleInfos = {} }
     self._manifest_info = { bundleInfos = {} }
     ---@type SceneLoader[]
@@ -49,6 +55,8 @@ end
 
 function ResManager:__delete()
     Runner.Instance:RemoveRunObj(self)
+
+    ResManager.Instance = nil
 end
 
 function ResManager:Update(deltaTime, unscaledDeltaTime)
@@ -114,10 +122,10 @@ function ResManager:LoadGameObjectAsync(bundle, asset, callback, parent, cb_data
         end
     end
 
-    local prefab = ResPoolMgr:TryGetPrefab(bundle, asset)
+    local prefab = ResPoolMgr.Instance:TryGetPrefab(bundle, asset)
     if prefab then
         self:__InternalLoadGameObj(bundle, asset, callback, cb_data, parent, true)
-        ResPoolMgr:Release(prefab)
+        ResPoolMgr.Instance:Release(prefab)
     end
 
     table.insert(wait_load_game_obj_queue, {
@@ -132,7 +140,7 @@ function ResManager:LoadGameObjectAsync(bundle, asset, callback, parent, cb_data
 end
 
 function ResManager:__InternalLoadGameObj(bundle, asset, callback, cb_data, parent, is_async)
-    ResPoolMgr:GetPrefab(bundle, asset, function(prefab)
+    ResPoolMgr.Instance:GetPrefab(bundle, asset, function(prefab)
         if prefab == nil then
             print_error("[ResManager] load game object  error! " .. bundle .. ", " .. asset)
             callback(nil, cb_data)

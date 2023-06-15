@@ -19,27 +19,29 @@ end
 
 function MainUiView:LoadCallback()
     self.node_list.btn_open_ai.button:AddClickListener(BindTool.Bind(self.OnOpenAi, self))
-    self.node_list.btn_add_monster.button:AddClickListener(BindTool.Bind(self.OnAddMonster, self))
     self.node_list.btn_add_pet.button:AddClickListener(BindTool.Bind(self.OnAddPet, self))
     self.node_list.btn_clear_scene_obj.button:AddClickListener(BindTool.Bind(self.OnClearSceneObj, self))
+    for i = 1, 4 do
+        self.node_list["btn_add_monster" .. i].button:AddClickListener(BindTool.Bind(self.OnAddMonster, self, i))
+    end
 end
 
 function MainUiView:OnOpenAi()
     AiManager.Instance:SwitchTick()
 end
 
-function MainUiView:OnAddMonster()
+function MainUiView:OnAddMonster(index)
     local role = Scene.Instance:GetSceneObj(1)
-    local pos = role:GetDrawObj():GetPosition() or Vector3Pool.GetTemp(0, 0, 0)
+    local pos = role:GetDrawObj():GetPosition() or Vector3Tool.GetTemp(0, 0, 0)
     local monster = Scene.Instance:CreateMonster({ pos_x = pos.x, pos_y = pos.y, pos_z = pos.z })
     table.insert(self.monster_list, monster)
-    local bt = AiManager.Instance:BindBT(monster, "monster")
+    local bt = AiManager.Instance:BindBT(monster, "monster" .. index)
     bt:SetSharedVar(BtConfig.TargetObjKey, role)
 end
 
 function MainUiView:OnAddPet()
     local role = Scene.Instance:GetSceneObj(1)
-    local pos = role:GetDrawObj():GetPosition() or Vector3Pool.GetTemp(0, 0, 0)
+    local pos = role:GetDrawObj():GetPosition() or Vector3Tool.GetTemp(0, 0, 0)
     local pet = Scene.Instance:CreatePet({ pos_x = pos.x, pos_y = pos.y, pos_z = pos.z })
     table.insert(self.pet_list, pet)
     local bt = AiManager.Instance:BindBT(pet, "pet")

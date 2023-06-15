@@ -43,6 +43,10 @@ function CtrlManager:Update(deltaTime, unscaledDeltaTime)
     if Runner.Instance then
         Runner.Instance:Update(deltaTime, unscaledDeltaTime)
     end
+
+    if Vector3Tool then
+        Vector3Tool.Update(deltaTime, unscaledDeltaTime)
+    end
 end
 
 function CtrlManager:InitAllCtrl()

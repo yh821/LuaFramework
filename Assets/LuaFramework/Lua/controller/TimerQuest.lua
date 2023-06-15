@@ -15,6 +15,7 @@ function TimerQuest:__init()
 
     self.quest_list = {}
     self.scaled_quest_list = {}
+    self.scaled_quest_token = 0
     self.check_callback_map = {}
     self.check_handle_map = {}
     self.execute_callback_list = {}
@@ -53,7 +54,7 @@ function TimerQuest:Update(realtime, unscaledDeltaTime)
         end
     end
 
-    --self:UpdateScaledTimer()
+    self:UpdateScaledTimer()
 end
 
 function TimerQuest:AddDelayTimer(callback, delay_time, cb_data)
@@ -201,6 +202,84 @@ function TimerQuest:CancelAllDelayCall(obj, key)
     obj.__delay_call_times = 0
 end
 
+
+
+---@class ScaledTimerData 带缩放的Timer组
+---@field next_time number
+---@field interval number
+---@field count number
+---@field callback function
+---@field data table
+
+function TimerQuest:AddScaledDelayTimer(callback, delay, data)
+    return self:AddScaledTimer(callback, delay, nil, 1, data)
+end
+
+function TimerQuest:AddScaledRepeatTimer(callback, interval, count, data)
+    return self:AddScaledTimer(callback, nil, interval, count, data)
+end
+
+function TimerQuest:AddScaledTimer(callback, delay, interval, count, data)
+    if not callback then
+        print_error("Trying to add a timer without callback!")
+        return
+    end
+    if not interval then
+        interval = 0
+    end
+    if not delay then
+        delay = interval
+    end
+    ---@type ScaledTimerData
+    local t = {
+        next_time = Status.NowScaleTime + delay,
+        interval = interval,
+        callback = callback,
+        count = count,
+        data = data
+    }
+    local token = self.scaled_quest_token
+    self.scaled_quest_token = self.scaled_quest_token + 1
+    self.scaled_quest_list[token] = t
+    return token
+end
+
+---@return ScaledTimerData
+function TimerQuest:CancelScaledQuest(token)
+    local data = self.scaled_quest_list[token]
+    self.scaled_quest_list[token] = nil
+    return data
+end
+
+function TimerQuest:EndScaledQuest(token)
+    local quest = self:CancelScaledQuest(token)
+    if quest then
+        if quest.callback then
+            TryCall(quest.callback, quest.data)
+        end
+        return quest
+    end
+end
+
+function TimerQuest:UpdateScaledTimer()
+    for i, v in pairs(self.scaled_quest_list) do
+        --至少等一帧，避开时序问题
+        if v.next_time < Status.NowScaleTime then
+            if v.count then
+                v.count = v.count - 1
+                if v.count < 1 then
+                    self.scaled_quest_list[i] = nil
+                end
+            end
+            if v.callback then
+                TryCall(v.callback, v.data)
+            else
+                self.scaled_quest_list[i] = nil
+            end
+            v.next_time = v.next_time + v.interval
+        end
+    end
+end
 
 
 

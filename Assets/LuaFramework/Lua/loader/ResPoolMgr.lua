@@ -12,21 +12,27 @@ local TypeGameObject = typeof(UnityEngine.GameObject)
 ResPoolMgr = ResPoolMgr or BaseClass()
 
 function ResPoolMgr:__init()
+    if ResPoolMgr.Instance then
+        print_error("[ResPoolMgr] attempt to create singleton twice!")
+        return
+    end
+    ResPoolMgr.Instance = self
+
     self._res_pools = {}
     self._used_pools = {}
     self._game_obj_pools = {}
     self._get_game_obj_token = 0
     self._priority_map = {}
 
-    self._pools_root = ResManager:CreateEmptyGameObj("Pools", true)
+    self._pools_root = ResManager.Instance:CreateEmptyGameObj("Pools", true)
     self._pools_root_transform = self._pools_root.transform
 
-    self._root = ResManager:CreateEmptyGameObj("GameObjectPool", true)
+    self._root = ResManager.Instance:CreateEmptyGameObj("GameObjectPool", true)
     self._root_transform = self._root.transform
     self._root_transform:SetParent(self._pools_root_transform)
     self._root:SetActive(false)
 
-    self._root_act = ResManager:CreateEmptyGameObj("GameObjectPoolAct", true)
+    self._root_act = ResManager.Instance:CreateEmptyGameObj("GameObjectPoolAct", true)
     self._root_act_transform = self._root_act.transform
     self._root_act_transform:SetParent(self._pools_root_transform)
     self._root_act_transform.localPosition = Vector3(-100000, -100000, -100000)
@@ -49,6 +55,8 @@ function ResPoolMgr:__delete()
     self._res_pools = nil
     self._used_pools = nil
     self._game_obj_pools = nil
+
+    ResPoolMgr.Instance = nil
 end
 
 function ResPoolMgr:Update(deltaTime, unscaledDeltaTime)
@@ -255,7 +263,7 @@ local function LoadGameObjectCallback(go, cb_data)
     end
 
     self._used_pools[id] = pool
-    pool:CacheOriginalTransformInfo(ResManager:GetPrefab(id))
+    pool:CacheOriginalTransformInfo(ResManager.Instance:GetPrefab(id))
     callback(go, cbd)
 end
 
@@ -274,7 +282,7 @@ function ResPoolMgr:__LoadGameObject(bundle, asset, callback, cb_data, parent, p
         load_func = ResManager.LoadGameObjectSync
     end
 
-    load_func(ResManager, bundle, asset, LoadGameObjectCallback, t, priority)
+    load_func(ResManager.Instance, bundle, asset, LoadGameObjectCallback, t, priority)
 end
 
 function ResPoolMgr:__GetLoadGameObjectCallbackData()
@@ -356,7 +364,7 @@ function ResPoolMgr:__LoadRes(bundle, asset, asset_type, callback, cb_data, prio
         load_func = ResManager.__LoadObjectSync
     end
 
-    load_func(ResManager, bundle, asset, asset_type, LoadObjectCallback, t, priority or ResLoadPriority.high)
+    load_func(ResManager.Instance, bundle, asset, asset_type, LoadObjectCallback, t, priority or ResLoadPriority.high)
 end
 
 function ResPoolMgr:__GetLoadObjectCallbackData()

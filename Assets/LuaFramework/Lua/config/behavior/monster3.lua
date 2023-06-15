@@ -47,8 +47,8 @@ local __bt__ = {
               file= "randomPositionNode",
               type= "actions/randomPositionNode",
               data= {
-                center= "0,0,0",
-                range= 5
+                center= "4,0,0",
+                range= 2
               },
             },
             {
