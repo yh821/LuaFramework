@@ -41,6 +41,7 @@ public class GravitySensor : MonoBehaviour
 
 	private void Update()
 	{
+		if (nodeList == null) return;
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
 		direction = Input.mousePosition - center;
 		var acc = new Vector3(Mathf.Clamp(direction.x / center.x, -1, 1),
@@ -89,7 +90,17 @@ public class GravitySensor : MonoBehaviour
 #if UNITY_EDITOR
 	private void OnValidate()
 	{
+		ResetNodeList();
 		InitNodeList();
+	}
+
+	private void ResetNodeList()
+	{
+		if (nodeList == null || center == Vector3.zero) return;
+		foreach (var node in nodeList)
+		{
+			node.rect.localPosition = node.pos;
+		}
 	}
 #endif
 
