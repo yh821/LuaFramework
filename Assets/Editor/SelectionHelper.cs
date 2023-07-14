@@ -48,7 +48,7 @@ namespace Common
 			    && selectionRect.Contains(e.mousePosition))
 			{
 				var path = AssetDatabase.GUIDToAssetPath(guid);
-				if (e.alt)
+				if (e.control)
 				{
 					UnityEngine.Debug.Log(path);
 					e.Use();
@@ -59,9 +59,8 @@ namespace Common
 					Process.Start(Path.GetFullPath(path));
 				else
 					Process.Start("explorer.exe", ".select," + Path.GetFullPath(path));
+				e.Use();
 			}
-
-			e.Use();
 		}
 
 		private static void ToggleGameObjectActiveSelf()
@@ -79,9 +78,9 @@ namespace Common
 			if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(1))
 			{
 				var data = new PointerEventData(EventSystem.current);
-				data.position = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+				data.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 				var resultList = new List<RaycastResult>();
-				EventSystem.current.RaycastAll(data,resultList);
+				EventSystem.current.RaycastAll(data, resultList);
 				if (resultList.Count > 0)
 				{
 					EditorGUIUtility.PingObject(resultList[0].gameObject);
@@ -90,6 +89,5 @@ namespace Common
 			}
 		}
 #endif
-
 	}
 }
