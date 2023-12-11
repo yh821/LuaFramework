@@ -14,19 +14,19 @@ function Transform.GetPosition(transform, position)
 end
 
 function Transform.GetPositionOnce(transform)
-    local pos = Vector3Tool.Get()
+    local pos = Vector3Pool.Get()
     pos = transform.position
     return pos
 end
 
 function Transform.GetForwardOnce(transform)
-    local forward = Vector3Tool.Get()
+    local forward = Vector3Pool.Get()
     forward = transform.forward
     return forward
 end
 
 function Transform.GetLocalScaleOnce(transform)
-    local scale = Vector3Tool.Get()
+    local scale = Vector3Pool.Get()
     scale = transform.localScale
     return scale
 end

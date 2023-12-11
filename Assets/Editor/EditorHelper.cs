@@ -1,10 +1,9 @@
-﻿using System.IO;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace Common
 {
-	public class EditorHelper
+	public static class EditorHelper
 	{
 		#region 实例化预设
 
@@ -60,16 +59,5 @@ namespace Common
 
 		#endregion
 
-		public static void SaveJson<T>(string file, T data) where T : class
-		{
-			using var writer = File.CreateText(file);
-			writer.Write(JsonUtility.ToJson(data, true));
-		}
-
-		public static T ReadJson<T>(string file) where T : class
-		{
-			using var reader = File.OpenText(file);
-			return JsonUtility.FromJson<T>(reader.ReadToEnd());
-		}
 	}
 }

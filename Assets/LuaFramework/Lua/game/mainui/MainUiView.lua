@@ -27,12 +27,13 @@ function MainUiView:LoadCallback()
 end
 
 function MainUiView:OnOpenAi()
+    print_log("切换AI开关")
     AiManager.Instance:SwitchTick()
 end
 
 function MainUiView:OnAddMonster(index)
     local role = Scene.Instance:GetSceneObj(1)
-    local pos = role:GetDrawObj():GetPosition() or Vector3Tool.GetTemp(0, 0, 0)
+    local pos = role:GetDrawObj():GetPosition() or Vector3Pool.GetTemp(0, 0, 0)
     local monster = Scene.Instance:CreateMonster({ pos_x = pos.x, pos_y = pos.y, pos_z = pos.z })
     table.insert(self.monster_list, monster)
     local bt = AiManager.Instance:BindBT(monster, "monster" .. index)
@@ -41,7 +42,7 @@ end
 
 function MainUiView:OnAddPet()
     local role = Scene.Instance:GetSceneObj(1)
-    local pos = role:GetDrawObj():GetPosition() or Vector3Tool.GetTemp(0, 0, 0)
+    local pos = role:GetDrawObj():GetPosition() or Vector3Pool.GetTemp(0, 0, 0)
     local pet = Scene.Instance:CreatePet({ pos_x = pos.x, pos_y = pos.y, pos_z = pos.z })
     table.insert(self.pet_list, pet)
     local bt = AiManager.Instance:BindBT(pet, "pet")
@@ -62,5 +63,5 @@ end
 
 --关闭事件--
 function MainUiView:Close()
-    PanelMgr:ClosePanel(CtrlNames.Message);
+    PanelManager:ClosePanel(CtrlNames.Message);
 end

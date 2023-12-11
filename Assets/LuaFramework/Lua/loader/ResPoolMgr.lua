@@ -32,11 +32,6 @@ function ResPoolMgr:__init()
     self._root_transform:SetParent(self._pools_root_transform)
     self._root:SetActive(false)
 
-    self._root_act = ResManager.Instance:CreateEmptyGameObj("GameObjectPoolAct", true)
-    self._root_act_transform = self._root_act.transform
-    self._root_act_transform:SetParent(self._pools_root_transform)
-    self._root_act_transform.localPosition = Vector3(-100000, -100000, -100000)
-
     self.priority_type_list = { ResLoadPriority.mid, ResLoadPriority.low }
     for i, v in ipairs(self.priority_type_list) do
         local data = {}
@@ -192,11 +187,12 @@ function ResPoolMgr:__TryGetGameObject(bundle, asset, parent)
     return go
 end
 
+---@return GameObjectPool
 function ResPoolMgr:GetOrCreateGameObjectPool(bundle, asset)
     local path = ResUtil.GetAssetFullPath(bundle, asset)
     local pool = self._game_obj_pools[path]
     if not pool then
-        pool = GameObjectPool.New(self._root_transform, self._root_act_transform, path)
+        pool = GameObjectPool.New(self._root_transform, path)
         self._game_obj_pools[path] = pool
     end
     return pool
@@ -240,6 +236,16 @@ end
 
 function ResPoolMgr:__GetDynamicObjSync(bundle, asset, callback, cb_data, parent)
     self:__GetGameObject(bundle, asset, callback, cb_data, parent, ResLoadPriority.sync, false)
+end
+
+function ResPoolMgr:__CancelGetInQueue(session)
+    for i, v in pairs(self._priority_map) do
+        local t = v.get_game_obj_map[session]
+        v.get_game_obj_map[session] = nil
+        if t then
+            self:__ReleaseDynamicObjCallbackData(t)
+        end
+    end
 end
 
 local function LoadGameObjectCallback(go, cb_data)
@@ -375,6 +381,7 @@ function ResPoolMgr:__ReleaseLoadObjectCallbackData(cb_data)
 
 end
 
+---@return ResPool
 function ResPoolMgr:GetOrCreateResPool(bundle)
     local pool = self._res_pools[bundle]
     if not pool then
@@ -382,4 +389,9 @@ function ResPoolMgr:GetOrCreateResPool(bundle)
         self._res_pools[bundle] = pool
     end
     return pool
+end
+
+function ResPoolMgr:IsInGameObjPool(ins_id, go)
+    local pool = self._used_pools[ins_id]
+    return pool and pool:GetGameObjIsCache(go)
 end

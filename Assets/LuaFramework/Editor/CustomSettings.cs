@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using LuaInterface;
 using LuaFramework;
 using UnityEditor;
@@ -10,6 +11,7 @@ using System.Reflection;
 using DG.Tweening;
 using Game;
 using HedgehogTeam.EasyTouch;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public static class CustomSettings
@@ -98,6 +100,7 @@ public static class CustomSettings
 		_GT(typeof(Physics)),
 		_GT(typeof(Collider)),
 		_GT(typeof(Time)),
+		_GT(typeof(Sprite)),
 		_GT(typeof(Texture)),
 		_GT(typeof(Texture2D)),
 		_GT(typeof(Shader)),
@@ -117,6 +120,7 @@ public static class CustomSettings
 		_GT(typeof(SkinnedMeshRenderer)),
 		_GT(typeof(Space)),
 		_GT(typeof(SystemInfo)),
+		_GT(typeof(UnityWebRequest)),
 
 		_GT(typeof(MeshRenderer)),
 		_GT(typeof(BoxCollider)),
@@ -161,6 +165,16 @@ public static class CustomSettings
 		_GT(typeof(ResourceManager)),
 
 
+		#region System
+
+		_GT(typeof(Directory)),
+		_GT(typeof(SearchOption)),
+		_GT(typeof(File)),
+		_GT(typeof(Path)),
+
+		#endregion
+
+
 		#region UGUI
 		//_GT(typeof()),
 		_GT(typeof(RectTransform)),
@@ -186,6 +200,8 @@ public static class CustomSettings
 		_GT(typeof(UINameTable)).SetNameSpace(null),
 
 		_GT(typeof(ClickableObject)),
+
+		_GT(typeof(LoadRawImage)),
 
 		#endregion
 	};

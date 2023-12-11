@@ -31,7 +31,7 @@ namespace BT
 			get
 			{
 				if (!string.IsNullOrEmpty(_behaviorPath)) return _behaviorPath;
-				_behaviorPath = Path.Combine(Application.dataPath, "LuaFramework/Lua/config/behavior");
+				_behaviorPath = Path.Combine(Application.dataPath, "LuaFramework/Lua/behavior/config");
 				_behaviorPath = _behaviorPath.Replace('\\', '/');
 				return _behaviorPath;
 			}

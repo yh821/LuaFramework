@@ -44,8 +44,8 @@ function CtrlManager:Update(deltaTime, unscaledDeltaTime)
         Runner.Instance:Update(deltaTime, unscaledDeltaTime)
     end
 
-    if Vector3Tool then
-        Vector3Tool.Update(deltaTime, unscaledDeltaTime)
+    if Vector3Pool then
+        Vector3Pool.Update(deltaTime, unscaledDeltaTime)
     end
 end
 

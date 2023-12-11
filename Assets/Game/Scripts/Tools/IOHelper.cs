@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Text;
+using UnityEngine;
 
 namespace Common
 {
@@ -12,46 +13,41 @@ namespace Common
 		public static void OpenFolder(string path)
 		{
 #if UNITY_EDITOR_WIN
-			path = path.Replace("/", "\\");
+			path = path.Replace('/', '\\');
 			if (Directory.Exists(path))
 				System.Diagnostics.Process.Start("explorer.exe", path);
 #endif
 		}
 
-		public static void DeleteFolder(string path)
+		public static bool DeleteFolder(string path)
 		{
-			path = path.Replace("/", "\\");
+			path = path.Replace('/', '\\');
 			var dir = new DirectoryInfo(path);
 			//if (Directory.Exists(path))
 			//	Directory.Delete(path);
 			if (dir.Exists)
+			{
 				dir.Delete(true);
+				return true;
+			}
+			return false;
 		}
 
-		public static void CreateDirectory(string path)
+		public static void CreateFolder(string path)
 		{
 			if (!Directory.Exists(path))
 				Directory.CreateDirectory(path);
 		}
 
-		public static void CreateDirectoryFromFile(string path)
-		{
-			path = path.Replace('\\', '/');
-			var ind = path.LastIndexOf('/');
-			if (ind < 0) return;
-			path = path.Substring(0, ind);
-			CreateDirectory(path);
-		}
-
 		public static void SaveFile(string path, string content)
 		{
-			CheckFileSavePath(path);
+			CreateFolder(Path.GetDirectoryName(path));
 			File.WriteAllText(path, content);
 		}
 
 		public static void SaveFile(string path, string[] lines)
 		{
-			CheckFileSavePath(path);
+			CreateFolder(Path.GetDirectoryName(path));
 			File.WriteAllLines(path, lines);
 		}
 
@@ -73,54 +69,60 @@ namespace Common
 			File.WriteAllText(path, content, encoding);
 		}
 
-		public static bool CheckFileSavePath(string path)
+		public static bool CopyFolder(string srcDir, string dstDir, bool overwrite = true)
 		{
-			CreateDirectoryFromFile(path);
-			return true;
-		}
-
-		public static void CopyFolder(string srcDir, string dstDir,
-			//string[] skips_dir = null,
-			//string[] skips_ext = null, 
-			bool overwrite = true)
-		{
-			if (!Directory.Exists(srcDir))
-				return;
-
-			srcDir = srcDir.Replace("\\", "/");
-			dstDir = dstDir.Replace("\\", "/");
+			if (!Directory.Exists(srcDir)) return false;
+			srcDir = srcDir.Replace('\\', '/');
+			dstDir = dstDir.Replace('\\', '/');
 			var files = Directory.GetFiles(srcDir, "*.*", SearchOption.AllDirectories);
 			foreach (var file in files)
 			{
-				var srcFile = file.Replace("\\", "/");
+				var srcFile = file.Replace('\\', '/');
 				var dstFile = srcFile.Replace(srcDir, dstDir);
-				CreateDirectoryFromFile(dstFile);
-				File.Copy(srcFile, dstFile, overwrite);
+				CopyFile(srcFile, dstFile, overwrite);
 			}
+			return true;
 		}
 
+		public static bool CopyFile(string srcFile, string dstFile, bool overwrite = true)
+		{
+			if (!File.Exists(srcFile)) return false;
+			CreateFolder(Path.GetDirectoryName(dstFile));
+			File.Copy(srcFile, dstFile, overwrite);
+			return true;
+		}
+
+		public static bool MoveFile(string srcFile, string dstFile)
+		{
+			if (!File.Exists(srcFile)) return false;
+			CreateFolder(Path.GetDirectoryName(dstFile));
+			File.Move(srcFile, dstFile);
+			return true;
+		}
 
 		public static void SelectFile(string path)
 		{
 #if UNITY_EDITOR_WIN
-			path = path.Replace("/", "\\");
+			path = path.Replace('/', '\\');
 			if (File.Exists(path))
 				System.Diagnostics.Process.Start("explorer.exe", "/select," + path);
 #endif
 		}
 
-		public static void OpenFile(string path)
+		public static bool OpenFile(string path)
 		{
-			path = path.Replace("/", "\\");
-			if (File.Exists(path))
-				System.Diagnostics.Process.Start(path);
+			path = path.Replace('/', '\\');
+			if (!File.Exists(path)) return false;
+			System.Diagnostics.Process.Start(path);
+			return true;
 		}
 
-		public static void DeleteFile(string path)
+		public static bool DeleteFile(string path, bool log = false)
 		{
-			path = path.Replace("/", "\\");
-			if (File.Exists(path))
-				File.Delete(path);
+			if (!File.Exists(path)) return false;
+			if (log) Debug.Log("删除文件:" + path);
+			File.Delete(path);
+			return true;
 		}
 
 
@@ -141,8 +143,7 @@ namespace Common
 
 		public static byte[] DecodeWithEncryptKey(byte[] input)
 		{
-			if (_encryptKeyBytes == null)
-				return input;
+			if (_encryptKeyBytes == null) return input;
 			return _XORDecode(input, _encryptKeyBytes);
 		}
 
@@ -153,20 +154,14 @@ namespace Common
 
 		public static string BytesToUTF8(byte[] input)
 		{
-			if (input == null || input.Length <= 0)
-			{
-				return null;
-			}
-
+			if (input == null || input.Length <= 0) return null;
 			return Encoding.UTF8.GetString(input);
 		}
 
 		public static byte[] XORDecode(byte[] input, string key)
 		{
-			if (input == null || input.Length <= 0)
-				return input;
-			if (string.IsNullOrEmpty(key))
-				return input;
+			if (input == null || input.Length <= 0) return input;
+			if (string.IsNullOrEmpty(key)) return input;
 			var keyByte = Encoding.ASCII.GetBytes(key);
 			return _XORDecode(input, keyByte);
 		}
@@ -178,8 +173,40 @@ namespace Common
 			{
 				input[i] ^= keyByte[i % len];
 			}
-
 			return input;
+		}
+
+		#endregion
+
+
+		#region JsonHelper
+
+		public static void SaveJson<T>(string file, T data,
+			Newtonsoft.Json.Formatting format = Newtonsoft.Json.Formatting.Indented) where T : class
+		{
+			using var writer = File.CreateText(file);
+			// writer.Write(UnityEngine.JsonUtility.ToJson(data, true));
+			writer.Write(Newtonsoft.Json.JsonConvert.SerializeObject(data, format));
+		}
+
+		public static T ReadJson<T>(string file) where T : class
+		{
+			using var reader = File.OpenText(file);
+			// return UnityEngine.JsonUtility.FromJson<T>(reader.ReadToEnd());
+			return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(reader.ReadToEnd());
+		}
+
+		public static T LoadOrCreate<T>(string path) where T : class, new()
+		{
+			T t;
+			if (File.Exists(path))
+				t = ReadJson<T>(path);
+			else
+			{
+				t = new T();
+				SaveJson(path, t);
+			}
+			return t;
 		}
 
 		#endregion

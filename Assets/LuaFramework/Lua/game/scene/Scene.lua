@@ -5,14 +5,15 @@
 
 require("game/core/DrawPart")
 require("game/core/DrawObj")
-require("game/scene/ResPath")
 
-require("game/scene/SceneObj")
+require("game/scene/ResPath")
 require("game/scene/StateMachine")
-require("game/scene/Character")
-require("game/scene/Role")
-require("game/scene/Pet")
-require("game/scene/Monster")
+
+require("game/scene/sceneobj/SceneObj")
+require("game/scene/sceneobj/Character")
+require("game/scene/sceneobj/Role")
+require("game/scene/sceneobj/Pet")
+require("game/scene/sceneobj/Monster")
 
 ---@class Scene
 ---@field obj_list SceneObj[]

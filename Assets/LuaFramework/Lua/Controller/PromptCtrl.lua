@@ -21,7 +21,7 @@ function PromptCtrl:__delete()
 end
 
 function PromptCtrl:Open()
-    PanelMgr:CreatePanel("Prompt", BindTool.Bind(self.OnCreate, self))
+    PanelManager:CreatePanel("Prompt", BindTool.Bind(self.OnCreate, self))
 end
 
 --启动事件--
@@ -33,7 +33,7 @@ function PromptCtrl:OnCreate(obj)
     self.prompt = self.transform:GetComponent("LuaBehaviour")
 
     self.prompt:AddClick(PromptPanel.btnOpen, BindTool.Bind(self.OnClick, self))
-    ResMgr:LoadPrefab("prompt", { "PromptItem" }, BindTool.Bind(self.InitPanel, self))
+    ResourceManager:LoadPrefab("prompt", { "PromptItem" }, BindTool.Bind(self.InitPanel, self))
 end
 
 --初始化面板--
@@ -133,7 +133,7 @@ function PromptCtrl:TestSendSproto()
     buffer:WriteShort(Protocal.Message)
     buffer:WriteByte(ProtocalType.SPROTO)
     buffer:WriteBuffer(code)
-    NetworkMgr:SendMessage(buffer)
+    NetworkManager:SendMessage(buffer)
 end
 
 --测试发送PBC--
@@ -159,7 +159,7 @@ function PromptCtrl:TestSendPbc()
     buffer:WriteShort(Protocal.Message)
     buffer:WriteByte(ProtocalType.PBC)
     buffer:WriteBuffer(code)
-    NetworkMgr:SendMessage(buffer)
+    NetworkManager:SendMessage(buffer)
 end
 
 --测试发送PBLUA--
@@ -174,7 +174,7 @@ function PromptCtrl:TestSendPblua()
     buffer:WriteShort(Protocal.Message)
     buffer:WriteByte(ProtocalType.PB_LUA)
     buffer:WriteBuffer(msg)
-    NetworkMgr:SendMessage(buffer)
+    NetworkManager:SendMessage(buffer)
 end
 
 --测试发送二进制--
@@ -184,10 +184,10 @@ function PromptCtrl:TestSendBinary()
     buffer:WriteByte(ProtocalType.BINARY)
     buffer:WriteString("ffff我的ffffQ靈uuu")
     buffer:WriteInt(200)
-    NetworkMgr:SendMessage(buffer)
+    NetworkManager:SendMessage(buffer)
 end
 
 --关闭事件--
 function PromptCtrl:Close()
-    PanelMgr:ClosePanel(CtrlNames.Prompt)
+    PanelManager:ClosePanel(CtrlNames.Prompt)
 end

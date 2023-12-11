@@ -104,22 +104,22 @@ local function EffectLoadCallBack(obj, cb_data)
             if effect_data.isRotation then
                 local reference_position = Transform.GetPositionOnce(reference)
                 local deliverer_position = Transform.GetPositionOnce(deliverer)
-                local direction = Vector3Tool.Sub(reference_position, deliverer_position)
+                local direction = Vector3Pool.Sub(reference_position, deliverer_position)
                 direction.y = 0
-                if Vector3Tool.Distance(direction, false) <= 1e-6 then
+                if Vector3Pool.Distance(direction, false) <= 1e-6 then
                     local deliverer_forward = Transform.GetForwardOnce(deliverer)
-                    direction = Vector3Tool.Sub(Vector3Tool.Mul(deliverer_forward, 1000), deliverer_position)
+                    direction = Vector3Pool.Sub(Vector3Pool.Mul(deliverer_forward, 1000), deliverer_position)
                     direction.y = 0
                 end
                 effect.transform.position = deliverer_position
-                effect.transform.rotation = Vector3Tool.LookRotation(direction)
+                effect.transform.rotation = Vector3Pool.LookRotation(direction)
             else
-                effect.transform.localPosition = Vector3Tool.Get(0, 0, 0)
+                effect.transform.localPosition = Vector3Pool.Get(0, 0, 0)
                 effect.transform.localRotation = Quaternion.identity
             end
 
             if effect_data.ignoreParentScale then
-                effect.transform.localScale = Vector3Tool.Get(1, 1, 1)
+                effect.transform.localScale = Vector3Pool.Get(1, 1, 1)
             else
                 effect.transform.localScale = reference.localScale
             end
@@ -131,14 +131,14 @@ local function EffectLoadCallBack(obj, cb_data)
                 --目标身上播放
                 if deliverer and not IsNil(deliverer.gameObject) then
                 elseif state_info and state_info.dir_pos then
-                    effect.transform.position = Vector3Tool.Get(state_info.dir_pos.x, deliverer_position.y, state_info.dir_pos.z)
+                    effect.transform.position = Vector3Pool.Get(state_info.dir_pos.x, deliverer_position.y, state_info.dir_pos.z)
                 else
-                    effect.transform.position = Vector3Tool.Add(deliverer_position, Vector3Tool.Mul(deliverer_forward, 4))
+                    effect.transform.position = Vector3Pool.Add(deliverer_position, Vector3Pool.Mul(deliverer_forward, 4))
                 end
             else
                 local pos = deliverer_position
                 if state_info and state_info.off_pos then
-                    pos = Vector3Tool.Add(pos, state_info.off_pos)
+                    pos = Vector3Pool.Add(pos, state_info.off_pos)
                 elseif state_info and state_info.play_pos then
                     pos = state_info.play_pos
                 end
@@ -147,17 +147,17 @@ local function EffectLoadCallBack(obj, cb_data)
 
             --rotation
             if effect_data.playerAtTarget == false and effect_data.isRotation then
-                local direction = Vector3Tool.Sub(Vector3Tool.Add(deliverer_position, Vector3Tool.Mul(deliverer_forward, 5)), deliverer_position)
+                local direction = Vector3Pool.Sub(Vector3Pool.Add(deliverer_position, Vector3Pool.Mul(deliverer_forward, 5)), deliverer_position)
                 if state_info and state_info.play_pos then
-                    direction = Vector3Tool.Sub(state_info.play_pos, deliverer_position)
+                    direction = Vector3Pool.Sub(state_info.play_pos, deliverer_position)
                 elseif state_info and state_info.dir_pos then
-                    direction = Vector3Tool.Sub(state_info.dir_pos, deliverer_position)
+                    direction = Vector3Pool.Sub(state_info.dir_pos, deliverer_position)
                 end
                 direction.y = 0
                 if direction.x == 0 and direction.z == 0 then
                     direction.x = 0.1
                 end
-                effect.transform.rotation = Vector3Tool.LookRotation(direction)
+                effect.transform.rotation = Vector3Pool.LookRotation(direction)
             end
 
             --scale
@@ -168,7 +168,7 @@ local function EffectLoadCallBack(obj, cb_data)
                     scale.y = scale.y * self.effect_size_scale.y
                     scale.z = scale.z * self.effect_size_scale.z
                 else
-                    scale = Vector3Tool.Get(1, 1, 1)
+                    scale = Vector3Pool.Get(1, 1, 1)
                 end
             else
                 if effect_data.playerAtTarget then
@@ -192,7 +192,7 @@ local function EffectLoadCallBack(obj, cb_data)
     --偏移
     if effect_data.isUseCustomTransform then
         local pos = effect.transform.localPosition
-        effect.transform.localPosition = Vector3Tool.Get(
+        effect.transform.localPosition = Vector3Pool.Get(
                 pos.x + effect_data.offsetPosX,
                 pos.y + effect_data.offsetPosY,
                 pos.z + effect_data.offsetPosZ

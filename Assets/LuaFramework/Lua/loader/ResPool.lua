@@ -47,7 +47,7 @@ function ResPool:ReleaseInObjId(id, policy)
         return true
     end
 
-    self._release_policy = policy or ResPoolReleasePolicy.default
+    self._release_policy = policy or ResPoolReleasePolicy.Default
     self._wait_unload_t[asset] = Status.NowUnScaleTime + self:GetCacheTime(t.use_times)
 
     return true
@@ -55,7 +55,7 @@ end
 
 function ResPool:GetCacheTime(use_times)
     local cache_time = 0
-    if self._release_policy == ResPoolReleasePolicy.destroy then
+    if self._release_policy == ResPoolReleasePolicy.DestroyQuick then
         cache_time = 0
     elseif IsLowMemorySystem then
         cache_time = 10

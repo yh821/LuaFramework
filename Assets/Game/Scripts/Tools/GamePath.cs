@@ -11,7 +11,7 @@ namespace Common
 	/// <summary>
 	/// 游戏路径管理
 	/// </summary>
-	//CustomLuaClassAttribute    
+	//CustomLuaClassAttribute
 	public static class GamePath
 	{
 		/// <summary>
@@ -129,10 +129,10 @@ namespace Common
 			streamingAssetsAssetBundleUrl = streamingAssetsUrl + "/" + platformName;
 			streamingAssetsAssetBundlePath = streamingAssetsPath + "/" + platformName;
 
-			IOHelper.CreateDirectory(logPath);
-			IOHelper.CreateDirectory(cachePath);
-			IOHelper.CreateDirectory(writablePath);
-			IOHelper.CreateDirectory(writableAssetBundlePath);
+			IOHelper.CreateFolder(logPath);
+			IOHelper.CreateFolder(cachePath);
+			IOHelper.CreateFolder(writablePath);
+			IOHelper.CreateFolder(writableAssetBundlePath);
 		}
 
 		public static void DumpPaths()

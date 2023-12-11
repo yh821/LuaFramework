@@ -21,7 +21,7 @@ function MessageCtrl:__delete()
 end
 
 function MessageCtrl:Open()
-    PanelMgr:CreatePanel("Message", BindTool.Bind(self.OnCreate, self))
+    PanelManager:CreatePanel("Message", BindTool.Bind(self.OnCreate, self))
 end
 
 --启动事件--
@@ -39,5 +39,5 @@ end
 
 --关闭事件--
 function MessageCtrl:Close()
-    PanelMgr:ClosePanel(CtrlNames.Message);
+    PanelManager:ClosePanel(CtrlNames.Message);
 end

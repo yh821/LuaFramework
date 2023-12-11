@@ -21,10 +21,10 @@ AppConst = LuaFramework.AppConst;
 LuaHelper = LuaFramework.LuaHelper;
 ByteBuffer = LuaFramework.ByteBuffer;
 
-ResMgr = LuaHelper.GetResManager();
-PanelMgr = LuaHelper.GetPanelManager();
-SoundMgr = LuaHelper.GetSoundManager();
-NetworkMgr = LuaHelper.GetNetManager();
+ResourceManager = LuaHelper.GetResManager();
+PanelManager = LuaHelper.GetPanelManager();
+SoundManager = LuaHelper.GetSoundManager();
+NetworkManager = LuaHelper.GetNetManager();
 
 WWW = UnityEngine.WWW;
 GameObject = UnityEngine.GameObject;

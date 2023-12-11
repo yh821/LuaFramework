@@ -157,16 +157,10 @@ function DrawPart:DestroyObj()
         end
     end
     local trans = obj.transform
-    trans.localScale = Vector3Tool.one
-    trans.localRotation = Vector3Tool.rotate
+    trans.localScale = Vector3Pool.one
+    trans.localRotation = Vector3Pool.rotate
     --animator放回act池优化
-    local optimize
-    --optimize = self.draw_part_render and self.draw_part_render:IsNeedAnimatorOptimize()
-    if optimize then
-        ResPoolMgr.Instance:Release(obj.gameObject, ResPoolReleasePolicy.culling)
-    else
-        ResPoolMgr.Instance:Release(obj.gameObject)
-    end
+    ResPoolMgr.Instance:Release(obj.gameObject)
 end
 
 function DrawPart.__OnLoadComplete(obj, cb_data)
@@ -202,7 +196,7 @@ function DrawPart.__OnLoadComplete(obj, cb_data)
     self.part_rotate = self.obj_transform.localRotation
     self:__FlushParent(self.obj)
     self:__FlushClickListener(self.obj)
-    self.obj_transform.localPosition = Vector3Tool.GetTemp(0, 0, 0)
+    self.obj_transform.localPosition = Vector3Pool.GetTemp(0, 0, 0)
 
     self:__InitRenderer()
     self:__InitAnimator()
@@ -258,14 +252,7 @@ function DrawPart:__RemoveAttach()
 end
 
 function DrawPart:__ReleaseLoaded(obj)
-    --animator放回act池优化
-    local optimize
-    --optimize = self.draw_part_render and self.draw_part_render:IsNeedAnimatorOptimize()
-    if optimize then
-        ResPoolMgr.Instance:Release(obj, ResPoolReleasePolicy.culling)
-    else
-        ResPoolMgr.Instance:Release(obj)
-    end
+    ResPoolMgr.Instance:Release(obj)
 end
 
 function DrawPart:SetTrigger(key)

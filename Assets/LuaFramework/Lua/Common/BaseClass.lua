@@ -72,6 +72,16 @@ function BaseClass(super)
                 end
                 now_super = now_super.super
             end
+
+            if obj.__game_obj_loaders then
+                ReleaseGameObjLoaders(obj)
+            end
+            if obj.__res_loaders then
+                ReleaseResLoaders(obj)
+            end
+            if obj.__delay_call_map then
+                TimerQuest:CancelAllDelayCall(obj)
+            end
         end
 
         return obj

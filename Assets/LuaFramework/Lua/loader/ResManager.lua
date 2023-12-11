@@ -20,19 +20,6 @@ local wait_load_game_obj_queue = {}
 --测试专用, 模拟加载慢效果
 local delay_load = 0
 
-ResLoadPriority = {
-    min = 0,
-    steal = 1, --偷偷加载
-    low = 2, --场景其他对象
-    mid = 3,
-    high = 4, --角色身体
-    ui_low = 5, --ui特效
-    ui_mid = 6, --ui小界面
-    ui_high = 7, --ui大界面
-    sync = 8, --同步加载
-    max = 9
-}
-
 ---@class ResManager
 ResManager = ResManager or BaseClass()
 
@@ -68,6 +55,26 @@ function ResManager:Update(deltaTime, unscaledDeltaTime)
     end
 
     self:UpdateLoadQueue()
+end
+
+function ResManager:__Destroy(game_obj, release_policy)
+    if IsNil(game_obj) then
+        return
+    end
+    if ResPoolMgr and ResPoolMgr.Instance and ResPoolMgr.Instance:IsInGameObjPool(game_obj:GetInstanceID(), game_obj) then
+        print_error("[BundleLoader] big bug, destroy pool game object!")
+        return
+    end
+
+end
+
+function ResManager:ReleaseInObjId(instance_id, release_policy)
+    local prefab = self.go_id_prefab_map[instance_id]
+    if prefab then
+        ResPoolMgr.Instance:Release(prefab, release_policy)
+        self.go_id_go_map[instance_id] = nil
+        self.go_id_prefab_map[instance_id] = nil
+    end
 end
 
 function ResManager:UpdateLoadQueue()
@@ -110,7 +117,7 @@ function ResManager:UpdateLoadQueue()
     end
 end
 
-function ResManager:LoadGameObjectAsync(bundle, asset, callback, parent, cb_data, priority)
+function ResManager:LoadGameObjectAsync(bundle, asset, callback, cb_data, parent, priority)
     if UNITY_EDITOR then
         if not EditorResourceMgr.IsExitsAsset(bundle, asset) then
             print_error("资源不存在，马上检测！！！")
@@ -157,7 +164,7 @@ end
 function ResManager:__InternalLoadObject(bundle, asset, callback, cb_data, asset_type)
 end
 
-function ResManager:LoadGameObjectSync(bundle, asset, callback, parent, cb_data)
+function ResManager:LoadGameObjectSync(bundle, asset, callback, cb_data, parent)
     if UNITY_EDITOR then
         if not EditorResourceMgr.IsExitsAsset(bundle, asset) then
             print_error("资源不存在，马上检测！！！")

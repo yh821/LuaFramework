@@ -43,24 +43,21 @@ namespace Common
 		private static void ProjectWindowItemOnGUI(string guid, Rect selectionRect)
 		{
 			var e = Event.current;
-			if (e.type == EventType.KeyDown
-			    && e.keyCode == KeyCode.Space
-			    && selectionRect.Contains(e.mousePosition))
+			if (e.type != EventType.KeyDown || e.keyCode != KeyCode.Space ||
+			    !selectionRect.Contains(e.mousePosition)) return;
+			var path = AssetDatabase.GUIDToAssetPath(guid);
+			if (e.control)
 			{
-				var path = AssetDatabase.GUIDToAssetPath(guid);
-				if (e.control)
-				{
-					UnityEngine.Debug.Log(path);
-					e.Use();
-					return;
-				}
-
-				if (Path.GetExtension(path) == string.Empty)
-					Process.Start(Path.GetFullPath(path));
-				else
-					Process.Start("explorer.exe", ".select," + Path.GetFullPath(path));
+				UnityEngine.Debug.Log(path);
 				e.Use();
+				return;
 			}
+
+			if (Path.GetExtension(path) == string.Empty)
+				Process.Start(Path.GetFullPath(path));
+			else
+				Process.Start("explorer.exe", ".select," + Path.GetFullPath(path));
+			e.Use();
 		}
 
 		private static void ToggleGameObjectActiveSelf()

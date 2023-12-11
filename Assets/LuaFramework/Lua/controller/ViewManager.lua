@@ -38,7 +38,7 @@ function ViewManager:OpenView(view_name, callback)
     end
     local trans = go.transform
     trans:SetParent(UiLayer.transform, false)
-    trans.localPosition = Vector3Tool.GetTemp(0, 0, 0)
+    trans.localPosition = Vector3Pool.GetTemp(0, 0, 0)
     go.name = view_name
     if callback then
         callback(go)

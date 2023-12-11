@@ -17,6 +17,7 @@ public static class LuaBinder
 		HedgehogTeam_EasyTouch_EasyTouchWrap.Register(L);
 		Game_UINameTableWrap.Register(L);
 		ClickableObjectWrap.Register(L);
+		LoadRawImageWrap.Register(L);
 		ViewWrap.Register(L);
 		BaseWrap.Register(L);
 		ManagerWrap.Register(L);
@@ -82,6 +83,7 @@ public static class LuaBinder
 		UnityEngine_PhysicsWrap.Register(L);
 		UnityEngine_ColliderWrap.Register(L);
 		UnityEngine_TimeWrap.Register(L);
+		UnityEngine_SpriteWrap.Register(L);
 		UnityEngine_TextureWrap.Register(L);
 		UnityEngine_Texture2DWrap.Register(L);
 		UnityEngine_ShaderWrap.Register(L);
@@ -110,6 +112,9 @@ public static class LuaBinder
 		UnityEngine_RectTransformWrap.Register(L);
 		UnityEngine_CanvasWrap.Register(L);
 		UnityEngine_CanvasGroupWrap.Register(L);
+		L.BeginModule("Networking");
+		UnityEngine_Networking_UnityWebRequestWrap.Register(L);
+		L.EndModule();
 		L.BeginModule("SceneManagement");
 		UnityEngine_SceneManagement_SceneManagerWrap.Register(L);
 		UnityEngine_SceneManagement_LoadSceneModeWrap.Register(L);
@@ -184,6 +189,13 @@ public static class LuaBinder
 		L.RegFunction("Func_bool", System_Func_bool);
 		L.RegFunction("Action_UnityEngine_AsyncOperation", System_Action_UnityEngine_AsyncOperation);
 		L.RegFunction("Action_NotiData", System_Action_NotiData);
+		L.RegFunction("Action_string_string", System_Action_string_string);
+		L.BeginModule("IO");
+		System_IO_DirectoryWrap.Register(L);
+		System_IO_SearchOptionWrap.Register(L);
+		System_IO_FileWrap.Register(L);
+		System_IO_PathWrap.Register(L);
+		L.EndModule();
 		L.EndModule();
 		L.BeginModule("HedgehogTeam");
 		L.BeginModule("EasyTouch");
@@ -1669,6 +1681,33 @@ public static class LuaBinder
 			{
 				LuaTable self = ToLua.CheckLuaTable(L, 2);
 				Delegate arg1 = DelegateTraits<System.Action<NotiData>>.Create(func, self);
+				ToLua.Push(L, arg1);
+			}
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int System_Action_string_string(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+			LuaFunction func = ToLua.CheckLuaFunction(L, 1);
+
+			if (count == 1)
+			{
+				Delegate arg1 = DelegateTraits<System.Action<string,string>>.Create(func);
+				ToLua.Push(L, arg1);
+			}
+			else
+			{
+				LuaTable self = ToLua.CheckLuaTable(L, 2);
+				Delegate arg1 = DelegateTraits<System.Action<string,string>>.Create(func, self);
 				ToLua.Push(L, arg1);
 			}
 			return 1;

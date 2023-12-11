@@ -204,30 +204,14 @@ namespace Common
 			}
 		}
 
-		private const string OptionFile = "ProjectSettings/SVNPathOption.json";
+		private const string OptionFile = "UserSettings/SVNPathOption.json";
 
 		private static PathOption _option;
-		public static PathOption Option => _option ??= LoadOrCreate(OptionFile);
-
-		public static PathOption LoadOrCreate(string path)
-		{
-			PathOption option;
-			if (File.Exists(path))
-			{
-				option = EditorHelper.ReadJson<PathOption>(path);
-			}
-			else
-			{
-				option = new PathOption();
-				EditorHelper.SaveJson(OptionFile, option);
-			}
-
-			return option;
-		}
+		public static PathOption Option => _option ??= IOHelper.LoadOrCreate<PathOption>(OptionFile);
 
 		public static void SaveOption(List<string> commitPaths, List<string> updatePaths)
 		{
-			EditorHelper.SaveJson(OptionFile, new PathOption {commitPaths = commitPaths, updatePaths = updatePaths});
+			IOHelper.SaveJson(OptionFile, new PathOption {commitPaths = commitPaths, updatePaths = updatePaths});
 		}
 
 		public static List<string> GetCommitPaths()
