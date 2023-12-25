@@ -4,7 +4,9 @@ using System.IO;
 using System.Linq;
 using LuaInterface;
 using UnityEditor;
+#if UNITY_EDITOR
 using UnityEditor.SceneManagement;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UObject = UnityEngine.Object;

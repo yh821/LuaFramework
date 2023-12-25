@@ -4,7 +4,7 @@
 --- DateTime: 2020/10/26 10:12
 ---
 
----@class BehaviorTree
+---@class BehaviorTree : BaseClass
 ---@field child TaskNode
 ---@field blackBoard table
 ---@field gameObject userdata

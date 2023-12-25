@@ -7,6 +7,9 @@ public class SimpleCameraWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(SimpleCamera), typeof(UnityEngine.MonoBehaviour));
+		L.RegFunction("Swipe", Swipe);
+		L.RegFunction("Pinch", Pinch);
+		L.RegFunction("UpdatePosition", UpdatePosition);
 		L.RegFunction("MoveToTarget", MoveToTarget);
 		L.RegFunction("ChangeAngle", ChangeAngle);
 		L.RegFunction("__eq", op_Equality);
@@ -27,6 +30,57 @@ public class SimpleCameraWrap
 		L.RegVar("angle", get_angle, set_angle);
 		L.RegVar("StopCameraUpdate", get_StopCameraUpdate, set_StopCameraUpdate);
 		L.EndClass();
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Swipe(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			SimpleCamera obj = (SimpleCamera)ToLua.CheckObject<SimpleCamera>(L, 1);
+			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
+			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
+			obj.Swipe(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int Pinch(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			SimpleCamera obj = (SimpleCamera)ToLua.CheckObject<SimpleCamera>(L, 1);
+			float arg0 = (float)LuaDLL.luaL_checknumber(L, 2);
+			obj.Pinch(arg0);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int UpdatePosition(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			SimpleCamera obj = (SimpleCamera)ToLua.CheckObject<SimpleCamera>(L, 1);
+			obj.UpdatePosition();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]

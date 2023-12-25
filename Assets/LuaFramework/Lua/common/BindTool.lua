@@ -47,3 +47,15 @@ function BindTool.Bind(func, ...)
 
     return new_func
 end
+
+function BindTool.Bind1(func, arg1)
+    if type(func) ~= "function" then
+        print_error("Bind param is not function!")
+        return function()
+        end
+    end
+    local new_func = function(...)
+        return func(arg1, ...)
+    end
+    return new_func
+end

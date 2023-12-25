@@ -1,8 +1,8 @@
 require("view/MessagePanel")
 
+---@class MessageCtrl : BaseClass
 MessageCtrl = MessageCtrl or BaseClass();
 
---构建函数--
 function MessageCtrl:__init()
     if MessageCtrl.Instance then
         print_error("[PromptCtrl] attempt to create singleton twice!")

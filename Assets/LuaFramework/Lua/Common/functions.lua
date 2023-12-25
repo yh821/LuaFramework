@@ -7,20 +7,20 @@
 --    Util.Log(msg .. "\n" .. debug.traceback());
 --end
 
---输出日志--
-function print_log(msg)
-    Util.Log(msg .. "\n" .. debug.traceback());
-end
-
---错误日志--
-function print_error(msg)
-    Util.LogError(msg);
-end
-
---警告日志--
-function print_warning(msg)
-    Util.LogWarning(msg .. "\n" .. debug.traceback());
-end
+----输出日志--
+--function print_log(msg)
+--    Util.Log(msg .. "\n" .. debug.traceback());
+--end
+--
+----错误日志--
+--function print_error(msg)
+--    Util.LogError(msg .. "\n" .. debug.traceback());
+--end
+--
+----警告日志--
+--function print_warning(msg)
+--    Util.LogWarning(msg .. "\n" .. debug.traceback());
+--end
 
 --查找对象--
 function Find(str)

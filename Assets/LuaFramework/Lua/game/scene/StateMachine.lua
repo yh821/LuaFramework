@@ -9,8 +9,8 @@
 ---@field update function
 ---@field exit function
 
----@class StateMachine
----@class now_state StateData
+---@class StateMachine : BaseClass
+---@field now_state StateData
 StateMachine = StateMachine or BaseClass()
 
 function StateMachine:__init(obj)

@@ -10,8 +10,10 @@ require("common/util")
 require("common/BaseClass")
 require("game/common/U3DObject")
 require("common/Vector3Pool")
+require("common/SortTools")
+require("common/CbdPool")
 require("loader/ResUtil")
-require("loader/LoadHelper")
+require("loader/LoadUtil")
 
 function __TRACK_BACK__(msg)
     local track_text = debug.traceback(tostring(msg))
@@ -29,7 +31,7 @@ function Main()
 
     ResUtil.SetBaseCachePath(string.format("%s/%s", UnityApplication.persistentDataPath, "BundleCache"))
 
-    if GAME_ASSETBUNDLE then
+    if GAME_ASSET_BUNDLE then
         ResUtil.InitEncryptKey()
         if ResUtil.is_ios_encrypt_asset then
             ResUtil.SetBaseCachePath(string.format("%s/%s", UnityApplication.persistentDataPath, EncryptMgr.GetEncryptPath("BundleCache")))
@@ -39,9 +41,9 @@ function Main()
         require("loader/SimulationLoader")
     end
 
-    require("loader/AssetBundleMgr")
-    require("loader/BundleCache")
-    require("loader/DownloadMgr")
+    --require("loader/AssetBundleMgr")
+    --require("loader/BundleCache")
+    --require("loader/DownloadMgr")
 end
 
 --场景切换通知

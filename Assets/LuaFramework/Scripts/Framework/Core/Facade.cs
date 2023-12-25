@@ -1,4 +1,4 @@
-﻿/* 
+﻿/*
     LuaFramework Code By Jarjin lee
 */
 
@@ -22,7 +22,7 @@ public class Facade {
     GameObject AppGameManager {
         get {
             if (m_GameManager == null) {
-                m_GameManager = GameObject.Find("GameManager");
+                m_GameManager = GameObject.Find("GameRoot");
             }
             return m_GameManager;
         }

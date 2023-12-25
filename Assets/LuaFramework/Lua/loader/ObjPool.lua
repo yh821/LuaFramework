@@ -3,7 +3,7 @@
 --- DateTime: 2023/5/13 19:38
 ---
 
----@class ObjPool
+---@class ObjPool : BaseClass
 ObjPool = ObjPool or BaseClass()
 
 function ObjPool:__init()

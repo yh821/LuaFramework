@@ -5,7 +5,7 @@
 
 local TypeUINameTable = typeof(UINameTable)
 
----@class BaseView
+---@class BaseView : BaseClass
 BaseView = BaseView or BaseClass()
 
 function BaseView:__init(view_name)

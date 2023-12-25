@@ -8,7 +8,7 @@ local TypeUnityTexture = typeof(UnityEngine.Texture)
 local TypeUnitySprite = typeof(UnityEngine.Sprite)
 local TypeTextAsset = typeof(UnityEngine.TextAsset)
 
----@class ResLoader
+---@class ResLoader : BaseClass
 local ResLoader = BaseClass()
 
 function ResLoader:__init()

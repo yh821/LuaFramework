@@ -3,7 +3,7 @@
 --- DateTime: 2023/5/5 16:40
 ---
 
----@class ViewManager
+---@class ViewManager : BaseClass
 ViewManager = ViewManager or BaseClass()
 
 UiLayer = GameObject.Find("GameRoot/UiLayer")
@@ -29,10 +29,10 @@ function ViewManager:OpenView(view_name, callback)
         return
     end
 
-    local bundle = string.lower("views/" .. view_name .. "_prefab")
-    local asset = view_name .. "View"
-    local prefab = EditorResourceMgr.LoadGameObject(bundle, asset)
-    local go = ResManager.Instance:Instantiate(prefab)
+    local bundle_name = string.lower("views/" .. view_name .. "_prefab")
+    local asset_name = view_name .. "View"
+    local prefab = EditorResourceMgr.LoadGameObject(bundle_name, asset_name)
+    local go = ResMgr.Instance:Instantiate(prefab)
     if IsNil(go) then
         return
     end

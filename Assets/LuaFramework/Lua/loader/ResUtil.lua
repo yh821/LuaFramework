@@ -122,21 +122,21 @@ function ResUtil.GetCachePath(bundle_name, hash)
     end
 end
 
-function ResUtil.GetBundleFilePath(bundle_name, hash)
+function ResUtil.GetBundleFilePath(bundle_name, bundle_hash)
     local record_path = FileExistMap[bundle_name]
     if record_path then
         return record_path
     end
     --在Cache目录
-    local bundle_file_path = ResUtil.GetCachePath(bundle_name, hash)
+    local bundle_file_path = ResUtil.GetCachePath(bundle_name, bundle_hash)
     if SysFile.Exists(bundle_file_path) then
         FileExistMap[bundle_name] = bundle_file_path
         return bundle_file_path
     end
 
     --在包体内
-    if hash then
-        local bundle_path = string.format("AssetBundle/%s-%s", bundle_name, hash)
+    if bundle_hash then
+        local bundle_path = string.format("AssetBundle/%s-%s", bundle_name, bundle_hash)
         if ResUtil.ExistedInStreaming(bundle_path) then
             bundle_file_path = ResUtil.GetStreamingAssetPath(bundle_path)
             FileExistMap[bundle_name] = bundle_file_path
@@ -151,9 +151,9 @@ function ResUtil.GetBundleFilePath(bundle_name, hash)
         end
     end
 
-    if ResManager:GetIsIgnoreHashCheck() then
+    if ResMgr:GetIsIgnoreHashCheck() then
         local file_name = SysPath.GetFileName(bundle_name)
-        local bundle_dir = SysPath.GetDirectoryName(ResUtil.GetCachePath(bundle_name, hash))
+        local bundle_dir = SysPath.GetDirectoryName(ResUtil.GetCachePath(bundle_name, bundle_hash))
         if SysDirectory.Exists(bundle_dir) then
             local file_list = SysDirectory.GetFiles(bundle_dir, string.format("%s-*", file_name), SysSearchOption.TopDirectoryOnly)
             if file_list and file_list.Length > 0 then
@@ -197,8 +197,8 @@ function ResUtil.LoadApkFileHelper(path)
     end
 end
 
-function ResUtil.IsFileExist(bundle, hash)
-    return ResUtil.black_list[bundle] == nil and ResUtil.GetBundleFilePath(bundle, hash)
+function ResUtil.IsFileExist(bundle_name, bundle_hash)
+    return ResUtil.black_list[bundle_name] == nil and ResUtil.GetBundleFilePath(bundle_name, bundle_hash)
 end
 
 function ResUtil.DelCacheBundle(bundle_name)

@@ -10,9 +10,12 @@ SceneObjType = {
     Unknown = 0,
     Role = 1,
     Monster = 2,
+    Pet = 3,
+
+    MainRole = 10,
 }
 
----@class DrawObj
+---@class DrawObj : BaseClass
 ---@field part_list DrawPart[]
 DrawObj = DrawObj or BaseClass()
 
@@ -27,9 +30,10 @@ DrawObj.AnimParamType = {
 local function InitDrawObjPool()
     DrawObj.obj_list = {}
     DrawObj.obj_count = 0
-    local root = GameObject.New("DrawObjPool")
-    root.transform.position = Vector3Pool.GetTemp(0, 0, 0)
-    DrawObj.obj_root = root
+    DrawObj.v_root = ResMgr.Instance:CreateEmptyGameObj("DrawObjPool", true)
+    DrawObj.v_root:SetActive(false)
+    DrawObj.v_root_transform = DrawObj.v_root.transform
+    DrawObj.v_root_transform:SetParent(ResPoolMgr.Instance.v_pools_root_transform)
 end
 InitDrawObjPool()
 
@@ -57,11 +61,12 @@ function DrawObj.Pop()
     return draw_obj
 end
 
+---@param draw_obj DrawObj
 function DrawObj.Release(draw_obj)
     if DrawObj.obj_count <= 50 then
         if not IsNil(draw_obj.gameObject) then
             draw_obj.move_obj:Reset()
-            draw_obj.transform:SetParent(DrawObj.obj_root, false)
+            draw_obj.transform:SetParent(DrawObj.v_root_transform, false)
             DrawObj.obj_list[draw_obj] = draw_obj
             DrawObj.obj_count = DrawObj.obj_count + 1
         end
@@ -197,3 +202,14 @@ function DrawObj:RotateTo(pos, speed)
     end
 end
 
+function DrawObj:SetName(name)
+    self.root.gameObject.name = name
+end
+
+function DrawObj:GetName()
+    return self.root.gameObject.name
+end
+
+function DrawObj:GetTransform()
+    return self.root_transform
+end

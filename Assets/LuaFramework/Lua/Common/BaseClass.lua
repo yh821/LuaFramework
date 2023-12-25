@@ -26,26 +26,27 @@ end
 local _class = {}
 local lua_obj_count = 0
 
----@class BaseClass
----@field New fun(...):BaseClass
----@field DeleteMe fun():BaseClass
-
----@return BaseClass
+---@param super BaseClass
 function BaseClass(super)
     -- 生成一个类类型
+    ---@class BaseClass
+    ---@field _class_type BaseClass
     local class_type = {}
     class_type.__init = false
     class_type.__delete = false
     class_type.super = super
+    ---@overload fun():BaseClass
     class_type.New = function(...)
         lua_obj_count = lua_obj_count + 1
         -- 生成一个类对象
+        ---@type BaseClass
         local obj = { _class_type = class_type }
         -- 在初始化之前注册基类方法
         setmetatable(obj, { __index = _class[class_type] })
         -- 初始化
         do
             local _ctor
+            ---@param c BaseClass
             _ctor = function(c, ...)
                 if c.super then
                     _ctor(c.super, ...)
@@ -57,6 +58,7 @@ function BaseClass(super)
             _ctor(class_type, ...)
         end
         -- 注册一个delete方法
+        ---@param self BaseClass
         obj.DeleteMe = function(self)
             if Status.IsEditor then
                 if obj.__is_deleted__ then

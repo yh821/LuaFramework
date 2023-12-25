@@ -3,7 +3,7 @@
 --- DateTime: 2023/5/5 18:39
 ---
 
----@class MainUiData
+---@class MainUiData : BaseClass
 MainUiData = MainUiData or BaseClass()
 
 function MainUiData:__init()

@@ -6,7 +6,7 @@
 
 require("behavior/behaviorManager")
 
----@class AiManager
+---@class AiManager : BaseClass
 ---@field _bt_list BehaviorTree[]
 AiManager = AiManager or BaseClass()
 
@@ -30,7 +30,7 @@ function AiManager:__delete()
 	AiManager.Instance = nil
 end
 
-function AiManager:Update(realtime, delta_time)
+function AiManager:Update(now_time, delta_time)
 	BehaviorManager:Update(delta_time)
 end
 

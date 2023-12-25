@@ -104,7 +104,7 @@ public class EventDispatcher : MonoBehaviour
 		destroyedLoadRawImage.Add(loadRawImage.GetInstanceID());
 	}
 
-	public void OnProjectileSingleEffect(EffectControl hitEffect, Vector3 position, Quaternion rotation,
+	public void OnProjectileSingleEffect(EffectController hitEffect, Vector3 position, Quaternion rotation,
 		bool hitEffectWithRotation, Vector3 sourceScale, int layer)
 	{
 		ProjectileSingleEffectFunc.Call(hitEffect, position, rotation, hitEffectWithRotation, sourceScale, layer);

@@ -13,7 +13,7 @@ SceneObjPart = {
     Tail = 5,
 }
 
----@class DrawPart
+---@class DrawPart : BaseClass
 ---@field draw_obj DrawObj
 ---@field parent U3DObject
 DrawPart = DrawPart or BaseClass()
@@ -41,19 +41,21 @@ end
 
 DrawPart._load_token = 0
 DrawPart._cb_data_pool = {}
-function DrawPart.CreateCbData(self, bundle, asset, token)
-    local cb_data = table.remove(DrawPart._cb_data_pool)
-    if not cb_data then
-        cb_data = {}
+function DrawPart:__CreateCbData()
+    local t = table.remove(DrawPart._cb_data_pool)
+    if t == nil then
+        t = {
+            [CbdIndex.self] = true,
+            [CbdIndex.bundle] = true,
+            [CbdIndex.asset] = true,
+            [CbdIndex.token] = true,
+            [CbdIndex.debug] = true
+        }
     end
-    cb_data[1] = self
-    cb_data[2] = bundle
-    cb_data[3] = asset
-    cb_data[4] = token
-    return cb_data
+    return t
 end
 
-function DrawPart.ReleaseCbData(cb_data)
+function DrawPart:__ReleaseCbData(cb_data)
     for i, v in ipairs(cb_data) do
         cb_data[i] = false
     end
@@ -91,45 +93,51 @@ local localPosition = Vector3(0, 0, 0)
 local localRotation = Quaternion.Euler(0, 0, 0)
 local localScale = Vector3(1, 1, 1)
 
-function DrawPart:ChangeModel(bundle, asset, callback)
-    if IsNilOrEmpty(bundle) or IsNilOrEmpty(asset) then
+function DrawPart:ChangeModel(bundle_name, asset_name, callback)
+    if IsNilOrEmpty(bundle_name) or IsNilOrEmpty(asset_name) then
         return
     end
-    if self.bundle == bundle and self.asset == asset then
-        if self.load_token then
-            self.load_callback = callback
-        else
-            if callback then
-                callback()
-            end
+    if self.bundle_name == bundle_name and self.asset_name == asset_name then
+        if callback then
+            callback(self.obj, bundle_name, asset_name)
         end
         return
     end
-    self.bundle = bundle
-    self.asset = asset
+    self.bundle_name = bundle_name
+    self.asset_name = asset_name
     self:CancelLoadInQueue()
     self.load_callback = callback
-    self:LoadModel(self.bundle, self.asset)
+    self:LoadModel(self.bundle_name, self.asset_name)
 end
 
-function DrawPart:LoadModel(bundle, asset)
-    --TODO 暂时用Editor同步加载
-    local go
-    if UNITY_EDITOR then
-        go = ResManager.Instance:Instantiate(EditorResourceMgr.LoadGameObject(bundle, asset))
-        go.name = self.part
-        go.transform:SetParent(self.draw_obj.root_transform, true)
-        go.transform.localPosition = localPosition
-        go.transform.localRotation = localRotation
-        go.transform.localScale = localScale
-    else
-
-    end
-
+function DrawPart:LoadModel(bundle_name, asset_name)
+    local cbd = CbdPool.CreateCbData()
+    cbd[CbdIndex.self] = self
+    cbd[CbdIndex.bundle] = bundle_name
+    cbd[CbdIndex.asset] = asset_name
     DrawPart._load_token = DrawPart._load_token + 1
     self.load_token = DrawPart._load_token
-    local cb_data = DrawPart.CreateCbData(self, bundle, asset, self.load_token)
-    DrawPart.__OnLoadComplete(go, cb_data)
+    cbd[CbdIndex.token] = self.load_token
+    if UNITY_EDITOR then
+        cbd[CbdIndex.debug] = debug.traceback()
+    end
+    if self.is_main_role and self.part == SceneObjPart.Main then
+        ResPoolMgr.Instance:__GetDynamicObjSync(bundle_name, asset_name, nil, DrawPart.__OnLoadComplete, cbd)
+    else
+        local priority
+        if self.is_main_role then
+            priority = ResLoadPriority.high
+        elseif self.is_in_queue_load then
+            if self.part == SceneObjPart.Main then
+                priority = ResLoadPriority.mid
+            else
+                priority = ResLoadPriority.low
+            end
+        else
+            priority = ResLoadPriority.high
+        end
+        ResPoolMgr.Instance:__GetDynamicObjAsync(bundle_name, asset_name, nil, DrawPart.__OnLoadComplete, cbd, priority)
+    end
 end
 
 function DrawPart:Reset(obj)
@@ -165,11 +173,12 @@ end
 
 function DrawPart.__OnLoadComplete(obj, cb_data)
     ---@type DrawPart
-    local self = cb_data[1]
-    local bundle = cb_data[2]
-    local asset = cb_data[3]
-    local token = cb_data[4]
-    DrawPart.ReleaseCbData(cb_data)
+    local self = cb_data[CbdIndex.self]
+    local bundle_name = cb_data[CbdIndex.bundle]
+    local asset_name = cb_data[CbdIndex.asset]
+    local token = cb_data[CbdIndex.token]
+    local trace_back = cb_data[CbdIndex.debug]
+    CbdPool.ReleaseCbData(cb_data)
     if self.load_token ~= token then
         if not IsNil(obj) then
             self:__ReleaseLoaded(obj)
@@ -179,14 +188,14 @@ function DrawPart.__OnLoadComplete(obj, cb_data)
     self.load_token = nil
     self:DestroyObj()
     if IsNil(obj) then
-        print_error(string.format("加载模型失败, bundle:%s, asset:%s", bundle, asset))
+        print_error("加载模型失败:", bundle_name, asset_name, trace_back)
         return
     end
-    if self.bundle ~= bundle or self.asset ~= asset then
+    if self.bundle_name ~= bundle_name or self.asset_name ~= asset_name then
         print_error("[DrawPart] Reload for bundle and asset not match!")
         self:__ReleaseLoaded(obj)
-        if sel.bundle and self.asset then
-            self:LoadModel(self.bundle, self.asset)
+        if self.bundle_name and self.asset_name then
+            self:LoadModel(self.bundle_name, self.asset_name)
         end
         return
     end
@@ -200,6 +209,7 @@ function DrawPart.__OnLoadComplete(obj, cb_data)
 
     self:__InitRenderer()
     self:__InitAnimator()
+    self:__InvokeComplete()
 end
 
 function DrawPart:__InitRenderer()
@@ -215,10 +225,16 @@ function DrawPart:__InitAnimator()
     if not IsNil(animator) then
 
     end
-    self:__TryInvokeComplete()
 end
 
-function DrawPart:__TryInvokeComplete()
+function DrawPart:__InvokeComplete()
+    if not self.obj then
+        return
+    end
+    if self.load_callback then
+        self.load_callback(self.obj, self.bundle_name, self.asset_name)
+        self.load_callback = nil
+    end
 end
 
 function DrawPart:__FlushParent(obj)
@@ -312,7 +328,7 @@ function DrawPart:SetInteger(key, value)
 end
 
 function DrawPart:RemoveModel()
-    self.bundle = nil
-    self.asset = nil
+    self.bundle_name = nil
+    self.asset_name = nil
     self:DestroyObj()
 end

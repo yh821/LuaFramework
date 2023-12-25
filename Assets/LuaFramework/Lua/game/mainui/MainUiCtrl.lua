@@ -7,9 +7,9 @@
 require("game/mainui/MainUiData")
 require("game/mainui/MainUiView")
 
----@class MainUiCtrl
+---@class MainUiCtrl : BaseController
 ---@field view MainUiView
-MainUiCtrl = MainUiCtrl or BaseClass()
+MainUiCtrl = MainUiCtrl or BaseClass(BaseController)
 
 function MainUiCtrl:__init()
     if MainUiCtrl.Instance then

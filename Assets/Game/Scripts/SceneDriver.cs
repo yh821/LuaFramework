@@ -1,10 +1,7 @@
-﻿using System;
-using HedgehogTeam.EasyTouch;
-using UnityEditor.Experimental;
+﻿using HedgehogTeam.EasyTouch;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-namespace Game.Scripts
+namespace Game
 {
 	public class SceneDriver : MonoBehaviour
 	{

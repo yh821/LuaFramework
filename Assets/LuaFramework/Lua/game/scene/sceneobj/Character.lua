@@ -32,9 +32,9 @@ function Character:OnEnterScene()
     self:ChangeState(SceneObjState.idle)
 end
 
-function Character:Update(realtime, unscaledDeltaTime)
-    Character.super.Update(self, realtime, unscaledDeltaTime)
-    self.state_machine:UpdateState(unscaledDeltaTime)
+function Character:Update(now_time, delta_time)
+    Character.super.Update(self, now_time, delta_time)
+    self.state_machine:UpdateState(delta_time)
 end
 
 function Character:ChangeState(state_name)

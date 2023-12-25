@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Game
@@ -50,6 +52,7 @@ namespace Game
 			throw new FormatException("Can not pares AssetID.");
 		}
 
+#if UNITY_EDITOR
 		public string GetAssetPath()
 		{
 			if (IsEmpty)
@@ -95,7 +98,7 @@ namespace Game
 			bundleName = atPath.assetBundleName;
 			assetName = assetPath.Substring(assetPath.LastIndexOf('/') + 1);
 		}
-
+#endif
 		public bool Equals(AssetID other)
 		{
 			return BundleName == other.BundleName && AssetName == other.AssetName;

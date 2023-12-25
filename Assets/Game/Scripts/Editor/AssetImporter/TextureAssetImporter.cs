@@ -7,15 +7,12 @@ public class TextureAssetImporter : AssetPostprocessor
 {
 	private static readonly HashSet<string> tempIgnoreAssets = new HashSet<string>();
 
-	// public const string GameDir = "Assets/Game/";
-	// public const string UIsDir = "Assets/Game/UIs/";
-	public const string ViewDir = "Assets/Game/UIs/View/";
-	public const string IconsDir = "Assets/Game/UIs/Icons/";
-	public const string FontsDir = "Assets/Game/UIs/Fonts/";
-	public const string RawImagesDir = "Assets/Game/UIs/RawImages/";
-
-	public const string ActorDir = "Assets/Game/Actors/";
-	// public const string ShaderDir = "Assets/Game/Shaders/";
+	public const string UIsDir = AssetBundleImporter.BaseDir + "/UIs";
+	public const string ViewDir = UIsDir + "/View";
+	public const string IconsDir = UIsDir + "/Icons";
+	public const string FontsDir = UIsDir + "/Fonts";
+	public const string ImagesDir = UIsDir + "/Images";
+	public const string RawImagesDir = UIsDir + "/RawImages";
 
 	public const string NoPack = "/nopack/";
 
@@ -124,7 +121,7 @@ public class TextureAssetImporter : AssetPostprocessor
 	bool PreprocessTextureMaxSize(TextureImporter importer, TextureImporterPlatformSettings settings)
 	{
 		var dirty = importer.textureType == TextureImporterType.NormalMap
-		            || importer.assetPath.StartsWith(ActorDir);
+		            || importer.assetPath.StartsWith(AssetBundleImporter.ActorDir);
 		if (dirty)
 			dirty = settings.maxTextureSize != 1024;
 		if (dirty)
@@ -171,8 +168,10 @@ public class TextureAssetImporter : AssetPostprocessor
 
 	private void ProcessNoPackTips(TextureImporter importer, Texture2D texture)
 	{
-		if (importer.textureType != TextureImporterType.Sprite
-		    || importer.assetPath.ToLower().Contains(NoPack))
+		var assetPath = importer.assetPath;
+		if (!assetPath.StartsWith(UIsDir)
+		    || importer.textureType != TextureImporterType.Sprite
+		    || assetPath.ToLower().Contains(NoPack))
 			return;
 		if (texture.width > 1024 || texture.height > 1024)
 			Debug.LogError(

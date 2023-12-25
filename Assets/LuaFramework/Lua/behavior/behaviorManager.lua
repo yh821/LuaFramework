@@ -105,12 +105,12 @@ end
 function BehaviorManager:BindBehaviorTree(gameObject, file)
     local bt = _behaviorTreeDict[gameObject]
     if bt then
-        print_error("实体已经绑定了行为树: " .. bt.file)
+        print_error("实体已经绑定了行为树:", bt.file)
         return
     end
     bt = self:__LoadBehaviorTree(file)
     if bt == nil then
-        print_error("找不到行为树: " .. file)
+        print_error("找不到行为树:", file)
         return
     end
     bt.gameObject = gameObject

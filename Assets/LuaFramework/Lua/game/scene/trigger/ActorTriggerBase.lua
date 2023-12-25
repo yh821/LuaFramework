@@ -3,7 +3,7 @@
 --- DateTime: 2023/6/10 14:37
 ---
 
----@class ActorTriggerBase
+---@class ActorTriggerBase : BaseClass
 ActorTriggerBase = ActorTriggerBase or BaseClass()
 
 function ActorTriggerBase:__init()
@@ -84,12 +84,12 @@ function ActorTriggerBase:OnEventTriggered(source, target, state_info)
 end
 
 local function DelayTriggerCallBack(cb_data)
-    local self = cb_data[1]
-    local source = cb_data[2]
-    local target = cb_data[3]
-    local state_info = cb_data[4]
-    local token = cb_data[5]
-    ActorCtrl.ReleaseCbData(cb_data)
+    local self = cb_data[CbdIndex.self]
+    local source = cb_data[CbdIndex.source]
+    local target = cb_data[CbdIndex.target]
+    local state_info = cb_data[CbdIndex.state_info]
+    local token = cb_data[CbdIndex.token]
+    CbdPool.ReleaseCbData(cb_data)
     if self.delay_timer_quest then
         self.delay_timer_quest[token] = nil
     end
@@ -102,24 +102,24 @@ end
 function ActorTriggerBase:DelayTrigger(source, target, state_info)
     local token = self.delay_timer_num
     self.delay_timer_num = self.delay_timer_num + 1
-    local cb_data = ActorCtrl.GetCbData()
-    cb_data[1] = self
-    cb_data[2] = source
-    cb_data[3] = target
-    cb_data[4] = state_info
-    cb_data[5] = token
+    local cbd = CbdPool.CreateCbData()
+    cbd[CbdIndex.self] = self
+    cbd[CbdIndex.source] = source
+    cbd[CbdIndex.target] = target
+    cbd[CbdIndex.state_info] = state_info
+    cbd[CbdIndex.token] = token
     if self.data
             and self.data.unscaledDelay
             and self.data.unscaledDelay > 0 then
         if not self.delay_timer_quest then
             self.delay_timer_quest = {}
         end
-        self.delay_timer_quest[token] = TimerQuest.Instance:AddDelayTimer(DelayTriggerCallBack, self.delay, cb_data)
+        self.delay_timer_quest[token] = TimerQuest.Instance:AddDelayTimer(DelayTriggerCallBack, self.delay, cbd)
     else
         if not self.scaled_timer_quest then
             self.scaled_timer_quest = {}
         end
-        self.scaled_timer_quest[token] = TimerQuest.Instance:AddScaledDelayTimer(DelayTriggerCallBack, self.delay, cb_data)
+        self.scaled_timer_quest[token] = TimerQuest.Instance:AddScaledDelayTimer(DelayTriggerCallBack, self.delay, cbd)
     end
 end
 

@@ -1,6 +1,6 @@
 require "common/define"
 
----@class CtrlManager
+---@class CtrlManager : BaseClass
 CtrlManager = CtrlManager or BaseClass();
 
 function CtrlManager:__init()
@@ -14,12 +14,19 @@ function CtrlManager:__init()
         "controller/Runner", --循环系统
         "controller/EventSystem", --事件系统
         "controller/TimerQuest", --定时器
+        "controller/BaseController", --管理类基类
 
-        "loader/ResManager",
+        "loader/ResMgr",
         "loader/ResPoolMgr",
+        "loader/AssetBundleMgr",
+        "loader/BundleCacheMgr",
+        "loader/DownloadMgr",
+        "loader/GameObjLoaderMgr",
 
         "controller/ViewManager", --界面管理器
         "controller/AiManager",
+
+        "quality/ShieldMgr", --屏蔽管理器
 
         "game/scene/Scene",
         "game/mainui/MainUiCtrl",

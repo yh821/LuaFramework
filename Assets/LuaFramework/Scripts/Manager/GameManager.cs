@@ -292,33 +292,6 @@ namespace LuaFramework
 			Util.CallMethod("Game", "Start");//初始化游戏
 
 			initialize = true;
-
-			//类对象池测试
-			var classObjPool = ObjPoolManager.CreatePool<TestObjectClass>(OnPoolGetElement, OnPoolPushElement);
-			//方法1
-			//objPool.Release(new TestObjectClass("abcd", 100, 200f));
-			//var testObj1 = objPool.Get();
-
-			//方法2
-			ObjPoolManager.Release<TestObjectClass>(new TestObjectClass("abcd", 100, 200f));
-			var testObj1 = ObjPoolManager.Get<TestObjectClass>();
-
-			Debugger.Log("TestObjectClass--->>>" + testObj1.ToString());
-
-			//游戏对象池测试
-			var prefab = Resources.Load("TestGameObjectPrefab", typeof(GameObject)) as GameObject;
-			var gameObjPool = ObjPoolManager.CreatePool("TestGameObject", 5, 10, prefab);
-
-			var gameObj = Instantiate(prefab) as GameObject;
-			gameObj.name = "TestGameObject_01";
-			gameObj.transform.localScale = Vector3.one;
-			gameObj.transform.localPosition = Vector3.zero;
-
-			ObjPoolManager.Release("TestGameObject", gameObj);
-			var backObj = ObjPoolManager.Get("TestGameObject");
-			backObj.transform.SetParent(null);
-
-			Debug.Log("TestGameObject--->>>" + backObj);
 		}
 
 		/// <summary>

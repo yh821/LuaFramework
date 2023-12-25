@@ -3,7 +3,7 @@
 --- DateTime: 2023/4/28 12:00
 ---
 
----@class TimerQuest
+---@class TimerQuest : BaseClass
 TimerQuest = TimerQuest or BaseClass()
 
 function TimerQuest:__init()

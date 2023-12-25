@@ -4,7 +4,7 @@
 --- DateTime: 2023/1/3 17:44
 ---
 
----@class Runner
+---@class Runner : BaseClass
 Runner = Runner or BaseClass()
 
 Status = {
@@ -50,7 +50,7 @@ function Runner:__delete()
     Runner.Instance = nil
 end
 
-function Runner:Update(deltaTime, unscaledDeltaTime)
+function Runner:Update(nowTime, unscaledDeltaTime)
     local realtime = UnityEngine.Time.realtimeSinceStartup
     Status.NowTime = realtime
     Status.NowFrame = UnityEngine.Time.frameCount

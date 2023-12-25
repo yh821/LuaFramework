@@ -1,5 +1,6 @@
 require("view/PromptPanel")
 
+---@class PromptCtrl : BaseClass
 PromptCtrl = PromptCtrl or BaseClass()
 
 --构建函数--

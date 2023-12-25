@@ -3,15 +3,11 @@
 --- DateTime: 2023/7/14 17:51
 ---
 
----@class GameObjLoader
+---@class GameObjLoader : BaseClass
 GameObjLoader = GameObjLoader or BaseClass()
 
 local LoaderLayer = GameObject.Find("GameRoot/LoaderLayer").transform
 local TypeRectTransform = typeof(UnityEngine.RectTransform)
-
-local empty_table = {}
-local add_list = {}
-local add_index = 0
 
 function GameObjLoader:__init(parent_transform)
     self.name = "GameObjLoader"
@@ -49,24 +45,22 @@ function GameObjLoader:__delete()
     self.cur_tbl.bundle_name = nil
     self.wait_tbl.bundle_name = nil
     self.loading_tbl.bundle_name = nil
-end
 
-function GameObjLoader:__DestroyObj(obj)
-    if IsNil(obj) then
-        return
-    end
-
-    if self.is_use_obj_pool then
-        ResPoolMgr.Instance:Release(obj, self.release_policy)
-    else
-        ResManager.Instance:__Destroy(obj)
+    if self.cur_tbl.shield_handle then
+        self.cur_tbl.shield_handle:DeleteMe()
+        self.cur_tbl.shield_handle = nil
     end
 end
 
+-- 一个loader只加载一个对象，如果删除要调用loader的Destroy接口安全移除
+-- 如果该对象已经被其他地方非法删除了，以下有记录instance_id对象池进行清理
+-- 如果该对象还在队列中，则充队列中取消
+-- 入宫有正在等待加载的对象，则该等待对象将不再加载
+-- 强制清除parent_transform的引用
 function GameObjLoader:Destroy(is_reset_parent_transform)
     self.loading_tbl.bundle_name = nil
     if self.loading_tbl.queue_session then
-        ResPoolMgr:__CancelGetInQueue(self.loading_tbl.queue_session)
+        ResPoolMgr.Instance:__CancelGetInQueue(self.loading_tbl.queue_session)
         self.loading_tbl.queue_session = nil
     end
 
@@ -84,7 +78,7 @@ function GameObjLoader:Destroy(is_reset_parent_transform)
             if self.is_use_obj_pool then
                 ResPoolMgr.Instance:ReleaseInObjId(instance_id)
             else
-                ResManager.Instance:ReleaseInObjId(instance_id)
+                ResMgr.Instance:ReleaseInObjId(instance_id)
             end
         else
             self:__DestroyObj(go)
@@ -96,11 +90,23 @@ function GameObjLoader:Destroy(is_reset_parent_transform)
     end
 end
 
+function GameObjLoader:__DestroyObj(obj)
+    if IsNil(obj) then
+        return
+    end
+
+    if self.is_use_obj_pool then
+        ResPoolMgr.Instance:Release(obj, self.release_policy)
+    else
+        ResMgr.Instance:__Destroy(obj)
+    end
+end
+
 function GameObjLoader:GetGameObj()
     return self.cur_tbl.game_obj
 end
 
-function GameObjLoader:Update(now_time, elapse_time)
+function GameObjLoader:Update(now_time, delta_time)
     if now_time >= self.obj_alive_time_stamp then
         self:Destroy()
         return true
@@ -112,13 +118,8 @@ end
 function GameObjLoader:__DelayDelObj()
     if self.obj_alive_time then
         self.obj_alive_time_stamp = self.obj_alive_time + Status.NowTime
-        GameObjLoader.AddTimer(self)
+        GameObjLoaderMgr.Instance:AddTimer(self)
     end
-end
-
-function GameObjLoader.AddTimer(loader)
-    add_index = add_index + 1
-    add_list[add_index] = loader
 end
 
 function GameObjLoader:SetObjAliveTime(obj_alive_time)
@@ -282,37 +283,37 @@ function GameObjLoader:DoLoad()
             self.loading_tbl.queue_session = ResPoolMgr.Instance:__GetDynamicObjAsync(
                     self.loading_tbl.bundle_name,
                     self.loading_tbl.prefab_name,
+                    self.parent_transform,
                     GameObjLoader.LoadComplete,
                     cb_data,
-                    self.parent_transform,
                     self.load_priority
             )
         else
             ResPoolMgr.Instance:__GetDynamicObjSync(
                     self.loading_tbl.bundle_name,
                     self.loading_tbl.prefab_name,
+                    self.parent_transform,
                     GameObjLoader.LoadComplete,
-                    cb_data,
-                    self.parent_transform
+                    cb_data
             )
         end
     else
         if self.is_async then
-            ResManager.Instance:LoadGameObjectAsync(
+            ResMgr.Instance:LoadGameObjectAsync(
                     self.loading_tbl.bundle_name,
                     self.loading_tbl.prefab_name,
+                    self.parent_transform,
                     GameObjLoader.LoadComplete,
                     cb_data,
-                    self.parent_transform,
                     self.load_priority
             )
         else
-            ResManager.Instance:LoadGameObjectSync(
+            ResMgr.Instance:LoadGameObjectSync(
                     self.loading_tbl.bundle_name,
                     self.loading_tbl.prefab_name,
+                    self.parent_transform,
                     GameObjLoader.LoadComplete,
-                    cb_data,
-                    self.parent_transform
+                    cb_data
             )
         end
     end

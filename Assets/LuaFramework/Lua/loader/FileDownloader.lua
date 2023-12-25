@@ -3,7 +3,7 @@
 --- DateTime: 2023/10/12 15:31
 ---
 
----@class FileDownloader
+---@class FileDownloader : BaseClass
 FileDownloader = FileDownloader or BaseClass()
 
 local UnityWebRequest = UnityEngine.Networking.UnityWebRequest
@@ -47,7 +47,7 @@ function FileDownloader:__init(url, update_callback, complete_callback, cache_pa
 
         local callback = function(error)
             if error then
-                print_error("[FIleDownloader] " .. error)
+                print_error("[FIleDownloader] ", error)
             end
             print_log("[FIleDownloader] download file complete: ", url)
             complete_callback(error, self.v_request)
@@ -62,7 +62,7 @@ end
 function FileDownloader:CheckComplete(callback, cache_path, bundle_name, error, bundle_hash, check_hash)
     -- 如果AssetBundleMgr也在下载，可能会出现两边同事写入同一个文件，导致另一方回报错
     -- 所以这里等待AssetBundleMgr下载完
-    if AssetBundleMgr:IsAssetBundleDownloading(cache_path) then
+    if AssetBundleMgr.Instance:IsAssetBundleDownloading(cache_path) then
         local finish_callback = function(is_success)
             if is_success then
                 callback(nil)
@@ -70,7 +70,7 @@ function FileDownloader:CheckComplete(callback, cache_path, bundle_name, error, 
                 callback("[AssetBundleMgr] download fail!!!")
             end
         end
-        AssetBundleMgr:WaitAssetBundleDownloaded(cache_path, bundle_name, finish_callback)
+        AssetBundleMgr.Instance:WaitAssetBundleDownloaded(cache_path, bundle_name, finish_callback)
         return
     end
 

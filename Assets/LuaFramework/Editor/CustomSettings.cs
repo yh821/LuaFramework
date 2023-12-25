@@ -103,6 +103,7 @@ public static class CustomSettings
 		_GT(typeof(Sprite)),
 		_GT(typeof(Texture)),
 		_GT(typeof(Texture2D)),
+		_GT(typeof(TextAsset)),
 		_GT(typeof(Shader)),
 		_GT(typeof(Renderer)),
 		_GT(typeof(WWW)),
@@ -114,7 +115,8 @@ public static class CustomSettings
 		_GT(typeof(AsyncOperation)).SetBaseType(typeof(System.Object)),
 		_GT(typeof(LightType)),
 		_GT(typeof(SleepTimeout)),
-		_GT(typeof(Animator)),
+		_GT(typeof(Animator)).AddExtendType(typeof(AnimatorExtensions)),
+		_GT(typeof(RuntimeAnimatorController)),
 		_GT(typeof(Input)),
 		_GT(typeof(KeyCode)),
 		_GT(typeof(SkinnedMeshRenderer)),
@@ -147,6 +149,7 @@ public static class CustomSettings
 		_GT(typeof(SceneManager)),
 		_GT(typeof(LoadSceneMode)),
 		_GT(typeof(Scene)),
+		_GT(typeof(ThreadPriority)),
 
 		//for LuaFramework
 		_GT(typeof(Util)),
@@ -194,14 +197,19 @@ public static class CustomSettings
 		#region Game
 
 		_GT(typeof(SimpleCamera)),
+		_GT(typeof(UIJoystick)),
 		_GT(typeof(MovableObject)),
 		_GT(typeof(EditorResourceMgr)),
 		_GT(typeof(EasyTouch)).SetNameSpace(null),
 		_GT(typeof(UINameTable)).SetNameSpace(null),
-
 		_GT(typeof(ClickableObject)),
-
+		_GT(typeof(ZipUtil)),
+		_GT(typeof(Projectile)),
+		_GT(typeof(EffectController)).SetNameSpace(null),
 		_GT(typeof(LoadRawImage)),
+		_GT(typeof(StreamingAssets)),
+		_GT(typeof(AudioItem)).SetNameSpace(null),
+		_GT(typeof(AudioSourcePool)).SetNameSpace(null),
 
 		#endregion
 	};

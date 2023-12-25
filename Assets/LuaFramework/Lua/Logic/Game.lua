@@ -1,11 +1,9 @@
-require "3rd/pblua/login_pb"
-require "3rd/pbc/protobuf"
+require("3rd/pblua/login_pb")
+require("3rd/pbc/protobuf")
 
 local lpeg = require("lpeg")
-
 local json = require("cjson")
 local util = require("3rd/cjson/util")
-
 local sproto = require("3rd/sproto/sproto")
 local core = require("sproto.core")
 local print_r = require("3rd/sproto/print_r")
@@ -29,52 +27,21 @@ function Game.Start()
 
     PushCtrl(CtrlManager.New())
 
-    --self:test_class_func()
-    --self:test_pblua_func()
-    --self:test_cjson_func()
-    --self:test_pbc_func()
-    --self:test_lpeg_func()
-    --self:test_sproto_func()
-    --coroutine.start(self.test_coroutine)
-    --print_warning("LuaFramework InitOK--->>>")
+    MainUiCtrl.Instance:Open()
 
-
-
-
-    --if PromptCtrl.Instance then
-    --    PromptCtrl.Instance:Open()
-    --end
-
-    if MainUiCtrl.Instance then
-        MainUiCtrl.Instance:Open()
-    end
-
-    Scene.Instance:CreateRole({ obj_id = 1 })
-
-    --local monster = Scene.Instance:CreateMonster({ obj_id = 3 })
-    --bt = AiManager.Instance:BindBT(monster, "monster1")
-    --bt:SetSharedVar(BtConfig.TargetObjKey, role)
-
-    --monster = Scene.Instance:CreateMonster({ obj_id = 4 })
-    --bt = AiManager.Instance:BindBT(monster, "monster2")
-    --bt:SetSharedVar(BtConfig.TargetObjKey, role)
-    --
-    --monster = Scene.Instance:CreateMonster({ obj_id = 5 })
-    --bt = AiManager.Instance:BindBT(monster, "monster3")
-    --bt:SetSharedVar(BtConfig.TargetObjKey, role)
-    --
-    --monster = Scene.Instance:CreateMonster({ obj_id = 6 })
-    --bt = AiManager.Instance:BindBT(monster, "monster4")
-    --bt:SetSharedVar(BtConfig.TargetObjKey, role)
-
-    --for i = 1, 8 do
-    --    local monster = Scene.Instance:CreateMonster({ obj_id = 2 + i })
-    --    bt = AiManager.Instance:BindBT(monster, "monster")
-    --    bt:SetSharedVar(BtConfig.TargetObjKey, role)
-    --end
-
-    --AiManager.Instance:SwitchTick()
+    Scene.Instance:CreateCamera()
+    Scene.Instance:CreateMainRole()
 end
+
+--销毁--
+function Game.OnDestroy()
+    --logWarn("OnDestroy--->>>")
+end
+
+
+
+
+
 
 
 
@@ -238,9 +205,4 @@ end
 function Game.OnJsonCall(data)
     local obj = json.decode(data)
     print(obj["menu"]["id"])
-end
-
---销毁--
-function Game.OnDestroy()
-    --logWarn("OnDestroy--->>>")
 end

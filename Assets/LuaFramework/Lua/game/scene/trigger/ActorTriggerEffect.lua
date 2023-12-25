@@ -78,13 +78,13 @@ local ui3d_layer = UnityEngine.LayerMask.NameToLayer("UI3D")
 local TriggerEffectCount = 0
 
 local function EffectLoadCallBack(obj, cb_data)
-    local self = cb_data[1]
-    local async_loader = cb_data[2]
-    local reference = cb_data[3]
-    local deliverer = cb_data[4]
-    local effect_data = cb_data[5]
-    local state_info = cb_data[7]
-    ActorCtrl.ReleaseCbData(cb_data)
+    local self = cb_data[CbdIndex.self]
+    local async_loader = cb_data[CbdIndex.loader]
+    local reference = cb_data[CbdIndex.reference]
+    local deliverer = cb_data[CbdIndex.deliverer]
+    local effect_data = cb_data[CbdIndex.effect_data]
+    local state_info = cb_data[CbdIndex.state_info]
+    CbdPool.ReleaseCbData(cb_data)
 
     if IsNil(obj) then
         return

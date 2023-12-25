@@ -19,7 +19,7 @@ eNodeState = {
 TaskNode = BaseClass()
 
 local _id = 0
-local _openLog = true
+local _openLog = false
 local _format = string.format
 
 ---@param owner BehaviorTree
@@ -159,6 +159,6 @@ end
 
 function TaskNode:print(msg)
     if _openLog then
-        print_log(_format("[<color=yellow>%s</color>] %s\n%s", self.uid, msg, debug.traceback()))
+        print_log(_format("[<color=yellow>%s</color>]", self.uid), msg)
     end
 end

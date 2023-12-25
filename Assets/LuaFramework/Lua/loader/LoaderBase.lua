@@ -3,31 +3,35 @@
 --- DateTime: 2023/9/15 10:38
 ---
 
+require("loader/ResUtil")
+require("loader/SceneLoader")
+
 local SysUri = System.Uri
 local SysObj = System.Object
 
 local UnityLoadSceneMode = UnityEngine.SceneManagement.LoadSceneMode
 local SceneSingleLoadMode = UnityLoadSceneMode.Single
-local SceneAdditiveLoadModel = UnityLoadSceneMode.Additive
+--local SceneAdditiveLoadModel = UnityLoadSceneMode.Additive
 
 local UnityGameObject = UnityEngine.GameObject
 local UnityDontDestroyOnLoad = UnityGameObject.DontDestroyOnLoad
 local UnityInstantiate = UnityGameObject.Instantiate
 
 ---@class LoaderBase : BaseClass
+---@field v_scene_loader SceneLoader
 LoaderBase = LoaderBase or BaseClass()
 
 function LoaderBase:__init()
     self.v_lua_manifest_info = { bundleInfos = {} }
     self.v_manifest_info = { bundleInfos = {} }
-    self.v_scene_loader_list = { }
+    self.v_scene_loader_list = {}
     self.v_scene_loader = SceneLoader.New()
 
     self.is_ignore_hash_check = true
     self.is_can_check_crc = false
 end
 
-function LoaderBase:Update(time, delta_time)
+function LoaderBase:Update(now_time, delta_time)
     if self.v_scene_loader then
         self.v_scene_loader:Update()
     end
@@ -53,7 +57,7 @@ end
 
 function LoaderBase:Instantiate(res, dont_destroy, parent)
     local go
-    if not IsNil(parent) then
+    if parent then
         go = UnityInstantiate(res, parent.transform, false)
     else
         go = UnityInstantiate(res)
@@ -112,16 +116,16 @@ function LoaderBase:UnLoadAssetBundle(bundle_name)
     assert(nil)
 end
 
-function LoaderBase:UpdateBundle(bundle_name, update_delegate, complete)
+function LoaderBase:UpdateBundle(bundle_name, update_callback, complete_callback, check_hash)
     assert(nil)
 end
 
 function LoaderBase:GetAllLuaManifestBundles()
-    return {}
+    return EmptyTable
 end
 
 function LoaderBase:GetAllManifestBundles()
-    return {}
+    return EmptyTable
 end
 
 function LoaderBase:GetBundlesWithoutCached(bundle_name)
@@ -175,6 +179,22 @@ end
 
 function LoaderBase:GetAssetVersion()
     return self.v_asset_version
+end
+
+function LoaderBase:IsLuaVersionCached(bundle_name)
+    local hash
+    if self.v_lua_manifest_info.bundleInfos[bundle_name] then
+        hash = self.v_lua_manifest_info.bundleInfos[bundle_name]
+    end
+    return ResUtil.IsFileExist("LuaAssetBundle/" .. bundle_name, hash)
+end
+
+function LoaderBase:SetAssetLuaVersion(asset_lua_version)
+    self.v_asset_lua_version = asset_lua_version
+end
+
+function LoaderBase:GetAssetLuaVersion()
+    return self.v_asset_lua_version
 end
 
 function LoaderBase:SetDownloadingUrl(url)
@@ -246,6 +266,40 @@ function LoaderBase.ExistedInStreaming(path)
     return ResUtil.ExistedInStreaming(path)
 end
 
+function LoaderBase:GetBundleDeps(bundle_name)
+    return EmptyTable
+end
+
 function LoaderBase:IsCanSafeUseBundle(bundle_name)
     return true
+end
+
+function LoaderBase:UseBundle(bundle_name)
+    BundleCacheMgr.Instance:OnUseBundle(bundle_name)
+end
+
+function LoaderBase:ReleaseBundle(bundle_name)
+    BundleCacheMgr.Instance:OnUnUseBundle(bundle_name)
+end
+
+function LoaderBase:UnloadScene(bundle_name)
+end
+
+function LoaderBase:GetDebugGameObjCount(t)
+    t.game_obj_count = 0
+    for i, v in pairs(self.v_goid_prefab_map) do
+        t.game_obj_count = t.game_obj_count + 1
+    end
+end
+
+function LoaderBase:LoadGameObjectAsync(bundle_name, asset_name, parent, callback, cb_data, load_priority)
+end
+
+function LoaderBase:LoadGameObjectSync(bundle_name, asset_name, parent, callback, cb_data, load_priority)
+end
+
+function LoaderBase:LoadObjectAsync(bundle_name, asset_name, asset_type, callback, cb_data, load_priority)
+end
+
+function LoaderBase:LoadObjectSync(bundle_name, asset_name, asset_type, callback, cb_data, load_priority)
 end

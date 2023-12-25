@@ -63,6 +63,10 @@ public class UnityEngine_AnimatorWrap
 		L.RegFunction("Update", Update);
 		L.RegFunction("Rebind", Rebind);
 		L.RegFunction("ApplyBuiltinRootMotion", ApplyBuiltinRootMotion);
+		L.RegFunction("GetStateListener", GetStateListener);
+		L.RegFunction("GetAnimationClip", GetAnimationClip);
+		L.RegFunction("ListenEvent", ListenEvent);
+		L.RegFunction("WaitEvent", WaitEvent);
 		L.RegFunction("New", _CreateUnityEngine_Animator);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -1658,6 +1662,94 @@ public class UnityEngine_AnimatorWrap
 			UnityEngine.Animator obj = (UnityEngine.Animator)ToLua.CheckObject<UnityEngine.Animator>(L, 1);
 			obj.ApplyBuiltinRootMotion();
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetStateListener(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			UnityEngine.Animator obj = (UnityEngine.Animator)ToLua.CheckObject<UnityEngine.Animator>(L, 1);
+			AnimatorStateListener o = obj.GetStateListener();
+			ToLua.Push(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetAnimationClip(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.Animator obj = (UnityEngine.Animator)ToLua.CheckObject<UnityEngine.Animator>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			UnityEngine.AnimationClip o = obj.GetAnimationClip(arg0);
+			ToLua.PushSealed(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ListenEvent(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			UnityEngine.Animator obj = (UnityEngine.Animator)ToLua.CheckObject<UnityEngine.Animator>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			System.Action<string,UnityEngine.AnimatorStateInfo> arg1 = (System.Action<string,UnityEngine.AnimatorStateInfo>)ToLua.CheckDelegate<System.Action<string,UnityEngine.AnimatorStateInfo>>(L, 3);
+			Game.SignalHandle o = obj.ListenEvent(arg0, arg1);
+			ToLua.PushSealed(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int WaitEvent(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				UnityEngine.Animator obj = (UnityEngine.Animator)ToLua.CheckObject<UnityEngine.Animator>(L, 1);
+				string arg0 = ToLua.CheckString(L, 2);
+				System.Collections.IEnumerator o = obj.WaitEvent(arg0);
+				ToLua.Push(L, o);
+				return 1;
+			}
+			else if (count == 3)
+			{
+				UnityEngine.Animator obj = (UnityEngine.Animator)ToLua.CheckObject<UnityEngine.Animator>(L, 1);
+				string arg0 = ToLua.CheckString(L, 2);
+				System.Action<string,UnityEngine.AnimatorStateInfo> arg1 = (System.Action<string,UnityEngine.AnimatorStateInfo>)ToLua.CheckDelegate<System.Action<string,UnityEngine.AnimatorStateInfo>>(L, 3);
+				obj.WaitEvent(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Animator.WaitEvent");
+			}
 		}
 		catch (Exception e)
 		{
